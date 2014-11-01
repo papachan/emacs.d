@@ -1,0 +1,3 @@
+[submodule "moe-theme.el"]
+    path= moe-theme
+    url=git@github.com:kuanyui/moe-theme.el.git
