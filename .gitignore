@@ -1,0 +1,10 @@
+*~
+\#*\#
+*.elc
+auto-save-list
+backups
+elpa/archives
+tramp
+.\#*
+local.el
+private.el
