@@ -12,8 +12,8 @@
 ;; loading cider manually
 (package-initialize)
 (add-to-list 'load-path "~/.emacs.d/vendor/cider")
-(add-to-list 'custom-theme-load-path "/home/papachan/.emacs.d/moe-theme")
-(add-to-list 'load-path "/home/papachan/.emacs.d/moe-theme")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
+(add-to-list 'load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
 
 (progn (cd "~/.emacs.d/")
     (normal-top-level-add-subdirs-to-load-path))
@@ -54,9 +54,9 @@
   (tooltip-mode -1)
   (mouse-wheel-mode t)
   (blink-cursor-mode -1)
-  ; sublime monokai theme
   (require 'color-theme)
-  (load-file "~/.emacs.d/elpa/moe-theme-20140912.822/moe-dark-theme.el"))
+  (load-file "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-dark-theme.el"))
+  ; sublime monokai theme
   ;(load-file "~/.emacs.d/elpa/monokai-theme-20140310.1330/monokai-theme.el"))
 
 

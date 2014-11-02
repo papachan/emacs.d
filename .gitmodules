@@ -1,3 +1,6 @@
 [submodule "moe-theme.el"]
-    path= moe-theme
+    path= vendor/moe-theme
     url=git@github.com:kuanyui/moe-theme.el.git
+[submodule "cider"]
+    path= vendor/cider
+    url=git@github.com:clojure-emacs/cider.git
