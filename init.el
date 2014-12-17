@@ -83,6 +83,13 @@
 (ac-config-default)
 (global-auto-complete-mode t)
 
+;; python mode
+(setq py-install-directory "~/.emacs.d/python-mode.el-6.2.0")
+(add-to-list 'load-path py-install-directory)
+(require 'python-mode)
+
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
