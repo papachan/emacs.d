@@ -38,6 +38,7 @@
 (global-hl-line-mode 1)
 
 ;; ido-mode is like magic pixie dust!
+(require 'ido)
 (ido-mode t)
 ;; (ido-ubiquitous t)
 (setq ido-enable-prefix nil
