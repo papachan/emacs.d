@@ -75,6 +75,14 @@
 
 (setq make-backup-files nil)
 
+;; autocomplete
+(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.3.1")
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(require 'auto-complete-config)
+(ac-config-default)
+(global-auto-complete-mode t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
