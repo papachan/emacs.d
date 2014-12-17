@@ -37,6 +37,18 @@
 ;; Highlight current line
 (global-hl-line-mode 1)
 
+;; Always use spaces, not tabs, when indenting
+(setq indent-tabs-mode nil)
+
+;; Ignore case when searching
+(setq case-fold-search t)
+
+;; Don't show the startup screen
+;; (setq inhibit-startup-screen t)
+
+;; Number of characters until the fill column
+(setq fill-column 80)
+
 ;; ido-mode is like magic pixie dust!
 (require 'ido)
 (ido-mode t)
