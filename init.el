@@ -1,16 +1,13 @@
 (require 'package)
-(add-to-list 'package-archives 
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives 
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives 
-             '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives 
-             '("ELPA" . "http://tromey.com/elpa/"))
-(add-to-list 'package-archives 
-             '("gnu" . "http://elpa.gnu.org/packages/"))
-;; loading cider manually
+
+(dolist (source '(("melpa" . "http://melpa.milkbox.net/packages/")
+                  ("marmalade" . "http://marmalade-repo.org/packages/")
+                  ("org" . "http://orgmode.org/elpa/")
+                  ("ELPA" . "http://tromey.com/elpa/")
+                  ("gnu" . "http://elpa.gnu.org/packages/")))
+     (add-to-list 'package-archives source))
 (package-initialize)
+
 (add-to-list 'load-path "~/.emacs.d/vendor/cider")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
 (add-to-list 'load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
@@ -100,7 +97,11 @@
 (add-to-list 'load-path py-install-directory)
 (require 'python-mode)
 
-
+;(require 'org-latex)
+;(setq org-export-latex-listings t)
+;(add-to-list 'org-export-latex-packages-alist '("" "listings"))
+;(add-to-list 'org-export-latex-packages-alist '("" "color"))
+(setq latex-run-command "pdflatex")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
