@@ -8,3 +8,4 @@ tramp
 .\#*
 local.el
 private.el
+vendor/*

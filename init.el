@@ -1,5 +1,13 @@
 (require 'package)
 
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+(add-to-list 'load-path "~/.emacs.d/papachan")
+(load "misc.el")
+(server-start)
+
 (dolist (source '(("melpa" . "http://melpa.milkbox.net/packages/")
                   ("marmalade" . "http://marmalade-repo.org/packages/")
                   ("org" . "http://orgmode.org/elpa/")
@@ -19,8 +27,8 @@
 ; (set-default-font "Liberation Mono 10")
 
 ;; Scrollbar + Line numbers + Menu Bar -- 2011.11.24
-;(scroll-bar-mode 1)
-;(linum-mode)
+(scroll-bar-mode 1)
+(linum-mode)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 ;(global-linum-mode)
@@ -59,6 +67,8 @@
       ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10)
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
@@ -74,18 +84,17 @@
 
 ; slime-helper
 ;(load (expand-file-name ("~/quicklisp/slime-helper.el")))
-
 ; quicklip sbcl
-(setq inferior-lisp-program "sbcl")
-
+(setq inferior-lisp-program "/usr/bin/sbcl")
+(slime-setup '(slime-fancy))
 
 (require 'maxframe)
 (add-hook 'window-setup-hook 'maximize-frame t)
 
 (setq make-backup-files nil)
 
-;; autocomplete
-(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.3.1")
+;; autocomplete  git@github.com:auto-complete/auto-complete.git
+(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
 (require 'auto-complete)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (require 'auto-complete-config)
@@ -102,6 +111,9 @@
 ;(add-to-list 'org-export-latex-packages-alist '("" "listings"))
 ;(add-to-list 'org-export-latex-packages-alist '("" "color"))
 (setq latex-run-command "pdflatex")
+
+; activate company-mode
+(add-hook 'after-init-hook 'global-company-mode)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
