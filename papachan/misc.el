@@ -4,3 +4,5 @@
                      "~/bin:"
                      "~/dev/elixir/bin"))
   (setenv "PATH" path))
+
+

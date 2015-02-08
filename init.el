@@ -1,3 +1,6 @@
+;;; init.el --- --- user init file  -*- no-byte-compile: t -*-
+;;;
+;;;
 (require 'package)
 
 (set-terminal-coding-system 'utf-8)
@@ -6,7 +9,9 @@
 
 (add-to-list 'load-path "~/.emacs.d/papachan")
 (load "misc.el")
-(server-start)
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 (dolist (source '(("melpa" . "http://melpa.milkbox.net/packages/")
                   ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -23,7 +28,7 @@
 (progn (cd "~/.emacs.d/")
     (normal-top-level-add-subdirs-to-load-path))
 
-(set-default-font "Ubuntu Mono 14")
+(set-default-font "Ubuntu Mono 16")
 ; (set-default-font "Liberation Mono 10")
 
 ;; Scrollbar + Line numbers + Menu Bar -- 2011.11.24
