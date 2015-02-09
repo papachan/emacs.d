@@ -8,7 +8,7 @@
 (prefer-coding-system 'utf-8)
 
 (add-to-list 'load-path "~/.emacs.d/papachan")
-(load "misc.el")
+(load "misc")
 (require 'server)
 (unless (server-running-p)
   (server-start))
@@ -26,6 +26,7 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
 (add-to-list 'load-path "~/.emacs.d/lib")
 
+(load "restclient")
 (load "twittering-mode")
 
 (progn (cd "~/.emacs.d/")
