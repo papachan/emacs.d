@@ -24,6 +24,9 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/cider")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
 (add-to-list 'load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
+(add-to-list 'load-path "~/.emacs.d/lib")
+
+(load "twittering-mode")
 
 (progn (cd "~/.emacs.d/")
     (normal-top-level-add-subdirs-to-load-path))
