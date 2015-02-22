@@ -21,19 +21,19 @@
      (add-to-list 'package-archives source))
 (package-initialize)
 
-(add-to-list 'load-path "~/.emacs.d/vendor/cider")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
-(add-to-list 'load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
+(progn (cd "~/.emacs.d/")
+    (normal-top-level-add-subdirs-to-load-path))
+(add-to-list 'load-path "~/.emacs.d/vendor/cider-0.8.2")
+(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
+;(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
+;(add-to-list 'load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
 (add-to-list 'load-path "~/.emacs.d/lib")
 
 (load "restclient")
 (load "twittering-mode")
 
-(progn (cd "~/.emacs.d/")
-    (normal-top-level-add-subdirs-to-load-path))
-
 (set-default-font "Ubuntu Mono 16")
-; (set-default-font "Liberation Mono 10")
+;(set-default-font "Liberation Mono 10")
 
 ;; Scrollbar + Line numbers + Menu Bar -- 2011.11.24
 (scroll-bar-mode 1)
@@ -110,7 +110,7 @@
 (setq make-backup-files nil)
 
 ;; autocomplete  git@github.com:auto-complete/auto-complete.git
-(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
+;(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
 (require 'auto-complete)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (require 'auto-complete-config)
