@@ -29,6 +29,11 @@
 ;(add-to-list 'load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
 (add-to-list 'load-path "~/.emacs.d/lib")
 
+; Load smex
+(load "smex")
+(require 'smex)
+(smex-initialize)
+
 (load "restclient")
 (load "twittering-mode")
 
