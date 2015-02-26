@@ -95,6 +95,7 @@
     ;'(progn
        ;(color-theme-initialize)
        ;(color-theme-hober)))
+  ;(load-file "~/.emacs.d/vendor/zenburn/zenburn.el")
   (load-file "~/.emacs.d/elpa/solarized-theme-20140926.1148/solarized-dark-theme.el")
   ;(load-file "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-dark-theme.el")
   ;(load-file "~/.emacs.d/elpa/monokai-theme-20140310.1330/monokai-theme.el")
