@@ -24,6 +24,7 @@
 (progn (cd "~/.emacs.d/")
     (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'load-path "~/.emacs.d/vendor/cider-0.8.2")
+(add-to-list 'load-path "~/.emacs.d/vendor/smart-mode-line-2.8")
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
 ;(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
 ;(add-to-list 'load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
@@ -40,7 +41,9 @@
 (set-default-font "Ubuntu Mono 16")
 ;(set-default-font "Liberation Mono 10")
 
-;; Scrollbar + Line numbers + Menu Bar -- 2011.11.24
+(setq make-backup-files nil)
+
+;; Scrollbar + Line numbers + Menu Bar
 (scroll-bar-mode 1)
 (linum-mode)
 (menu-bar-mode -1)
@@ -49,6 +52,16 @@
 ;(global-font-lock-mode 1)
 (column-number-mode)
 ;(global-whitespace-mode)
+
+(require 'whitespace)
+(setq whitespace-line-column 90
+      whitespace-style '(tabs trailing tab-mark lines-tail))
+
+
+; smart-mode-line
+;(require 'smart-mode-line)
+;(sml/setup)
+;(sml/apply-theme 'automatic)
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
@@ -64,9 +77,13 @@
 
 ;; Don't show the startup screen
 ;; (setq inhibit-startup-screen t)
+;; (setq inhibit-startup-message t)
 
 ;; Number of characters until the fill column
 (setq fill-column 80)
+
+(if (fboundp 'desktop-save-mode) (desktop-save-mode 1))
+(setq vc-follow-symlinks t)
 
 ;; ido-mode is like magic pixie dust!
 (require 'ido)
@@ -112,8 +129,6 @@
 
 (require 'maxframe)
 (add-hook 'window-setup-hook 'maximize-frame t)
-
-(setq make-backup-files nil)
 
 ;; autocomplete  git@github.com:auto-complete/auto-complete.git
 ;(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")

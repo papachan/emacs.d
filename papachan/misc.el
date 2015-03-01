@@ -17,11 +17,11 @@
                   (interactive)
                   (dired "~/")))
 
-(global-set-key (kbd "\C-cu")
-    (lambda ()
-        (interactive)
-        (insert "\n")
-        (insert (make-string 40 ?=))
-        (insert "\n"))) 
+;(global-set-key (kbd "\C-cu")
+;    (lambda ()
+;        (interactive)
+;        (insert "\n")
+;        (insert (make-string 40 ?=))
+;        (insert "\n"))) 
 
 (global-set-key "\C-cd" 'kill-whole-line) 
