@@ -24,10 +24,11 @@
 ;        (insert (make-string 40 ?=))
 ;        (insert "\n"))) 
 
-; (global-set-key (kbd "<f12>") 'my-save-and-compile)
-; (defun my-save-and-compile ()
-;  (interactive "")
-;  (save-buffer 0)
-;  (compile "./run"))
+; slime lfe shortcut
+(global-set-key (kbd "<f12>") 'my-save-and-compile)
+(defun my-save-and-compile ()
+  (interactive "")
+  (save-buffer 0)
+  (compile "./run"))
 
 (global-set-key "\C-cd" 'kill-whole-line) 
