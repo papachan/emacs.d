@@ -53,6 +53,9 @@
 (column-number-mode)
 ;(global-whitespace-mode)
 
+(require 'window-numbering)
+(window-numbering-mode 1)
+
 (require 'whitespace)
 (setq whitespace-line-column 90
       whitespace-style '(tabs trailing tab-mark lines-tail))
@@ -112,12 +115,11 @@
     ;'(progn
        ;(color-theme-initialize)
        ;(color-theme-hober)))
-  ;(load-file "~/.emacs.d/vendor/zenburn/zenburn.el")
-  (load-file "~/.emacs.d/elpa/solarized-theme-20140926.1148/solarized-dark-theme.el")
+  (load-file "~/.emacs.d/vendor/zenburn/zenburn.el")
+  ;(load-file "~/.emacs.d/elpa/solarized-theme-20140926.1148/solarized-dark-theme.el")
   ;(load-file "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-dark-theme.el")
   ;(load-file "~/.emacs.d/elpa/monokai-theme-20140310.1330/monokai-theme.el")
   )
-
 
 (require 'cider)
 
@@ -151,6 +153,12 @@
 
 ; activate company-mode
 ; (add-hook 'after-init-hook 'global-company-mode)
+
+; erlang lisp mode
+; (defvar lfe-dir (concat (getenv "HOME") "/home/papachan/dev/lfe-master/emacs"))
+; (setq load-path (cons lfe-dir load-path))
+; (require 'lfe-mode)
+(require 'lfe-start)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
