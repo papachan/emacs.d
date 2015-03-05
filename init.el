@@ -131,6 +131,8 @@
 
 (require 'maxframe)
 (add-hook 'window-setup-hook 'maximize-frame t)
+; delete other windows when open multiple files
+(add-hook 'emacs-startup-hook 'delete-other-windows)
 
 ;; autocomplete  git@github.com:auto-complete/auto-complete.git
 ;(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
