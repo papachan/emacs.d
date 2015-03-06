@@ -7,6 +7,8 @@
 
 ;(setq exec-path (append exec-path '("~/bin")))
 
+(global-set-key (kbd "C-c m") 'magit-status)
+
 (global-set-key (kbd "C-x M-z")
                 '(lambda ()
                    (interactive)
@@ -32,3 +34,5 @@
   (compile "./run"))
 
 (global-set-key "\C-cd" 'kill-whole-line) 
+
+
