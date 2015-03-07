@@ -134,6 +134,8 @@
 ; delete other windows when open multiple files
 (add-hook 'emacs-startup-hook 'delete-other-windows)
 
+(setq make-backup-files nil)
+
 ;; autocomplete  git@github.com:auto-complete/auto-complete.git
 ;(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
 (require 'auto-complete)
