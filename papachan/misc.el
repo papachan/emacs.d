@@ -35,4 +35,5 @@
 
 (global-set-key "\C-cd" 'kill-whole-line) 
 
-
+(global-set-key (kbd "<f9>") 'iflipb-next-buffer)
+(global-set-key (kbd "<f8>")  'iflipb-previous-buffer)

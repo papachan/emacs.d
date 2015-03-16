@@ -37,9 +37,9 @@
 
 (load "restclient")
 (load "twittering-mode")
+(load "iflipb")
 
 (set-default-font "Ubuntu Mono 16")
-;(set-default-font "Liberation Mono 10")
 
 (setq make-backup-files nil)
 
