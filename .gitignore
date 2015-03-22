@@ -2,6 +2,8 @@
 \#*\#
 *.elc
 auto-save-list
+ac-comphist.dat
+ac-dict
 backups
 elpa/archives
 tramp
@@ -12,3 +14,5 @@ vendor/*
 .cask
 eshell/history
 eshell/lastdir
+request/
+url/
