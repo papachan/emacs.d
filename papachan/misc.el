@@ -37,3 +37,11 @@
 
 (global-set-key (kbd "<f9>") 'iflipb-next-buffer)
 (global-set-key (kbd "<f8>")  'iflipb-previous-buffer)
+
+;; select whole line
+(defun select-whole-line ()
+  "Select whole line which has the cursor."
+  (interactive)
+  (end-of-line)
+  (set-mark (line-beginning-position)))
+(global-set-key "\C-cw" 'select-whole-line)
