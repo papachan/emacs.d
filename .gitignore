@@ -10,3 +10,5 @@ local.el
 private.el
 vendor/*
 .cask
+eshell/history
+eshell/lastdir
