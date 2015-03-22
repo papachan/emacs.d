@@ -13,13 +13,19 @@
 (unless (server-running-p)
   (server-start))
 
-(dolist (source '(("melpa" . "http://melpa.milkbox.net/packages/")
-                  ("marmalade" . "http://marmalade-repo.org/packages/")
-                  ("org" . "http://orgmode.org/elpa/")
-                  ("ELPA" . "http://tromey.com/elpa/")
-                  ("gnu" . "http://elpa.gnu.org/packages/")))
-     (add-to-list 'package-archives source))
-(package-initialize)
+;; initializing pallet
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
+(require 'pallet)
+(pallet-mode t)
+
+;(dolist (source '(("melpa" . "http://melpa.milkbox.net/packages/")
+;                  ("marmalade" . "http://marmalade-repo.org/packages/")
+;                  ("org" . "http://orgmode.org/elpa/")
+;                  ("ELPA" . "http://tromey.com/elpa/")
+;                  ("gnu" . "http://elpa.gnu.org/packages/")))
+;     (add-to-list 'package-archives source))
+;(package-initialize)
 
 (progn (cd "~/.emacs.d/")
     (normal-top-level-add-subdirs-to-load-path))
@@ -59,7 +65,6 @@
 (require 'whitespace)
 (setq whitespace-line-column 90
       whitespace-style '(tabs trailing tab-mark lines-tail))
-
 
 ; smart-mode-line
 ;(require 'smart-mode-line)
@@ -178,3 +183,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'dired-find-alternate-file 'disabled nil)

@@ -5,6 +5,7 @@
 (source org)
 
 (depends-on "alchemist")
+(depends-on "bind-key")
 (depends-on "cask")
 (depends-on "clojure-mode")
 (depends-on "color-theme")
