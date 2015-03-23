@@ -9,6 +9,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/papachan")
 (load "misc")
+(load "personal")
 (require 'server)
 (unless (server-running-p)
   (server-start))
@@ -36,8 +37,6 @@
 (load "restclient")
 (load "twittering-mode")
 (load "iflipb")
-
-(set-default-font "Ubuntu Mono 12")
 
 (setq make-backup-files nil)
 
