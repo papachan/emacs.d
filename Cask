@@ -4,6 +4,7 @@
 (source marmalade)
 (source org)
 
+(depends-on "ack")
 (depends-on "alchemist")
 (depends-on "bind-key")
 (depends-on "cask")
@@ -18,6 +19,7 @@
 (depends-on "erlang")
 (depends-on "evil")
 (depends-on "f")
+(depends-on "frame-cmds")
 (depends-on "git-commit-mode")
 (depends-on "git-rebase-mode")
 (depends-on "goto-chg")

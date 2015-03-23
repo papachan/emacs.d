@@ -19,22 +19,14 @@
 (require 'pallet)
 (pallet-mode t)
 
-;(dolist (source '(("melpa" . "http://melpa.milkbox.net/packages/")
-;                  ("marmalade" . "http://marmalade-repo.org/packages/")
-;                  ("org" . "http://orgmode.org/elpa/")
-;                  ("ELPA" . "http://tromey.com/elpa/")
-;                  ("gnu" . "http://elpa.gnu.org/packages/")))
-;     (add-to-list 'package-archives source))
-;(package-initialize)
-
 (progn (cd "~/.emacs.d/")
     (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'load-path "~/.emacs.d/vendor/cider-0.8.2")
 (add-to-list 'load-path "~/.emacs.d/vendor/smart-mode-line-2.8")
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
-;(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
-;(add-to-list 'load-path "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-theme")
 (add-to-list 'load-path "~/.emacs.d/lib")
+
+(require 'frame-cmds)
 
 ; Load smex
 (load "smex")
@@ -45,7 +37,7 @@
 (load "twittering-mode")
 (load "iflipb")
 
-(set-default-font "Ubuntu Mono 16")
+(set-default-font "Ubuntu Mono 12")
 
 (setq make-backup-files nil)
 
@@ -89,6 +81,9 @@
 
 ;; Number of characters until the fill column
 (setq fill-column 80)
+
+;; prevent vertical split
+(setq split-height-threshold 999)
 
 (if (fboundp 'desktop-save-mode) (desktop-save-mode 1))
 (setq vc-follow-symlinks t)
