@@ -1,9 +1,9 @@
 (cond
  ((string-equal system-type "darwin")
   (progn
-    ;(message "Mac OS")
-    )
-  )
+    ;(set-default-font "Monaco 16")
+    ;(set-default-font "Liberation Mono 14")
+    (set-default-font "Menlo 18")))
  ((string-equal system-type "gnu/linux")
   (progn
     (set-default-font "Ubuntu Mono 12"))))
