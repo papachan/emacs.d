@@ -10,6 +10,8 @@
 (add-to-list 'load-path "~/.emacs.d/papachan")
 (load "misc")
 (load "personal")
+(load "snippet")
+
 (require 'server)
 (unless (server-running-p)
   (server-start))
