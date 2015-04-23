@@ -1,4 +1,4 @@
-;;; papachan-theme-theme.el --- Emacs 24 theme with a dark background.
+;;; papachan-theme-theme.el --- Emacs 24 theme with a light background.
 
 ;; Copyright (C) 2014 , papachan
 
@@ -6,8 +6,6 @@
 ;; 
 ;; Version: 0.1
 ;; Package-Requires: ((emacs "24"))
-;; Created with emacs-theme-generator, https://github.com/mswift42/theme-creator.
-
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -30,25 +28,25 @@
 
  (deftheme papachan-theme)
  (let ((class '((class color) (min-colors 89)))
-       (fg1 "#dbe0ff")
-       (fg2 "#c7cce8")
-       (fg3 "#b4b8d1")
-       (fg4 "#a2a5bb")
-       (bg1 "#707070")
-       (bg2 "#7b7b7b")
-       (bg3 "#858585")
-       (bg4 "#909090")
-       (key2 "#dddddd")
-       (key3 "#bfbfbf")
-       (builtin "#e8e37b")
-       (keyword "#d9d9d9")
-       (const   "#f0ebeb")
-       (comment "#5ccf29")
-       (func    "#aebd73")
-       (str     "#bd55ac")
-       (type    "#b8ba4c")
-       (var     "#80d4ed")
-       (warning "#faf7f7"))
+       (fg1 "#303030")
+       (fg2 "#3e3e3e")
+       (fg3 "#4d4d4d")
+       (fg4 "#5c5c5c")
+       (bg1 "#ffffff")
+       (bg2 "#e8e8e8")
+       (bg3 "#d1d1d1")
+       (bg4 "#bbbbbb")
+       (key2 "#c39d55")
+       (key3 "#a4813a")
+       (builtin "#7b85d1")
+       (keyword "#ba9240")
+       (const   "#6db13e")
+       (comment "#606060")
+       (func    "#d65b46")
+       (str     "#b04fda")
+       (type    "#d0619a")
+       (var     "#5aa87c")
+       (warning "#ff0000"))
    (custom-theme-set-faces
    'papachan-theme
         `(default ((,class (:background ,bg1 :foreground ,fg1))))
@@ -71,10 +69,11 @@
 	`(cursor ((,class (:background ,bg3))))
         `(show-paren-match-face ((,class (:background ,warning))))
         `(isearch ((,class (:bold t :foreground ,warning :background ,bg3))))
-        `(mode-line ((,class (:box (:line-width 1 :color nil :style released-button) :bold t :foreground ,fg4 :background ,bg2))))
-        `(mode-line-inactive ((,class (:box (:line-width 1 :color nil :style pressed-button) :foreground ,fg2 :background ,bg1))))
-        `(mode-line-buffer-id ((,class (:bold t :foreground ,fg2 :background nil))))
-	`(mode-line-highlight ((,class (:background ,bg4))))
+        `(mode-line ((,class (:box (:line-width 1 :color nil) :bold t :foreground ,fg4 :background ,bg2))))
+        `(mode-line-inactive ((,class (:box (:line-width 1 :color nil :style pressed-button) :foreground ,key3 :background ,bg1 :weight normal))))
+        `(mode-line-buffer-id ((,class (:bold t :foreground ,func :background nil))))
+	`(mode-line-highlight ((,class (:foreground ,keyword :box nil :weight bold))))
+        `(mode-line-emphasis ((,class (:foreground ,fg1))))
 	`(vertical-border ((,class (:foreground ,fg3))))
         `(minibuffer-prompt ((,class (:bold t :foreground ,keyword))))
         `(default-italic ((,class (:italic t))))
@@ -92,14 +91,16 @@
         `(org-block ((,class (:foreground ,fg3))))
         `(org-quote ((,class (:inherit org-block :slant italic))))
         `(org-verse ((,class (:inherit org-block :slant italic))))
-        `(org-todo ((,class :foreground ,keyword :bold t)))
-        `(org-done ((,class (:bold t :foreground ,bg4))))
+        `(org-todo ((,class (:box (:line-width 1 :color ,fg3) :foreground ,keyword :bold t))))
+        `(org-done ((,class (:box (:line-width 1 :color ,bg3) :bold t :foreground ,bg4))))
         `(org-warning ((,class (:underline t :foreground ,warning))))
         `(org-agenda-structure ((,class (:weight bold :foreground ,fg3 :box (:color ,fg4) :background ,bg3))))
         `(org-agenda-date ((,class (:foreground ,var :height 1.1 ))))
         `(org-agenda-date-weekend ((,class (:weight normal :foreground ,fg4))))
         `(org-agenda-date-today ((,class (:weight bold :foreground ,keyword :height 1.4))))
+        `(org-agenda-done ((,class (:foreground ,bg4))))
 	`(org-scheduled ((,class (:foreground ,type))))
+        `(org-scheduled-today ((,class (:foreground ,func :weight bold :height 1.2))))
 	`(org-ellipsis ((,class (:foreground ,builtin))))
 	`(org-verbatim ((,class (:foreground ,fg4))))
         `(org-document-info-keyword ((,class (:foreground ,func))))
@@ -232,6 +233,7 @@
         `(web-mode-html-tag-face ((,class (:foreground ,builtin))))))
 
 
+;;;###autoload
 (when load-file-name
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
