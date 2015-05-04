@@ -60,9 +60,13 @@
       whitespace-style '(tabs trailing tab-mark lines-tail))
 
 ; smart-mode-line
-;(require 'smart-mode-line)
-;(sml/setup)
-;(sml/apply-theme 'automatic)
+(require 'smart-mode-line)
+;; Setup Smart Model Line
+(defun smart-mode-line-init()
+    (setq sml/theme 'dark)
+    (sml/setup))
+
+(add-hook 'after-init-hook #'smart-mode-line-init)
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
