@@ -16,3 +16,5 @@ eshell/history
 eshell/lastdir
 request/
 url/
+*.desktop
+*.lock
