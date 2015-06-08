@@ -44,6 +44,7 @@
 (depends-on "shut-up")
 (depends-on "simplenote2")
 (depends-on "slime")
+(depends-on "smex")
 (depends-on "solarized-theme")
 (depends-on "sr-speedbar")
 (depends-on "undo-tree")

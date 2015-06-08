@@ -22,6 +22,7 @@
 (require 'pallet)
 (pallet-mode t)
 
+; paths
 (progn (cd "~/.emacs.d/")
     (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'load-path "~/.emacs.d/vendor/cider-0.8.2")
@@ -29,10 +30,9 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
 (add-to-list 'load-path "~/.emacs.d/lib")
 
-(require 'frame-cmds)
+(setq default-directory (f-full (getenv "HOME")))
 
-; Load smex
-(load "smex")
+(require 'frame-cmds)
 (require 'smex)
 (smex-initialize)
 
@@ -116,15 +116,7 @@
   ;; http://www.nongnu.org/color-theme/
   ;(add-to-list 'load-path "/vendores/color-theme-6.6.0/color-theme.el")
   (require 'color-theme)
-  ;(eval-after-load "color-theme"
-    ;'(progn
-       ;(color-theme-initialize)
-       ;(color-theme-hober)))
-  (load-file "~/.emacs.d/vendor/zenburn/zenburn.el")
-  ;(load-file "~/.emacs.d/elpa/solarized-theme-20140926.1148/solarized-dark-theme.el")
-  ;(load-file "~/.emacs.d/elpa/moe-theme-20141022.2156/moe-dark-theme.el")
-  ;(load-file "~/.emacs.d/elpa/monokai-theme-20140310.1330/monokai-theme.el")
-  )
+  (load-file "~/.emacs.d/vendor/zenburn/zenburn.el"))
 
 (require 'cider)
 
@@ -142,7 +134,6 @@
 (setq make-backup-files nil)
 
 ;; autocomplete  git@github.com:auto-complete/auto-complete.git
-;(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
 (require 'auto-complete)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (require 'auto-complete-config)
@@ -168,6 +159,13 @@
 ; (setq load-path (cons lfe-dir load-path))
 ; (require 'lfe-mode)
 (require 'lfe-start)
+
+(bind-key
+ "C-x C-c"
+ (lambda ()
+   (interactive)
+   (if (y-or-n-p "Quit Emacs? ")
+       (save-buffers-kill-emacs))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
