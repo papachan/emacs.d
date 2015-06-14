@@ -18,3 +18,5 @@ request/
 url/
 *.desktop
 *.lock
+ido.last
+recentf
