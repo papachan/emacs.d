@@ -14,6 +14,7 @@
 (depends-on "darktooth-theme")
 (depends-on "dash")
 (depends-on "deferred")
+(depends-on "dired-details")
 (depends-on "elixir-mode")
 (depends-on "epl")
 (depends-on "erlang")

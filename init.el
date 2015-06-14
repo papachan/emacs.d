@@ -60,13 +60,12 @@
       whitespace-style '(tabs trailing tab-mark lines-tail))
 
 ; smart-mode-line
-(require 'smart-mode-line)
+;(require 'smart-mode-line)
 ;; Setup Smart Model Line
-(defun smart-mode-line-init()
-    (setq sml/theme 'dark)
-    (sml/setup))
-
-(add-hook 'after-init-hook #'smart-mode-line-init)
+;(defun smart-mode-line-init()
+;    (setq sml/theme 'dark)
+;    (sml/setup))
+;(add-hook 'after-init-hook #'smart-mode-line-init)
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
@@ -75,7 +74,8 @@
 (global-hl-line-mode 1)
 
 ;; Always use spaces, not tabs, when indenting
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
+(setq-default c-basic-offset 4)
 
 ;; Ignore case when searching
 (setq case-fold-search t)

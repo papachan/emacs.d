@@ -45,3 +45,12 @@
   (end-of-line)
   (set-mark (line-beginning-position)))
 (global-set-key "\C-cw" 'select-whole-line)
+
+(global-set-key "\C-x\C-b" 'buffer-menu)
+
+; create empty __init__.py at the place
+(defun create-empty-init-py()
+  (interactive)
+  (shell-command "touch __init__.py")
+)
+(global-set-key (kbd "C-c p i") 'create-empty-init-py)
