@@ -20,3 +20,5 @@ url/
 *.lock
 ido.last
 recentf
+.mc-lists.el
+session.*

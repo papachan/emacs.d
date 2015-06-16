@@ -11,6 +11,8 @@
 (load "misc")
 (load "personal")
 (load "snippet")
+(load "erlang")
+(load "github")
 
 (require 'server)
 (unless (server-running-p)
