@@ -28,7 +28,7 @@
 (progn (cd "~/.emacs.d/")
     (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'load-path "~/.emacs.d/vendor/cider-0.8.2")
-(add-to-list 'load-path "~/.emacs.d/vendor/smart-mode-line-2.8")
+;(add-to-list 'load-path "~/.emacs.d/vendor/smart-mode-line-2.8")
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
 (add-to-list 'load-path "~/.emacs.d/lib")
 
