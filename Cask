@@ -21,8 +21,6 @@
 (depends-on "evil")
 (depends-on "f")
 (depends-on "frame-cmds")
-(depends-on "git-commit-mode")
-(depends-on "git-rebase-mode")
 (depends-on "goto-chg")
 (depends-on "json-reformat")
 (depends-on "magit")

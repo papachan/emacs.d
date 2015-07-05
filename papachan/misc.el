@@ -55,15 +55,21 @@
 )
 (global-set-key (kbd "C-c p i") 'create-empty-init-py)
 
-(defun insert-a-blank-line (times)
+;(defun insert-a-blank-line (times)
+;  "insert a new line above the line containing the cursor."
+;  (interactive)
+;  (save-excursion
+;    (move-beginning-of-line 1)
+;    (newline times)))
+
+(defun insert-a-blank-line ()
   "insert a new line above the line containing the cursor."
   (interactive)
   (save-excursion
     (move-beginning-of-line 1)
-    (newline times)))
+    (newline)))
 
-(global-set-key "\C-v-o"
-                'insert-a-blank-line)
+(global-set-key "\C-co" 'insert-a-blank-line)
 
 
 (global-set-key "\C-x\C-b" 'buffer-menu)
