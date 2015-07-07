@@ -7,8 +7,6 @@
 
 ;(setq exec-path (append exec-path '("~/bin")))
 
-(global-set-key (kbd "C-c m") 'magit-status)
-
 (global-set-key (kbd "C-x M-z")
                 '(lambda ()
                    (interactive)
@@ -33,11 +31,6 @@
   (save-buffer 0)
   (compile "./run"))
 
-(global-set-key "\C-cd" 'kill-whole-line) 
-
-(global-set-key (kbd "<f9>") 'iflipb-next-buffer)
-(global-set-key (kbd "<f8>")  'iflipb-previous-buffer)
-
 ;; select whole line
 (defun select-whole-line ()
   "Select whole line which has the cursor."
@@ -45,15 +38,11 @@
   (end-of-line)
   (set-mark (line-beginning-position)))
 
-(global-set-key "\C-cw"
-                'select-whole-line)
-
 ; create empty __init__.py at the place
 (defun create-empty-init-py()
   (interactive)
-  (shell-command "touch __init__.py")
-)
-(global-set-key (kbd "C-c p i") 'create-empty-init-py)
+  (shell-command "touch __init__.py"))
+
 
 ;(defun insert-a-blank-line (times)
 ;  "insert a new line above the line containing the cursor."
@@ -69,7 +58,24 @@
     (move-beginning-of-line 1)
     (newline)))
 
-(global-set-key "\C-co" 'insert-a-blank-line)
+(defun shutdown-emacs ()
+  (interactive)
+  (kill-emacs
+   (if (featurep 'x) 0 1)))
 
-
+(global-set-key "\C-cw" 'select-whole-line)
+(global-set-key "\C-xq" 'shutdown-emacs)
 (global-set-key "\C-x\C-b" 'buffer-menu)
+(global-set-key "\C-co" 'insert-a-blank-line)
+(global-set-key "\C-cd" 'kill-whole-line)
+(global-set-key (kbd "C-c m") 'magit-status)
+(global-set-key (kbd "C-c p i") 'create-empty-init-py)
+(global-set-key (kbd "<f9>") 'iflipb-next-buffer)
+(global-set-key (kbd "<f8>")  'iflipb-previous-buffer)
+
+
+
+
+
+
+
