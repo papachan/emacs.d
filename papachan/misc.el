@@ -63,11 +63,11 @@
   (kill-emacs
    (if (featurep 'x) 0 1)))
 
-(global-set-key "\C-cw" 'select-whole-line)
-(global-set-key "\C-xq" 'shutdown-emacs)
-(global-set-key "\C-x\C-b" 'buffer-menu)
-(global-set-key "\C-co" 'insert-a-blank-line)
-(global-set-key "\C-cd" 'kill-whole-line)
+(global-set-key (kbd "C-c w") 'select-whole-line)
+(global-set-key (kbd "C-x q") 'shutdown-emacs)
+(global-set-key (kbd "C-x C-b") 'buffer-menu)
+(global-set-key (kbd "C-c o") 'insert-a-blank-line)
+(global-set-key (kbd "C-c d") 'kill-whole-line)
 (global-set-key (kbd "C-c m") 'magit-status)
 (global-set-key (kbd "C-c p i") 'create-empty-init-py)
 (global-set-key (kbd "<f9>") 'iflipb-next-buffer)
