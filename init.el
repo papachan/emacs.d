@@ -41,11 +41,16 @@
 (load "restclient")
 (load "twittering-mode")
 (load "iflipb")
+(load "directory-files-recursive")
 
 (setq make-backup-files nil)
 
 ;; Scrollbar + Line numbers + Menu Bar
-(scroll-bar-mode 1)
+;(if (display-graphic-p)
+;    (progn
+;      (scroll-bar-mode 1)))
+;(scroll-bar-mode 1)
+
 (linum-mode)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -92,7 +97,9 @@
 ;; prevent vertical split
 (setq split-height-threshold 999)
 
-(if (fboundp 'desktop-save-mode) (desktop-save-mode 1))
+(if (fboundp 'desktop-save-mode)
+    (desktop-save-mode 1))
+
 (setq vc-follow-symlinks t)
 
 ;; ido-mode is like magic pixie dust!
@@ -113,6 +120,7 @@
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
+  (scroll-bar-mode 1)
   (mouse-wheel-mode t)
   (blink-cursor-mode -1)
   ;; http://www.nongnu.org/color-theme/

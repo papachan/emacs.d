@@ -12,6 +12,7 @@
                    (interactive)
                    (switch-to-buffer "*scratch*")))
 
+; dired show HOME directory
 (global-set-key (kbd "S-<f1>")
                 (lambda ()
                   (interactive)
@@ -25,7 +26,6 @@
 ;        (insert "\n"))) 
 
 ; slime lfe shortcut
-(global-set-key (kbd "<f12>") 'my-save-and-compile)
 (defun my-save-and-compile ()
   (interactive "")
   (save-buffer 0)
@@ -42,7 +42,6 @@
 (defun create-empty-init-py()
   (interactive)
   (shell-command "touch __init__.py"))
-
 
 ;(defun insert-a-blank-line (times)
 ;  "insert a new line above the line containing the cursor."
@@ -63,6 +62,13 @@
   (kill-emacs
    (if (featurep 'x) 0 1)))
 
+(defun put-the-date ()
+  (interactive)
+  (insert (shell-command-to-string "date")))
+
+
+(global-set-key (kbd "<f12>") 'my-save-and-compile)
+(global-set-key (kbd "C-c C-d") 'put-the-date)
 (global-set-key (kbd "C-c w") 'select-whole-line)
 (global-set-key (kbd "C-x q") 'shutdown-emacs)
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
