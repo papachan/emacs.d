@@ -28,7 +28,6 @@
 (progn (cd "~/.emacs.d/")
     (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'load-path "~/.emacs.d/vendor/cider-0.8.2")
-;(add-to-list 'load-path "~/.emacs.d/vendor/smart-mode-line-2.8")
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
 (add-to-list 'load-path "~/.emacs.d/lib")
 
@@ -44,12 +43,6 @@
 (load "directory-files-recursive")
 
 (setq make-backup-files nil)
-
-;; Scrollbar + Line numbers + Menu Bar
-;(if (display-graphic-p)
-;    (progn
-;      (scroll-bar-mode 1)))
-;(scroll-bar-mode 1)
 
 (linum-mode)
 (menu-bar-mode -1)
@@ -117,6 +110,8 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(display-time)
+
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
@@ -124,7 +119,6 @@
   (mouse-wheel-mode t)
   (blink-cursor-mode -1)
   ;; http://www.nongnu.org/color-theme/
-  ;(add-to-list 'load-path "/vendores/color-theme-6.6.0/color-theme.el")
   (require 'color-theme)
   (load-file "~/.emacs.d/vendor/zenburn/zenburn.el"))
 
@@ -170,12 +164,16 @@
 ; (require 'lfe-mode)
 (require 'lfe-start)
 
+; confirmation before quiting emacs
 (bind-key
  "C-x C-c"
  (lambda ()
    (interactive)
    (if (y-or-n-p "Quit Emacs? ")
        (save-buffers-kill-emacs))))
+
+; remove git diff frame when open magit commit frame
+(remove-hook 'server-switch-hook 'magit-commit-diff)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
