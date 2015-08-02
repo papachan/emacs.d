@@ -7,22 +7,24 @@
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
+;; initializing pallet
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
+(require 'pallet)
+(pallet-mode t)
+
 (add-to-list 'load-path "~/.emacs.d/papachan")
 (load "misc")
 (load "personal")
 (load "snippet")
 (load "erlang")
 (load "github")
+(load "appearance")
 
 (require 'server)
 (unless (server-running-p)
   (server-start))
 
-;; initializing pallet
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
-(require 'pallet)
-(pallet-mode t)
 
 ; paths
 (progn (cd "~/.emacs.d/")
@@ -111,16 +113,6 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (display-time)
-
-(when window-system
-  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (tooltip-mode -1)
-  (scroll-bar-mode 1)
-  (mouse-wheel-mode t)
-  (blink-cursor-mode -1)
-  ;; http://www.nongnu.org/color-theme/
-  (require 'color-theme)
-  (load-file "~/.emacs.d/vendor/zenburn/zenburn.el"))
 
 (require 'cider)
 

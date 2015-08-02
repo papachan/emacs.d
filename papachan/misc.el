@@ -18,13 +18,6 @@
                   (interactive)
                   (dired "~/")))
 
-;(global-set-key (kbd "\C-cu")
-;    (lambda ()
-;        (interactive)
-;        (insert "\n")
-;        (insert (make-string 40 ?=))
-;        (insert "\n"))) 
-
 ; slime lfe shortcut
 (defun my-save-and-compile ()
   (interactive "")
@@ -42,13 +35,6 @@
 (defun create-empty-init-py()
   (interactive)
   (shell-command "touch __init__.py"))
-
-;(defun insert-a-blank-line (times)
-;  "insert a new line above the line containing the cursor."
-;  (interactive)
-;  (save-excursion
-;    (move-beginning-of-line 1)
-;    (newline times)))
 
 (defun insert-a-blank-line ()
   "insert a new line above the line containing the cursor."
