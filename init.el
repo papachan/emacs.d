@@ -20,6 +20,7 @@
 (load "erlang")
 (load "github")
 (load "appearance")
+(load "setup-python")
 
 (require 'server)
 (unless (server-running-p)
@@ -116,8 +117,9 @@
 
 (require 'cider)
 
+; Common Lisp setting up
 ; slime-helper
-;(load (expand-file-name ("~/quicklisp/slime-helper.el")))
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
 ; quicklip sbcl
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (slime-setup '(slime-fancy))
@@ -136,10 +138,12 @@
 (ac-config-default)
 (global-auto-complete-mode t)
 
-;; python mode
-(setq py-install-directory "~/.emacs.d/python-mode.el-6.2.0")
-(add-to-list 'load-path py-install-directory)
-(require 'python-mode)
+(require 'saveplace)
+(setq-default save-place t)
+
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
 
 ;(require 'org-latex)
 ;(setq org-export-latex-listings t)

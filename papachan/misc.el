@@ -63,7 +63,9 @@
 (global-set-key (kbd "C-c m") 'magit-status)
 (global-set-key (kbd "C-c p i") 'create-empty-init-py)
 (global-set-key (kbd "<f9>") 'iflipb-next-buffer)
-(global-set-key (kbd "<f8>")  'iflipb-previous-buffer)
+(global-set-key (kbd "<f8>") 'iflipb-previous-buffer)
+(global-set-key (kbd "M-H") 'common-lisp-hyperspec)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
 
 
 

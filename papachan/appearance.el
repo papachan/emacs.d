@@ -9,7 +9,7 @@
   (scroll-bar-mode 1)
   (mouse-wheel-mode t)
   (blink-cursor-mode -1)
-  (load-theme 'darktooth t))
+ (load-file "~/.emacs.d/vendor/zenburn-emacs/zenburn-theme.el")) 
 
 (provide 'appearance)
 
