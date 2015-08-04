@@ -21,6 +21,7 @@
 (depends-on "erlang")
 (depends-on "evil")
 (depends-on "f")
+(depends-on "find-file-in-project")
 (depends-on "frame-cmds")
 (depends-on "goto-chg")
 (depends-on "json-reformat")
