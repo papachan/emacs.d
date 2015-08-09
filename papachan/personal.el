@@ -3,7 +3,7 @@
   (progn
     ;(set-default-font "Monaco 16")
     ;(set-default-font "Liberation Mono 14")
-    (set-default-font "Menlo 14")))
+    (set-default-font "Menlo 12")))
  ((string-equal system-type "gnu/linux")
   (progn
     (set-default-font "Ubuntu Mono 12"))))
