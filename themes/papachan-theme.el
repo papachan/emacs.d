@@ -1,4 +1,4 @@
-;;; papachan-theme-theme.el --- Emacs 24 theme with a light background.
+;;; papachan-theme-theme.el --- a papachan theme for emacs 24.
 
 ;; Copyright (C) 2014 , papachan
 
@@ -244,3 +244,4 @@
 ;; no-byte-compile: t
 ;; End:
 
+;;; papachan-theme.el ends here
