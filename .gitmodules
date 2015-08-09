@@ -13,3 +13,6 @@
 [submodule "vendor/python-mode.el-6.2.0"]
 	path = vendor/python-mode.el-6.2.0
 	url = git@github.com:emacsmirror/python-mode.git
+[submodule "vendor/zerodark-theme"]
+	path = vendor/zerodark-theme
+	url = git@github.com:NicolasPetton/zerodark-theme.git

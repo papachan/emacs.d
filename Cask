@@ -48,6 +48,7 @@
 (depends-on "smex")
 (depends-on "solarized-theme")
 (depends-on "sr-speedbar")
+(depends-on "tramp-term")
 (depends-on "undo-tree")
 (depends-on "visual-regexp")
 (depends-on "window-numbering")
