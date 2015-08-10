@@ -13,24 +13,32 @@
 (require 'pallet)
 (pallet-mode t)
 
-(add-to-list 'load-path "~/.emacs.d/papachan")
-(load "misc")
-(load "personal")
-(load "snippet")
-(load "erlang")
-(load "github")
-(load "appearance")
-(load "setup-python")
+; add lisp files directory
+(setq dotfiles-lisp-dir
+      (file-name-as-directory
+       (concat (file-name-directory
+                (or (buffer-file-name) load-file-name))
+               "papachan")))
+(add-to-list 'load-path dotfiles-lisp-dir)
 
+(dolist (file '("misc.el"
+		"personal.el"
+		"snippet.el"
+		"erlang.el"
+                "github.el"
+                "appearance.el"
+                "setup-python"
+                "setup-cider"))
+  (load (concat dotfiles-lisp-dir file)))
+
+; emacs-server
 (require 'server)
 (unless (server-running-p)
   (server-start))
 
-
 ; paths
 (progn (cd "~/.emacs.d/")
     (normal-top-level-add-subdirs-to-load-path))
-(add-to-list 'load-path "~/.emacs.d/vendor/cider-0.8.2")
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
 (add-to-list 'load-path "~/.emacs.d/lib")
 
@@ -115,8 +123,6 @@
 
 (display-time)
 
-(require 'cider)
-
 ; Common Lisp setting up
 ; slime-helper
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
@@ -150,9 +156,6 @@
 ;(add-to-list 'org-export-latex-packages-alist '("" "listings"))
 ;(add-to-list 'org-export-latex-packages-alist '("" "color"))
 (setq latex-run-command "pdflatex")
-
-; activate company-mode
-; (add-hook 'after-init-hook 'global-company-mode)
 
 ; erlang lisp mode
 ; (defvar lfe-dir (concat (getenv "HOME") "/home/papachan/dev/lfe-master/emacs"))
