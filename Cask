@@ -20,6 +20,7 @@
 (depends-on "epl")
 (depends-on "erlang")
 (depends-on "evil")
+(depends-on "expand-region")
 (depends-on "f")
 (depends-on "find-file-in-project")
 (depends-on "frame-cmds")

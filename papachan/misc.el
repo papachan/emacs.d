@@ -58,7 +58,10 @@
     (funcall (and initial-major-mode))
     (setq buffer-offer-save t)))
 
+(autoload 'mc/mark-next-like-this "multiple-cursors" nil t)
 
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-d") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-n") 'new-empty-buffer)
 (global-set-key (kbd "<f12>") 'my-save-and-compile)
 (global-set-key (kbd "C-c C-d") 'put-the-date)
@@ -74,6 +77,8 @@
 (global-set-key (kbd "M-H") 'common-lisp-hyperspec)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
+
+
 
 
 

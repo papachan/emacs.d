@@ -46,6 +46,7 @@
 ; default HOME directory
 (setq default-directory (f-full (getenv "HOME")))
 
+(require 'expand-region)
 (require 'frame-cmds)
 (require 'smex)
 (smex-initialize)
