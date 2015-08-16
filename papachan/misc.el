@@ -1,11 +1,4 @@
-;(let ((path))
-;  (setq path (concat "~/.cabal/bin:"
-;                     "/usr/local/bin:"
-;                     "~/bin:"
-;                     "~/dev/elixir/bin"))
-;  (setenv "PATH" path))
-
-;(setq exec-path (append exec-path '("~/bin")))
+;;; misc.el file
 
 (global-set-key (kbd "C-x M-z")
                 '(lambda ()
@@ -52,7 +45,21 @@
   (interactive)
   (insert (shell-command-to-string "date")))
 
+; confirmation before quiting emacs
+(defun quit-emacs ()
+  (interactive)
+  (if (y-or-n-p "Quit Emacs? ")
+      (save-buffers-kill-emacs)))
 
+(defun new-empty-buffer ()
+  (interactive)
+  (let ((buf (generate-new-buffer "untitled")))
+    (switch-to-buffer buf)
+    (funcall (and initial-major-mode))
+    (setq buffer-offer-save t)))
+
+
+(global-set-key (kbd "C-n") 'new-empty-buffer)
 (global-set-key (kbd "<f12>") 'my-save-and-compile)
 (global-set-key (kbd "C-c C-d") 'put-the-date)
 (global-set-key (kbd "C-c w") 'select-whole-line)
@@ -66,9 +73,7 @@
 (global-set-key (kbd "<f8>") 'iflipb-previous-buffer)
 (global-set-key (kbd "M-H") 'common-lisp-hyperspec)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
-
-
-
+(global-set-key (kbd "C-x C-c") 'quit-emacs)
 
 
 

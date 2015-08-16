@@ -163,14 +163,6 @@
 ; (require 'lfe-mode)
 (require 'lfe-start)
 
-; confirmation before quiting emacs
-(bind-key
- "C-x C-c"
- (lambda ()
-   (interactive)
-   (if (y-or-n-p "Quit Emacs? ")
-       (save-buffers-kill-emacs))))
-
 ; remove git diff frame when open magit commit frame
 (remove-hook 'server-switch-hook 'magit-commit-diff)
 
