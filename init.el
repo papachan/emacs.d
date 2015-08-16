@@ -41,7 +41,9 @@
     (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
 (add-to-list 'load-path "~/.emacs.d/lib")
+;(add-to-list 'load-path "~/.emacs.d/lisp")
 
+; default HOME directory
 (setq default-directory (f-full (getenv "HOME")))
 
 (require 'frame-cmds)
@@ -49,9 +51,9 @@
 (smex-initialize)
 
 (load "restclient")
-(load "twittering-mode")
 (load "iflipb")
 (load "directory-files-recursive")
+(load "twittering-mode")
 
 (setq make-backup-files nil)
 
@@ -158,7 +160,7 @@
 (setq latex-run-command "pdflatex")
 
 ; erlang lisp mode
-; (defvar lfe-dir (concat (getenv "HOME") "/home/papachan/dev/lfe-master/emacs"))
+; (defvar lfe-dir (concat (getenv "HOME") "~/dev/lfe-master/emacs"))
 ; (setq load-path (cons lfe-dir load-path))
 ; (require 'lfe-mode)
 (require 'lfe-start)
