@@ -22,9 +22,9 @@
 (add-to-list 'load-path dotfiles-lisp-dir)
 
 (dolist (file '("misc.el"
-		"personal.el"
-		"snippet.el"
-		"erlang.el"
+                "personal.el"
+                "snippet.el"
+                "erlang.el"
                 "github.el"
                 "appearance.el"
                 "setup-python"
@@ -128,10 +128,11 @@
 
 ; Common Lisp setting up
 ; slime-helper
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
+;(load (expand-file-name "~/quicklisp/slime-helper.el"))
+
 ; quicklip sbcl
-(setq inferior-lisp-program "/usr/bin/sbcl")
-(slime-setup '(slime-fancy))
+(setq inferior-lisp-program "/usr/local/bin/sbcl")
+(setq slime-contribs '(slime-fancy))
 
 (require 'maxframe)
 (add-hook 'window-setup-hook 'maximize-frame t)
