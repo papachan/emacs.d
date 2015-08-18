@@ -21,6 +21,7 @@
                "papachan")))
 (add-to-list 'load-path dotfiles-lisp-dir)
 
+
 (dolist (file '("misc.el"
                 "personal.el"
                 "snippet.el"
@@ -126,9 +127,9 @@
 
 (display-time)
 
-; Common Lisp setting up
-; slime-helper
-;(load (expand-file-name "~/quicklisp/slime-helper.el"))
+; helm
+(add-to-list 'load-path "~/vendor/helm")
+(require 'helm-config)
 
 ; quicklip sbcl
 (setq inferior-lisp-program "/usr/local/bin/sbcl")

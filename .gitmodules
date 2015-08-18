@@ -16,3 +16,6 @@
 [submodule "vendor/zerodark-theme"]
 	path = vendor/zerodark-theme
 	url = git@github.com:NicolasPetton/zerodark-theme.git
+[submodule "vendor/helm"]
+	path = vendor/helm
+	url = https://github.com/emacs-helm/helm.git
