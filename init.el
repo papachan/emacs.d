@@ -29,7 +29,8 @@
                 "github.el"
                 "appearance.el"
                 "setup-python"
-                "setup-cider"))
+                "setup-cider"
+                "ido-snippet"))
   (load (concat dotfiles-lisp-dir file)))
 
 ; emacs-server
