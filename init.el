@@ -48,6 +48,9 @@
 ; default HOME directory
 (setq default-directory (f-full (getenv "HOME")))
 
+(when (memq window-system '(mac ns))
+  (add-to-list 'exec-path "/usr/bin"))
+
 (require 'expand-region)
 (require 'frame-cmds)
 (require 'smex)
