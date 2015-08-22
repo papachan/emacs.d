@@ -24,6 +24,8 @@
 ;; company mode for completion
 ;(add-hook 'cider-repl-mode-hook #'company-mode)
 ;(add-hook 'cider-mode-hook #'company-mode)
+;; paredit-mode
+(add-hook 'clojure-mode-hook 'paredit-mode)
 
 (setq company-idle-delay nil) ; never start completions automatically
 (global-set-key (kbd "M-TAB") #'company-complete) ; use meta+tab, aka C-M-i, as manual trigger

@@ -30,6 +30,7 @@
                 "appearance.el"
                 "setup-python"
                 "setup-cider"
+                "setup-magit"
                 "ido-snippet"))
   (load (concat dotfiles-lisp-dir file)))
 
