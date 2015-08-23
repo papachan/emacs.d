@@ -60,6 +60,7 @@
 
 (autoload 'mc/mark-next-like-this "multiple-cursors" nil t)
 
+(global-set-key (kbd "C-c C-j") 'replace-string)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-d") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-n") 'new-empty-buffer)
@@ -77,9 +78,5 @@
 (global-set-key (kbd "M-H") 'common-lisp-hyperspec)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
+;(global-set-key (kbd "M-c") 'capitalize-word)
 (global-set-key (kbd "M-x") 'helm-M-x)
-
-
-
-
-
