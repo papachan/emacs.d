@@ -25,6 +25,7 @@
 (depends-on "find-file-in-project")
 (depends-on "frame-cmds")
 (depends-on "goto-chg")
+(depends-on "helm-projectile")
 (depends-on "json-reformat")
 (depends-on "magit")
 (depends-on "maxframe")
