@@ -13,6 +13,9 @@
 (require 'pallet)
 (pallet-mode t)
 
+(setq dotemacs-dir user-emacs-directory)
+(setq dotemacs-cache-dir (expand-file-name ".cache" dotemacs-dir))
+
 ; add lisp files directory
 (setq dotfiles-lisp-dir
       (file-name-as-directory
@@ -31,6 +34,7 @@
                 "setup-python"
                 "setup-cider"
                 "setup-magit"
+                "init-eshell"
                 "ido-snippet"))
   (load (concat dotfiles-lisp-dir file)))
 
@@ -149,8 +153,8 @@
 
 ;; autocomplete  git@github.com:auto-complete/auto-complete.git
 (require 'auto-complete)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/vendor/auto-complete-1.4.0/dict")
 (ac-config-default)
 (global-auto-complete-mode t)
 
@@ -173,8 +177,10 @@
 ; (require 'lfe-mode)
 (require 'lfe-start)
 
-; remove git diff frame when open magit commit frame
-(remove-hook 'server-switch-hook 'magit-commit-diff)
+; projectile
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
