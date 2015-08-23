@@ -12,5 +12,8 @@
 
 (setq magit-push-always-verify nil)
 
+; remove git diff frame when open magit commit frame
+(remove-hook 'server-switch-hook 'magit-commit-diff)
+
 (provide 'setup-magit)
 ;;; setup-magit.el ends here
