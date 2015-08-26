@@ -21,3 +21,6 @@ ido.last
 recentf
 .mc-lists.el
 session.*
+.cache
+bookmarks
+cider-history

@@ -78,4 +78,5 @@
 (global-set-key (kbd "M-H") 'common-lisp-hyperspec)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
+(global-set-key (kbd "C-c f") 'follow-mode)
 (global-set-key (kbd "M-x") 'helm-M-x)
