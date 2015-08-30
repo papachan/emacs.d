@@ -154,8 +154,10 @@
 ;; autocomplete  git@github.com:auto-complete/auto-complete.git
 (require 'auto-complete)
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/vendor/auto-complete-1.4.0/dict")
+(add-to-list 'ac-dictionary-directories 
+             "~/.emacs.d/vendor/auto-complete-1.4.0/dict")
 (ac-config-default)
+(setq ac-ignore-case nil)
 (global-auto-complete-mode t)
 
 (require 'saveplace)
