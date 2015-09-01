@@ -60,6 +60,16 @@
 
 (autoload 'mc/mark-next-like-this "multiple-cursors" nil t)
 
+(defun toggle-current-window-dedication ()
+ (interactive)
+ (let* ((window    (selected-window))
+        (dedicated (window-dedicated-p window)))
+   (set-window-dedicated-p window (not dedicated))
+   (message "Window %sdedicated to %s"
+            (if dedicated "no longer " "")
+            (buffer-name))))
+
+(global-set-key [pause] 'toggle-current-window-dedication)
 (global-set-key (kbd "C-c C-j") 'replace-string)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-d") 'mc/mark-next-like-this)

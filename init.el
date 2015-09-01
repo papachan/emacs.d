@@ -25,12 +25,12 @@
 (add-to-list 'load-path dotfiles-lisp-dir)
 
 
-(dolist (file '("misc.el"
-                "personal.el"
-                "snippet.el"
-                "erlang.el"
-                "github.el"
-                "appearance.el"
+(dolist (file '("misc"
+                "personal"
+                "snippet"
+                "erlang"
+                "github"
+                "appearance"
                 "setup-python"
                 "setup-cider"
                 "setup-magit"
@@ -48,7 +48,6 @@
     (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
 (add-to-list 'load-path "~/.emacs.d/lib")
-;(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ; default HOME directory
 (setq default-directory (f-full (getenv "HOME")))
@@ -140,8 +139,8 @@
 (add-to-list 'load-path "~/vendor/helm")
 (require 'helm-config)
 
-; quicklip sbcl
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
+; quicklisp sbcl
+(setq inferior-lisp-program "/usr/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
 
 (require 'maxframe)
