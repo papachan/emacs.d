@@ -83,12 +83,14 @@
       whitespace-style '(tabs trailing tab-mark lines-tail))
 
 ; smart-mode-line
-;(require 'smart-mode-line)
+(require 'smart-mode-line)
 ;; Setup Smart Model Line
-;(defun smart-mode-line-init()
-;    (setq sml/theme 'dark)
-;    (sml/setup))
-;(add-hook 'after-init-hook #'smart-mode-line-init)
+(defun smart-mode-line-init()
+    (setq sml/theme 'dark)
+    (setq sml/theme 'powerline)
+    (sml/setup)
+    (setq sml/no-confirm-load-theme t))
+(add-hook 'after-init-hook #'smart-mode-line-init)
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
@@ -140,7 +142,7 @@
 (require 'helm-config)
 
 ; quicklisp sbcl
-(setq inferior-lisp-program "/usr/bin/sbcl")
+(setq inferior-lisp-program "/usr/local/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
 
 (require 'maxframe)
@@ -190,7 +192,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("7fde61efa16011b294db1448de9e0ae45d602ae949a640164bce6fece4420e90" "47e9350059e9a61ac89a695eec2d050e67a9e93ade5617a499843e1956c66f59" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
+    ("26614652a4b3515b4bbbb9828d71e206cc249b67c9142c06239ed3418eff95e2" "7fde61efa16011b294db1448de9e0ae45d602ae949a640164bce6fece4420e90" "47e9350059e9a61ac89a695eec2d050e67a9e93ade5617a499843e1956c66f59" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "e16a771a13a202ee6e276d06098bc77f008b73bbac4d526f160faa2d76c1dd0e" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
