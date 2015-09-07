@@ -64,6 +64,7 @@
 (load "iflipb")
 (load "directory-files-recursive")
 (load "twittering-mode")
+(load "fill-column-indicator")
 
 (setq make-backup-files nil)
 
@@ -160,6 +161,12 @@
 (ac-config-default)
 (setq ac-ignore-case nil)
 (global-auto-complete-mode t)
+
+;; enabling fill-column-indicator
+(require 'fill-column-indicator)
+(define-globalized-minor-mode
+  global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode t)
 
 (require 'saveplace)
 (setq-default save-place t)
