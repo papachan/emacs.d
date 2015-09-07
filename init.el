@@ -24,6 +24,9 @@
                "papachan")))
 (add-to-list 'load-path dotfiles-lisp-dir)
 
+(package-initialize)
+
+(require 'use-package)
 
 (dolist (file '("misc"
                 "personal"

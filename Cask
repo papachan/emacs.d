@@ -55,5 +55,6 @@
 (depends-on "sr-speedbar")
 (depends-on "tramp-term")
 (depends-on "undo-tree")
+(depends-on "use-package")
 (depends-on "visual-regexp")
 (depends-on "window-numbering")
