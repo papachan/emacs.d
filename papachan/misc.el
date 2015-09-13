@@ -14,6 +14,7 @@
 ; slime lfe shortcut
 (defun my-save-and-compile ()
   (interactive "")
+  (save-buffer 0)
   (compile "./run"))
 
 (defun run-cask-test ()
