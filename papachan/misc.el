@@ -14,8 +14,12 @@
 ; slime lfe shortcut
 (defun my-save-and-compile ()
   (interactive "")
-  (save-buffer 0)
   (compile "./run"))
+
+(defun run-cask-test ()
+  (interactive "")
+  (save-buffer 0)
+  (shell-command "make test"))
 
 ;; select whole line
 (defun select-whole-line ()
@@ -74,7 +78,6 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C-d") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-n") 'new-empty-buffer)
-(global-set-key (kbd "<f12>") 'my-save-and-compile)
 (global-set-key (kbd "C-c C-d") 'put-the-date)
 (global-set-key (kbd "C-c w") 'select-whole-line)
 (global-set-key (kbd "C-x q") 'shutdown-emacs)
@@ -90,3 +93,6 @@
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
 (global-set-key (kbd "C-c f") 'follow-mode)
 (global-set-key (kbd "M-x") 'helm-M-x)
+;(global-set-key (kbd "<f12>") 'my-save-and-compile)
+(global-set-key (kbd "<f12>") 'run-cask-test)
+(global-set-key (kbd "C-x C-m") 'compile)

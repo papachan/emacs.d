@@ -24,3 +24,8 @@ session.*
 .cache
 bookmarks
 cider-history
+eproject.lst
+places
+projectile-bookmarks.eld
+lisp/*.el
+lib/*.el
