@@ -34,11 +34,11 @@
                 "erlang"
                 "github"
                 "appearance"
-                "setup-python"
                 "setup-cider"
                 "setup-magit"
                 "init-eshell"
                 "ido-snippet"
+                "setup-python"
                 "webmode"))
   (load (concat dotfiles-lisp-dir file)))
 
@@ -64,7 +64,6 @@
 (require 'smex)
 (smex-initialize)
 
-(load "restclient")
 (load "iflipb")
 (load "directory-files-recursive")
 (load "twittering-mode")
@@ -107,6 +106,13 @@
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
 
+;; mac settings
+(cond
+ ((string-equal system-type "darwin")
+  (progn
+    (windmove-default-keybindings)
+    (setq x-select-enable-clipboard t))))
+
 ;; Ignore case when searching
 (setq case-fold-search t)
 
@@ -145,6 +151,10 @@
 ; helm
 (add-to-list 'load-path "~/vendor/helm")
 (require 'helm-config)
+
+; restclient
+(add-to-list 'load-path "~/vendor/restclient.el")
+(require 'restclient)
 
 ; quicklisp sbcl
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
