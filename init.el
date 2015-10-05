@@ -38,7 +38,8 @@
                 "setup-cider"
                 "setup-magit"
                 "init-eshell"
-                "ido-snippet"))
+                "ido-snippet"
+                "webmode"))
   (load (concat dotfiles-lisp-dir file)))
 
 ; emacs-server
@@ -164,6 +165,8 @@
 (ac-config-default)
 (setq ac-ignore-case nil)
 (global-auto-complete-mode t)
+(add-to-list 'ac-modes 'enh-ruby-mode)
+(add-to-list 'ac-modes 'web-mode)
 
 ;; enabling fill-column-indicator
 (require 'fill-column-indicator)
