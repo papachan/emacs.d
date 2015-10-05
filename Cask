@@ -47,6 +47,7 @@
 (depends-on "queue")
 (depends-on "request")
 (depends-on "request-deferred")
+(depends-on "robe")
 (depends-on "s")
 (depends-on "seq")
 (depends-on "shut-up")
