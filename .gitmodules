@@ -19,3 +19,6 @@
 [submodule "vendor/helm"]
 	path = vendor/helm
 	url = https://github.com/emacs-helm/helm.git
+[submodule "vendor/restclient.el"]
+	path = vendor/restclient.el
+	url = https://github.com/magnars/restclient.el.git
