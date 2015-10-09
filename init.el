@@ -79,6 +79,12 @@
 (column-number-mode)
 ;(global-whitespace-mode)
 
+;; enable undo-tree
+(global-undo-tree-mode)
+
+;; disable system beep 
+(setq visible-bell 1)
+
 (require 'window-numbering)
 (window-numbering-mode 1)
 
