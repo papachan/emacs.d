@@ -39,7 +39,8 @@
                 "init-eshell"
                 "ido-snippet"
                 "setup-python"
-                "webmode"))
+                "webmode"
+                "setup-smartmode"))
   (load (concat dotfiles-lisp-dir file)))
 
 ; emacs-server
@@ -91,16 +92,6 @@
 (require 'whitespace)
 (setq whitespace-line-column 90
       whitespace-style '(tabs trailing tab-mark lines-tail))
-
-; smart-mode-line
-(require 'smart-mode-line)
-;; Setup Smart Model Line
-(defun smart-mode-line-init()
-    (setq sml/theme 'dark)
-    (setq sml/theme 'powerline)
-    (sml/setup)
-    (setq sml/no-confirm-load-theme t))
-(add-hook 'after-init-hook #'smart-mode-line-init)
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
