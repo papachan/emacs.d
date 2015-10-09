@@ -93,12 +93,6 @@
 (setq whitespace-line-column 90
       whitespace-style '(tabs trailing tab-mark lines-tail))
 
-;; Highlight matching parentheses when the point is on them.
-(show-paren-mode 1)
-
-;; Highlight current line
-(global-hl-line-mode 1)
-
 ;; Always use spaces, not tabs, when indenting
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
@@ -142,8 +136,6 @@
       ido-max-prospects 10)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
-
-(display-time)
 
 ; helm
 (add-to-list 'load-path "~/vendor/helm")

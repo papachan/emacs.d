@@ -7,6 +7,11 @@
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
   (scroll-bar-mode 1)
+  (display-time)
+  ;; Highlight current line
+  (global-hl-line-mode 1)
+  ;; Highlight matching parentheses when the point is on them.
+  (show-paren-mode 1)
   (mouse-wheel-mode t)
   (blink-cursor-mode -1)
   (load-file "~/.emacs.d/vendor/zerodark-theme/zerodark-theme.el")) 
