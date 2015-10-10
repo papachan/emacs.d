@@ -1,7 +1,7 @@
 ;; clojure setup
 
 ;; Clojure IDE and REPL for Emacs
-(add-to-list 'load-path "~/.emacs.d/vendor/cider")
+;(add-to-list 'load-path "~/.emacs.d/vendor/cider")
 (require 'cider)
 ;; autocompletion
 (require 'company)

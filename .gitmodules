@@ -4,9 +4,6 @@
 [submodule "vendor/zenburn-emacs"]
 	path = vendor/zenburn-emacs
 	url = git@github.com:bbatsov/zenburn-emacs.git
-[submodule "vendor/cider"]
-	path = vendor/cider
-	url = git@github.com:clojure-emacs/cider.git
 [submodule "vendor/emacs-for-python"]
 	path = vendor/emacs-for-python
 	url = git@github.com:gabrielelanaro/emacs-for-python.git
