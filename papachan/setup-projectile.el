@@ -1,5 +1,4 @@
 ;;; setup-projectile.el
-;(require-package 'projectile)
 
 (projectile-global-mode)
 

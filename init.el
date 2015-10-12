@@ -191,8 +191,6 @@
 ; (defvar lfe-dir (concat (getenv "HOME") "~/dev/lfe-master/emacs"))
 ; (setq load-path (cons lfe-dir load-path))
 ; (require 'lfe-mode)
-(require 'lfe-start)
-
 ; (require 'lfe-start)
 
 ; compile in a status buffer
