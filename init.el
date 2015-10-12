@@ -53,6 +53,7 @@
 (progn (cd "~/.emacs.d/")
     (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
+(add-to-list 'load-path "~/.emacs.d/vendor/origami.el")
 (add-to-list 'load-path "~/.emacs.d/lib")
 
 ; default HOME directory
