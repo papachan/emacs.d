@@ -1,5 +1,7 @@
 ;;; setup-projectile.el
 
+(require 'projectile)
+
 (projectile-global-mode)
 
 (defun file-fuzzy-finder ()
