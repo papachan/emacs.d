@@ -1,1 +1,14 @@
 * Emacs help
+
+# install latest emacs
+
+$ sudo apt-get install build-essential
+$ tar -xf emacs-25.1.tar.* && cd emacs-25.1
+$ ./configure
+$ make
+$ sudo make install
+
+
+`M-x emacs-version`
+
+
