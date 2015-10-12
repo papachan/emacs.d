@@ -35,6 +35,7 @@
                 "github"
                 "appearance"
                 "setup-cider"
+                "setup-projectile"
                 "setup-magit"
                 "init-eshell"
                 "ido-snippet"
@@ -192,10 +193,7 @@
 ; (require 'lfe-mode)
 (require 'lfe-start)
 
-; projectile
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
+; (require 'lfe-start)
 
 ; compile in a status buffer
 (setq compilation-read-command nil)
