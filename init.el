@@ -54,6 +54,7 @@
     (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
 (add-to-list 'load-path "~/.emacs.d/vendor/origami.el")
+(add-to-list 'load-path "~/.emacs.d/vendor/emacs-neotree")
 (add-to-list 'load-path "~/.emacs.d/lib")
 
 ; default HOME directory
@@ -203,3 +204,9 @@
 (add-hook 'ruby-mode-hook 'robe-mode)
 
 (put 'dired-find-alternate-file 'disabled nil)
+
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+
+
+(custom-set-variables
