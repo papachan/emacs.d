@@ -1,13 +1,21 @@
 * Emacs help
+### install latest emacs from source
 
-# install latest emacs
-
-$ sudo apt-get install build-essential
-$ tar -xf emacs-25.1.tar.* && cd emacs-25.1
+```
+$ pacman -Sy base-devel
+$ wget https://ftp.gnu.org/pub/gnu/emacs/emacs-24.5.tar.xz
+$ tar -xf emacs-24.5.tar.* && cd emacs-24.5
 $ ./configure
 $ make
-$ sudo make install
+$ make install
+```
 
+with debian pakages you have to install:
+```
+$ sudo apt-get install build-dep emacs24
+```
+
+### check your emacs version
 
 `M-x emacs-version`
 
