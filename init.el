@@ -110,6 +110,9 @@
 ;; Ignore case when searching
 (setq case-fold-search t)
 
+;; Move files to trash when deleting
+(setq delete-by-moving-to-trash t)
+
 ;; Don't show the startup screen
 ;; (setq inhibit-startup-screen t)
 ;; (setq inhibit-startup-message t)
@@ -150,6 +153,7 @@
 
 ; quicklisp sbcl
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
+(setq inferior-lisp-program "/usr/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
 
 (require 'maxframe)
