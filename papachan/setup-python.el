@@ -15,7 +15,8 @@
 
 (require 'yasnippet)
 
-(epy-setup-checker "pyflakes %f")
+(when (executable-find "pyflakes")
+  (epy-setup-checker "pyflakes %f"))
 (epy-setup-ipython)
 (global-hl-line-mode t)
 (global-set-key (kbd "C-c !") 'python-shell-switch-to-shell)
