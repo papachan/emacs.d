@@ -6,7 +6,8 @@
 ;; autocompletion
 (require 'company)
 ;; REPL history file
-(setq cider-repl-history-file "~/.emacs.d/cider-history")
+(setq cider-repl-history-file
+      (expand-file-name "cider-history" dotemacs-dir))
 ;; nice pretty printing
 (setq cider-repl-use-pretty-printing t)
 ;; nicer font lock in REPL
