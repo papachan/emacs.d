@@ -33,6 +33,7 @@
                 "snippet"
                 "erlang"
                 "github"
+                "text-editing"
                 "appearance"
                 "setup-cider"
                 "setup-projectile"

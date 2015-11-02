@@ -34,6 +34,7 @@
 (depends-on "keyword-search")
 (depends-on "magit")
 (depends-on "magit-gh-pulls")
+(depends-on "markdown-mode")
 (depends-on "maxframe")
 (depends-on "moe-theme")
 (depends-on "monokai-theme")
