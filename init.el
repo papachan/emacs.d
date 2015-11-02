@@ -35,6 +35,7 @@
                 "github"
                 "text-editing"
                 "appearance"
+                "setup-ivy"
                 "setup-cider"
                 "setup-projectile"
                 "setup-magit"
@@ -212,6 +213,3 @@
 
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
-
-
-(custom-set-variables

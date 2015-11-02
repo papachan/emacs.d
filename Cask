@@ -69,6 +69,7 @@
 (depends-on "smex")
 (depends-on "solarized-theme")
 (depends-on "sr-speedbar")
+(depends-on "swiper-helm")
 (depends-on "tracking")
 (depends-on "tramp-term")
 (depends-on "undo-tree")
