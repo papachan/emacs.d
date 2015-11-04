@@ -97,3 +97,4 @@
 ;(global-set-key (kbd "<f12>") 'my-save-and-compile)
 (global-set-key (kbd "<f12>") 'run-cask-test)
 (global-set-key (kbd "C-x C-m") 'compile)
+(global-set-key (kbd "C-x p") 'previous-multiframe-window)
