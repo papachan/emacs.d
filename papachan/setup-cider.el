@@ -41,12 +41,14 @@
     ; add hook for tdd with cider
 	(add-hook 'cider-mode-hook #'tdd-mode)
 	(add-hook 'cider-repl-mode-hook #'tdd-mode)
-  	; never start completions automatically
+    ; never start completions automatically
     (setq company-idle-delay nil)
     ;; company mode for completion
     ;(add-hook 'cider-repl-mode-hook #'company-mode)
     ;(add-hook 'cider-mode-hook #'company-mode)
     (global-set-key (kbd "M-TAB") #'company-complete) ; meta+tab, aka C-M-i, as manual trigger
+    (custom-set-faces
+        '(cider-test-success-face ((t (:foreground "green" :background nil)))))
     ;; paredit-mode
     (add-hook 'clojure-mode-hook 'paredit-mode)))
 
