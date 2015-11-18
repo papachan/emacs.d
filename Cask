@@ -24,6 +24,7 @@
 (depends-on "dired-details")
 (depends-on "edn")
 (depends-on "elixir-mode")
+(depends-on "emojify")
 (depends-on "enh-ruby-mode")
 (depends-on "epl")
 (depends-on "erlang")
