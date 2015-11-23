@@ -10,7 +10,7 @@
 
 (define-abbrev-table 'unicode-emoticons-mode-abbrev-table
   '(("kiss0" "ヾ(￣◇￣)ノ〃")
-    ("shrug0" "¯\_(ツ)_/¯")))
+    ("shrug0" "¯\\_(ツ)_/¯")))
 
 (add-to-list 'abbrev-minor-mode-table-alist
 	     `(unicode-emoticons-mode ,unicode-emoticons-mode-abbrev-table))
