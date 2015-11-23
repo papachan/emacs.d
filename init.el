@@ -43,7 +43,8 @@
                 "ido-snippet"
                 "setup-python"
                 "webmode"
-                "setup-smartmode"))
+                "setup-smartmode"
+                "unicode-emoticons"))
   (load (concat dotfiles-lisp-dir file)))
 
 ; emacs-server
