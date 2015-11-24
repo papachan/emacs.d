@@ -75,6 +75,7 @@
 (load "directory-files-recursive")
 (load "twittering-mode")
 (load "fill-column-indicator")
+(load "helm-aws")
 
 (setq make-backup-files nil)
 
@@ -156,6 +157,7 @@
 
 ; quicklisp sbcl
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
+(add-to-list 'load-path "~/quicklisp")
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
 
