@@ -179,9 +179,6 @@
 (add-to-list 'ac-modes 'enh-ruby-mode)
 (add-to-list 'ac-modes 'web-mode)
 
-(remove-hook 'before-save-hook 'rope-before-save-actions)
-(remove-hook 'after-save-hook 'rope-after-save-actions)
-(remove-hook 'kill-emacs-hook 'rope-exiting-actions)
 ;; enabling fill-column-indicator
 (require 'fill-column-indicator)
 (define-globalized-minor-mode
