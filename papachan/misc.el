@@ -89,9 +89,8 @@
              (setq deactivate-mark nil))
     (self-insert-command N)))
 
-(define-key global-map (kbd "C-c >") 'my-indent-region)
-(define-key global-map (kbd "C-c <") 'my-unindent-region)
-
+(global-set-key (kbd "C-c >") 'my-indent-region)
+(global-set-key (kbd "C-c <") 'my-unindent-region)
 (global-set-key [pause] 'toggle-current-window-dedication)
 (global-set-key (kbd "C-c C-j") 'replace-string)
 (global-set-key (kbd "C-=") 'er/expand-region)
