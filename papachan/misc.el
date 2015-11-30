@@ -74,6 +74,24 @@
             (if dedicated "no longer " "")
             (buffer-name))))
 
+;; Unindent
+(defun my-indent-region (N)
+  (interactive "p")
+  (if (use-region-p)
+      (progn (indent-rigidly (region-beginning) (region-end) (* N 2))
+             (setq deactivate-mark nil))
+    (self-insert-command N)))
+
+(defun my-unindent-region (N)
+  (interactive "p")
+  (if (use-region-p)
+      (progn (indent-rigidly (region-beginning) (region-end) (* N -2))
+             (setq deactivate-mark nil))
+    (self-insert-command N)))
+
+(define-key global-map (kbd "C-c >") 'my-indent-region)
+(define-key global-map (kbd "C-c <") 'my-unindent-region)
+
 (global-set-key [pause] 'toggle-current-window-dedication)
 (global-set-key (kbd "C-c C-j") 'replace-string)
 (global-set-key (kbd "C-=") 'er/expand-region)
@@ -98,3 +116,7 @@
 (global-set-key (kbd "<f12>") 'run-cask-test)
 (global-set-key (kbd "C-x C-m") 'compile)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
+
+
+
+
