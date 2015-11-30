@@ -5,20 +5,19 @@
 ;; autocompletion
 (require 'company)
 
-(defun tdd-test ()
-  "Thin wrapper around `cider-test-run-tests'."
-  (when (cider-connected-p)
-    (cider-test-run-tests nil)))
-
-(define-minor-mode tdd-mode
-  "Run all tests whenever a file is saved."
-  nil " TDD" nil
-  (if tdd-mode
-      (add-hook 'after-save-hook #'tdd-test nil 'local)
-    (remove-hook 'after-save-hook #'tdd-test 'local)))
-
 (use-package cider
   :config
+  (defun tdd-test ()
+    "Thin wrapper around `cider-test-run-tests'."
+    (when (cider-connected-p)
+      (cider-test-run-tests nil)))
+
+  (define-minor-mode tdd-mode
+    "Run all tests whenever a file is saved."
+    nil " TDD" nil
+    (if tdd-mode
+        (add-hook 'after-save-hook #'tdd-test nil 'local)
+      (remove-hook 'after-save-hook #'tdd-test 'local)))
   (progn
     ;; REPL history file
     (setq cider-repl-history-file

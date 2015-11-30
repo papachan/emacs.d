@@ -76,6 +76,7 @@
 (load "twittering-mode")
 (load "fill-column-indicator")
 (load "helm-aws")
+(load "alert")
 
 (setq make-backup-files nil)
 
