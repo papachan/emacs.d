@@ -1,5 +1,6 @@
 ;;; misc.el file
 
+;; move to scratch
 (global-set-key (kbd "C-x M-z")
                 '(lambda ()
                    (interactive)
@@ -12,10 +13,10 @@
                   (dired "~/")))
 
 ; slime lfe shortcut
-(defun my-save-and-compile ()
-  (interactive "")
-  (save-buffer 0)
-  (compile "./run"))
+;; (defun my-save-and-compile ()
+;;   (interactive "")
+;;   (save-buffer 0)
+;;   (compile "./run"))
 
 (defun run-cask-test ()
   (interactive "")
@@ -55,6 +56,25 @@
   (interactive)
   (if (y-or-n-p "Quit Emacs? ")
       (save-buffers-kill-emacs)))
+
+(defun create-scratch-buffer nil
+  "create a new scratch buffer to work in. (could be *scratch* - *scratchX*)"
+  (interactive)
+  (let ((n 0)
+        bufname)
+    (while (progn
+             (setq bufname (concat "*scratch"
+                                   (if (= n 0) "" (int-to-string n))
+                                   "*"))
+             (setq n (1+ n))
+             (get-buffer bufname)))
+    (switch-to-buffer (get-buffer-create bufname))
+    (emacs-lisp-mode)))
+
+(defun split-window-right-and-move-there-dammit ()
+  (interactive)
+  (split-window-right)
+  (windmove-right))
 
 (defun new-empty-buffer ()
   (interactive)
@@ -111,10 +131,13 @@
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
 (global-set-key (kbd "C-c f") 'follow-mode)
 (global-set-key (kbd "M-x") 'helm-M-x)
-;(global-set-key (kbd "<f12>") 'my-save-and-compile)
 (global-set-key (kbd "<f12>") 'run-cask-test)
 (global-set-key (kbd "C-x C-m") 'compile)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
+(global-set-key (kbd "C-x 4") 'split-window-right-and-move-there-dammit)
+(global-set-key (kbd "C-x n") 'create-scratch-buffer)
+;(global-set-key (kbd "<f12>") 'my-save-and-compile)
+
 
 
 
