@@ -24,6 +24,11 @@
                "papachan")))
 (add-to-list 'load-path dotfiles-lisp-dir)
 
+; emacs-server
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 (package-initialize)
 
 (require 'use-package)
@@ -46,11 +51,6 @@
                 "setup-smartmode"
                 "unicode-emoticons"))
   (load (concat dotfiles-lisp-dir file)))
-
-; emacs-server
-(require 'server)
-(unless (server-running-p)
-  (server-start))
 
 ; paths
 (progn (cd "~/.emacs.d/")
