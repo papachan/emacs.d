@@ -161,6 +161,7 @@
 (add-to-list 'load-path "~/quicklisp")
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
+(custom-set-variables '(safe-local-variable-values (quote ((Syntax . Common-Lisp)))))
 
 (require 'maxframe)
 (add-hook 'window-setup-hook 'maximize-frame t)
