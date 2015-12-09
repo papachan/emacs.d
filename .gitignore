@@ -29,3 +29,4 @@ places
 projectile-bookmarks.eld
 lisp/*.el
 lib/*.el
+abbrev_defs

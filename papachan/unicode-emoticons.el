@@ -9,7 +9,8 @@
 ;;; (add-hook 'jabber-chat-mode-hook 'abbrev-mode)
 
 (define-abbrev-table 'unicode-emoticons-mode-abbrev-table
-  '(("kiss0" "ヾ(￣◇￣)ノ〃")
+  '(("yay0" "٩(⁎❛ᴗ❛⁎)۶")
+  	("kiss0" "ヾ(￣◇￣)ノ〃")
     ("shrug0" "¯\\_(ツ)_/¯")))
 
 (add-to-list 'abbrev-minor-mode-table-alist

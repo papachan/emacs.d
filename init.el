@@ -157,7 +157,6 @@
 (require 'restclient)
 
 ; quicklisp sbcl
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
 (add-to-list 'load-path "~/quicklisp")
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
@@ -167,6 +166,10 @@
 (add-hook 'window-setup-hook 'maximize-frame t)
 ; delete other windows when open multiple files
 (add-hook 'emacs-startup-hook 'delete-other-windows)
+
+; electric mode
+;(add-hook 'after-change-major-mode-hook (lambda() (electric-indent-mode -1)))
+(electric-indent-mode +1)
 
 (setq make-backup-files nil)
 
@@ -178,7 +181,7 @@
 (ac-config-default)
 (setq ac-ignore-case nil)
 (global-auto-complete-mode t)
-(add-to-list 'ac-modes 'enh-ruby-mode)
+;(add-to-list 'ac-modes 'enh-ruby-mode)
 (add-to-list 'ac-modes 'web-mode)
 
 ;; enabling fill-column-indicator
@@ -214,7 +217,7 @@
 ;; ruby robe-mode
 (add-hook 'ruby-mode-hook 'robe-mode)
 
-(add-hook 'after-init-hook #'global-emojify-mode)
+; (add-hook 'after-init-hook #'global-emojify-mode)
 
 (put 'dired-find-alternate-file 'disabled nil)
 
