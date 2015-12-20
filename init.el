@@ -83,11 +83,7 @@
 (linum-mode)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-;(global-linum-mode)
-;(global-font-lock-mode 1)
 (column-number-mode)
-;(global-whitespace-mode)
-
 ;; enable undo-tree
 (global-undo-tree-mode)
 
@@ -117,10 +113,6 @@
 
 ;; Move files to trash when deleting
 (setq delete-by-moving-to-trash t)
-
-;; Don't show the startup screen
-;; (setq inhibit-startup-screen t)
-;; (setq inhibit-startup-message t)
 
 ;; Number of characters until the fill column
 (setq fill-column 80)
@@ -181,7 +173,7 @@
 (ac-config-default)
 (setq ac-ignore-case nil)
 (global-auto-complete-mode t)
-;(add-to-list 'ac-modes 'enh-ruby-mode)
+(add-to-list 'ac-modes 'enh-ruby-mode)
 (add-to-list 'ac-modes 'web-mode)
 
 ;; enabling fill-column-indicator
@@ -201,17 +193,17 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 
-;(require 'org-latex)
-;(setq org-export-latex-listings t)
-;(add-to-list 'org-export-latex-packages-alist '("" "listings"))
-;(add-to-list 'org-export-latex-packages-alist '("" "color"))
+(require 'org-latex)
+(setq org-export-latex-listings t)
+(add-to-list 'org-export-latex-packages-alist '("" "listings"))
+(add-to-list 'org-export-latex-packages-alist '("" "color"))
 (setq latex-run-command "pdflatex")
 
 ; erlang lisp mode
-; (defvar lfe-dir (concat (getenv "HOME") "~/dev/lfe-master/emacs"))
-; (setq load-path (cons lfe-dir load-path))
-; (require 'lfe-mode)
-; (require 'lfe-start)
+(defvar lfe-dir (concat (getenv "HOME") "~/dev/lfe-master/emacs"))
+(setq load-path (cons lfe-dir load-path))
+(require 'lfe-mode)
+(require 'lfe-start)
 
 ; compile in a status buffer
 (setq compilation-read-command nil)
@@ -220,8 +212,6 @@
 
 ;; ruby robe-mode
 (add-hook 'ruby-mode-hook 'robe-mode)
-
-; (add-hook 'after-init-hook #'global-emojify-mode)
 
 (put 'dired-find-alternate-file 'disabled nil)
 
