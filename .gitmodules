@@ -25,3 +25,6 @@
 [submodule "vendor/emacs-neotree"]
 	path = vendor/emacs-neotree
 	url = https://github.com/jaypei/emacs-neotree.git
+[submodule "vendor/x5o.el"]
+	path = vendor/x5o.el
+	url = https://github.com/papachan/x5o.el.git
