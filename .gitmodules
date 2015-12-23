@@ -7,8 +7,8 @@
 [submodule "vendor/emacs-for-python"]
 	path = vendor/emacs-for-python
 	url = git@github.com:gabrielelanaro/emacs-for-python.git
-[submodule "vendor/python-mode.el-6.2.0"]
-	path = vendor/python-mode.el-6.2.0
+[submodule "vendor/python-mode.el"]
+	path = vendor/python-mode.el
 	url = git@github.com:emacsmirror/python-mode.git
 [submodule "vendor/zerodark-theme"]
 	path = vendor/zerodark-theme

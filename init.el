@@ -210,9 +210,6 @@
 ; make shell interactive
 (setq shell-command-switch "-ic")
 
-;; ruby robe-mode
-(add-hook 'ruby-mode-hook 'robe-mode)
-
 (put 'dired-find-alternate-file 'disabled nil)
 
 (require 'neotree)

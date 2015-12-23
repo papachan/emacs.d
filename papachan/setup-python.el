@@ -3,7 +3,7 @@
 ;; python mode
 (setq python-indent-offset 4)
 (setq py-install-directory
-      (expand-file-name "vendor/python-mode.el-6.2.0"  dotemacs-dir))
+      (expand-file-name "vendor/python-mode.el"  dotemacs-dir))
 (add-to-list 'load-path py-install-directory)
 (require 'python-mode)
 
