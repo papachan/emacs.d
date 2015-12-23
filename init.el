@@ -33,6 +33,15 @@
 
 (require 'use-package)
 
+;; autocomplete  git@github.com:auto-complete/auto-complete.git
+(require 'auto-complete)
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories
+             "~/.emacs.d/vendor/auto-complete-1.4.0/dict")
+(ac-config-default)
+(setq ac-ignore-case nil)
+(global-auto-complete-mode t)
+
 (dolist (file '("misc"
                 "personal"
                 "snippet"
@@ -47,6 +56,7 @@
                 "init-eshell"
                 "ido-snippet"
                 "setup-python"
+                "setup-ruby"
                 "webmode"
                 "setup-smartmode"
                 "unicode-emoticons"))
@@ -165,17 +175,6 @@
 (electric-indent-mode +1)
 
 (setq make-backup-files nil)
-
-;; autocomplete  git@github.com:auto-complete/auto-complete.git
-(require 'auto-complete)
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories 
-             "~/.emacs.d/vendor/auto-complete-1.4.0/dict")
-(ac-config-default)
-(setq ac-ignore-case nil)
-(global-auto-complete-mode t)
-(add-to-list 'ac-modes 'enh-ruby-mode)
-(add-to-list 'ac-modes 'web-mode)
 
 ;; enabling fill-column-indicator
 (require 'fill-column-indicator)
