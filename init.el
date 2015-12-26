@@ -69,6 +69,7 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/origami.el")
 (add-to-list 'load-path "~/.emacs.d/vendor/emacs-neotree")
 (add-to-list 'load-path "~/.emacs.d/vendor/x5o.el")
+(add-to-list 'load-path "~/.emacs.d/vendor/slack")
 (add-to-list 'load-path "~/.emacs.d/lib")
 
 ; default HOME directory
