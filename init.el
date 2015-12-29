@@ -89,6 +89,10 @@
 (load "fill-column-indicator")
 (load "helm-aws")
 (load "alert")
+(load "popup")
+
+(require 'popwin)
+(popwin-mode 1)
 
 (setq make-backup-files nil)
 

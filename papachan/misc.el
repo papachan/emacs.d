@@ -107,6 +107,7 @@
   (interactive)
   (load-file "~/.emacs.d/init.el"))
 
+(global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-c >") 'my-indent-region)
 (global-set-key (kbd "C-c <") 'my-unindent-region)
 (global-set-key [pause] 'toggle-current-window-dedication)
@@ -127,7 +128,6 @@
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
 (global-set-key (kbd "C-c f") 'follow-mode)
-(global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-m") 'compile)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
 (global-set-key (kbd "C-x 4") 'split-window-right-and-move-there-dammit)
