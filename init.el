@@ -33,7 +33,14 @@
 
 (require 'use-package)
 
+; default HOME directory
+(setq default-directory (f-full (getenv "HOME")))
+
+(when (memq window-system '(mac ns))
+  (add-to-list 'exec-path "/usr/bin"))
+
 ;; autocomplete  git@github.com:auto-complete/auto-complete.git
+(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
 (require 'auto-complete)
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories
@@ -65,18 +72,12 @@
 ; paths
 (progn (cd "~/.emacs.d/")
     (normal-top-level-add-subdirs-to-load-path))
-(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
-(add-to-list 'load-path "~/.emacs.d/vendor/origami.el")
-(add-to-list 'load-path "~/.emacs.d/vendor/emacs-neotree")
-(add-to-list 'load-path "~/.emacs.d/vendor/x5o.el")
-(add-to-list 'load-path "~/.emacs.d/vendor/slack")
-(add-to-list 'load-path "~/.emacs.d/lib")
+(add-to-list 'load-path "vendor/origami.el")
+(add-to-list 'load-path "vendor/emacs-neotree")
+(add-to-list 'load-path "vendor/x5o.el")
+(add-to-list 'load-path "vendor/slack")
+(add-to-list 'load-path "lib")
 
-; default HOME directory
-(setq default-directory (f-full (getenv "HOME")))
-
-(when (memq window-system '(mac ns))
-  (add-to-list 'exec-path "/usr/bin"))
 
 (require 'expand-region)
 (require 'frame-cmds)
