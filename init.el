@@ -16,13 +16,16 @@
 (setq dotemacs-dir user-emacs-directory)
 (setq dotemacs-cache-dir (expand-file-name ".cache" dotemacs-dir))
 
-; add lisp files directory
 (setq dotfiles-lisp-dir
+      (expand-file-name "lib" dotemacs-dir))
+
+; add lisp files directory
+(setq dotfiles-misc-dir
       (file-name-as-directory
        (concat (file-name-directory
                 (or (buffer-file-name) load-file-name))
                "papachan")))
-(add-to-list 'load-path dotfiles-lisp-dir)
+(add-to-list 'load-path dotfiles-misc-dir)
 
 ; emacs-server
 (require 'server)
@@ -67,7 +70,7 @@
                 "webmode"
                 "setup-smartmode"
                 "unicode-emoticons"))
-  (load (concat dotfiles-lisp-dir file)))
+  (load (concat dotfiles-misc-dir file)))
 
 ; paths
 (progn (cd "~/.emacs.d/")
@@ -76,14 +79,14 @@
 (add-to-list 'load-path "vendor/emacs-neotree")
 (add-to-list 'load-path "vendor/x5o.el")
 (add-to-list 'load-path "vendor/slack")
-(add-to-list 'load-path "lib")
-
+(add-to-list 'load-path dotfiles-lisp-dir)
 
 (require 'expand-region)
 (require 'frame-cmds)
 (require 'smex)
 (smex-initialize)
 
+;; load files from dotfiles-lisp-dir
 (load "iflipb")
 (load "directory-files-recursive")
 (load "twittering-mode")
