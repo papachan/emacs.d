@@ -93,7 +93,7 @@
 (load "fill-column-indicator")
 (load "helm-aws")
 (load "alert")
-(load "popup")
+(load "popwin")
 
 (require 'popwin)
 (popwin-mode 1)

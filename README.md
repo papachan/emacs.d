@@ -41,4 +41,6 @@ Just in case its better to install cider from `melpa-stable`.
 `$ cask install cider`
 
 
+### Emacs Cheatsheet
 
+* [Gist](https://gist.github.com/papachan/99a89ed85dfa2482d7c0)

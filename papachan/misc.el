@@ -107,6 +107,9 @@
   (interactive)
   (load-file "~/.emacs.d/init.el"))
 
+(define-key key-translation-map [dead-circumflex] "^")
+
+
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-c >") 'my-indent-region)
 (global-set-key (kbd "C-c <") 'my-unindent-region)
