@@ -136,5 +136,8 @@
 
 (setq vc-follow-symlinks t)
 
+; electric mode
+(electric-indent-mode +1)
+
 (provide 'misc)
 ;;; misc.el ends here

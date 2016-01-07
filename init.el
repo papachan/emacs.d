@@ -153,10 +153,6 @@
 ; delete other windows when open multiple files
 (add-hook 'emacs-startup-hook 'delete-other-windows)
 
-; electric mode
-;(add-hook 'after-change-major-mode-hook (lambda() (electric-indent-mode -1)))
-(electric-indent-mode +1)
-
 ;; enabling fill-column-indicator
 (require 'fill-column-indicator)
 (define-globalized-minor-mode
