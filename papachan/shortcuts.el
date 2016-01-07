@@ -1,6 +1,6 @@
-;; move to scratch
+;;; shortcuts.el file
+;;
 
-;;; misc.el file
 (define-key key-translation-map [dead-circumflex] "^")
 
 (global-set-key (kbd "C-x M-z") 'open-scratch-buffer)

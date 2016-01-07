@@ -180,11 +180,6 @@
 (add-to-list 'org-export-latex-packages-alist '("" "color"))
 (setq latex-run-command "pdflatex")
 
-; erlang lisp mode
-(defvar lfe-dir (concat (getenv "HOME") "~/dev/lfe-master/emacs"))
-(setq load-path (cons lfe-dir load-path))
-(require 'lfe-mode)
-(require 'lfe-start)
 
 ; compile in a status buffer
 (setq compilation-read-command nil)
