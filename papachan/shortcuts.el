@@ -1,0 +1,42 @@
+;; move to scratch
+
+;;; misc.el file
+(define-key key-translation-map [dead-circumflex] "^")
+
+(global-set-key (kbd "C-x M-z") 'open-scratch-buffer)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-c >") 'my-indent-region)
+(global-set-key (kbd "C-c <") 'my-unindent-region)
+(global-set-key [pause] 'toggle-current-window-dedication)
+(global-set-key (kbd "C-c C-j") 'replace-string)
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "s--") 'er/contract-region)
+(global-set-key (kbd "C-d") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-n") 'new-empty-buffer)
+(global-set-key (kbd "C-c C-d") 'put-the-date)
+(global-set-key (kbd "C-c w") 'select-whole-line)
+(global-set-key (kbd "C-x q") 'shutdown-emacs)
+(global-set-key (kbd "C-x C-b") 'buffer-menu)
+(global-set-key (kbd "C-c o") 'insert-a-blank-line)
+(global-set-key (kbd "C-c d") 'kill-whole-line)
+(global-set-key (kbd "C-c m") 'magit-status)
+(global-set-key (kbd "C-c p i") 'create-empty-init-py)
+(global-set-key (kbd "M-H") 'common-lisp-hyperspec)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+(global-set-key (kbd "C-x C-c") 'quit-emacs)
+(global-set-key (kbd "C-c f") 'follow-mode)
+(global-set-key (kbd "C-x C-m") 'compile)
+(global-set-key (kbd "C-x p") 'previous-multiframe-window)
+(global-set-key (kbd "C-x 4") 'split-window-right-and-move-there-dammit)
+(global-set-key (kbd "C-x n") 'create-scratch-buffer)
+(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "S-<f1>") (lambda () (interactive) (dired "~/")))
+(global-set-key (kbd "<f6>") 'reload-init-file)
+(global-set-key (kbd "<f9>") 'iflipb-next-buffer)
+(global-set-key (kbd "<f8>") 'iflipb-previous-buffer)
+(global-set-key (kbd "<f12>") 'run-cask-test)
+;(global-set-key (kbd "<f12>") 'my-save-and-compile)
+
+
+(provide 'shortcuts)
+;;; shortcuts.el ends here

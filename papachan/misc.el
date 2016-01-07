@@ -1,11 +1,5 @@
 ;;; misc.el file
 
-;; move to scratch
-(global-set-key (kbd "C-x M-z")
-                '(lambda ()
-                   (interactive)
-                   (switch-to-buffer "*scratch*")))
-
 ; slime lfe shortcut
 ;; (defun my-save-and-compile ()
 ;;   (interactive "")
@@ -107,43 +101,40 @@
   (interactive)
   (load-file "~/.emacs.d/init.el"))
 
-(define-key key-translation-map [dead-circumflex] "^")
+(defun open-scratch-buffer ()
+  (interactive)
+  (switch-to-buffer "*scratch*"))
 
+;; Always use spaces, not tabs, when indenting
+(setq-default indent-tabs-mode nil)
+(setq-default c-basic-offset 4)
 
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-c >") 'my-indent-region)
-(global-set-key (kbd "C-c <") 'my-unindent-region)
-(global-set-key [pause] 'toggle-current-window-dedication)
-(global-set-key (kbd "C-c C-j") 'replace-string)
-(global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "s--") 'er/contract-region)
-(global-set-key (kbd "C-d") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-n") 'new-empty-buffer)
-(global-set-key (kbd "C-c C-d") 'put-the-date)
-(global-set-key (kbd "C-c w") 'select-whole-line)
-(global-set-key (kbd "C-x q") 'shutdown-emacs)
-(global-set-key (kbd "C-x C-b") 'buffer-menu)
-(global-set-key (kbd "C-c o") 'insert-a-blank-line)
-(global-set-key (kbd "C-c d") 'kill-whole-line)
-(global-set-key (kbd "C-c m") 'magit-status)
-(global-set-key (kbd "C-c p i") 'create-empty-init-py)
-(global-set-key (kbd "M-H") 'common-lisp-hyperspec)
-(global-set-key (kbd "C-x C-r") 'recentf-open-files)
-(global-set-key (kbd "C-x C-c") 'quit-emacs)
-(global-set-key (kbd "C-c f") 'follow-mode)
-(global-set-key (kbd "C-x C-m") 'compile)
-(global-set-key (kbd "C-x p") 'previous-multiframe-window)
-(global-set-key (kbd "C-x 4") 'split-window-right-and-move-there-dammit)
-(global-set-key (kbd "C-x n") 'create-scratch-buffer)
-(global-set-key (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "S-<f1>") (lambda () (interactive) (dired "~/")))
-(global-set-key (kbd "<f6>") 'reload-init-file)
-(global-set-key (kbd "<f9>") 'iflipb-next-buffer)
-(global-set-key (kbd "<f8>") 'iflipb-previous-buffer)
-(global-set-key (kbd "<f12>") 'run-cask-test)
-;(global-set-key (kbd "<f12>") 'my-save-and-compile)
+;; Prevent lock files from creating.
+(setq create-lockfiles nil)
 
+(setq make-backup-files nil)
 
+;; disable system beep 
+(setq visible-bell 1)
 
+;; Ignore case when searching
+(setq case-fold-search t)
 
+;; Move files to trash when deleting
+(setq delete-by-moving-to-trash t)
 
+;; Number of characters until the fill column
+(setq fill-column 80)
+
+;; prevent vertical split
+(setq split-height-threshold 999)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; enable undo-tree
+(global-undo-tree-mode)
+
+(setq vc-follow-symlinks t)
+
+(provide 'misc)
+;;; misc.el ends here

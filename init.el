@@ -69,7 +69,8 @@
                 "setup-ruby"
                 "webmode"
                 "setup-smartmode"
-                "unicode-emoticons"))
+                "unicode-emoticons"
+                "shortcuts"))
   (load (concat dotfiles-misc-dir file)))
 
 ; paths
@@ -98,17 +99,10 @@
 (require 'popwin)
 (popwin-mode 1)
 
-(setq make-backup-files nil)
-
 (linum-mode)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (column-number-mode)
-;; enable undo-tree
-(global-undo-tree-mode)
-
-;; disable system beep 
-(setq visible-bell 1)
 
 (require 'window-numbering)
 (window-numbering-mode 1)
@@ -117,10 +111,6 @@
 (setq whitespace-line-column 90
       whitespace-style '(tabs trailing tab-mark lines-tail))
 
-;; Always use spaces, not tabs, when indenting
-(setq-default indent-tabs-mode nil)
-(setq-default c-basic-offset 4)
-
 ;; mac settings
 (cond
  ((string-equal system-type "darwin")
@@ -128,22 +118,8 @@
     (windmove-default-keybindings)
     (setq x-select-enable-clipboard t))))
 
-;; Ignore case when searching
-(setq case-fold-search t)
-
-;; Move files to trash when deleting
-(setq delete-by-moving-to-trash t)
-
-;; Number of characters until the fill column
-(setq fill-column 80)
-
-;; prevent vertical split
-(setq split-height-threshold 999)
-
 (if (fboundp 'desktop-save-mode)
     (desktop-save-mode 1))
-
-(setq vc-follow-symlinks t)
 
 ;; ido-mode is like magic pixie dust!
 (require 'ido)
@@ -157,8 +133,6 @@
       ido-use-virtual-buffers t
       ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10)
-
-(defalias 'yes-or-no-p 'y-or-n-p)
 
 ; helm
 (add-to-list 'load-path "~/vendor/helm")
@@ -182,8 +156,6 @@
 ; electric mode
 ;(add-hook 'after-change-major-mode-hook (lambda() (electric-indent-mode -1)))
 (electric-indent-mode +1)
-
-(setq make-backup-files nil)
 
 ;; enabling fill-column-indicator
 (require 'fill-column-indicator)
@@ -223,3 +195,5 @@
 
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
+
+(custom-set-variables '(safe-local-variable-values (quote ((Syntax . Common-Lisp)))))
