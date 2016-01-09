@@ -146,7 +146,6 @@
 (add-to-list 'load-path "~/quicklisp")
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
-(custom-set-variables '(safe-local-variable-values (quote ((Syntax . Common-Lisp)))))
 
 (require 'maxframe)
 (add-hook 'window-setup-hook 'maximize-frame t)
@@ -158,6 +157,7 @@
 (define-globalized-minor-mode
   global-fci-mode fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode t)
+
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 (eval-after-load "auto-complete"
@@ -169,13 +169,6 @@
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
-
-(require 'org-latex)
-(setq org-export-latex-listings t)
-(add-to-list 'org-export-latex-packages-alist '("" "listings"))
-(add-to-list 'org-export-latex-packages-alist '("" "color"))
-(setq latex-run-command "pdflatex")
-
 
 ; compile in a status buffer
 (setq compilation-read-command nil)
