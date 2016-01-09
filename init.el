@@ -88,11 +88,12 @@
 (smex-initialize)
 
 ;; load files from dotfiles-lisp-dir
-(load "iflipb")
-(load "directory-files-recursive")
-(load "twittering-mode")
-(load "fill-column-indicator")
-(load "helm-aws")
+(dolist (file '(
+    "iflipb"
+    "directory-files-recursive"
+    "twittering-mode"
+    "helm-aws"))
+  (load file))
 
 (linum-mode)
 (menu-bar-mode -1)
@@ -148,10 +149,11 @@
 (add-hook 'emacs-startup-hook 'delete-other-windows)
 
 ;; enabling fill-column-indicator
-(require 'fill-column-indicator)
-(define-globalized-minor-mode
-  global-fci-mode fci-mode (lambda () (fci-mode 1)))
-(global-fci-mode t)
+;; (load "fill-column-indicator")
+;; (require 'fill-column-indicator)
+;; (define-globalized-minor-mode
+;;   global-fci-mode fci-mode (lambda () (fci-mode 1)))
+;; (global-fci-mode t)
 
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
