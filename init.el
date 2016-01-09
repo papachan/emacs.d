@@ -54,6 +54,7 @@
 
 (dolist (file '("misc"
                 "personal"
+                "shortcuts"
                 "snippet"
                 "erlang"
                 "github"
@@ -69,8 +70,7 @@
                 "setup-ruby"
                 "webmode"
                 "setup-smartmode"
-                "unicode-emoticons"
-                "shortcuts"))
+                "unicode-emoticons"))
   (load (concat dotfiles-misc-dir file)))
 
 ; paths
@@ -93,7 +93,6 @@
 (load "twittering-mode")
 (load "fill-column-indicator")
 (load "helm-aws")
-(load "alert")
 
 (linum-mode)
 (menu-bar-mode -1)
