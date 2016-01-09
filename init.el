@@ -94,10 +94,6 @@
 (load "fill-column-indicator")
 (load "helm-aws")
 (load "alert")
-(load "popwin")
-
-(require 'popwin)
-(popwin-mode 1)
 
 (linum-mode)
 (menu-bar-mode -1)
