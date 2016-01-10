@@ -4,6 +4,7 @@
 (source melpa-stable)
 
 (depends-on "ac-cider")
+(depends-on "ac-inf-ruby")
 (depends-on "ac-slime")
 (depends-on "ack")
 (depends-on "alchemist")
