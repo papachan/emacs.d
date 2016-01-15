@@ -105,6 +105,16 @@
   (interactive)
   (switch-to-buffer "*scratch*"))
 
+(defun kill-buffer-file-name-or-default-directory ()
+  "Display and add to the kill ring the current buffer's filename or directory."
+  (interactive)
+  (let ((buffer-file-name (buffer-file-name))
+        (result (or buffer-file-name default-directory)))
+    (kill-new result)
+    (prog1 result
+      (if buffer-file-name (message "%s" result)
+        (message "Buffer %s not associated with a file; killed default-directory %s" (buffer-name) result)))))
+
 ;; Always use spaces, not tabs, when indenting
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
