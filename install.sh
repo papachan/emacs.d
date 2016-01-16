@@ -3,8 +3,10 @@
 # Full path of script
 SCRIPT_PATH=$(readlink -f "$(dirname "$0")")
 
-# Init and update submodules
+# Install packages and update submodules
 cd $SCRIPT_PATH
+cask
+
 git submodule init
 git submodule update --init --recursive
 git clone --recursive   git@github.com:emacsmirror/python-mode.git  vendor/python-mode.el
