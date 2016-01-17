@@ -1,7 +1,11 @@
-#! /usr/bin/env bash
+#!/bin/bash
 
 # Full path of script
-SCRIPT_PATH=`pwd`
+if [ "$(uname)" == "Darwin" ]; then
+	SCRIPT_PATH=`pwd`
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    SCRIPT_PATH=$(readlink -f "$(dirname "$0")")
+fi
 
 # Install packages and update submodules
 cd $SCRIPT_PATH
