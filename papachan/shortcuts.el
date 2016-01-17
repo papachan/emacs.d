@@ -38,6 +38,8 @@
 ;; (global-set-key (kbd "<f11>") 'toggle-frame-fullscreen)
 (global-set-key (kbd "<f12>") 'run-cask-test)
 ;(global-set-key (kbd "<f12>") 'my-save-and-compile)
+;; comment line
+(global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
 
 
 (provide 'shortcuts)
