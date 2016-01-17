@@ -22,9 +22,9 @@ $ sudo apt-get install build-dep emacs24
 
 * `M-x emacs-version`
 
-### Install packages
+### Install packages and dependencies
 
-`$ cask install`
+`./install.sh`
 
 if you have problem to install pallet
 
