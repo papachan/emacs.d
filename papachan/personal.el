@@ -18,6 +18,6 @@
                            :height 150
                            :weight 'normal)
        (set-face-font 'default font))
-     "Source Code Pro"))))
+     "Fira Code"))))
 
 
