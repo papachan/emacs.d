@@ -35,6 +35,7 @@
 (global-set-key (kbd "<f6>") 'reload-init-file)
 (global-set-key (kbd "<f9>") 'iflipb-next-buffer)
 (global-set-key (kbd "<f8>") 'iflipb-previous-buffer)
+(global-set-key (kbd "C-c n") 'my-dired-create-file)
 ;; (global-set-key (kbd "<f11>") 'toggle-frame-fullscreen)
 (global-set-key (kbd "<f12>") 'run-cask-test)
 ;(global-set-key (kbd "<f12>") 'my-save-and-compile)
