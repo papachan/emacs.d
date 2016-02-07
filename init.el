@@ -92,7 +92,8 @@
     "iflipb"
     "directory-files-recursive"
     "twittering-mode"
-    "helm-aws"))
+    "helm-aws"
+    "lorem-ipsum"))
   (load file))
 
 (linum-mode)

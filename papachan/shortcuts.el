@@ -41,6 +41,7 @@
 ;(global-set-key (kbd "<f12>") 'my-save-and-compile)
 ;; comment line
 (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
+(global-set-key (kbd "C-<f5>") 'Lorem-ipsum-insert-paragraphs)
 
 
 (provide 'shortcuts)
