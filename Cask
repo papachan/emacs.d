@@ -39,6 +39,7 @@
 (depends-on "git-commit")
 (depends-on "goto-chg")
 (depends-on "helm")
+(depends-on "helm-clojuredocs")
 (depends-on "helm-core")
 (depends-on "helm-projectile")
 (depends-on "inf-ruby")
