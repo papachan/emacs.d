@@ -19,7 +19,6 @@
 (depends-on "cljr-helm")
 (depends-on "clojure-mode")
 (depends-on "color-theme")
-(depends-on "color-theme-wombat")
 (depends-on "company")
 (depends-on "darktooth-theme")
 (depends-on "dash")
