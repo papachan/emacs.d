@@ -1,6 +1,9 @@
 ;;; init.el --- --- user init file  -*- no-byte-compile: t -*-
 ;;;
 ;;;
+(when (version< emacs-version "24.1")
+  (error "Prelude requires at least GNU Emacs 24.1, but you're running %s" emacs-version))
+
 (require 'package)
 
 (set-terminal-coding-system 'utf-8)
@@ -161,8 +164,12 @@
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'slime-repl-mode))
 
-(require 'saveplace)
-(setq-default save-place t)
+(if (version< "25.1" emacs-version)
+    (progn
+      (require 'saveplace)
+      (setq-default save-place t))
+  ;(save-place-mode 1)
+  )
 
 (require 'recentf)
 (recentf-mode 1)
