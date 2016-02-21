@@ -41,6 +41,7 @@
 (depends-on "helm-clojuredocs")
 (depends-on "helm-core")
 (depends-on "helm-projectile")
+(depends-on "helm-rb")
 (depends-on "inf-ruby")
 (depends-on "json-reformat")
 (depends-on "keyword-search")
