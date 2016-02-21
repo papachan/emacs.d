@@ -14,7 +14,7 @@
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 
-(global-set-key (kbd "C-p") 'file-fuzzy-finder)
+(global-set-key (kbd "C-c C-p") 'file-fuzzy-finder)
 
 (provide 'setup-projectile)
 ;;; setup-projectile.el ends here
