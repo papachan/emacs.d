@@ -81,6 +81,14 @@ If FILE already exists, signal an error."
     (switch-to-buffer (get-buffer-create bufname))
     (emacs-lisp-mode)))
 
+(defun twist-split ()
+  (interactive)
+  (setq buffer2 (window-buffer (second (window-list))))
+  (if (window-top-child (frame-root-window))
+      (progn (delete-other-windows) (split-window-horizontally))
+    (progn (delete-other-windows) (split-window-vertically)))
+  (set-window-buffer (second (window-list)) buffer2))
+
 (defun split-window-right-and-move-there-dammit ()
   (interactive)
   (split-window-right)

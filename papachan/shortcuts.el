@@ -29,6 +29,7 @@
 (global-set-key (kbd "C-x C-m") 'compile)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
 (global-set-key (kbd "C-x 4") 'split-window-right-and-move-there-dammit)
+(global-set-key (kbd "C-x 5") 'twist-split)
 (global-set-key (kbd "C-x n") 'create-scratch-buffer)
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "S-<f1>") (lambda () (interactive) (dired "~/")))
