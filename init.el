@@ -135,11 +135,11 @@
       ido-max-prospects 10)
 
 ; helm
-(add-to-list 'load-path "~/vendor/helm")
+(add-to-list 'load-path "vendor/helm")
 (require 'helm-config)
 
 ; restclient
-(add-to-list 'load-path "~/vendor/restclient.el")
+(add-to-list 'load-path "vendor/restclient.el")
 (require 'restclient)
 
 ; quicklisp sbcl
