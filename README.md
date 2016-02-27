@@ -18,6 +18,11 @@ with debian pakages you have to install:
 $ sudo apt-get install build-dep emacs24
 ```
 
+Install from brew if you are using Os X
+```bash
+$ brew install emacs --with-cocoa
+```
+
 ### Check your emacs version
 
 * `M-x emacs-version`
@@ -32,6 +37,12 @@ Or if you using Mac Os:
 
 ```bash
 $ brew install cask
+```
+
+python:
+
+```bash
+pip install virtualenv rope ropemacs flake8
 ```
 
 ### Install packages and dependencies
