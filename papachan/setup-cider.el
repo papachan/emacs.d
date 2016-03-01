@@ -34,6 +34,8 @@
     (setq cider-repl-history-size 3000)
     ;; eldoc for clojure
     (add-hook 'cider-mode-hook #'eldoc-mode)
+    ;; set helper message to false
+    (setq cider-repl-display-help-banner nil)
     ;; error buffer not popping up
     (setq cider-show-error-buffer nil)
     ; add hook for tdd with cider
