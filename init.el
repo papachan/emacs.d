@@ -42,8 +42,14 @@
 ; default HOME directory
 (setq default-directory (f-full (getenv "HOME")))
 
-(when (memq window-system '(mac ns))
-  (add-to-list 'exec-path "/usr/bin"))
+;; mac settings
+(cond
+ ((string-equal system-type "darwin")
+  (progn
+    (add-to-list 'exec-path "/usr/bin")
+    (add-to-list 'exec-path "~/bin")
+    (windmove-default-keybindings)
+    (setq x-select-enable-clipboard t))))
 
 ;; autocomplete  git@github.com:auto-complete/auto-complete.git
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.4.0")
@@ -77,8 +83,9 @@
   (load (concat dotfiles-misc-dir file)))
 
 ; paths
-(progn (cd "~/.emacs.d/")
-    (normal-top-level-add-subdirs-to-load-path))
+(progn
+  (cd "~/.emacs.d/")
+  (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'load-path "vendor/origami.el")
 (add-to-list 'load-path "vendor/emacs-neotree")
 (add-to-list 'load-path "vendor/x5o.el")
@@ -111,20 +118,12 @@
 (setq whitespace-line-column 90
       whitespace-style '(tabs trailing tab-mark lines-tail))
 
-;; mac settings
-(cond
- ((string-equal system-type "darwin")
-  (progn
-    (windmove-default-keybindings)
-    (setq x-select-enable-clipboard t))))
-
 (if (fboundp 'desktop-save-mode)
     (desktop-save-mode 1))
 
 ;; ido-mode is like magic pixie dust!
 (require 'ido)
 (ido-mode t)
-;; (ido-ubiquitous t)
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t
       ido-auto-merge-work-directories-length nil
