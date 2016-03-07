@@ -44,6 +44,8 @@
 (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
 (global-set-key (kbd "C-<f5>") 'Lorem-ipsum-insert-paragraphs)
 (global-set-key (kbd "C-x M-d") 'insert-current-date)
+(global-set-key (kbd "C-c v") 'snippet-html)
+(global-set-key (kbd "C-c i") 'snippet-latin)
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here

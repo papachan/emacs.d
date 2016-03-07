@@ -6,6 +6,17 @@
 ;;   (save-buffer 0)
 ;;   (compile "./run"))
 
+; adding html snippet
+(defun snippet-html ()
+  (lambda())
+  (interactive)
+  (insert "<!DOCTYPE html>\n<html>\n<head>\n    <title></title>\n</head>\n<body>\n\n</body>\n</html>"))
+
+(defun snippet-latin ()
+  (lambda())
+  (interactive)
+  (insert "iso-8859-1"))
+
 (defun insert-current-date ()
   (interactive)
   (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))

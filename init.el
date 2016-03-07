@@ -64,7 +64,6 @@
 (dolist (file '("misc"
                 "personal"
                 "shortcuts"
-                "snippet"
                 "erlang"
                 "github"
                 "text-editing"
