@@ -6,6 +6,10 @@
 ;;   (save-buffer 0)
 ;;   (compile "./run"))
 
+(defun insert-current-date ()
+  (interactive)
+  (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
+
 (defun my-dired-create-file (file)
   "Create a file called FILE.
 If FILE already exists, signal an error."

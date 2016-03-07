@@ -43,7 +43,7 @@
 ;; comment line
 (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
 (global-set-key (kbd "C-<f5>") 'Lorem-ipsum-insert-paragraphs)
-
+(global-set-key (kbd "C-x M-d") 'insert-current-date)
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
