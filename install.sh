@@ -18,6 +18,8 @@ git clone --recursive   git@github.com:emacsmirror/python-mode.git  vendor/pytho
 cd lib
 echo "download lorem-ipsum.el"
 curl -J -O https://raw.githubusercontent.com/jschaf/emacs-lorem-ipsum/master/lorem-ipsum.el
+echo "download insert-time.el"
+curl -J -O https://raw.githubusercontent.com/rmm5t/insert-time.el/master/insert-time.el
 echo "download iflipb.el"
 curl -J -O https://raw.githubusercontent.com/jrosdahl/iflipb/master/iflipb.el
 echo "download directory-files-recursive.el"
