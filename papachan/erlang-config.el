@@ -1,6 +1,6 @@
 ;;; erlang-config.el
 (require 'erlang-start)
-;;(require 'erlang)
+(require 'erlang)
 
 (add-hook 'erlang-mode-hook 'electric-indent-mode)
 (add-hook 'erlang-mode-hook 'pending-delete-mode)
