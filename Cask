@@ -59,6 +59,7 @@
 (depends-on "org-tree-slide")
 (depends-on "package-build")
 (depends-on "pallet")
+(depends-on "paradox")
 (depends-on "paredit")
 (depends-on "password-generator")
 (depends-on "paxedit")

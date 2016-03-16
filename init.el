@@ -64,7 +64,7 @@
 (dolist (file '("misc"
                 "personal"
                 "shortcuts"
-                "erlang"
+                "erlang-config"
                 "github"
                 "text-editing"
                 "appearance"
@@ -183,4 +183,10 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
+(use-package multiple-cursors
+  :config
+  (progn
+    (setq mc/max-cursors 30)))
+
 (custom-set-variables '(safe-local-variable-values (quote ((Syntax . Common-Lisp)))))
+
