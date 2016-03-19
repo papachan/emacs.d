@@ -5,7 +5,7 @@
 (add-to-list 'ac-modes 'enh-ruby-mode)
 (add-to-list 'ac-modes 'web-mode)
 
-(setq enh-ruby-program "~/.rbenv/versions/2.2.3/bin/ruby")
+;; (setq enh-ruby-program "~/.rbenv/versions/2.2.3/bin/ruby")
 
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))

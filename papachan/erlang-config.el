@@ -7,6 +7,7 @@
 (add-hook 'erlang-mode-hook 'electric-layout-mode)
 ;; (add-hook 'erlang-mode-hook 'font-lock-comment-annotations)
 (add-hook 'erlang-mode-hook 'projectile-on)
+;; (add-to-list 'projectile-globally-ignored-directories "_build")
 (add-hook 'erlang-mode-hook
           (lambda () (local-set-key (kbd "RET") 'newline-and-indent)))
 (add-hook 'erlang-mode-hook

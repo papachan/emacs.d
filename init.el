@@ -133,7 +133,6 @@
       ido-max-prospects 10)
 
 ; helm
-(add-to-list 'load-path "vendor/helm")
 (require 'helm-config)
 
 ; restclient
