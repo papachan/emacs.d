@@ -42,7 +42,7 @@
 ; default HOME directory
 (setq default-directory (f-full (getenv "HOME")))
 
-;; mac settings
+;; osx settings
 (cond
  ((string-equal system-type "darwin")
   (progn
@@ -149,13 +149,6 @@
 (add-hook 'window-setup-hook 'maximize-frame t)
 ; delete other windows when open multiple files
 (add-hook 'emacs-startup-hook 'delete-other-windows)
-
-;; enabling fill-column-indicator
-;; (load "fill-column-indicator")
-;; (require 'fill-column-indicator)
-;; (define-globalized-minor-mode
-;;   global-fci-mode fci-mode (lambda () (fci-mode 1)))
-;; (global-fci-mode t)
 
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
