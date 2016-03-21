@@ -34,5 +34,4 @@
 (add-hook 'after-init-hook #'smart-mode-line-init)
 
 (provide 'setup-smartmode)
-
 ;;; setup-smartmode.el ends here

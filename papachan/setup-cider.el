@@ -52,4 +52,5 @@
     ;; paredit-mode
     (add-hook 'clojure-mode-hook 'paredit-mode)))
 
+(provide 'setup-cider)
 ;;; setup-cider.el ends here

@@ -46,6 +46,7 @@
 (cond
  ((string-equal system-type "darwin")
   (progn
+    (add-to-list 'exec-path "/usr/local/bin")
     (add-to-list 'exec-path "/usr/bin")
     (add-to-list 'exec-path "~/bin")
     (windmove-default-keybindings)
@@ -141,7 +142,7 @@
 
 ; quicklisp sbcl
 (add-to-list 'load-path "~/quicklisp")
-(setq inferior-lisp-program "/usr/bin/sbcl")
+(setq inferior-lisp-program "sbcl")
 (setq slime-contribs '(slime-fancy))
 
 (require 'maxframe)
@@ -160,6 +161,7 @@
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'slime-repl-mode))
+;; (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
 
 (if (version< "25.1" emacs-version)
     (progn
