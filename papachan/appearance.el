@@ -3,6 +3,8 @@
 (require 'color-theme)
 (require 'color)
 
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
