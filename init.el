@@ -69,6 +69,7 @@
                 "github"
                 "text-editing"
                 "appearance"
+                "setup-dired"
                 "setup-ivy"
                 "setup-cider"
                 "setup-projectile"
