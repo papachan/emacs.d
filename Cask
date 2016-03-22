@@ -20,6 +20,7 @@
 (depends-on "clj-refactor")
 (depends-on "cljr-helm")
 (depends-on "clojure-mode")
+(depends-on "coffee-mode")
 (depends-on "color-theme")
 (depends-on "company")
 (depends-on "dash")
