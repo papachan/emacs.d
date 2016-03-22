@@ -65,6 +65,7 @@
 (dolist (file '("misc"
                 "personal"
                 "shortcuts"
+                "init-ibuffer"
                 "erlang-config"
                 "github"
                 "text-editing"
