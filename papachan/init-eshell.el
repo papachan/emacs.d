@@ -9,6 +9,8 @@
       (interactive)
       (eshell t))
 
+    (setq shell-command-switch "-ic")
+    
     (global-set-key  (kbd "C-x e") 'eshell)
     (global-set-key  (kbd "C-x E") 'eshell-new)
 
@@ -16,10 +18,11 @@
     (setq eshell-aliases-file (expand-file-name "eshell/alias" dotemacs-dir))
     (setq eshell-banner-message (concat " Welcome back " user-login-name ".\n"))
 
-    (add-hook 'eshell-mode-hook 'ansi-color-for-comint-mode-on)
     (add-hook 'eshell-mode-hook (lambda ()
+                                  'ansi-color-for-comint-mode-on
                                   (setenv "PATH" (shell-command-to-string "source ~/.zshenv; echo -n $PATH"))
                                   (setq-local show-trailing-whitespace nil))))
+  
   (message "EShell system is loaded and configured."))
 
 

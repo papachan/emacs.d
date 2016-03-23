@@ -171,8 +171,6 @@
 
 ; compile in a status buffer
 (setq compilation-read-command nil)
-; make shell interactive
-(setq shell-command-switch "-ic")
 
 (put 'dired-find-alternate-file 'disabled nil)
 
