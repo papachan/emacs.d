@@ -17,7 +17,9 @@
     (setq eshell-banner-message (concat " Welcome back " user-login-name ".\n"))
 
     (add-hook 'eshell-mode-hook 'ansi-color-for-comint-mode-on)
-    (add-hook 'eshell-mode-hook (lambda () (setq-local show-trailing-whitespace nil))))
+    (add-hook 'eshell-mode-hook (lambda ()
+                                  (setenv "PATH" (shell-command-to-string "source ~/.zshenv; echo -n $PATH"))
+                                  (setq-local show-trailing-whitespace nil))))
   (message "EShell system is loaded and configured."))
 
 
