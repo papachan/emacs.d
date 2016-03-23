@@ -156,7 +156,7 @@
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'slime-repl-mode))
-;; (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook #'enable-paredit-mode)
 
 (if (version< "25.1" emacs-version)
     (progn
