@@ -15,6 +15,8 @@
 (cask-initialize)
 (require 'pallet)
 (pallet-mode t)
+(cond ((file-directory-p "~/.cask/bin")
+       (setenv "PATH" (concat (getenv "HOME") "/.cask/bin:" (getenv "PATH")))))
 
 (setq dotemacs-dir user-emacs-directory)
 (setq dotemacs-cache-dir (expand-file-name ".cache" dotemacs-dir))
