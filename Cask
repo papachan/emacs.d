@@ -49,7 +49,6 @@
 (depends-on "json-reformat")
 (depends-on "keyword-search")
 (depends-on "lfe-mode")
-(depends-on "lispy")
 (depends-on "magit")
 (depends-on "magit-gh-pulls")
 (depends-on "magit-popup")

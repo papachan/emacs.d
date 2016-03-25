@@ -12,7 +12,10 @@
   '(("yay0" "٩(⁎❛ᴗ❛⁎)۶")
     ("huhu" "ヾ(^ω^*)")
     ("kiss0" "ヾ(￣◇￣)ノ〃")
-    ("shrug0" "¯\\_(ツ)_/¯")))
+    ("shrug0" "¯\\_(ツ)_/¯")
+    ("sigh" "ಠ_ಠ")
+    ("yuno" "(ノಠ益ಠ)ノ")
+    ("sad0" "(ಥ_ಥ)")))
 
 (add-to-list 'abbrev-minor-mode-table-alist
 	     `(unicode-emoticons-mode ,unicode-emoticons-mode-abbrev-table))

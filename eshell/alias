@@ -2,3 +2,5 @@ alias ff find-file $1
 alias FF find-file-other-window $1
 alias ppf projectile-find-file
 alias ppo helm-projectile
+alias code ~/dev/source_code/
+alias repos ~/git

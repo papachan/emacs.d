@@ -50,7 +50,7 @@
   (progn
     (add-to-list 'exec-path "/usr/local/bin")
     (add-to-list 'exec-path "/usr/bin")
-    (add-to-list 'exec-path "~/bin")
+    (add-to-list 'exec-path (concat dotemacs-dir "bin"))
     (windmove-default-keybindings)
     (setq x-select-enable-clipboard t))))
 
@@ -59,7 +59,7 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories
-             "~/.emacs.d/vendor/auto-complete-1.4.0/dict")
+             (concat user-emacs-directory "vendor/auto-complete-1.4.0/dict"))
 (ac-config-default)
 (setq ac-ignore-case nil)
 (global-auto-complete-mode t)
@@ -88,7 +88,7 @@
 
 ; paths
 (progn
-  (cd "~/.emacs.d/")
+  (cd dotemacs-dir)
   (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'load-path "vendor/origami.el")
 (add-to-list 'load-path "vendor/emacs-neotree")
@@ -145,7 +145,7 @@
 (require 'restclient)
 
 ; quicklisp sbcl
-(add-to-list 'load-path "~/quicklisp")
+(add-to-list 'load-path (concat user-emacs-directory "quicklisp"))
 (setq inferior-lisp-program "sbcl")
 (setq slime-contribs '(slime-fancy))
 

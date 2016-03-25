@@ -160,6 +160,10 @@ If FILE already exists, signal an error."
       (if buffer-file-name (message "%s" result)
         (message "Buffer %s not associated with a file; killed default-directory %s" (buffer-name) result)))))
 
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
 ;; Always use spaces, not tabs, when indenting
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
