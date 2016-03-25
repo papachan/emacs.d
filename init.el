@@ -6,23 +6,19 @@
 
 (require 'package)
 
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
+(setq dotemacs-dir user-emacs-directory)
+(setq dotemacs-cache-dir (expand-file-name ".cache" dotemacs-dir))
+(setq dotfiles-lisp-dir
+      (expand-file-name "lib" dotemacs-dir))
 
 ;; initializing pallet
-(require 'cask "~/.cask/cask.el")
+(require 'cask (concat (getenv "HOME") "/" ".cask/cask.el"))
 (cask-initialize)
 (require 'pallet)
 (pallet-mode t)
-(cond ((file-directory-p "~/.cask/bin")
-       (setenv "PATH" (concat (getenv "HOME") "/.cask/bin:" (getenv "PATH")))))
 
-(setq dotemacs-dir user-emacs-directory)
-(setq dotemacs-cache-dir (expand-file-name ".cache" dotemacs-dir))
-
-(setq dotfiles-lisp-dir
-      (expand-file-name "lib" dotemacs-dir))
+(cond ((file-directory-p (concat (getenv "HOME") "/" ".cask/bin"))
+       (setenv "PATH" (concat (getenv "HOME") "/" ".cask/bin:" (getenv "PATH")))))
 
 ; add lisp files directory
 (setq dotfiles-misc-dir
@@ -100,6 +96,8 @@
 (require 'frame-cmds)
 (require 'smex)
 (smex-initialize)
+(require 'bootstrap)
+(download-elisp-files elisp-file-list)
 
 ;; load files from dotfiles-lisp-dir
 (dolist (file '(
