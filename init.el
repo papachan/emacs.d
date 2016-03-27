@@ -66,6 +66,7 @@
                 "personal"
                 "shortcuts"
                 "init-ibuffer"
+                "setup-elixir"
                 "setup-erlang"
                 "github"
                 "text-editing"

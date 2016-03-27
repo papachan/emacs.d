@@ -35,6 +35,7 @@
 (depends-on "f")
 (depends-on "fancy-narrow")
 (depends-on "find-file-in-project")
+(depends-on "flycheck-elixir")
 (depends-on "frame-cmds")
 (depends-on "gh")
 (depends-on "git-commit")
