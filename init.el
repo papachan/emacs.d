@@ -17,8 +17,10 @@
 (require 'pallet)
 (pallet-mode t)
 
-(cond ((file-directory-p (concat (getenv "HOME") "/" ".cask/bin"))
-       (setenv "PATH" (concat (getenv "HOME") "/" ".cask/bin:" (getenv "PATH")))))
+(cond ((file-directory-p
+        (concat (getenv "HOME") "/" ".cask/bin"))
+       (setenv "PATH"
+        (concat (getenv "HOME") "/" ".cask/bin:" (getenv "PATH")))))
 
 ; add lisp files directory
 (setq dotfiles-misc-dir
@@ -64,7 +66,7 @@
                 "personal"
                 "shortcuts"
                 "init-ibuffer"
-                "erlang-config"
+                "setup-erlang"
                 "github"
                 "text-editing"
                 "appearance"
