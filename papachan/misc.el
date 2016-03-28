@@ -6,6 +6,11 @@
 ;;   (save-buffer 0)
 ;;   (compile "./run"))
 
+(defun buffer/clear ()
+  (interactive)
+  (let ((oldbuf (current-buffer)))
+  (erase-buffer)))
+
 ; adding html snippet
 (defun snippet-html ()
   (lambda())
@@ -170,7 +175,6 @@ If FILE already exists, signal an error."
 
 ;; Prevent lock files from creating.
 (setq create-lockfiles nil)
-
 (setq make-backup-files nil)
 
 ;; disable system beep 
