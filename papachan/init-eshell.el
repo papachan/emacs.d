@@ -18,16 +18,17 @@
     
     (global-set-key  (kbd "C-x e") 'eshell)
     (global-set-key  (kbd "C-x E") 'eshell-new)
-    (global-set-key  (kbd "C-x v") 'eshell/clear)
 
     (setq eshell-directory-name (expand-file-name "eshell"  dotemacs-cache-dir))
     (setq eshell-aliases-file (expand-file-name "eshell/alias" dotemacs-dir))
     (setq eshell-banner-message (concat " Welcome back " user-login-name ".\n"))
 
     (add-hook 'eshell-mode-hook (lambda ()
+                                  (define-key eshell-mode-map (kbd "C-x v") 'eshell/clear)
                                   'ansi-color-for-comint-mode-on
                                   (setenv "PATH" (shell-command-to-string "source ~/.zshenv; echo -n $PATH"))
-                                  (setq-local show-trailing-whitespace nil))))
+                                  (setq-local show-trailing-whitespace nil)
+                                  (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history))))
   
   (message "EShell system is loaded and configured."))
 
