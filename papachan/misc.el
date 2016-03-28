@@ -8,8 +8,8 @@
 
 (defun buffer/clear ()
   (interactive)
-  (let ((oldbuf (current-buffer)))
-  (erase-buffer)))
+  (with-current-buffer (current-buffer)
+      (erase-buffer)))
 
 ; adding html snippet
 (defun snippet-html ()
