@@ -4,7 +4,8 @@
      (cond
       ((string-equal system-type "darwin")
        (setq dired-listing-switches "-lFh"))
-       (t (setq dired-listing-switches "-lX --si --group-directories-first")))
+      (t (setq dired-listing-switches "-al --si")))
+     ;; (t (setq dired-listing-switches "-lX --si --group-directories-first"))
      (define-key dired-mode-map (kbd "C-c n") 'my-dired-create-file)
      (defun my-dired-create-file (file)
        "Create a file called FILE. If FILE already exists, signal an error."

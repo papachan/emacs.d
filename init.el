@@ -119,6 +119,9 @@
 (require 'window-numbering)
 (window-numbering-mode 1)
 
+;; Kill buffers which haven't been modified in a while
+(require 'midnight)
+
 (require 'whitespace)
 (setq whitespace-line-column 90
       whitespace-style '(tabs trailing tab-mark lines-tail))
