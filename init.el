@@ -4,6 +4,8 @@
 (when (version< emacs-version "24.1")
   (error "Prelude requires at least GNU Emacs 24.1, but you're running %s" emacs-version))
 
+(setq *emacs-load-start* (current-time))
+
 (require 'package)
 
 (setq dotemacs-dir user-emacs-directory)
@@ -187,6 +189,13 @@
   :config
   (progn
     (setq mc/max-cursors 30)))
+
+;; check emacs start time
+(message "Emacs started in %ds"
+         (destructuring-bind (hi lo ms ps) (current-time)
+           (- (+ hi lo)
+              (+ (first *emacs-load-start*)
+                 (second *emacs-load-start*)))))
 
 (custom-set-variables '(safe-local-variable-values (quote ((Syntax . Common-Lisp)))))
 
