@@ -87,6 +87,7 @@
 (depends-on "smart-mode-line-powerline-theme")
 (depends-on "smartparens")
 (depends-on "smex")
+(depends-on "spinner")
 (depends-on "sr-speedbar")
 (depends-on "swiper")
 (depends-on "swiper-helm")
