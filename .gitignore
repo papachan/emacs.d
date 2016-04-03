@@ -30,3 +30,4 @@ projectile-bookmarks.eld
 lib/*.el
 abbrev_defs
 projectile.cache
+smex-items
