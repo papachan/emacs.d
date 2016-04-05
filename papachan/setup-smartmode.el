@@ -5,8 +5,6 @@
 
 ;; Setup Smart Model Line
 (defun smart-mode-line-init()
-  ;; respect the current theme
-  (setq sml/theme 'respectful)
   (setq sml/theme 'dark)
   (setq sml/theme 'powerline)
   ;; taken from Sasha Chua
