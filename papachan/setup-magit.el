@@ -19,7 +19,7 @@
                 (not (member pr-refs remote-fetch-refs))
                 (string-match "github.com" (magit-get "remote" remote "url"))
                 (magit-git-string "config" "--add" (format "remote.%s.fetch" remote) pr-refs)))))
-  ;; C-x C-k to kill file on line
+
   (defun magit-kill-file-on-line ()
     "Show file on current magit line and prompt for deletion."
     (interactive)
@@ -28,11 +28,10 @@
     (magit-refresh))
   (progn
     (define-key magit-status-mode-map (kbd "C-x C-k") 'magit-kill-file-on-line)
+    (define-key magit-status-mode-map (kbd "C-c e") 'magit-log-buffer-file)
     (setq magit-push-always-verify nil)
     ; remove git diff frame when open magit commit frame
-    (remove-hook 'server-switch-hook 'magit-commit-diff)
-    ;(add-hook 'magit-mode-hook 'add-pull-request-refs)
-    ))
+    (remove-hook 'server-switch-hook 'magit-commit-diff)))
 
 
 (provide 'setup-magit)
