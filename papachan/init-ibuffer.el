@@ -35,12 +35,12 @@
              ;; so that all non pathnames are at the end
              "~"))))
 
+    (define-key ibuffer-mode-map (kbd "C-c C-g") 'ibuffer-filter-by-name)
     (define-key ibuffer-mode-map (kbd "J") 'ibuffer-jump-to-buffer)
     (define-key ibuffer-mode-map (kbd "K") 'ibuffer-do-kill-lines)
     (define-key ibuffer-mode-map [tab] 'next-line)
     (define-key ibuffer-mode-map [(shift tab)] 'previous-line)
-    (define-key ibuffer-mode-map (kbd "C-g") 'quit-window))
-    (define-key ibuffer-mode-map (kbd "C-c C-g") 'ibuffer-filter-by-name)))
+    (define-key ibuffer-mode-map (kbd "C-g") 'quit-window)))
 
 
 (add-hook 'ibuffer-mode-hook
