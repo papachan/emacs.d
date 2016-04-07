@@ -4,7 +4,7 @@
 (define-key key-translation-map [dead-circumflex] "^")
 (define-key key-translation-map [dead-grave] "`")
 
-(global-set-key (kbd "M-w") (lambda () (interactive) (insert "~")))
+;; (global-set-key (kbd "M-w") (lambda () (interactive) (insert "~")))
 (global-set-key (kbd "C-x M-z") 'open-scratch-buffer)
 (global-set-key (kbd "C-c -") 'buffer/clear)
 (global-set-key (kbd "M-x") 'helm-M-x)
