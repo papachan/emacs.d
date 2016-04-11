@@ -16,8 +16,9 @@
   (show-paren-mode 1)
   (mouse-wheel-mode t)
   (blink-cursor-mode -1)
-  
-  (load-file (expand-file-name "vendor/zerodark-theme/zerodark-theme.el" dotemacs-dir)))
+  (cond
+   ((eq system-type 'gnu/linux)
+    (load-file (expand-file-name "vendor/zerodark-theme/zerodark-theme.el" dotemacs-dir)))))
 
 (provide 'appearance)
 

@@ -177,8 +177,10 @@ If FILE already exists, signal an error."
 (setq create-lockfiles nil)
 (setq make-backup-files nil)
 
-;; disable system beep 
-(setq visible-bell 1)
+;; disable system beep
+(cond
+ ((eq system-type 'gnu/linux)
+  (setq visible-bell 1)))
 
 ;; Ignore case when searching
 (setq case-fold-search t)

@@ -1,13 +1,21 @@
 ;;; setup-smartmode.el
 
-; smart-mode-line
+;; smart-mode-line
 (require 'smart-mode-line)
+(require 'powerline)
 
 ;; Setup Smart Model Line
 (defun smart-mode-line-init()
-  (setq sml/theme 'dark)
-  (setq sml/theme 'powerline)
-  ;; taken from Sasha Chua
+  (cond
+   ((eq system-type 'darwin)
+    ;; light theme for mac os
+    (setq sml/theme 'light)
+    (setq sml/theme 'light-powerline))
+   ((eq system-type 'gnu/linux)
+    ;; dark theme for linux
+    (setq sml/theme 'dark)
+    (setq sml/theme 'powerline)))
+
   (setq-default
    mode-line-format
    '("%e"

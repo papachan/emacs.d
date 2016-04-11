@@ -46,11 +46,11 @@
 
 ;; osx settings
 (cond
- ((string-equal system-type "darwin")
+ ((equal system-type 'darwin)
   (progn
+    (add-to-list 'exec-path "~/bin")
     (add-to-list 'exec-path "/usr/local/bin")
     (add-to-list 'exec-path "/usr/bin")
-    (add-to-list 'exec-path (concat dotemacs-dir "bin"))
     (windmove-default-keybindings)
     (setq x-select-enable-clipboard t))))
 
@@ -96,7 +96,9 @@
 (add-to-list 'load-path "vendor/x5o.el")
 (add-to-list 'load-path "vendor/slack")
 (add-to-list 'load-path dotfiles-lisp-dir)
+(add-to-list 'load-path "vendor/restclient.el")
 
+(require 'restclient)
 (require 'expand-region)
 (require 'frame-cmds)
 (require 'smex)
@@ -145,10 +147,6 @@
 
 ; helm
 (require 'helm-config)
-
-; restclient
-(add-to-list 'load-path "vendor/restclient.el")
-(require 'restclient)
 
 ; quicklisp sbcl
 (add-to-list 'load-path (concat user-emacs-directory "quicklisp"))
