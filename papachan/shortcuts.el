@@ -49,6 +49,7 @@
 (global-set-key (kbd "C-x M-d") 'insert-current-date)
 (global-set-key (kbd "C-c v") 'snippet-html)
 (global-set-key (kbd "C-c i") 'snippet-latin)
+(global-unset-key (kbd "C-z"))
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
