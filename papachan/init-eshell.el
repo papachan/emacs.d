@@ -1,10 +1,10 @@
 ;;; init-eshell.el
+(require 'em-smart)
+(require 'ansi-color)
 
 (use-package eshell
   :config
   (progn
-    (require 'em-smart)
-    (require 'ansi-color)
     (defun eshell-new ()
       (interactive)
       (eshell t))
@@ -29,7 +29,10 @@
                                   (setenv "PATH" (shell-command-to-string "source ~/.zshenv; echo -n $PATH"))
                                   (setq-local show-trailing-whitespace nil)
                                   (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history))))
-  
+
+  :init
+  (progn
+   (setq eshell-mv-overwrite-files nil))
   (message "EShell system is loaded and configured."))
 
 

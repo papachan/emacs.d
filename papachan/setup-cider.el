@@ -15,6 +15,7 @@
 
 (use-package cider
   :config
+
   (defun tdd-test ()
     "Thin wrapper around `cider-test-run-tests'."
     (when (cider-connected-p)
@@ -56,9 +57,11 @@
     ;(add-hook 'cider-mode-hook #'company-mode)
     (global-set-key (kbd "M-TAB") #'company-complete) ; meta+tab, aka C-M-i, as manual trigger
     (custom-set-faces
-        '(cider-test-success-face ((t (:foreground "green" :background nil)))))
+     '(cider-test-success-face ((t (:foreground "green" :background nil)))))
     ;; paredit-mode
     (add-hook 'clojure-mode-hook 'paredit-mode)))
+
+
 
 (provide 'setup-cider)
 ;;; setup-cider.el ends here
