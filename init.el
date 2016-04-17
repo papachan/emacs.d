@@ -1,4 +1,4 @@
-;;; init.el --- --- user init file  -*- no-byte-compile: t -*-
+;;; init.el --- --- user init file
 ;;;
 ;;;
 (when (version< emacs-version "24.1")
