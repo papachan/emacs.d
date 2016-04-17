@@ -1,6 +1,8 @@
 ;;; init-ibuffer.el
 (require 'ibuffer)
 
+(defalias 'list-buffers 'ibuffer)
+
 (eval-after-load 'ibuffer
   (progn
     (setq ibuffer-saved-filter-groups
