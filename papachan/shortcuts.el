@@ -16,7 +16,7 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "s--") 'er/contract-region)
 (global-set-key (kbd "C-d") 'mc/mark-next-like-this)
-;; (global-set-key (kbd "C-x C-b") 'buffer-menu)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-c C-n") 'new-empty-buffer)
 (global-set-key (kbd "C-c C-d") 'put-the-date)
 (global-set-key (kbd "C-c w") 'select-whole-line)
