@@ -19,6 +19,7 @@
                        (name . "^\\*Messages\\*$")
                        (name . "^\\*Help\\*$")
                        (name . "^\\*Warnings\\*$")
+                       (name . "^\\*Bookmark List\\*$")
                        ))
              ("SQL" (mode . sql-mode))
              ("Python" (mode . python-mode))
