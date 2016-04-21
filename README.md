@@ -20,7 +20,7 @@ $ sudo apt-get install build-dep emacs24
 
 Install from brew if you are using Os X
 ```bash
-$ brew install emacs --with-cocoa
+$ brew install emacs --HEAD --with-cocoa --with-gnutls --with-librsvg --with-imagemagick
 ```
 
 ### Check your emacs version
