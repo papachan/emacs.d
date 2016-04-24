@@ -60,11 +60,6 @@ If FILE already exists, signal an error."
   (end-of-line)
   (set-mark (line-beginning-position)))
 
-; create empty __init__.py at the place
-(defun create-empty-init-py()
-  (interactive)
-  (shell-command "touch __init__.py"))
-
 (defun insert-a-blank-line ()
   "insert a new line above the line containing the cursor."
   (interactive)

@@ -24,7 +24,6 @@
 (global-set-key (kbd "C-c o") 'insert-a-blank-line)
 (global-set-key (kbd "C-c d") 'kill-whole-line)
 (global-set-key (kbd "C-c m") 'magit-status)
-(global-set-key (kbd "C-c p i") 'create-empty-init-py)
 (global-set-key (kbd "M-H") 'common-lisp-hyperspec)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
