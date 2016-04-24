@@ -9,7 +9,8 @@
 
 (defun clean-python-files ()
   (interactive)
-  (shell-command "find . -name '*.py[co]' -delete"))
+  (shell-command "find . -name '*.py[co]' -delete")
+  (revert-buffer t t))
 
 ; create empty __init__.py at the place
 (defun create-empty-init-py()
