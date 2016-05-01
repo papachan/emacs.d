@@ -48,6 +48,7 @@
 (depends-on "helm-rb")
 (depends-on "hydra")
 (depends-on "inf-ruby")
+(depends-on "ivy")
 (depends-on "json-reformat")
 (depends-on "keyword-search")
 (depends-on "lfe-mode")
