@@ -23,9 +23,11 @@
                        ))
              ("SQL" (mode . sql-mode))
              ("Python" (mode . python-mode))
-             ("Ruby" (mode . ruby-mode))
+             ("Ruby" (or
+                      (mode . ruby-mode)
+                      (mode . enh-ruby-mode)))
              ("Erlang" (mode . erlang-mode))
-             ("code" (or (filename . "source_code")
+             ("Code" (or (filename . "source_code")
                          (mode . lisp-mode)))
              ("Org"  (mode . org-mode))
              ("Magit" (or (name . "magit")
