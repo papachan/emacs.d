@@ -16,11 +16,5 @@
 
 (setq latex-run-command "pdflatex")
 
-(org-babel-do-load-languages
-      'org-babel-load-languages
-      '((emacs-lisp . t)
-        (sh . t)
-        (ruby . t)))
-
 (provide 'org-latex-settings)
 ;;; org-latex-settings ends here

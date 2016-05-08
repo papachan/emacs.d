@@ -79,6 +79,7 @@
                 "setup-projectile"
                 "setup-magit"
                 "init-eshell"
+                "org-babel"
                 "ido-snippet"
                 "setup-python"
                 "setup-ruby"
