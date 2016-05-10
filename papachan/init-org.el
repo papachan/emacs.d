@@ -2,18 +2,14 @@
 ;;
 (require 'org)
 
-(add-to-list 'org-emphasis-alist
-             '("*" (:foreground "green")))
-(add-to-list 'org-emphasis-alist
-             '("/" (italic :foreground "yellow")))
-(add-to-list 'org-emphasis-alist
-             '("_" (underline :foreground "black" :background "CadetBlue2")))
-(add-to-list 'org-emphasis-alist
-             '("+" (:strike-through t :foreground "red")))
-(add-to-list 'org-emphasis-alist
-             '("~" org-code verbatim))
-(add-to-list 'org-emphasis-alist
-             '("=" org-verbatim verbatim))
+(dolist (org-styles '(("*" (:foreground "green"))
+      ("/" (italic :foreground "yellow"))
+      ("_" (underline :foreground "black" :background "CadetBlue2"))
+      ("+" (:strike-through t :foreground "red"))
+      ("~" org-code verbatim)
+      ("=" org-verbatim verbatim)))
+    (add-to-list 'org-emphasis-alist
+             org-styles))
 
 
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|txt\\|doc\\)\\'" . org-mode))
