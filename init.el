@@ -156,9 +156,12 @@
 (setq slime-contribs '(slime-fancy))
 
 (require 'maxframe)
-(add-hook 'window-setup-hook 'maximize-frame t)
-; delete other windows when open multiple files
-(add-hook 'emacs-startup-hook 'delete-other-windows)
+(cond
+ ((eq system-type 'gnu/linux)
+  (progn
+    (add-hook 'window-setup-hook 'maximize-frame t)
+    ;; delete other windows when open multiple files
+    (add-hook 'emacs-startup-hook 'delete-other-windows))))
 
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
