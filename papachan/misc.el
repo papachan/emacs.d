@@ -160,6 +160,11 @@ If FILE already exists, signal an error."
       (if buffer-file-name (message "%s" result)
         (message "Buffer %s not associated with a file; killed default-directory %s" (buffer-name) result)))))
 
+(defun revert-buffer-without-confirmation()
+  "revert buffer without asking for confirmation"
+  (interactive "")
+  (revert-buffer t t t))
+
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)

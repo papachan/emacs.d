@@ -43,6 +43,8 @@
 (global-set-key (kbd "C-<f11>") 'toggle-frame-fullscreen)
 (global-set-key (kbd "<f12>") 'run-cask-test)
 ;(global-set-key (kbd "<f12>") 'my-save-and-compile)
+(global-set-key (kbd "C-c C-v") 'revert-buffer-without-confirmation)
+
 ;; comment line
 (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
 (global-set-key (kbd "C-<f5>") 'Lorem-ipsum-insert-paragraphs)
