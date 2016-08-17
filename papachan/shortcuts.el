@@ -44,6 +44,9 @@
 (global-set-key (kbd "<f12>") 'run-cask-test)
 ;(global-set-key (kbd "<f12>") 'my-save-and-compile)
 (global-set-key (kbd "C-c C-v") 'revert-buffer-without-confirmation)
+(global-set-key (kbd "C-c a") 'my-increment-number-at-point)
+(global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
+
 
 ;; comment line
 (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
