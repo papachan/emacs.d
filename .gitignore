@@ -31,3 +31,4 @@ lib/*.el
 abbrev_defs
 projectile.cache
 smex-items
+network-security.data
