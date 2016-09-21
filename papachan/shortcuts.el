@@ -9,7 +9,7 @@
 (global-set-key (kbd "C-x M-z") 'open-scratch-buffer)
 (global-set-key (kbd "C-c C-o") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-c -") 'buffer/clear)
-;;(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-c >") 'my-indent-region)
 (global-set-key (kbd "C-c <") 'my-unindent-region)
 (global-set-key [pause] 'toggle-current-window-dedication)
