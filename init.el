@@ -52,7 +52,7 @@
     (add-to-list 'exec-path "/usr/local/bin")
     (add-to-list 'exec-path "/usr/bin")
     (windmove-default-keybindings)
-    (setq x-select-enable-clipboard t))))
+    (setq select-enable-clipboard t))))
 
 ;; autocomplete  git@github.com:auto-complete/auto-complete.git
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete-1.5.1")
