@@ -1,8 +1,8 @@
 ;;; init.el --- --- user init file
 ;;;
 ;;;
-(when (version< emacs-version "24.1")
-  (error "Prelude requires at least GNU Emacs 24.1, but you're running %s" emacs-version))
+(when (version< emacs-version "25.1")
+  (error "This config requires at least GNU Emacs 25.1, but you're running %s" emacs-version))
 
 (setq *emacs-load-start* (current-time))
 

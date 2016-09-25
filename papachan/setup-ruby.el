@@ -74,6 +74,7 @@
 (eval-after-load 'inf-ruby'
   '(define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
 
+;; (grep-apply-setting 'grep-find-command "find . ! -name \"*~\" ! -path \"*/.git/*\" ! -name \"#*#\" -type f -print0 | xargs -0 -e grep -nH --exclude=\\*.{log,css,js,svg,map,sql} -e ")
 
 (provide 'setup-ruby)
 ;;; setup-ruby.el ends here
