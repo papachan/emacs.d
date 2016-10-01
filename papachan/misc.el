@@ -224,5 +224,8 @@ If FILE already exists, signal an error."
 ; electric mode
 (electric-indent-mode +1)
 
+; move-text
+(move-text-default-bindings)
+
 (provide 'misc)
 ;;; misc.el ends here
