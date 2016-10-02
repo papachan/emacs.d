@@ -173,8 +173,7 @@
     (progn
       (require 'saveplace)
       (setq-default save-place t))
-  ;(save-place-mode 1)
-  )
+  (save-place-mode 1))
 
 (require 'recentf)
 (recentf-mode 1)

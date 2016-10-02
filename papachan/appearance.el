@@ -19,7 +19,8 @@
   (blink-cursor-mode -1)
   (cond
    ((eq system-type 'gnu/linux)
-    (load-file (expand-file-name "vendor/zerodark-theme/zerodark-theme.el" dotemacs-dir)))))
+    (load-file (expand-file-name "vendor/zerodark-theme/zerodark-theme.el" dotemacs-dir))
+    (setq zerodark-use-high-contrast-in-mode-line nil))))
 
 (provide 'appearance)
 
