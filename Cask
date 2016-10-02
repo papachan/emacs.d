@@ -4,6 +4,7 @@
 (source melpa-stable)
 
 (depends-on "alchemist")
+(depends-on "all-the-icons")
 (depends-on "bind-key")
 (depends-on "cask")
 (depends-on "cider")
