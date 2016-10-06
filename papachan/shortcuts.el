@@ -48,6 +48,7 @@
 (global-set-key (kbd "C-c C-v") 'revert-buffer-without-confirmation)
 (global-set-key (kbd "C-c a") 'my-increment-number-at-point)
 (global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
+(global-set-key (kbd "C-c h") 'file-path-on-clipboard)
 
 
 ;; comment line

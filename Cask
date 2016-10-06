@@ -9,6 +9,7 @@
 (depends-on "cask")
 (depends-on "cider")
 (depends-on "clj-refactor")
+(depends-on "clojure-mode")
 (depends-on "clojure-mode-extra-font-locking")
 (depends-on "color-theme")
 (depends-on "company")
