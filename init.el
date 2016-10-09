@@ -187,6 +187,10 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
+(progn
+  (setq-default grep-first-column 1)
+  (grep-apply-setting 'grep-find-command "find . ! -name \"*~\" ! -path \"*/.git/*\" ! -name \"#*#\" -type f -print0 | xargs -0 -e grep -nH --exclude=\\*.{log,css,js,svg,map,sql} -e "))
+
 (use-package multiple-cursors
   :config
   (progn
