@@ -24,6 +24,7 @@
 (depends-on "f")
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
+(depends-on "flycheck-elixir")
 (depends-on "frame-cmds")
 (depends-on "git-commit")
 (depends-on "helm")
