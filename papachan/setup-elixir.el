@@ -57,10 +57,6 @@
   (add-to-list 'auto-mode-alist '("\\.exs$" . elixir-mode))
   ;; Mix setup
   (progn
-    (setq alchemist-mix-command (concat (getenv "HOME") "/" "bin/mix")
-          alchemist-iex-program-name (concat (getenv "HOME") "/" "bin/iex")
-          alchemist-execute-command (concat (getenv "HOME") "/" "bin/elixir")
-          alchemist-compile-command (concat (getenv "HOME") "/" "bin/elixirc"))
     (add-hook 'elixir-mode-hook '(lambda()
                                    'alchemist-mode
                                    'flycheck-mode)))
