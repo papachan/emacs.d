@@ -6,6 +6,7 @@
 (define-key key-translation-map [dead-grave] "`")
 
 (global-set-key (kbd "M-g a") (lambda () (interactive) (insert "~")))
+(global-set-key (kbd "M-g b") (lambda () (interactive) (insert "#")))
 (global-set-key (kbd "C-x M-z") 'open-scratch-buffer)
 (global-set-key (kbd "C-c C-o") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-c -") 'buffer/clear)
