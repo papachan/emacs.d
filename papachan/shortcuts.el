@@ -38,6 +38,7 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "S-<f1>") (lambda () (interactive) (dired "~/")))
 (global-set-key (kbd "S-<f2>") (lambda () (interactive) (dired "~/git/documents/")))
+(global-set-key (kbd "S-<f3>") (lambda () (interactive) (dired "~/Dropbox/")))
 (global-set-key (kbd "<f6>") 'reload-init-file)
 (global-set-key (kbd "<f9>") 'iflipb-next-buffer)
 (global-set-key (kbd "<f8>") 'iflipb-previous-buffer)
