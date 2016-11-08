@@ -15,8 +15,8 @@
        (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 150
+                           :height 140
                            :weight 'normal)
        (set-face-font 'default font))
+     ;; "menlo"
      "Fira Code"))))
-

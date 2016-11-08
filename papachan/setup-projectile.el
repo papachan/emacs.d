@@ -1,7 +1,5 @@
 ;;; setup-projectile.el
-
 (require 'projectile)
-
 
 (defun file-fuzzy-finder ()
   "Open files with projectile-find-file or projectile-find-file-in-directory"
@@ -9,7 +7,6 @@
   (if (projectile-project-p)
     (projectile-find-file)
     (ido-find-file)))
-
 
 (use-package projectile
   :config

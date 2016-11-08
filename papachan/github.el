@@ -1,3 +1,5 @@
+;;; github.el file
+
 (defvar  *git-root* "~/git")
 
 (defun git-ido-find-file ()

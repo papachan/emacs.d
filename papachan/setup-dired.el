@@ -9,6 +9,7 @@
 
 (eval-after-load 'dired
   '(progn
+     (setq dired-use-ls-dired nil)
      (cond
       ((string-equal system-type "darwin")
        (setq dired-listing-switches "-lFh"))
