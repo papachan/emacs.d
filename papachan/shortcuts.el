@@ -51,6 +51,7 @@
 (global-set-key (kbd "C-c a") 'my-increment-number-at-point)
 (global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
 (global-set-key (kbd "C-c h") 'file-path-on-clipboard)
+(global-set-key (kbd "C-c C-l") 'toggle-truncate-lines)
 
 
 ;; comment line
