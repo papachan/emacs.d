@@ -164,7 +164,7 @@
     (add-hook 'emacs-startup-hook 'delete-other-windows))))
 
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
-(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+; (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'slime-repl-mode))
 (add-hook 'lisp-mode-hook #'enable-paredit-mode)
