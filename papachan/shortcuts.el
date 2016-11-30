@@ -40,6 +40,7 @@
 (global-set-key (kbd "S-<f1>") (lambda () (interactive) (dired "~/")))
 (global-set-key (kbd "S-<f2>") (lambda () (interactive) (dired "~/git/documents/")))
 (global-set-key (kbd "S-<f3>") (lambda () (interactive) (dired "~/Dropbox/")))
+(global-set-key (kbd "S-<f4>") (lambda () (interactive) (dired "~/Downloads")))
 (global-set-key (kbd "<f6>") 'reload-init-file)
 (global-set-key (kbd "<f9>") 'iflipb-next-buffer)
 (global-set-key (kbd "<f8>") 'iflipb-previous-buffer)
@@ -52,6 +53,7 @@
 (global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
 (global-set-key (kbd "C-c h") 'file-path-on-clipboard)
 (global-set-key (kbd "C-c C-l") 'toggle-truncate-lines)
+(global-set-key (kbd "C-c j") 'json-pretty-print-buffer)
 
 
 ;; comment line
