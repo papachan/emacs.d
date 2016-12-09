@@ -1,5 +1,7 @@
 #!/bin/bash
 
+which emacs || { echo "Install First Emacs"; exit 1; }
+
 # Full path of script
 if [ "$(uname)" == "Darwin" ]; then
 	SCRIPT_PATH=`pwd`
