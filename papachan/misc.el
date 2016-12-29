@@ -239,5 +239,8 @@ If FILE already exists, signal an error."
 ; move-text
 (move-text-default-bindings)
 
+; tramp with ssh
+(setq tramp-default-method "ssh")
+
 (provide 'misc)
 ;;; misc.el ends here
