@@ -106,7 +106,7 @@
 (require 'smex)
 (smex-initialize)
 (require 'bootstrap)
-(download-elisp-files elisp-file-list)
+(bootstrap)
 
 ;; load files from dotfiles-lisp-dir
 (dolist (file '(
@@ -116,6 +116,8 @@
     "helm-aws"
     "lorem-ipsum"))
   (load file))
+
+(require 'toggle-quotes)
 
 (linum-mode)
 (menu-bar-mode -1)
