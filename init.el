@@ -118,6 +118,7 @@
   (load file))
 
 (require 'toggle-quotes)
+(require 'lispxmp)
 
 (linum-mode)
 (menu-bar-mode -1)

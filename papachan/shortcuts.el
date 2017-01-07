@@ -55,6 +55,7 @@
 (global-set-key (kbd "C-c h") 'file-path-on-clipboard)
 (global-set-key (kbd "C-c C-l") 'toggle-truncate-lines)
 (global-set-key (kbd "C-'") 'toggle-quotes)
+(global-set-key (kbd "C-c C-e") 'lispxmp)
 
 ;; comment line
 (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))

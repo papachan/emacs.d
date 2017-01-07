@@ -6,7 +6,8 @@
                         "http://raw.github.com/hayamiz/twittering-mode/master/twittering-mode.el"
                         "http://raw.github.com/istib/helm-aws/master/helm-aws.el"
                         "http://raw.github.com/bbetances/conf-scripts/master/emacs-dir/custom-modes/pacman.el"
-                        "http://raw.github.com/toctan/toggle-quotes.el/master/toggle-quotes.el"))
+                        "http://raw.github.com/toctan/toggle-quotes.el/master/toggle-quotes.el"
+                        "https://www.emacswiki.org/emacs/download/lispxmp.el"))
 
 (defun download-elisp-files (list)
   (while list
