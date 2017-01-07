@@ -93,11 +93,11 @@
 (progn
   (cd dotemacs-dir)
   (normal-top-level-add-subdirs-to-load-path))
+(add-to-list 'load-path dotfiles-lisp-dir)
 (add-to-list 'load-path "vendor/origami.el")
 (add-to-list 'load-path "vendor/emacs-neotree")
 (add-to-list 'load-path "vendor/x5o.el")
 (add-to-list 'load-path "vendor/slack")
-(add-to-list 'load-path dotfiles-lisp-dir)
 (add-to-list 'load-path "vendor/restclient.el")
 
 (require 'restclient)
@@ -105,6 +105,7 @@
 (require 'frame-cmds)
 (require 'smex)
 (smex-initialize)
+
 (require 'bootstrap)
 (bootstrap)
 
@@ -119,6 +120,7 @@
 
 (require 'toggle-quotes)
 (require 'lispxmp)
+(require 'tea-time)
 
 (linum-mode)
 (menu-bar-mode -1)

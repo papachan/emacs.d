@@ -7,6 +7,7 @@
                         "http://raw.github.com/istib/helm-aws/master/helm-aws.el"
                         "http://raw.github.com/bbetances/conf-scripts/master/emacs-dir/custom-modes/pacman.el"
                         "http://raw.github.com/toctan/toggle-quotes.el/master/toggle-quotes.el"
+                        "https://raw.github.com/konzeptual/tea-time/master/tea-time.el"
                         "https://www.emacswiki.org/emacs/download/lispxmp.el"))
 
 (defun download-elisp-files (list)
