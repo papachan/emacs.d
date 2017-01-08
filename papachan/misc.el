@@ -26,6 +26,16 @@
   (interactive)
   (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
 
+(defun insert-title (a)
+  (lambda())
+  (interactive)
+  (when a
+    (let ((pat (format "===%s===" a))
+          (len (/ (- 64 (length a)) 2)))
+      (let ((space (apply 'concat
+                          (make-list len " "))))
+        (insert (format "%s%s%s" space pat space))))))
+
 (defun my-dired-create-file (file)
   "Create a file called FILE.
 If FILE already exists, signal an error."
@@ -115,8 +125,6 @@ If FILE already exists, signal an error."
     (switch-to-buffer buf)
     (funcall (and initial-major-mode))
     (setq buffer-offer-save t)))
-
-(autoload 'mc/mark-next-like-this "multiple-cursors" nil t)
 
 (defun toggle-current-window-dedication ()
  (interactive)
@@ -238,6 +246,8 @@ If FILE already exists, signal an error."
 
 ; move-text
 (move-text-default-bindings)
+
+(autoload 'mc/mark-next-like-this "multiple-cursors" nil t)
 
 ; tramp with ssh
 (setq tramp-default-method "ssh")

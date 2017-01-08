@@ -93,6 +93,16 @@
 (progn
   (cd dotemacs-dir)
   (normal-top-level-add-subdirs-to-load-path))
+
+;; load files from dotfiles-lisp-dir
+(dolist (file '(
+    "iflipb"
+    "directory-files-recursive"
+    "twittering-mode"
+    "helm-aws"
+    "lorem-ipsum"))
+  (load file))
+
 (add-to-list 'load-path dotfiles-lisp-dir)
 (add-to-list 'load-path "vendor/origami.el")
 (add-to-list 'load-path "vendor/emacs-neotree")
@@ -109,14 +119,6 @@
 (require 'bootstrap)
 (bootstrap)
 
-;; load files from dotfiles-lisp-dir
-(dolist (file '(
-    "iflipb"
-    "directory-files-recursive"
-    "twittering-mode"
-    "helm-aws"
-    "lorem-ipsum"))
-  (load file))
 
 (require 'toggle-quotes)
 (require 'lispxmp)

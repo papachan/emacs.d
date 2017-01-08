@@ -1,6 +1,6 @@
 ;;; setup-erlang.el -- erlang setup
-(require 'erlang-start)
 (require 'erlang)
+(require 'erlang-start)
 
 (use-package erlang
   :ensure t
@@ -22,7 +22,7 @@
   
   :config
   (progn
-
+    (setq erlang-indent-level 2)
     ;; rebar3
     (defun inferior-erlang-with-rebar3-auto ()
       (interactive)
