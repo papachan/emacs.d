@@ -26,15 +26,17 @@
   (interactive)
   (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
 
-(defun insert-title (a)
+(defun insert-title ()
   (lambda())
   (interactive)
-  (when a
-    (let ((pat (format "===%s===" a))
-          (len (/ (- 64 (length a)) 2)))
-      (let ((space (apply 'concat
-                          (make-list len " "))))
-        (insert (format "%s%s%s" space pat space))))))
+  (let ((a (read-from-minibuffer "Enter your title:"))
+        (len 0)
+        (space 0))
+    (let ((pat (format "===%s===" a)))
+      (setq len (/ (- 64 (length a)) 2))
+      (setq space (apply 'concat
+                         (make-list len " ")))
+      (insert (format "%s%s%s" space pat space)))))
 
 (defun my-dired-create-file (file)
   "Create a file called FILE.
