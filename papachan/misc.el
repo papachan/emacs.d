@@ -29,14 +29,11 @@
 (defun insert-title ()
   (lambda())
   (interactive)
-  (let ((a (read-from-minibuffer "Enter your title:"))
-        (len 0)
-        (space 0))
-    (let ((pat (format "===%s===" a)))
-      (setq len (/ (- 64 (length a)) 2))
-      (setq space (apply 'concat
-                         (make-list len " ")))
-      (insert (format "%s%s%s" space pat space)))))
+  (let ((name (format "===%s==="
+                      (read-from-minibuffer "Enter your title:"))))
+    (setq len  (/ (- 72 (length name)) 2)
+          blank (make-string len ?\s))
+    (insert (concat blank name blank))))
 
 (defun my-dired-create-file (file)
   "Create a file called FILE.
