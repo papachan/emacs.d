@@ -8,7 +8,8 @@
                         "http://raw.github.com/bbetances/conf-scripts/master/emacs-dir/custom-modes/pacman.el"
                         "http://raw.github.com/toctan/toggle-quotes.el/master/toggle-quotes.el"
                         "https://raw.github.com/konzeptual/tea-time/master/tea-time.el"
-                        "https://www.emacswiki.org/emacs/download/lispxmp.el"))
+                        "https://www.emacswiki.org/emacs/download/lispxmp.el"
+                        "https://raw.github.com/bcbcarl/emacs-wttrin/master/wttrin.el"))
 
 (defun download-elisp-files (list)
   (while list

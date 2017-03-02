@@ -175,6 +175,7 @@
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'slime-repl-mode))
 (add-hook 'lisp-mode-hook #'enable-paredit-mode)
+(global-set-key "\C-cs" 'slime-selector)
 
 (if (version< "25.1" emacs-version)
     (progn
@@ -193,6 +194,8 @@
 
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
+
+(require 'wttrin)
 
 (progn
   (setq-default grep-first-column 1)
