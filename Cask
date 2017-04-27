@@ -33,6 +33,7 @@
 (depends-on "htmlize")
 (depends-on "idle-highlight-mode")
 (depends-on "inflections")
+(depends-on "ivy")
 (depends-on "macrostep")
 (depends-on "magit")
 (depends-on "magit-popup")
@@ -62,4 +63,5 @@
 (depends-on "window-numbering")
 (depends-on "with-editor")
 (depends-on "writeroom-mode")
+(depends-on "xterm-color")
 (depends-on "yasnippet")

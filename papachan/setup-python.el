@@ -28,6 +28,7 @@
 (require 'epy-nose)
 (require 'yasnippet)
 
+;; setting pyflake for python check style
 (when (executable-find "pyflakes")
   (epy-setup-checker "pyflakes %f"))
 (epy-setup-ipython)

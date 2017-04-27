@@ -37,10 +37,6 @@
   (sp-local-pair "<" ">")
   (sp-local-pair "<%" "%>"))
 
-;; PROJECTILE
-(projectile-global-mode)
-(setq projectile-enable-caching t)
-
 ;; ROBE
 (add-hook 'ruby-mode-hook 'robe-mode)
 (add-hook 'robe-mode-hook 'ac-robe-setup)

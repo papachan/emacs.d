@@ -23,6 +23,7 @@
     (global-set-key (kbd "C-c C-p") 'file-fuzzy-finder)))
 
 (projectile-global-mode)
+(setq projectile-enable-caching t)
 
 (provide 'setup-projectile)
 ;;; setup-projectile.el ends here
