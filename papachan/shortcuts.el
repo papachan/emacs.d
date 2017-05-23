@@ -1,5 +1,6 @@
 ;;; shortcuts.el file
 ;;
+(require 'rg)
 (require 'visual-regexp)
 
 (define-key key-translation-map [dead-circumflex] "^")
@@ -69,6 +70,8 @@
 (define-key global-map (kbd "C-c r") 'vr/replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 (define-key global-map (kbd "C-c g") 'vr/mc-mark)
+
+(global-set-key (kbd "M-s") 'rg)
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
