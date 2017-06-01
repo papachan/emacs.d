@@ -57,14 +57,12 @@ if you have problem to install pallet
 Dependency pallet failed to install: Package `package-build-0.1' is unavailable
 ```
 
-you have to remove (source melpa-sable) by (source melpa)
 
-### Clojure development with cider
+Install ripgrep for fast grep
 
-Just in case its better to install cider from `melpa-stable`.
 
 ```bash
-$ cask install cider
+$ sudo pacman -S ripgrep
 ```
 
 ### Daily Emacs Shortcuts Cheatsheet
