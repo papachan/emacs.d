@@ -6,6 +6,9 @@
 
 ;; Turn on Visual-line-mode
 (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
+(add-hook 'org-mode-hook
+          (lambda ()
+            (setq org-enable-table-editor nil)))
 
 (dolist (org-styles '(("*" (:foreground "green"))
       ("/" (italic :foreground "yellow"))
