@@ -68,6 +68,7 @@
                 "personal"
                 "shortcuts"
                 "init-ibuffer"
+                "setup-lisp"
                 "setup-elixir"
                 "setup-erlang"
                 "github"
@@ -157,11 +158,6 @@
 ; helm
 (require 'helm-config)
 
-; quicklisp sbcl
-(add-to-list 'load-path (concat user-emacs-directory "quicklisp"))
-(setq inferior-lisp-program "sbcl")
-(setq slime-contribs '(slime-fancy))
-
 (require 'maxframe)
 (cond
  ((eq system-type 'gnu/linux)
@@ -170,12 +166,8 @@
     ;; delete other windows when open multiple files
     (add-hook 'emacs-startup-hook 'delete-other-windows))))
 
-(add-hook 'slime-mode-hook 'set-up-slime-ac)
-; (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'slime-repl-mode))
-(add-hook 'lisp-mode-hook #'enable-paredit-mode)
-(global-set-key "\C-cs" 'slime-selector)
 
 (if (version< "25.1" emacs-version)
     (progn
@@ -196,10 +188,6 @@
 (global-set-key [f8] 'neotree-toggle)
 
 (require 'wttrin)
-
-(progn
-  (setq-default grep-first-column 1)
-  (grep-apply-setting 'grep-find-command "find . ! -name \"*~\" ! -path \"*/.git/*\" ! -name \"#*#\" -type f -print0 | xargs -0 -e grep -nH --exclude=\\*.{log,css,js,svg,map,sql} -e "))
 
 (use-package multiple-cursors
   :config
