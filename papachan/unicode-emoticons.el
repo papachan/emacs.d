@@ -15,6 +15,7 @@
     ("shrug0" "¯\\_(ツ)_/¯")
     ("sigh" "ಠ_ಠ")
     ("yuno" "(ノಠ益ಠ)ノ")
+    ("flipping" "(╯°□°)╯︵ ┻━┻")
     ("sad0" "(ಥ_ಥ)")))
 
 (add-to-list 'abbrev-minor-mode-table-alist

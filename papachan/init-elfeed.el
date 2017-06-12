@@ -17,7 +17,9 @@
 
           ("https://www.reddit.com/r/Clojure/.rss" clojure)
 
-          ("https://www.reddit.com/r/freebsd/.rss" freebsd))))
+          ("https://www.reddit.com/r/freebsd/.rss" freebsd)))
+  :config
+  (global-set-key (kbd "C-c u") 'elfeed-update))
 
 (provide 'init-elfeed)
 ;;; init-elfeed.el ends here 
