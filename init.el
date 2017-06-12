@@ -68,6 +68,7 @@
                 "personal"
                 "shortcuts"
                 "init-ibuffer"
+                "init-elfeed"
                 "setup-lisp"
                 "setup-elixir"
                 "setup-erlang"
