@@ -60,10 +60,9 @@
 
 ;; comment line
 (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
-(global-set-key (kbd "C-c C-l s") 'lorem-ipsum-insert-sentences)
-(global-set-key (kbd "C-c C-l p") 'lorem-ipsum-insert-paragraphs)
-(global-set-key (kbd "C-c C-l l") 'lorem-ipsum-insert-list)
+(global-set-key (kbd "C-<f5>") 'lorem-ipsum-insert-paragraphs)
 (global-set-key (kbd "C-<f6>") 'snippet-html)
+(global-set-key (kbd "C-<f7>") 'lorem-ipsum-insert-list)
 (global-set-key (kbd "C-x M-d") 'insert-current-date)
 (global-set-key (kbd "C-c i") 'snippet-latin)
 (global-unset-key (kbd "C-z"))
