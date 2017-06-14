@@ -5,16 +5,6 @@
 
 ;; Turn on Visual-line-mode
 (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
-;; (add-hook 'org-mode-hook
-;;           (lambda ()
-;;             (setq org-enable-table-editor nil)))
-
-;; (setq org-styles
-;;       (cons '("+" '(:strike-through t :foreground "gray"))
-;;             (delete* "+" org-emphasis-alist :key 'car :test 'equal)))
-;; (add-to-list 'org-emphasis-alist
-;;              org-styles)
-
 
 (dolist (org-styles
          '(("*" (:foreground "green"))

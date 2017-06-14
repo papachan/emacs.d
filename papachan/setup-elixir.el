@@ -42,11 +42,11 @@
   :ensure t
   :init
   (progn
-    (setq alchemist-compile-command "/usr/bin/elixirc"
-          alchemist-execute-command "/usr/bin/elixir"
-          alchemist-iex-program-name "/usr/bin/iex"
+    (setq alchemist-compile-command (concat (getenv "HOME") "/bin/elixirc")
+          alchemist-execute-command (concat (getenv "HOME") "/bin/elixir")
+          alchemist-iex-program-name (concat (getenv "HOME") "/bin/iex")
           alchemist-mix-test-default-options '()  ;; default
-          alchemist-mix-command "/usr/bin/mix"))
+          alchemist-mix-command (concat (getenv "HOME") "/bin/mix")))
   :config
   (setq alchemist-key-command-prefix (kbd "C-c ,")))
 

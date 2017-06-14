@@ -42,8 +42,7 @@
 (global-set-key (kbd "S-<f2>") (lambda () (interactive) (dired "~/.emacs.d/")))
 (global-set-key (kbd "S-<f3>") (lambda () (interactive) (dired "~/git/documents/")))
 (global-set-key (kbd "S-<f4>") (lambda () (interactive) (dired "~/Downloads")))
-(global-set-key (kbd "S-<f5>") (lambda () (interactive) (dired "~/dev/projects/easytaxi/")))
-
+(global-set-key (kbd "S-<f5>") (lambda () (interactive) (dired "~/Dropbox/")))
 (global-set-key (kbd "<f6>") 'reload-init-file)
 (global-set-key (kbd "<f9>") 'iflipb-next-buffer)
 (global-set-key (kbd "<f8>") 'iflipb-previous-buffer)
@@ -61,7 +60,9 @@
 
 ;; comment line
 (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
-(global-set-key (kbd "C-<f5>") 'Lorem-ipsum-insert-paragraphs)
+(global-set-key (kbd "C-c C-l s") 'lorem-ipsum-insert-sentences)
+(global-set-key (kbd "C-c C-l p") 'lorem-ipsum-insert-paragraphs)
+(global-set-key (kbd "C-c C-l l") 'lorem-ipsum-insert-list)
 (global-set-key (kbd "C-<f6>") 'snippet-html)
 (global-set-key (kbd "C-x M-d") 'insert-current-date)
 (global-set-key (kbd "C-c i") 'snippet-latin)
