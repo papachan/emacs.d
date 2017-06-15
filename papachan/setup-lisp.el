@@ -38,6 +38,10 @@
 (add-hook 'lisp-mode-hook #'hook-lisp-mode)
 (add-hook 'lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'slime-repl-mode-hook #'enable-paredit-mode)
+(eval-after-load "auto-complete"
+  '(add-to-list 'ac-modes 'slime-repl-mode))
+
+(custom-set-variables '(safe-local-variable-values (quote ((Syntax . Common-Lisp)))))
 
 (provide 'setup-lisp)
 ;; setup-lisp.el ends here

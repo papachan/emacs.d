@@ -1,4 +1,14 @@
 ;;; misc.el file
+(require 'expand-region)
+(require 'frame-cmds)
+(require 'smex)
+(require 'window-numbering)
+;; Kill buffers which haven't been modified in a while
+(require 'midnight)
+(require 'whitespace)
+(require 'ido)
+(require 'helm-config)
+(require 'recentf)
 
 ; slime lfe shortcut
 ;; (defun my-save-and-compile ()
@@ -250,6 +260,17 @@ If FILE already exists, signal an error."
 
 ; tramp with ssh
 (setq tramp-default-method "ssh")
+
+;; ido-mode is like magic pixie dust!
+(ido-mode t)
+(setq ido-enable-prefix nil
+      ido-enable-flex-matching t
+      ido-auto-merge-work-directories-length nil
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point 'guess
+      ido-use-virtual-buffers t
+      ido-handle-duplicate-virtual-buffers 2
+      ido-max-prospects 10)
 
 (provide 'misc)
 ;;; misc.el ends here
