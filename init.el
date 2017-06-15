@@ -111,9 +111,7 @@
 (require 'tea-time)
 (require 'neotree)
 (require 'wttrin)
-(require 'smex)
 
-(smex-initialize)
 (bootstrap)
 (linum-mode)
 

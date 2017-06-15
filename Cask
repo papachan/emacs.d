@@ -59,7 +59,6 @@
 (depends-on "smart-mode-line")
 (depends-on "smart-mode-line-powerline-theme")
 (depends-on "smartparens")
-(depends-on "smex")
 (depends-on "swiper")
 (depends-on "undo-tree")
 (depends-on "use-package")

@@ -1,7 +1,6 @@
 ;;; misc.el file
 (require 'expand-region)
 (require 'frame-cmds)
-(require 'smex)
 (require 'window-numbering)
 ;; Kill buffers which haven't been modified in a while
 (require 'midnight)
