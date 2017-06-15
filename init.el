@@ -111,14 +111,11 @@
 (require 'tea-time)
 (require 'neotree)
 (require 'wttrin)
+(require 'smex)
 
 (smex-initialize)
 (bootstrap)
 (linum-mode)
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(column-number-mode)
-(window-numbering-mode 1)
 
 (setq whitespace-line-column 90
       whitespace-style '(tabs trailing tab-mark lines-tail))

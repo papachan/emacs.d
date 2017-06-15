@@ -9,6 +9,7 @@
 (require 'ido)
 (require 'helm-config)
 (require 'recentf)
+(require 'maxframe)
 
 ; slime lfe shortcut
 ;; (defun my-save-and-compile ()
@@ -214,6 +215,11 @@ If FILE already exists, signal an error."
         (clipboard-kill-region (point-min) (point-max)))
       (message filename))))
 
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(column-number-mode)
+(window-numbering-mode 1)
+
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
@@ -256,8 +262,6 @@ If FILE already exists, signal an error."
 ; move-text
 (move-text-default-bindings)
 
-(autoload 'mc/mark-next-like-this "multiple-cursors" nil t)
-
 ; tramp with ssh
 (setq tramp-default-method "ssh")
 
@@ -271,6 +275,13 @@ If FILE already exists, signal an error."
       ido-use-virtual-buffers t
       ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10)
+
+(cond
+ ((eq system-type 'gnu/linux)
+  (progn
+    (add-hook 'window-setup-hook 'maximize-frame t)
+    ;; delete other windows when open multiple files
+    (add-hook 'emacs-startup-hook 'delete-other-windows))))
 
 (provide 'misc)
 ;;; misc.el ends here
