@@ -103,7 +103,6 @@
     "lorem-ipsum"))
   (load file))
 
-
 (require 'bootstrap)
 (require 'restclient)
 (require 'toggle-quotes)
@@ -111,18 +110,10 @@
 (require 'tea-time)
 (require 'neotree)
 (require 'wttrin)
+(require 'linum)
 
 (bootstrap)
 (linum-mode)
-
-(setq whitespace-line-column 90
-      whitespace-style '(tabs trailing tab-mark lines-tail))
-
-(if (fboundp 'desktop-save-mode)
-    (desktop-save-mode 1))
-
-(recentf-mode 1)
-(setq recentf-max-menu-items 25)
 
 ; compile in a status buffer
 (setq compilation-read-command nil)

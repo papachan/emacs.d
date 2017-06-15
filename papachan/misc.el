@@ -10,6 +10,16 @@
 (require 'recentf)
 (require 'maxframe)
 
+(setq whitespace-line-column 90
+      whitespace-style '(tabs trailing tab-mark lines-tail))
+
+(if (fboundp 'desktop-save-mode)
+    (desktop-save-mode 1))
+
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+
+
 ; slime lfe shortcut
 ;; (defun my-save-and-compile ()
 ;;   (interactive "")
