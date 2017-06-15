@@ -118,8 +118,6 @@
 ; compile in a status buffer
 (setq compilation-read-command nil)
 
-(put 'dired-find-alternate-file 'disabled nil)
-
 ;; check emacs start time
 (message "Emacs started in %ds"
          (destructuring-bind (hi lo ms ps) (current-time)

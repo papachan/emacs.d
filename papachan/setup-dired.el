@@ -39,5 +39,6 @@
            (dired-add-file new)
            (dired-move-to-filename))))))
 
+(put 'dired-find-alternate-file 'disabled nil)
 (provide 'setup-dired)
 ;;; setup-dired.el ends here
