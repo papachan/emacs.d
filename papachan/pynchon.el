@@ -1,4 +1,5 @@
 ;; Great quotes from Thomas Pynchon
+;; https://en.wikiquote.org/wiki/Thomas_Pynchon
 
 (defconst tp-quote-one
   "Why should things be easy to understand?"
@@ -27,5 +28,13 @@
 (defconst tp-quote-seven
   "Paranoids are not paranoid because they're paranoid, but because they keep putting themselves, fucking idiots, deliberately into paranoid situations."
   "Thomas Pynchon")
+
+(defconst tp-quote-eight
+  "If they can get you asking the wrong questions, they don't have to worry about answers."
+  "Thomas Pynchon Gravity's Rainbow")
+
+(defconst tp-quote-nine
+  "You hide, they seek."
+  "Thomas Pynchon Gravity's Rainbow")
 
 (provide 'pynchon)
