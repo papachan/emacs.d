@@ -8,6 +8,8 @@
 
 (global-set-key (kbd "M-g a") (lambda () (interactive) (insert "~")))
 (global-set-key (kbd "M-g b") (lambda () (interactive) (insert "#")))
+(global-set-key (kbd "C-x 8 l") (lambda () (interactive) (insert "λ")))
+(global-set-key (kbd "C-x 8 ' n") (lambda () (interactive) (insert "ñ")))
 (global-set-key (kbd "C-x M-z") 'open-scratch-buffer)
 (global-set-key (kbd "C-c C-o") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-c -") 'buffer/clear)
@@ -74,8 +76,6 @@
 (define-key global-map (kbd "C-c g") 'vr/mc-mark)
 
 (global-set-key (kbd "M-s") 'rg)
-
-(global-set-key (kbd "C-x 8 l") (lambda () (interactive) (insert "λ")))
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
