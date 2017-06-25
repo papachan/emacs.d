@@ -75,5 +75,7 @@
 
 (global-set-key (kbd "M-s") 'rg)
 
+(global-set-key (kbd "C-x 8 l") (lambda () (interactive) (insert "λ")))
+
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
