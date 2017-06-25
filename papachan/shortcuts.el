@@ -68,7 +68,7 @@
 (global-set-key (kbd "C-<f7>") 'lorem-ipsum-insert-list)
 (global-set-key (kbd "C-x M-d") 'insert-current-date)
 (global-set-key (kbd "C-c i") 'snippet-latin)
-(global-unset-key (kbd "C-z"))
+;; (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-x q"))
 
 (define-key global-map (kbd "C-c r") 'vr/replace)

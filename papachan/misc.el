@@ -260,9 +260,6 @@ If FILE already exists, signal an error."
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; enable undo-tree
-(global-undo-tree-mode)
-
 (setq vc-follow-symlinks t)
 
 ; electric mode

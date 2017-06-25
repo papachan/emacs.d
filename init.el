@@ -61,6 +61,7 @@
 (add-to-list 'load-path "vendor/restclient.el")
 
 (dolist (file '("setup-autocomplete"
+                "setup-undo"
                 "misc"
                 "personal"
                 "shortcuts"
