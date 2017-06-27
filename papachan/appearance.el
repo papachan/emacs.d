@@ -20,7 +20,9 @@
   (cond
    ((eq system-type 'gnu/linux)
     (load-file (expand-file-name "vendor/zerodark-theme/zerodark-theme.el" dotemacs-dir))
-    (setq zerodark-use-high-contrast-in-mode-line nil))))
+    (setq zerodark-use-high-contrast-in-mode-line nil))
+   ((equal system-type 'darwin)
+    (load-theme 'github t))))
 
 (provide 'appearance)
 

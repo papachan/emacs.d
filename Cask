@@ -30,6 +30,7 @@
 (depends-on "flycheck-elixir")
 (depends-on "frame-cmds")
 (depends-on "git-commit")
+(depends-on "github-theme")
 (depends-on "helm")
 (depends-on "helm-core")
 (depends-on "helm-projectile")
