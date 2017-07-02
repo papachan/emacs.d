@@ -52,6 +52,7 @@
 (global-set-key (kbd "C-c n") 'my-dired-create-file)
 (global-set-key (kbd "C-<f11>") 'toggle-frame-fullscreen)
 (global-set-key (kbd "<f12>") 'run-cask-test)
+(global-set-key (kbd "<f8>") 'repeat-complex-command)
 ;(global-set-key (kbd "<f12>") 'my-save-and-compile)
 (global-set-key (kbd "C-c C-v") 'revert-buffer-without-confirmation)
 (global-set-key (kbd "C-c a") 'my-increment-number-at-point)

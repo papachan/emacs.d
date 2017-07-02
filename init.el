@@ -7,6 +7,9 @@
 (setq *emacs-load-start* (current-time))
 
 (require 'package)
+(require 'server)
+(require 'cask (concat (getenv "HOME") "/" ".cask/cask.el"))
+
 
 (setq dotemacs-dir user-emacs-directory)
 (setq dotemacs-cache-dir (expand-file-name ".cache" dotemacs-dir))
@@ -14,7 +17,6 @@
       (expand-file-name "lib" dotemacs-dir))
 
 ;; initializing pallet
-(require 'cask (concat (getenv "HOME") "/" ".cask/cask.el"))
 (cask-initialize)
 (require 'pallet)
 (pallet-mode t)
@@ -33,13 +35,11 @@
 (add-to-list 'load-path dotfiles-misc-dir)
 
 ; emacs-server
-(require 'server)
 (unless (server-running-p)
   (server-start))
 
-(package-initialize)
-
 (require 'use-package)
+(package-initialize)
 
 ; default HOME directory
 (setq default-directory (f-full (getenv "HOME")))
@@ -115,9 +115,6 @@
 
 (bootstrap)
 (linum-mode)
-
-; compile in a status buffer
-(setq compilation-read-command nil)
 
 ;; check emacs start time
 (message "Emacs started in %ds"

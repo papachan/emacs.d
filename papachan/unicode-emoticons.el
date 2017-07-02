@@ -16,7 +16,11 @@
     ("sigh" "ಠ_ಠ")
     ("yuno" "(ノಠ益ಠ)ノ")
     ("flipping" "(╯°□°)╯︵ ┻━┻")
-    ("sad0" "(ಥ_ಥ)")))
+    ("sad0" "(ಥ_ಥ)")
+    ("ping" "(・_・)ｽｯ")
+    ("salut" "(*ﾟｰﾟ)ﾉ")
+    ("fight" "(๑•̀ㅂ•́)و✧")
+    ("ohm" "ᕮ☉益☉ᕭ")))
 
 (add-to-list 'abbrev-minor-mode-table-alist
 	     `(unicode-emoticons-mode ,unicode-emoticons-mode-abbrev-table))

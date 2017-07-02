@@ -1,8 +1,7 @@
 ;;; misc.el file
 (require 'expand-region)
 (require 'frame-cmds)
-(require 'window-numbering)
-;; Kill buffers which haven't been modified in a while
+(require 'window-numbering) ;; Kill buffers which haven't been modified in a while
 (require 'midnight)
 (require 'whitespace)
 (require 'ido)
@@ -285,9 +284,16 @@ If FILE already exists, signal an error."
 (cond
  ((eq system-type 'gnu/linux)
   (progn
+    (message "max frame init")
     (add-hook 'window-setup-hook 'maximize-frame t)
     ;; delete other windows when open multiple files
     (add-hook 'emacs-startup-hook 'delete-other-windows))))
+
+;; (setq show-paren-style 'expression) ; highlight entire expression
+(setq show-paren-style 'parenthesis) ; highlight brackets
+;; (setq show-paren-style 'mixed) ; highlight brackets if visible, else entire expression
+
+(setq compilation-read-command nil) ; compile in a status buffer
 
 (provide 'misc)
 ;;; misc.el ends here
