@@ -295,5 +295,7 @@ If FILE already exists, signal an error."
 
 (setq compilation-read-command nil) ; compile in a status buffer
 
+(add-hook 'before-save-hook 'delete-trailing-whitespace) ;; to ensure files have no trailing whitespace
+
 (provide 'misc)
 ;;; misc.el ends here
