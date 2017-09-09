@@ -23,6 +23,12 @@ Install from brew if you are using Os X
 $ brew install emacs --HEAD --with-cocoa --with-gnutls --with-librsvg --with-imagemagick
 ```
 
+Or Install emacsmacport:
+```bash
+$ brew tap railwaycat/emacsmacport
+$ brew install emacs-mac
+```
+
 ### Check your emacs version
 
 * `M-x emacs-version`

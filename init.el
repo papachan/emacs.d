@@ -1,6 +1,14 @@
 ;;; init.el --- --- user init file
 ;;;
 ;;;
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
+
 (when (version< emacs-version "25.1")
   (error "This config requires at least GNU Emacs 25.1, but you're running %s" emacs-version))
 
@@ -9,7 +17,6 @@
 (require 'package)
 (require 'server)
 (require 'cask (concat (getenv "HOME") "/" ".cask/cask.el"))
-
 
 (setq dotemacs-dir user-emacs-directory)
 (setq dotemacs-cache-dir (expand-file-name ".cache" dotemacs-dir))
@@ -38,8 +45,6 @@
 (unless (server-running-p)
   (server-start))
 
-(require 'use-package)
-(package-initialize)
 
 ; default HOME directory
 (setq default-directory (f-full (getenv "HOME")))
@@ -60,6 +65,7 @@
 (add-to-list 'load-path "vendor/x5o.el")
 (add-to-list 'load-path "vendor/restclient.el")
 
+;; load lisp files
 (dolist (file '("setup-autocomplete"
                 "setup-undo"
                 "misc"

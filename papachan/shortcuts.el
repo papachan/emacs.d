@@ -3,6 +3,21 @@
 (require 'rg)
 (require 'visual-regexp)
 
+;; mac switch meta key
+(defun mac-switch-meta nil
+  "switch meta between Option and Command"
+  (interactive)
+  (setq mac-pass-command-to-system nil)
+  (if (eq mac-option-modifier nil)
+      (progn
+	(setq mac-option-modifier 'meta)
+	(setq mac-command-modifier 'hyper)
+	)
+    (progn
+      (setq mac-option-modifier nil)
+      (setq mac-command-modifier 'meta))))
+
+
 (define-key key-translation-map [dead-circumflex] "^")
 (define-key key-translation-map [dead-grave] "`")
 
@@ -77,6 +92,17 @@
 (define-key global-map (kbd "C-c g") 'vr/mc-mark)
 
 (global-set-key (kbd "M-s") 'rg)
+
+(cond
+ ((equal system-type 'darwin)
+  (global-set-key [(hyper a)] 'mark-whole-buffer)
+  (global-set-key [(hyper v)] 'yank)
+  (global-set-key [(hyper c)] 'kill-ring-save)
+  (global-set-key [(hyper s)] 'save-buffer)
+  (global-set-key [(hyper l)] 'goto-line)
+  (global-set-key [(hyper w)] (lambda () (interactive) (delete-window)))
+  (global-set-key [(hyper z)] 'undo)
+  (mac-switch-meta)))
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
