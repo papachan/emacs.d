@@ -59,7 +59,7 @@
     (windmove-default-keybindings)
     (setq select-enable-clipboard t))))
 
-;; (add-to-list 'load-path dotfiles-lisp-dir)
+
 (add-to-list 'load-path "vendor/origami.el")
 (add-to-list 'load-path "vendor/emacs-neotree")
 (add-to-list 'load-path "vendor/x5o.el")
@@ -101,6 +101,9 @@
   (cd dotemacs-dir)
   (normal-top-level-add-subdirs-to-load-path))
 
+(require 'bootstrap)
+(bootstrap)
+
 ;; load files from dotfiles-lisp-dir
 (dolist (file '(
     "iflipb"
@@ -110,7 +113,7 @@
     "lorem-ipsum"))
   (load file))
 
-(require 'bootstrap)
+
 (require 'restclient)
 (require 'toggle-quotes)
 (require 'lispxmp)
@@ -118,8 +121,6 @@
 (require 'neotree)
 (require 'wttrin)
 (require 'linum)
-
-(bootstrap)
 (linum-mode)
 
 ;; check emacs start time
