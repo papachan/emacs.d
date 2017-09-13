@@ -102,6 +102,8 @@
   (global-set-key [(hyper l)] 'goto-line)
   (global-set-key [(hyper w)] (lambda () (interactive) (delete-window)))
   (global-set-key [(hyper z)] 'undo)
+  (windmove-default-keybindings)
+  (setq select-enable-clipboard t)
   (mac-switch-meta)))
 
 (provide 'shortcuts)

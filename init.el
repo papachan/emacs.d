@@ -55,9 +55,7 @@
   (progn
     (add-to-list 'exec-path "~/bin")
     (add-to-list 'exec-path "/usr/local/bin")
-    (add-to-list 'exec-path "/usr/bin")
-    (windmove-default-keybindings)
-    (setq select-enable-clipboard t))))
+    (add-to-list 'exec-path "/usr/bin"))))
 
 
 (add-to-list 'load-path "vendor/origami.el")
