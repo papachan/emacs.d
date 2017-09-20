@@ -26,15 +26,23 @@
   "Thomas Pynchon")
 
 (defconst tp-quote-seven
-  "Paranoids are not paranoid because they're paranoid, but because they keep putting themselves, fucking idiots, deliberately into paranoid situations."
+  "Paranoids are not paranoid because they're paranoid, but
+ because they keep putting themselves, fucking idiots,
+ deliberately into paranoid situations."
   "Thomas Pynchon")
 
 (defconst tp-quote-eight
-  "If they can get you asking the wrong questions, they don't have to worry about answers."
+  "If they can get you asking the wrong questions, they don't
+ have to worry about answers."
   "Thomas Pynchon Gravity's Rainbow")
 
 (defconst tp-quote-nine
   "You hide, they seek."
   "Thomas Pynchon Gravity's Rainbow")
+
+(defconst tp-quote-ten
+  "You may never get to touch the Master, but you can tickle his creatures."
+  "Thomas Pynchon")
+
 
 (provide 'pynchon)
