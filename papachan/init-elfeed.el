@@ -23,7 +23,10 @@
 
           ("https://stackoverflow.com/feeds/tag?tagnames=common-lisp&sort=newest" commonlisp)
 
-          ("https://codereview.stackexchange.com/feeds/tag?tagnames=elisp&sort=newest" elisp)))
+          ("https://codereview.stackexchange.com/feeds/tag?tagnames=elisp&sort=newest" elisp)
+
+          ("http://feeds.feedburner.com/ElixirLang?format=xml" elixir)))
+
   :config
   (global-set-key (kbd "C-c u") 'elfeed-update))
 

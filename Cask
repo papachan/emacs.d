@@ -40,6 +40,7 @@
 (depends-on "ivy")
 (depends-on "macrostep")
 (depends-on "magit")
+(depends-on "magit-popup")
 (depends-on "markdown-mode")
 (depends-on "maxframe")
 (depends-on "move-text")

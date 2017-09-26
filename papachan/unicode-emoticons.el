@@ -10,6 +10,7 @@
 
 (define-abbrev-table 'unicode-emoticons-mode-abbrev-table
   '(("yay0" "٩(⁎❛ᴗ❛⁎)۶")
+    ("face0" "( ͡° ͜ʖ ͡° )")
     ("huhu" "ヾ(^ω^*)")
     ("kiss0" "ヾ(￣◇￣)ノ〃")
     ("shrug0" "¯\\_(ツ)_/¯")

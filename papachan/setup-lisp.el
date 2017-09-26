@@ -32,10 +32,10 @@
 (add-to-list 'load-path (concat user-emacs-directory "quicklisp"))
 
 (defun hook-lisp-mode ()
-  "Hook for Lisp mode."
+  "Display lambda as λ"
   (global-prettify-symbols-mode 1))
 
-(add-hook 'lisp-mode-hook #'hook-lisp-mode)
+;; (add-hook 'lisp-mode-hook #'hook-lisp-mode)
 (add-hook 'lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'slime-repl-mode-hook #'enable-paredit-mode)
 (eval-after-load "auto-complete"
