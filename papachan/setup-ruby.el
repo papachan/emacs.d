@@ -14,7 +14,6 @@ Name is relative to the project root.")
 
 (defun launch-ruby ()
   (interactive)
-  (require 'inf-ruby)
   (let ((default-directory (projectile-project-root))
         (was-running (get-buffer-process inf-ruby-buffer)))
     ;; Skip annoying ENV prompt in case of rails.
@@ -23,7 +22,7 @@ Name is relative to the project root.")
       (inf-ruby-console-auto))
     (when (and (not was-running)
                (get-buffer-process (current-buffer))
-               (file-readable-p endless/ruby-extensions-file))
+               (file-readable-p ruby-extensions-file))
       ;; If this brand new buffer has lots of lines then
       ;; some exception probably happened.
       (send-string
