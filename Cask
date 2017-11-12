@@ -36,6 +36,7 @@
 (depends-on "helm-projectile")
 (depends-on "htmlize")
 (depends-on "idle-highlight-mode")
+(depends-on "inf-ruby")
 (depends-on "inflections")
 (depends-on "ivy")
 (depends-on "macrostep")

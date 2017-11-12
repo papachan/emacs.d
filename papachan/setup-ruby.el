@@ -2,6 +2,33 @@
 (require 'smartparens-config)
 (require 'smartparens-ruby)
 (require 'compile)
+(require 'inf-ruby)
+
+;; Trick founded from EndlessParentheses
+;; to launch ruby as cider repl
+;; http://endlessparentheses.com/turbo-up-your-ruby-console-in-emacs.html
+(defcustom ruby-extensions-file
+  "../console_extensions.rb"
+  "File loaded when a ruby console is started.
+Name is relative to the project root.")
+
+(defun launch-ruby ()
+  (interactive)
+  (let ((default-directory (projectile-project-root))
+        (was-running (get-buffer-process inf-ruby-buffer)))
+    ;; Skip annoying ENV prompt in case of rails.
+    (cl-letf (((symbol-function 'inf-ruby-console-rails-env)
+               (lambda () "development")))
+      (inf-ruby-console-auto))
+    (when (and (not was-running)
+               (get-buffer-process (current-buffer))
+               (file-readable-p ruby-extensions-file))
+      ;; If this brand new buffer has lots of lines then
+      ;; some exception probably happened.
+      (send-string
+       (get-buffer-process (current-buffer))
+       (concat "require '" ruby-extensions-file
+               "'\n")))))
 
 (defun rspec-compile-file ()
   (interactive)
@@ -68,7 +95,9 @@
 (add-hook 'inf-ruby-mode-hook 'ac-inf-ruby-enable)
 ;; Optionally bind auto-complete to TAB in inf-ruby buffers:
 (eval-after-load 'inf-ruby'
-  '(define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
+  '(progn
+     '(define-key ruby-mode-map (kbd "C-c M-j") 'launch-ruby)
+     '(define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete)))
 
 (provide 'setup-ruby)
 ;;; setup-ruby.el ends here
