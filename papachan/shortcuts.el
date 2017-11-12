@@ -79,7 +79,7 @@
 
 ;; comment line
 (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
-(global-set-key (kbd "C-<f5>") 'lorem-ipsum-insert-paragraphs)
+(global-set-key (kbd "C-<f5>") 'Lorem-ipsum-insert-paragraphs)
 (global-set-key (kbd "C-<f6>") 'snippet-html)
 (global-set-key (kbd "C-<f7>") 'lorem-ipsum-insert-list)
 (global-set-key (kbd "C-x M-d") 'insert-current-date)
