@@ -64,6 +64,8 @@
   (ad-activate 'magit-git-push)
 
   (progn
+    (setq magit-repository-directories
+          '( "~/git" ))
     (define-key magit-status-mode-map (kbd "C-x C-k") 'magit-kill-file-on-line)
     (define-key magit-status-mode-map (kbd "C-c e") 'magit-log-buffer-file)
     (setq magit-push-always-verify nil)
