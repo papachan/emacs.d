@@ -44,5 +44,8 @@
   "You may never get to touch the Master, but you can tickle his creatures."
   "Thomas Pynchon")
 
+(defconst tp-quote-eleven
+  "Through the machineries of greed, pettiness, and the abuse of power, love occurs."
+  "Thomas Pynchon Gravity's Rainbow")
 
 (provide 'pynchon)
