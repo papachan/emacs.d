@@ -21,6 +21,8 @@
                                              "sbcl")))
   :config (progn
             (let ((helper-file (expand-file-name "~/quicklisp/slime-helper.el")))
+              (if (eq system-type 'darwin)
+                  (setq helper-file (expand-file-name "~/.local/opt/quicklisp/slime-helper.el")))
               (if (file-exists-p helper-file)
                   (load helper-file)
                 (warn "(ql:quickload \"quicklisp-slime-helper\") must be run in quicklisp before")))
@@ -28,8 +30,6 @@
             (global-set-key (kbd "C-c C-q") 'slime-repl-quit)
             (global-set-key (kbd "C-c s") 'slime-selector)))
 
-
-(add-to-list 'load-path (concat user-emacs-directory "quicklisp"))
 
 (defun hook-lisp-mode ()
   "Display lambda as λ"
