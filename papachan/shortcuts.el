@@ -77,6 +77,8 @@
 (global-set-key (kbd "C-'") 'toggle-quotes)
 (global-set-key (kbd "C-c C-e") 'lispxmp)
 
+(global-set-key (kbd "C-<f2>") 'random-11-letter-string)
+
 ;; comment line
 (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
 (global-set-key (kbd "C-<f5>") (lambda()  (interactive) (Lorem-ipsum-insert-paragraphs 200)))

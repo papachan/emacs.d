@@ -223,6 +223,17 @@ If FILE already exists, signal an error."
         (clipboard-kill-region (point-min) (point-max)))
       (message filename))))
 
+(defun random-11-letter-string ()
+  (interactive)
+  (progn
+    (dotimes (_ 11)
+      (insert
+       (let ((x (random 36)))
+         (if (< x 10)
+             (+ x ?0)
+           (+ x (- ?a 10))))))
+    (newline)))
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (column-number-mode)
