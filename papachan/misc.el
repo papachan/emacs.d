@@ -228,10 +228,11 @@ If FILE already exists, signal an error."
   (progn
     (dotimes (_ 11)
       (insert
-       (let ((x (random 36)))
-         (if (< x 10)
-             (+ x ?0)
-           (+ x (- ?a 10))))))
+       (upcase
+        (let ((x (random 36)))
+          (if (< x 10)
+              (+ x ?0)
+            (+ x (- ?a 10)))))))
     (newline)))
 
 (menu-bar-mode -1)
