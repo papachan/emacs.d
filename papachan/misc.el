@@ -9,6 +9,11 @@
 (require 'recentf)
 (require 'maxframe)
 
+;; local env
+(cond
+ ((eq system-type 'darwin)
+   (setenv "LANG" "en_US.UTF-8")))
+
 (setq whitespace-line-column 90
       whitespace-style '(tabs trailing tab-mark lines-tail))
 

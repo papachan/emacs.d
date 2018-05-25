@@ -4,4 +4,5 @@ alias ppf projectile-find-file
 alias ppo helm-projectile
 alias lsdir ls -l | egrep '^d'
 alias code ~/dev/source_code/
+alias source_code ~/dev/source_code/
 alias repos ~/git

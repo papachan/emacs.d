@@ -18,11 +18,12 @@
   :init (progn (setq slime-contribs '(slime-fancy)
                      inferior-lisp-program (if (eq system-type 'darwin)
                                                "/usr/local/bin/sbcl"
-                                             "sbcl")))
+                                             "sbcl")
+                     slime-lisp-implementations
+                               '((sbcl ("/usr/local/bin/sbcl") :coding-system utf-8-unix))
+                     slime-net-coding-system 'utf-8-unix))
   :config (progn
-            (let ((helper-file (expand-file-name "~/quicklisp/slime-helper.el")))
-              (if (eq system-type 'darwin)
-                  (setq helper-file (expand-file-name "~/.local/opt/quicklisp/slime-helper.el")))
+            (let ((helper-file (expand-file-name "~/.local/opt/quicklisp/slime-helper.el")))
               (if (file-exists-p helper-file)
                   (load helper-file)
                 (warn "(ql:quickload \"quicklisp-slime-helper\") must be run in quicklisp before")))
