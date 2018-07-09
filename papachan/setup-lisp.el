@@ -20,7 +20,7 @@
                                                "/usr/local/bin/sbcl"
                                              "sbcl")
                      slime-lisp-implementations
-                               '((sbcl ("/usr/local/bin/sbcl") :coding-system utf-8-unix))
+                     '((sbcl ("/usr/local/bin/sbcl") :coding-system utf-8-unix))
                      slime-net-coding-system 'utf-8-unix))
   :config (progn
             (let ((helper-file (expand-file-name "~/.local/opt/quicklisp/slime-helper.el")))
@@ -36,13 +36,14 @@
   "Display lambda as λ"
   (global-prettify-symbols-mode 1))
 
-;; (add-hook 'lisp-mode-hook #'hook-lisp-mode)
 (add-hook 'lisp-mode-hook #'enable-paredit-mode)
 (add-hook 'slime-repl-mode-hook #'enable-paredit-mode)
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'slime-repl-mode))
 
 (custom-set-variables '(safe-local-variable-values (quote ((Syntax . Common-Lisp)))))
+
+(setq slime-protocol-version 'ignore)
 
 (provide 'setup-lisp)
 ;; setup-lisp.el ends here
