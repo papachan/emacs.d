@@ -14,6 +14,19 @@
 
 (setq *emacs-load-start* (current-time))
 
+
+;; Avoid garbage collection during startup.
+(run-with-idle-timer
+ 5 nil
+ (lambda ()
+   (setq gc-cons-threshold gc-cons-threshold-original
+         gc-cons-percentage 0.6)
+   (makunbound 'gc-cons-threshold-original)
+   (message "gc-cons-threshold restored to default")))
+(setq gc-cons-threshold-original gc-cons-threshold)
+(setq gc-cons-threshold (* 1024 1024 100)
+      gc-cons-percentage 0.1)
+
 (require 'package)
 (require 'server)
 (require 'cask (concat (getenv "HOME") "/" ".cask/cask.el"))
