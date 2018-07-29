@@ -1,6 +1,5 @@
 ;;; Appearance --- load emacs theme here
 
-(require 'color-theme)
 (require 'color)
 (require 'all-the-icons)
 
@@ -11,6 +10,11 @@
   (tooltip-mode -1)
   (scroll-bar-mode 1)
   (display-time)
+
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (column-number-mode)
+  (window-numbering-mode 1)
   ;; Highlight current line
   (global-hl-line-mode 1)
   ;; Highlight matching parentheses when the point is on them.

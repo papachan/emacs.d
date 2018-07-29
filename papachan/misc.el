@@ -1,6 +1,5 @@
 ;;; misc.el file
 (require 'expand-region)
-(require 'frame-cmds)
 (require 'window-numbering) ;; Kill buffers which haven't been modified in a while
 (require 'midnight)
 (require 'whitespace)
@@ -239,11 +238,6 @@ If FILE already exists, signal an error."
               (+ x ?0)
             (+ x (- ?a 10)))))))
     (newline)))
-
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(column-number-mode)
-(window-numbering-mode 1)
 
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)

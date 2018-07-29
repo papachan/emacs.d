@@ -9,7 +9,7 @@
 (package-initialize)
 
 
-(when (version< emacs-version "25.1")
+(when (version< emacs-version "26.1")
   (error "This config requires at least GNU Emacs 25.1, but you're running %s" emacs-version))
 
 (setq *emacs-load-start* (current-time))

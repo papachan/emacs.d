@@ -3,21 +3,6 @@
 (require 'rg)
 (require 'visual-regexp)
 
-;; mac switch meta key
-(defun mac-switch-meta nil
-  "switch meta between Option and Command"
-  (interactive)
-  (setq mac-pass-command-to-system nil)
-  (if (eq mac-option-modifier nil)
-      (progn
-	(setq mac-option-modifier 'meta)
-	(setq mac-command-modifier 'hyper)
-	)
-    (progn
-      (setq mac-option-modifier nil)
-      (setq mac-command-modifier 'meta))))
-
-
 (define-key key-translation-map [dead-circumflex] "^")
 (define-key key-translation-map [dead-grave] "`")
 
@@ -106,7 +91,8 @@
   (global-set-key [(hyper z)] 'undo)
   (windmove-default-keybindings)
   (setq select-enable-clipboard t)
-  (mac-switch-meta)))
+  ;; (mac-switch-meta)
+  ))
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
