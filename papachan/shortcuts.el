@@ -61,8 +61,9 @@
 (global-set-key (kbd "C-c C-l") 'toggle-truncate-lines)
 (global-set-key (kbd "C-'") 'toggle-quotes)
 (global-set-key (kbd "C-c C-e") 'lispxmp)
+(global-set-key (kbd "C-c <deletechar>") 'fixup-whitespace)
 
-(global-set-key (kbd "C-<f2>") 'random-11-letter-string)
+(global-set-key (kbd "M-<f2>") 'random-11-letter-string)
 
 ;; comment line
 (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
