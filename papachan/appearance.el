@@ -1,10 +1,9 @@
 ;;; Appearance --- load emacs theme here
 
-(require 'color-theme)
 (require 'color)
 (require 'all-the-icons)
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
