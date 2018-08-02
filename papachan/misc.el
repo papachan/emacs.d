@@ -239,6 +239,10 @@ If FILE already exists, signal an error."
             (+ x (- ?a 10)))))))
     (newline)))
 
+(defun join-line* ()
+  (interactive)
+  (join-line t))
+
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
