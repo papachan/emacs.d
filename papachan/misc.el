@@ -239,6 +239,11 @@ If FILE already exists, signal an error."
             (+ x (- ?a 10)))))))
     (newline)))
 
+(defun join-line* ()
+  "Join this line with the next line deleting extra white space."
+  (interactive)
+  (join-line t))
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (column-number-mode)
