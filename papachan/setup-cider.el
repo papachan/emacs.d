@@ -1,3 +1,4 @@
+;;; setup-cider.el
 ;; clojure setup
 
 ;; Clojure IDE and REPL for Emacs
@@ -62,7 +63,7 @@
     ;; paredit-mode
     (add-hook 'clojure-mode-hook 'paredit-mode)))
 
-
+(add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
 
 (provide 'setup-cider)
 ;;; setup-cider.el ends here
