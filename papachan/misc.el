@@ -4,7 +4,6 @@
 (require 'midnight)
 (require 'whitespace)
 (require 'ido)
-(require 'helm-config)
 (require 'recentf)
 (require 'maxframe)
 

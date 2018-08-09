@@ -27,7 +27,6 @@
 (setq gc-cons-threshold (* 1024 1024 100)
       gc-cons-percentage 0.1)
 
-(require 'package)
 (require 'server)
 (require 'cask (concat (getenv "HOME") "/" ".cask/cask.el"))
 

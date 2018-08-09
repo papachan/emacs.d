@@ -1,6 +1,7 @@
 ;;; shortcuts.el file
 ;;
 (require 'rg)
+(require 'helm-config)
 (require 'visual-regexp)
 
 (define-key key-translation-map [dead-circumflex] "^")
