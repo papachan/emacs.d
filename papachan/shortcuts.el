@@ -1,7 +1,7 @@
 ;;; shortcuts.el file
 ;;
 (require 'rg)
-(require 'helm-config)
+(require 'helm-bookmark)
 (require 'visual-regexp)
 
 (define-key key-translation-map [dead-circumflex] "^")
@@ -82,6 +82,8 @@
 (define-key global-map (kbd "C-c g") 'vr/mc-mark)
 
 (global-set-key (kbd "M-s") 'rg)
+
+(global-set-key (kbd "C-x r l") 'helm-bookmarks)
 
 (cond
  ((equal system-type 'darwin)
