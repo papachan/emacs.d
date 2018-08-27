@@ -19,7 +19,8 @@
               "https://raw.github.com/konzeptual/tea-time/master/tea-time.el"
               "https://www.emacswiki.org/emacs/download/lispxmp.el"
               "https://raw.github.com/bcbcarl/emacs-wttrin/master/wttrin.el"
-              "https://raw.githubusercontent.com/informatimago/emacs/master/emacs-uptime.el"))
+              "https://raw.githubusercontent.com/informatimago/emacs/master/emacs-uptime.el"
+              "https://raw.githubusercontent.com/thorsdadt/json.el/master/json.el"))
   (download-elisp-files lst))
 
 (provide 'bootstrap)

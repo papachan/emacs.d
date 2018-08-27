@@ -82,8 +82,8 @@
 (define-key global-map (kbd "C-c g") 'vr/mc-mark)
 
 (global-set-key (kbd "M-s") 'rg)
-
 (global-set-key (kbd "C-x r l") 'helm-bookmarks)
+(global-set-key (kbd "C-c C-v") 'other-frame)
 
 (cond
  ((equal system-type 'darwin)
