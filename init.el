@@ -100,7 +100,7 @@
                 "ido-snippet"
                 "setup-python"
                 "setup-ruby"
-                "webmode"
+                "setup-webmode"
                 "setup-smartmode"
                 "setup-multiple-cursors"
                 "unicode-emoticons"))
@@ -139,4 +139,3 @@
            (- (+ hi lo)
               (+ (first *emacs-load-start*)
                  (second *emacs-load-start*)))))
-
