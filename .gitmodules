@@ -4,24 +4,12 @@
 [submodule "vendor/zenburn-emacs"]
 	path = vendor/zenburn-emacs
 	url = git@github.com:bbatsov/zenburn-emacs.git
-[submodule "vendor/emacs-for-python"]
-	path = vendor/emacs-for-python
-	url = git@github.com:gabrielelanaro/emacs-for-python.git
-[submodule "vendor/python-mode.el"]
-	path = vendor/python-mode.el
-	url = git@github.com:emacsmirror/python-mode.git
 [submodule "vendor/zerodark-theme"]
 	path = vendor/zerodark-theme
 	url = git@github.com:NicolasPetton/zerodark-theme.git
-[submodule "vendor/restclient.el"]
-	path = vendor/restclient.el
-	url = https://github.com/magnars/restclient.el.git
 [submodule "vendor/origami.el"]
 	path = vendor/origami.el
 	url = https://github.com/gregsexton/origami.el.git
-[submodule "vendor/emacs-neotree"]
-	path = vendor/emacs-neotree
-	url = https://github.com/jaypei/emacs-neotree.git
 [submodule "vendor/x5o.el"]
 	path = vendor/x5o.el
 	url = https://github.com/papachan/x5o.el.git
