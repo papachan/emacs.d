@@ -40,6 +40,7 @@
 (depends-on "inf-ruby")
 (depends-on "inflections")
 (depends-on "ivy")
+(depends-on "kotlin-mode")
 (depends-on "liso-theme")
 (depends-on "macrostep")
 (depends-on "magit")
