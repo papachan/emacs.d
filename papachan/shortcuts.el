@@ -50,7 +50,6 @@
 (global-set-key (kbd "<f6>") 'reload-init-file)
 (global-set-key (kbd "<f7>") 'iflipb-next-buffer)
 (global-set-key (kbd "<f9>") 'iflipb-previous-buffer)
-(global-set-key (kbd "<f8>") 'neotree-toggle)
 (global-set-key (kbd "C-c n") 'my-dired-create-file)
 (global-set-key (kbd "C-<f11>") 'toggle-frame-fullscreen)
 (global-set-key (kbd "<f12>") 'run-cask-test)
