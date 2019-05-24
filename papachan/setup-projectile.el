@@ -13,14 +13,11 @@
   (progn
     (setq projectile-completion-system 'helm)
     (helm-projectile-on)
-    
+
     (setq projectile-switch-project-action 'projectile-dired)
-    
+
     (setq projectile-mode-line '(:eval (format " Prj[%s]" (projectile-project-name))))
-    ;; This places all Projectile keybinds under C-x p
-    ;; (setq projectile-keymap-prefix (kbd "C-x p"))
-    ;; (setq projectile-create-missing-test-files t)
-    (global-set-key (kbd "C-c C-p") 'file-fuzzy-finder)))
+    (global-set-key (kbd "C-c p f") 'file-fuzzy-finder)))
 
 (projectile-global-mode)
 (setq projectile-enable-caching t)

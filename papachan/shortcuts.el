@@ -45,11 +45,11 @@
 (global-set-key (kbd "S-<f2>") (lambda () (interactive) (dired "~/.emacs.d/")))
 (global-set-key (kbd "S-<f3>") (lambda () (interactive) (dired "~/Dropbox/documents/")))
 (global-set-key (kbd "S-<f4>") (lambda () (interactive) (dired "~/Downloads")))
-(global-set-key (kbd "S-<f5>") (lambda () (interactive) (dired "~/Dropbox/")))
+(global-set-key (kbd "S-<f5>") (lambda () (interactive) (dired "~/Dropbox")))
+(global-set-key (kbd "S-<f6>") (lambda () (interactive) (dired "~/Desktop")))
 (global-set-key (kbd "<f6>") 'reload-init-file)
 (global-set-key (kbd "<f7>") 'iflipb-next-buffer)
 (global-set-key (kbd "<f9>") 'iflipb-previous-buffer)
-(global-set-key (kbd "<f8>") 'neotree-toggle)
 (global-set-key (kbd "C-c n") 'my-dired-create-file)
 (global-set-key (kbd "C-<f11>") 'toggle-frame-fullscreen)
 (global-set-key (kbd "<f12>") 'run-cask-test)
@@ -87,6 +87,8 @@
 (global-set-key (kbd "M-s") 'rg)
 (global-set-key (kbd "C-x r l") 'helm-bookmarks)
 (global-set-key (kbd "C-c C-v") 'other-frame)
+
+(global-set-key (kbd "C-c y") "\C-a\C- \C-n\M-w\C-y")
 
 (cond
  ((equal system-type 'darwin)

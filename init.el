@@ -98,12 +98,13 @@
                 "init-org"
                 "org-babel"
                 "ido-snippet"
-                "setup-python"
+                ;; "setup-python"
                 "setup-ruby"
                 "setup-webmode"
                 "setup-smartmode"
                 "setup-multiple-cursors"
-                "unicode-emoticons"))
+                "unicode-emoticons"
+                "setup-dired-sidebar"))
   (load (concat dotfiles-misc-dir file)))
 
 ; paths
