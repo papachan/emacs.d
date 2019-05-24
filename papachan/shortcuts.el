@@ -43,7 +43,7 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "S-<f1>") (lambda () (interactive) (dired "~/")))
 (global-set-key (kbd "S-<f2>") (lambda () (interactive) (dired "~/.emacs.d/")))
-(global-set-key (kbd "S-<f3>") (lambda () (interactive) (dired "~/git/documents/")))
+(global-set-key (kbd "S-<f3>") (lambda () (interactive) (dired "~/Dropbox/documents/")))
 (global-set-key (kbd "S-<f4>") (lambda () (interactive) (dired "~/Downloads")))
 (global-set-key (kbd "S-<f5>") (lambda () (interactive) (dired "~/Dropbox/")))
 (global-set-key (kbd "<f6>") 'reload-init-file)
@@ -67,11 +67,14 @@
 
 (global-set-key (kbd "M-<f2>") 'random-11-letter-string)
 
+
+
 ;; comment line
-(global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
-(global-set-key (kbd "C-<f5>") (lambda()  (interactive) (Lorem-ipsum-insert-paragraphs 200)))
-(global-set-key (kbd "C-<f6>") 'snippet-html)
-(global-set-key (kbd "C-<f7>") 'lorem-ipsum-insert-list)
+;; (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
+;; (global-set-key (kbd "C-<f6>") 'snippet-html)
+(global-set-key (kbd "M-<f4>") 'html-html5-template)
+(global-set-key (kbd "M-<f5>") (lambda()  (interactive) (Lorem-ipsum-insert-paragraphs 200)))
+(global-set-key (kbd "M-<f6>") 'lorem-ipsum-insert-list)
 (global-set-key (kbd "C-x M-d") 'insert-current-date)
 (global-set-key (kbd "C-c i") 'snippet-latin)
 ;; (global-unset-key (kbd "C-z"))

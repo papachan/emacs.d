@@ -29,7 +29,7 @@
              ("Erlang" (mode . erlang-mode))
              ("Code" (or (filename . "source_code")
                          (mode . lisp-mode)))
-             ("Org"  (mode . org-mode))
+             ("Text"  (mode . org-mode))
              ("Magit" (or (name . "magit")
                           (mode . magit-status-mode))))))
 
