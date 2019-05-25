@@ -10,9 +10,3 @@
 [submodule "vendor/origami.el"]
 	path = vendor/origami.el
 	url = https://github.com/gregsexton/origami.el.git
-[submodule "vendor/x5o.el"]
-	path = vendor/x5o.el
-	url = https://github.com/papachan/x5o.el.git
-[submodule "vendor/slack"]
-	path = vendor/slack
-	url = https://github.com/emacsmirror/slack.git
