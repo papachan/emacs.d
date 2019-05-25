@@ -1,7 +1,6 @@
 ;;; shortcuts.el file
 ;;
 (require 'rg)
-(require 'helm-bookmark)
 (require 'visual-regexp)
 
 (define-key key-translation-map [dead-circumflex] "^")
@@ -70,8 +69,6 @@
 
 
 ;; comment line
-;; (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
-;; (global-set-key (kbd "C-<f6>") 'snippet-html)
 (global-set-key (kbd "M-<f4>") 'html-html5-template)
 (global-set-key (kbd "M-<f5>") (lambda()  (interactive) (Lorem-ipsum-insert-paragraphs 200)))
 (global-set-key (kbd "M-<f6>") 'lorem-ipsum-insert-list)
@@ -85,7 +82,7 @@
 (define-key global-map (kbd "C-c g") 'vr/mc-mark)
 
 (global-set-key (kbd "M-s") 'rg)
-(global-set-key (kbd "C-x r l") 'helm-bookmarks)
+;(global-set-key (kbd "C-x r l") 'helm-bookmarks)
 (global-set-key (kbd "C-c C-v") 'other-frame)
 
 (global-set-key (kbd "C-c y") "\C-a\C- \C-n\M-w\C-y")

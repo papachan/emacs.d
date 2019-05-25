@@ -71,9 +71,6 @@
 
 
 (add-to-list 'load-path "vendor/origami.el")
-(add-to-list 'load-path "vendor/emacs-neotree")
-(add-to-list 'load-path "vendor/x5o.el")
-(add-to-list 'load-path "vendor/restclient.el")
 
 ;; load lisp files
 (dolist (file '("setup-autocomplete"
@@ -129,7 +126,6 @@
 (require 'toggle-quotes)
 (require 'lispxmp)
 (require 'tea-time)
-(require 'neotree)
 (require 'wttrin)
 (require 'linum)
 (linum-mode)

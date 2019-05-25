@@ -9,6 +9,9 @@
 
 (eval-after-load 'dired
   '(progn
+     ;; display dirs first in dired
+     (setq ls-lisp-dirs-first t)
+
      (setq dired-use-ls-dired nil)
      (define-key dired-mode-map (kbd "C-c n") 'my-dired-create-file)
      (define-key dired-mode-map (kbd "<left>") 'dired-jump)

@@ -77,6 +77,7 @@
 (depends-on "smartparens")
 (depends-on "swiper")
 (depends-on "undo-tree")
+(depends-on "use-package")
 (depends-on "visual-fill-column")
 (depends-on "visual-regexp")
 (depends-on "web-mode")
