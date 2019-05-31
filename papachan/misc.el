@@ -37,7 +37,37 @@
 (defun snippet-html ()
   (lambda())
   (interactive)
-  (insert "<!DOCTYPE html>\n<html>\n<head>\n    <title></title>\n</head>\n<body>\n\n</body>\n</html>"))
+  (insert "<!DOCTYPE html>\n"
+          "<html lang=\"en\">\n"
+          "<head>\n"
+          "<meta charset=\"UTF-8\"/>\n"
+          "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"/>\n"
+          "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n"
+          "<title></title>\n</head>\n"
+          "<body>\n<div id=\"app\"></div\n\n</body>\n</html>"))
+
+(defun snippet-html5 ()
+  (lambda())
+  (interactive)
+  (insert "<!DOCTYPE html>\n"
+          "<html lang=\"en\">\n"
+          "  <head>\n"
+          "    <meta charset=\"UTF-8\">\n"
+          "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
+          "    <link href=\"https://fonts.googleapis.com/css?family=Open+Sans\" rel=\"stylesheet\">\n"
+          "    <title></title>\n</head>\n"
+          "  <body>\n"
+          "    <div id=\"app\"></div>\n"
+          "    <script src=\"/js/app.js\" type=\"text/javascript\"></script>\n"
+          "    <link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css\">\n"
+          "  </body>\n"
+          "</html>"))
+
+(defun download-url-file ()
+  (lambda ())
+  (interactive)
+  (let ((url (read-from-minibuffer "Enter url:")))
+    (url-copy-file url (url-file-nondirectory url))))
 
 (defun snippet-latin ()
   (lambda())
