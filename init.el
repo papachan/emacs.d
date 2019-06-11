@@ -100,6 +100,7 @@
                 "setup-webmode"
                 "setup-smartmode"
                 "setup-multiple-cursors"
+                "setup-hiccup"
                 "unicode-emoticons"
                 "setup-dired-sidebar"))
   (load (concat dotfiles-misc-dir file)))

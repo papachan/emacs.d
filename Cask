@@ -35,6 +35,7 @@
 (depends-on "helm")
 (depends-on "helm-core")
 (depends-on "helm-projectile")
+(depends-on "html-to-hiccup")
 (depends-on "htmlize")
 (depends-on "hydra")
 (depends-on "idle-highlight-mode")
