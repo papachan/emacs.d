@@ -54,6 +54,7 @@
 (depends-on "move-text")
 (depends-on "multiple-cursors")
 (depends-on "neotree")
+(depends-on "nimbus-theme")
 (depends-on "nyan-mode")
 (depends-on "package-build")
 (depends-on "pallet")

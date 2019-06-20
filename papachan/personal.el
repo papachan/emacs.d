@@ -18,5 +18,4 @@
                            :height 140
                            :weight 'normal)
        (set-face-font 'default font))
-     ;; "menlo"
      "Fira Code"))))
