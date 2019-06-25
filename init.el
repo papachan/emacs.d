@@ -75,6 +75,7 @@
 ;; load lisp files
 (dolist (file '("setup-autocomplete"
                 "setup-undo"
+                "setup-yasnippet"
                 "misc"
                 "personal"
                 "shortcuts"
