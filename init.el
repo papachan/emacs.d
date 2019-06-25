@@ -78,6 +78,7 @@
 
 ;; load lisp files
 (dolist (file '("setup-autocomplete"
+                "setup-yasnippet"
                 "setup-undo"
                 "misc"
                 "personal"
@@ -101,10 +102,11 @@
                 "ido-snippet"
                 "setup-python"
                 "setup-ruby"
-                "webmode"
+                "setup-webmode"
                 "setup-smartmode"
                 "setup-multiple-cursors"
-                "unicode-emoticons"))
+                "unicode-emoticons"
+                "setup-dired-sidebar"))
   (load (concat dotfiles-misc-dir file)))
 
 ; paths
@@ -133,11 +135,3 @@
 (require 'wttrin)
 (require 'linum)
 (linum-mode)
-
-;; check emacs start time
-(message "Emacs started in %ds"
-         (destructuring-bind (hi lo ms ps) (current-time)
-           (- (+ hi lo)
-              (+ (first *emacs-load-start*)
-                 (second *emacs-load-start*)))))
-

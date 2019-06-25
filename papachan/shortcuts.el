@@ -63,7 +63,6 @@
 (global-set-key (kbd "<f6>") 'reload-init-file)
 (global-set-key (kbd "<f7>") 'iflipb-next-buffer)
 (global-set-key (kbd "<f9>") 'iflipb-previous-buffer)
-(global-set-key (kbd "<f8>") 'neotree-toggle)
 (global-set-key (kbd "C-c n") 'my-dired-create-file)
 (global-set-key (kbd "C-<f11>") 'toggle-frame-fullscreen)
 (global-set-key (kbd "<f12>") 'run-cask-test)
@@ -82,9 +81,10 @@
 (global-set-key (kbd "C-<f2>") 'random-11-letter-string)
 
 ;; comment line
-(global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
-(global-set-key (kbd "C-<f5>") (lambda()  (interactive) (Lorem-ipsum-insert-paragraphs 200)))
-(global-set-key (kbd "C-<f6>") 'snippet-html)
+;; (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
+(global-set-key (kbd "C-<f4>") 'html-html5-template)
+(global-set-key (kbd "C-<f5>") (lambda()  (interactive) (Lorem-ipsum-insert-paragraphs 20)))
+;; (global-set-key (kbd "C-<f6>") 'snippet-html)
 (global-set-key (kbd "C-<f7>") 'lorem-ipsum-insert-list)
 (global-set-key (kbd "C-x M-d") 'insert-current-date)
 (global-set-key (kbd "C-c i") 'snippet-latin)
@@ -96,6 +96,8 @@
 (define-key global-map (kbd "C-c g") 'vr/mc-mark)
 
 (global-set-key (kbd "M-s") 'rg)
+
+;; (global-set-key (kbd "M-z") 'backward-kill-word)
 
 (cond
  ((equal system-type 'darwin)

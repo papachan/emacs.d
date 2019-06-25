@@ -16,9 +16,7 @@
 (use-package slime
   :ensure t
   :init (progn (setq slime-contribs '(slime-fancy)
-                     inferior-lisp-program (if (eq system-type 'darwin)
-                                               "/usr/local/bin/sbcl"
-                                             "sbcl")
+                     inferior-lisp-program "/usr/local/bin/sbcl"
                      slime-lisp-implementations
                      '((sbcl ("/usr/local/bin/sbcl") :coding-system utf-8-unix))
                      slime-net-coding-system 'utf-8-unix))
@@ -31,6 +29,7 @@
             (global-set-key (kbd "C-c C-q") 'slime-repl-quit)
             (global-set-key (kbd "C-c s") 'slime-selector)))
 
+(add-to-list 'slime-contribs 'slime-cl-indent)
 
 (defun hook-lisp-mode ()
   "Display lambda as λ"

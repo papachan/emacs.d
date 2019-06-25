@@ -28,8 +28,9 @@
                       (mode . enh-ruby-mode)))
              ("Erlang" (mode . erlang-mode))
              ("Code" (or (filename . "source_code")
-                         (mode . lisp-mode)))
-             ("Org"  (mode . org-mode))
+                         (mode . lisp-mode)
+                         (mode . clojure-mode)))
+             ("Text"  (mode . org-mode))
              ("Magit" (or (name . "magit")
                           (mode . magit-status-mode))))))
 

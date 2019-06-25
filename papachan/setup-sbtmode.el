@@ -1,4 +1,4 @@
-;;; setup-sbtmode.el
+;;; setup-sbtmode.el -- scala setup
 
 (require 'sbt-mode)
 (require 'scala-mode2)

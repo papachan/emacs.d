@@ -5,4 +5,9 @@ alias ppo helm-projectile
 alias lsdir ls -l | egrep '^d'
 alias code ~/dev/source_code/
 alias source_code ~/dev/source_code/
+alias emacs.d ~/.emacs.d
+alias dropbox ~/Dropbox/
 alias repos ~/git
+alias tmp ~/tmp
+alias open nautilus . &
+alias treeeee tree -I '.git|venv|__pycache__'
