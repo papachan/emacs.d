@@ -63,6 +63,22 @@
           "  </body>\n"
           "</html>"))
 
+(defun snippet-reagent ()
+  (lambda())
+  (interactive)
+  (insert "<!DOCTYPE html>\n"
+          "<html>\n"
+          "  <head>\n"
+          "    <title></title>\n"
+          "    <meta charset=\"UTF-8\" />\n"
+          "    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n"
+          "  </head>\n"
+          "  <body>\n"
+          "    <div id=\"app\"></div>\n"
+          "    <script src=\"cljs-out/dev-main.js\" type=\"text/javascript\"></script>\n"
+          "  </body>\n"
+          "</html>"))
+
 (defun download-url-file ()
   (lambda ())
   (interactive)
