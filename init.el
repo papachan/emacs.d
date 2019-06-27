@@ -72,6 +72,11 @@
 
 (add-to-list 'load-path "vendor/origami.el")
 
+; paths
+(progn
+  (cd dotemacs-dir)
+  (normal-top-level-add-subdirs-to-load-path))
+
 ;; load lisp files
 (dolist (file '("setup-autocomplete"
                 "setup-undo"
@@ -103,26 +108,9 @@
                 "setup-multiple-cursors"
                 "setup-hiccup"
                 "unicode-emoticons"
-                "setup-dired-sidebar"))
+                "setup-dired-sidebar"
+                "setup-bootstrap"))
   (load (concat dotfiles-misc-dir file)))
-
-; paths
-(progn
-  (cd dotemacs-dir)
-  (normal-top-level-add-subdirs-to-load-path))
-
-(require 'bootstrap)
-(bootstrap)
-
-;; load files from dotfiles-lisp-dir
-(dolist (file '(
-    "iflipb"
-    "directory-files-recursive"
-    "twittering-mode"
-    "helm-aws"
-    "lorem-ipsum"))
-  (load file))
-
 
 (require 'restclient)
 (require 'toggle-quotes)

@@ -89,3 +89,4 @@
 (depends-on "writeroom-mode")
 (depends-on "xterm-color")
 (depends-on "yasnippet")
+(depends-on "yasnippet-snippets")
