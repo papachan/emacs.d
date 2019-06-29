@@ -5,15 +5,16 @@
   :ensure t
   :defer t
   :bind ("C-c C-;" . web-mode-comment-or-uncomment)
-  :mode (("\\.html?\\'" . web-mode)
-         ("\\.phtml\\'" . web-mode)
-         ("\\.tpl\\'"   . web-mode)
-         ("\\.jsp\\'"   . web-mode)
-         ("\\.gsp\\'"   . web-mode)
-         ("\\.gs\\'"    . web-mode)
-         ("\\.twig\\'"  . web-mode)
-         ("\\.css\\'"   . web-mode)
-         ("\\.eex\\'"   . web-mode)
+  :mode (("\\.html?\\'"  . web-mode)
+         ("\\.phtml\\'"  . web-mode)
+         ("\\.tpl\\'"    . web-mode)
+         ("\\.jsp\\'"    . web-mode)
+         ("\\.gsp\\'"    . web-mode)
+         ("\\.gs\\'"     . web-mode)
+         ("\\.twig\\'"   . web-mode)
+         ("\\.css\\'"    . web-mode)
+         ("\\.eex\\'"    . web-mode)
+         ("\\.js[x]?\\'" . web-mode)
          ("/\\(views\\|html\\|templates\\)/.*\\.php\\'" . web-mode))
   :config
   (progn
