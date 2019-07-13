@@ -3,6 +3,6 @@ alias FF find-file-other-window $1
 alias ppf projectile-find-file
 alias ppo helm-projectile
 alias lsdir ls -l | egrep '^d'
-alias code ~/dev/source_code/
-alias source_code ~/dev/source_code/
 alias repos ~/git
+alias clean_my_mac find ./ -name ".DS_Store" -depth -exec rm {} \;
+alias clean_all_py_files find . -name __py*__ -print0 | xargs -0 rm -rf
