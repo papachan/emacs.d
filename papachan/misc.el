@@ -7,6 +7,10 @@
 (require 'recentf)
 (require 'maxframe)
 
+(defvar current-date-format "%Y-%m-%d")
+(defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y")
+(defvar current-time-format "%a %H:%M:%S")
+
 ;; local env
 (cond
  ((eq system-type 'darwin)
@@ -92,13 +96,22 @@
 
 (defun insert-current-date ()
   (interactive)
-  (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
+  (insert (format-time-string current-date-format (current-time))))
+
+(defun insert-current-date-time ()
+  (interactive "*")
+  (insert (format-time-string current-date-time-format (current-time))))
+
+(defun insert-current-time ()
+  (interactive "*")
+  (insert (format-time-string current-time-format (current-time))))
 
 (defun insert-title ()
   (lambda())
   (interactive)
-  (let ((name (format "===%s==="
-                      (read-from-minibuffer "Enter your title:"))))
+  (let ((name
+         (format "===%s==="
+                 (read-from-minibuffer "Enter your title:"))))
     (setq len  (/ (- 72 (length name)) 2)
           blank (make-string len ?\s))
     (insert (concat blank name blank))))
