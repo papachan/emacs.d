@@ -43,7 +43,6 @@
 (depends-on "macrostep")
 (depends-on "magit")
 (depends-on "magit-org-todos")
-(depends-on "magit-popup")
 (depends-on "magit-todos")
 (depends-on "markdown-mode")
 (depends-on "maxframe")

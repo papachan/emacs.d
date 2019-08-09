@@ -9,7 +9,7 @@
           '(("home"
              ("emacs-config" (or (filename . ".emacs.d")
                                  (filename . "emacs-config")))
-             ("Shell" (or (name . "\*shell\*")
+             ("Eshell" (or (name . "\*shell\*")
                           (mode . eshell-mode)))
              ("Dired" (mode . dired-mode))
              ("Emacs" (or
@@ -22,15 +22,18 @@
                        (name . "^\\*Bookmark List\\*$")
                        ))
              ("SQL" (mode . sql-mode))
+             ("Clojure-edn" (filename . ".edn$"))
              ("Python" (mode . python-mode))
-             ("Ruby" (or
-                      (mode . ruby-mode)
-                      (mode . enh-ruby-mode)))
+             ("Ruby" (or (mode . ruby-mode)
+                         (mode . enh-ruby-mode)))
              ("Erlang" (mode . erlang-mode))
-             ("Code" (or (filename . "source_code")
+             ("Elixir" (mode . elixir-mode))
+             ("Lisp" (or (filename . ".el$")
+                         (filename . ".cljs$")
                          (mode . lisp-mode)
                          (mode . clojure-mode)))
-             ("Text"  (mode . org-mode))
+             ("Text"  (or (mode . org-mode)
+                          (filename . ".md$")))
              ("Magit" (or (name . "magit")
                           (mode . magit-status-mode))))))
 

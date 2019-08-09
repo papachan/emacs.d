@@ -56,11 +56,27 @@
           "    <meta charset=\"UTF-8\">\n"
           "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
           "    <link href=\"https://fonts.googleapis.com/css?family=Open+Sans\" rel=\"stylesheet\">\n"
+          "    <link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css\">\n"
           "  </head>\n"
           "  <body>\n"
           "    <div id=\"app\"></div>\n"
           "    <script src=\"/js/app.js\" type=\"text/javascript\"></script>\n"
-          "    <link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css\">\n"
+          "  </body>\n"
+          "</html>"))
+
+(defun snippet-reagent ()
+  (lambda())
+  (interactive)
+  (insert "<!DOCTYPE html>\n"
+          "<html>\n"
+          "  <head>\n"
+          "    <title></title>\n"
+          "    <meta charset=\"UTF-8\" />\n"
+          "    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n"
+          "  </head>\n"
+          "  <body>\n"
+          "    <div id=\"app\"></div>\n"
+          "    <script src=\"cljs-out/dev-main.js\" type=\"text/javascript\"></script>\n"
           "  </body>\n"
           "</html>"))
 

@@ -21,7 +21,9 @@
     ("ping" "(・_・)ｽｯ")
     ("salut" "(*ﾟｰﾟ)ﾉ")
     ("fight" "(๑•̀ㅂ•́)و✧")
-    ("ohm" "ᕮ☉益☉ᕭ")))
+    ("ohm" "ᕮ☉益☉ᕭ")
+
+    ("beauty" "♥‿♥")))
 
 (add-to-list 'abbrev-minor-mode-table-alist
 	     `(unicode-emoticons-mode ,unicode-emoticons-mode-abbrev-table))
