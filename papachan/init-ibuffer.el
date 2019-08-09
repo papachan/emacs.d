@@ -7,10 +7,12 @@
   (progn
     (setq ibuffer-saved-filter-groups
           '(("home"
-             ("emacs-config" (or (filename . ".emacs.d")
-                                 (filename . "emacs-config")))
+             ("Magit" (or (name . "magit")
+                          (mode . magit-status-mode)))
+             ("emacs-config" (or (filename . "\\.emacs\\.d")
+                                 (filename . ".emacs.d/.*.el$")))
              ("Eshell" (or (name . "\*shell\*")
-                          (mode . eshell-mode)))
+                           (mode . eshell-mode)))
              ("Dired" (mode . dired-mode))
              ("Emacs" (or
                        (name . "^\\*scratch\\*$")
@@ -22,20 +24,20 @@
                        (name . "^\\*Bookmark List\\*$")
                        ))
              ("SQL" (mode . sql-mode))
-             ("Clojure-edn" (filename . ".edn$"))
+             ("Log" (filename . ".*\.log$"))
+             ("Clojure-edn" (filename . ".*\.edn$"))
              ("Python" (mode . python-mode))
              ("Ruby" (or (mode . ruby-mode)
                          (mode . enh-ruby-mode)))
              ("Erlang" (mode . erlang-mode))
              ("Elixir" (mode . elixir-mode))
-             ("Lisp"  (or (filename . ".el$")
-                          (filename . ".cljs$")
+             ("Lisp"  (or (mode . emacs-lisp-mode)
+                          (filename . ".*\.cljs$")
                           (mode . clojure-mode)
                           (mode . lisp-mode)))
              ("Text" (or (mode . org-mode)
-                         (filename . ".md$")))
-             ("Magit" (or (name . "magit")
-                          (mode . magit-status-mode))))))
+                         (filename . ".*\.md$")))
+             )))
 
     (define-ibuffer-sorter filename-or-dired
       "Sort the buffers by their pathname."
