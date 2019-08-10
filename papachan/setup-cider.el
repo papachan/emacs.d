@@ -65,6 +65,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojure-mode))
 
 (provide 'setup-cider)
 ;;; setup-cider.el ends here
