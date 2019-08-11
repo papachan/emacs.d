@@ -7,7 +7,7 @@
   (progn
     (setq ibuffer-saved-filter-groups
           '(("home"
-             ("Magit" (or (name . "magit")
+             ("Magit" (or (mode . magit-mode)
                           (mode . magit-status-mode)))
              ("emacs-config" (or (filename . "\\.emacs\\.d")
                                  (filename . ".emacs.d/.*.el$")))
@@ -35,7 +35,8 @@
                           (filename . ".*\.cljs$")
                           (mode . clojure-mode)
                           (mode . lisp-mode)
-                          (mode . scheme-mode)))
+                          (mode . scheme-mode)
+                          (mode . clojurec-mode)))
              ("Text" (or (mode . org-mode)
                          (filename . ".*\.md$")))
              )))

@@ -116,6 +116,15 @@
           blank (make-string len ?\s))
     (insert (concat blank name blank))))
 
+(defun notify-popup (title message)
+  "use terminal notify-send"
+  (interactive)
+  (let ((str-action (if (eq system-type 'darwin)
+                 (concat "terminal-notifier -title " title " -message " message)
+               (if (eq system-type 'gnu/linux)
+                   (concat "notify-send " title ":" message)))))
+    (shell-command str-action)))
+
 (defun my-dired-create-file (file)
   "Create a file called FILE.
 If FILE already exists, signal an error."
