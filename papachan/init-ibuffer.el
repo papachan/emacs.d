@@ -8,7 +8,9 @@
     (setq ibuffer-saved-filter-groups
           '(("home"
              ("Magit" (or (mode . magit-mode)
-                          (mode . magit-status-mode)))
+                          (mode . magit-status-mode)
+                          (mode . magit-log-mode)
+                          (mode . magit-process-mode)))
              ("emacs-config" (or (filename . "\\.emacs\\.d")
                                  (filename . ".emacs.d/.*.el$")))
              ("Eshell" (or (name . "\*shell\*")
