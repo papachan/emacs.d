@@ -6,6 +6,7 @@
 (require 'ido)
 (require 'recentf)
 (require 'maxframe)
+(require 'move-text)
 
 (defvar current-date-format "%Y-%m-%d")
 (defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y")

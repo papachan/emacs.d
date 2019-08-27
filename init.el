@@ -101,7 +101,7 @@
                 "init-org"
                 "org-babel"
                 "ido-snippet"
-                ;; "setup-python"
+                "setup-python"
                 "setup-ruby"
                 "setup-webmode"
                 "setup-smartmode"
