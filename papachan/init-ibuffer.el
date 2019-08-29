@@ -14,6 +14,7 @@
                           (mode . magit-revision-mode)))
              ("emacs-config" (or (filename . "\\.emacs\\.d")
                                  (filename . ".emacs.d/.*.el$")))
+             ("Bash" (mode . sh-mode))
              ("Eshell" (or (name . "\*shell\*")
                            (mode . eshell-mode)))
              ("Dired" (mode . dired-mode))
