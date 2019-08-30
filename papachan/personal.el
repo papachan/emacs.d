@@ -18,4 +18,5 @@
                            :height 110
                            :weight 'normal)
        (set-face-font 'default font))
-     "Fira Code"))))
+     "Fira Code")
+    (set-cursor-color "#ff00cc"))))
