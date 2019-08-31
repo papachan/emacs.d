@@ -8,7 +8,8 @@
                            :height 120
                            :weight 'normal)
        (set-face-font 'default font))
-     "Ubuntu Mono")))
+     "Ubuntu Mono")
+    (set-cursor-color "dark violet")))
  ((eq system-type 'darwin)
   (progn
     ((lambda (font)

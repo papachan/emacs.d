@@ -104,6 +104,27 @@
   (let ((url (read-from-minibuffer "Enter url:")))
     (url-copy-file url (url-file-nondirectory url))))
 
+;; use notify-send
+(defun notify-popup (title message)
+  (interactive)
+  (let ((str-action (if (eq system-type 'darwin)
+                 (concat "terminal-notifier -title " title " -message " message)
+               (if (eq system-type 'gnu/linux)
+                   (concat "notify-send " title ":" message)))))
+    (shell-command str-action)))
+;; (notify-popup "hola" "nuevo mensaje")
+
+(defun my-kill-all-visiting-buffers (dir)
+  "Kill all buffers visiting DIR or any subdirectory of DIR"
+  (interactive "Directory: ")
+  (mapc
+   (lambda (buf)
+     (let ((bfn (buffer-file-name buf)))
+       (when (and (not (null bfn))
+                  (file-in-directory-p bfn dir))
+         (kill-buffer buf))))
+   (buffer-list)))
+
 (defun my-dired-create-file (file)
   "Create a file called FILE.
 If FILE already exists, signal an error."
