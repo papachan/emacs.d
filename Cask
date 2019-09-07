@@ -59,6 +59,7 @@
 (depends-on "package-build")
 (depends-on "pallet")
 (depends-on "paredit")
+(depends-on "parseclj")
 (depends-on "popup")
 (depends-on "popwin")
 (depends-on "powerline")

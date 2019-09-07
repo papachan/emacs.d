@@ -117,8 +117,6 @@
 (require 'lispxmp)
 (require 'tea-time)
 (require 'wttrin)
-(require 'linum)
-(linum-mode)
 
 ;; check emacs start time
 (message "Emacs started in %ds"

@@ -7,6 +7,7 @@
 (require 'recentf)
 (require 'maxframe)
 (require 'move-text)
+(require 'linum)
 
 (defvar current-date-format "%Y-%m-%d")
 (defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y")
@@ -352,6 +353,9 @@ If FILE already exists, signal an error."
 
 ; tramp with ssh
 (setq tramp-default-method "ssh")
+
+; linum mode
+(linum-mode)
 
 ;; ido-mode is like magic pixie dust!
 (ido-mode t)
