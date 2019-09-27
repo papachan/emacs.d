@@ -15,7 +15,6 @@ cask
 
 git submodule init
 git submodule update --init --recursive
-git clone --recursive   git@github.com:emacsmirror/python-mode.git  vendor/python-mode.el
 
 # Backup existing .emacs.d
 if [ -e "$HOME/.emacs.d" ]; then

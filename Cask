@@ -66,6 +66,7 @@
 (depends-on "prodigy")
 (depends-on "projectile")
 (depends-on "python-mode")
+(depends-on "racket-mode")
 (depends-on "request")
 (depends-on "restclient")
 (depends-on "rg")
