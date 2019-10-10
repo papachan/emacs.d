@@ -1,3 +1,5 @@
+;;; setup-python.el
+;; python setup
 (require 'yasnippet)
 (require 'python-mode)
 
