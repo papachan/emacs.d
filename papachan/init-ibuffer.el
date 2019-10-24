@@ -7,6 +7,7 @@
   (progn
     (setq ibuffer-saved-filter-groups
           '(("home"
+             ("Dired-sidebar" (mode . dired-sidebar-mode))
              ("Magit" (or (mode . magit-mode)
                           (mode . magit-status-mode)
                           (mode . magit-log-mode)
