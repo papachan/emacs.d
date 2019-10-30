@@ -2,6 +2,7 @@
 (source marmalade)
 (source melpa)
 (source melpa-stable)
+(source org)
 
 (depends-on "ac-slime")
 (depends-on "alchemist")
@@ -32,6 +33,7 @@
 (depends-on "flycheck-elixir")
 (depends-on "git-commit")
 (depends-on "github-theme")
+(depends-on "gnu-elpa-keyring-update")
 (depends-on "helm")
 (depends-on "helm-core")
 (depends-on "helm-projectile")
