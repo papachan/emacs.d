@@ -7,6 +7,7 @@
   (progn
     (setq ibuffer-saved-filter-groups
           '(("home"
+             ("Dired-sidebar" (mode . dired-sidebar-mode))
              ("Magit" (or (mode . magit-mode)
                           (mode . magit-status-mode)
                           (mode . magit-log-mode)
@@ -28,7 +29,8 @@
                        (name . "^\\*Bookmark List\\*$")))
              ("SQL" (mode . sql-mode))
              ("Log" (filename . ".*\.log$"))
-             ("Clojure-edn" (filename . ".edn$"))
+             ("Clojure-edn" (or (filename . ".edn$")
+                                (name . "*edn*")))
              ("Python" (mode . python-mode))
              ("Ruby" (or (mode . ruby-mode)
                          (mode . enh-ruby-mode)))

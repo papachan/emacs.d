@@ -1,11 +1,12 @@
-alias ff find-file $1
-alias FF find-file-other-window $1
-alias ppf projectile-find-file
-alias ppo helm-projectile
-alias lsdir ls -l | egrep '^d'
-alias source_code ~/dev/source_code/
-alias emacs.d ~/.emacs.d
-alias dropbox ~/Dropbox/
-alias repos ~/git
-alias open nautilus . &
+alias nil  $*
 alias treeeee tree -I '.git|venv|__pycache__'
+alias open nautilus . &
+alias repos ~/git
+alias dropbox ~/Dropbox/
+alias emacs.d ~/.emacs.d
+alias source_code ~/dev/source_code/
+alias lsdir ls -l | egrep '^d'
+alias ppo helm-projectile
+alias ppf projectile-find-file
+alias FF find-file-other-window $1
+alias ff find-file $1

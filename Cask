@@ -2,6 +2,7 @@
 (source marmalade)
 (source melpa)
 (source melpa-stable)
+(source org)
 
 (depends-on "alchemist")
 (depends-on "all-the-icons")
@@ -27,6 +28,7 @@
 (depends-on "frame-cmds")
 (depends-on "frame-fns")
 (depends-on "git-commit")
+(depends-on "gnu-elpa-keyring-update")
 (depends-on "graphql-mode")
 (depends-on "haskell-emacs")
 (depends-on "haskell-mode")
@@ -69,6 +71,7 @@
 (depends-on "smartparens")
 (depends-on "spinner")
 (depends-on "swiper")
+(depends-on "transient")
 (depends-on "typescript-mode")
 (depends-on "undo-tree")
 (depends-on "use-package")
