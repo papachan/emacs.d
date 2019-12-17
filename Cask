@@ -14,6 +14,7 @@
 (depends-on "clojure-mode")
 (depends-on "color-theme")
 (depends-on "company")
+(depends-on "composable")
 (depends-on "dash")
 (depends-on "dired-sidebar")
 (depends-on "elfeed")
