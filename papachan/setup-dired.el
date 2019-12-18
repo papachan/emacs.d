@@ -18,6 +18,7 @@
      (define-key dired-mode-map (kbd "C-c n") 'my-dired-create-file)
      (define-key dired-mode-map (kbd "<left>") 'dired-jump)
      (define-key dired-mode-map (kbd "<right>") 'dired-find-file)
+     (define-key dired-mode-map (kbd "M-s") 'rg)
      (defun my-dired-create-file (file)
        "Create a file called FILE. If FILE already exists, signal an error."
        (interactive
