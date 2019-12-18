@@ -82,5 +82,6 @@
 (depends-on "window-numbering")
 (depends-on "with-editor")
 (depends-on "xterm-color")
+(depends-on "yaml-mode")
 (depends-on "yasnippet")
 (depends-on "yasnippet-snippets")
