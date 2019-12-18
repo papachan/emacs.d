@@ -1,0 +1,17 @@
+Failed to verify signature archive-contents.sig:
+No public key for 066DAFCB81E42C40 created at 2019-10-30T16:10:02-0500 using RSA
+Command output:
+gpg: Signature made mié 30 oct 2019 16:10:02 -05
+gpg:                using RSA key
+gpg: Can't check signature: No public key
+
+
+1) set package-check-signature to nil
+
+   (setq package-check-signature nil)
+   (setq package-check-signature t)
+
+2) download the package gnu-elpa-keyring-update and run the function
+   with the same name.
+
+3) reset package-check-signature to the default value 'allow-unsigned'
