@@ -89,6 +89,10 @@
   (interactive)
   (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
 
+(defun insert-time ()
+  (interactive)
+  (insert (format-time-string "%X")))
+
 (defun insert-title ()
   (lambda())
   (interactive)

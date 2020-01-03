@@ -18,14 +18,16 @@
       (setq mac-command-modifier 'meta))))
 
 
-(define-key key-translation-map [dead-circumflex] "^")
-(define-key key-translation-map [dead-grave] "`")
+;; (define-key key-translation-map [dead-circumflex] "^")
+;; (define-key key-translation-map [dead-grave] "`")
 
 (global-set-key (kbd "M-g a") (lambda () (interactive) (insert "~")))
 (global-set-key (kbd "M-g b") (lambda () (interactive) (insert "#")))
-(global-set-key (kbd "C-x 8 l") (lambda () (interactive) (insert "λ")))
 (global-set-key (kbd "C-x 8 ' n") (lambda () (interactive) (insert "ñ")))
-(global-set-key (kbd "C-x M-z") 'open-scratch-buffer)
+(global-set-key (kbd "C-x <ESC> a") "α")
+(global-set-key (kbd "C-x <ESC> b") "β")
+(global-set-key (kbd "C-x <ESC> l") "λ")
+(global-set-key (kbd "C-x 9") 'open-scratch-buffer)
 (global-set-key (kbd "C-c C-o") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-c -") 'buffer/clear)
 (global-set-key (kbd "M-x") 'helm-M-x)
@@ -34,7 +36,8 @@
 (global-set-key [pause] 'toggle-current-window-dedication)
 (global-set-key (kbd "C-c C-j") 'replace-string)
 (global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "s--") 'er/contract-region)
+(global-set-key (kbd "M-n") 'er/mark-word)
+;; (global-set-key (kbd "s--") 'er/contract-region)
 (global-set-key (kbd "C-d") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x j") 'json-pretty-print-buffer)
@@ -51,8 +54,8 @@
 (global-set-key (kbd "C-c f") 'follow-mode)
 (global-set-key (kbd "C-x C-m") 'compile)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
-(global-set-key (kbd "C-x 4") 'split-window-right-and-move-there-dammit)
-(global-set-key (kbd "C-x 5") 'twist-split)
+(global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
+(global-set-key (kbd "C-x 6") 'twist-split)
 (global-set-key (kbd "C-x n") 'create-scratch-buffer)
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "S-<f1>") (lambda () (interactive) (dired "~/")))
@@ -68,7 +71,7 @@
 (global-set-key (kbd "<f12>") 'run-cask-test)
 (global-set-key (kbd "<f8>") 'repeat-complex-command)
 ;(global-set-key (kbd "<f12>") 'my-save-and-compile)
-(global-set-key (kbd "C-c C-v") 'revert-buffer-without-confirmation)
+(global-set-key (kbd "C-c v") 'revert-buffer-without-confirmation)
 (global-set-key (kbd "C-c a") 'my-increment-number-at-point)
 (global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
 (global-set-key (kbd "C-c h") 'file-path-on-clipboard)
@@ -81,11 +84,10 @@
 (global-set-key (kbd "C-<f2>") 'random-11-letter-string)
 
 ;; comment line
-;; (global-set-key (kbd "C-<f4>") (kbd "C-u 80 #"))
 (global-set-key (kbd "C-<f4>") 'html-html5-template)
-(global-set-key (kbd "C-<f5>") (lambda()  (interactive) (Lorem-ipsum-insert-paragraphs 20)))
+;; (global-set-key (kbd "C-<f5>") (lambda()  (interactive) (Lorem-ipsum-insert-paragraphs 20)))
 ;; (global-set-key (kbd "C-<f6>") 'snippet-html)
-(global-set-key (kbd "C-<f7>") 'lorem-ipsum-insert-list)
+;; (global-set-key (kbd "C-<f7>") 'lorem-ipsum-insert-list)
 (global-set-key (kbd "C-x M-d") 'insert-current-date)
 (global-set-key (kbd "C-c i") 'snippet-latin)
 ;; (global-unset-key (kbd "C-z"))
@@ -96,8 +98,6 @@
 (define-key global-map (kbd "C-c g") 'vr/mc-mark)
 
 (global-set-key (kbd "M-s") 'rg)
-
-;; (global-set-key (kbd "M-z") 'backward-kill-word)
 
 (cond
  ((equal system-type 'darwin)

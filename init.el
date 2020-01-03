@@ -14,7 +14,6 @@
 
 (setq *emacs-load-start* (current-time))
 
-
 ;; Avoid garbage collection during startup.
 (run-with-idle-timer
  5 nil
@@ -40,6 +39,8 @@
 (cask-initialize)
 (require 'pallet)
 (pallet-mode t)
+
+
 
 (cond ((file-directory-p
         (concat (getenv "HOME") "/" ".cask/bin"))
@@ -77,7 +78,8 @@
 (add-to-list 'load-path "vendor/restclient.el")
 
 ;; load lisp files
-(dolist (file '("setup-autocomplete"
+(dolist (file '("repo"
+                "setup-autocomplete"
                 "setup-yasnippet"
                 "setup-undo"
                 "misc"

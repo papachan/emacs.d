@@ -29,6 +29,7 @@
     ))
 
 
+;;; This execute code into scratch buffer
 (let* ((buf "*scratch*")
        (a (zip_list (read-buffer-lines buf))))
   (with-current-buffer buf
