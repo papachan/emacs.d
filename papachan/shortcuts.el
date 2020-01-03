@@ -8,9 +8,11 @@
 
 (global-set-key (kbd "M-g a") (lambda () (interactive) (insert "~")))
 (global-set-key (kbd "M-g b") (lambda () (interactive) (insert "#")))
-(global-set-key (kbd "C-x 8 l") (lambda () (interactive) (insert "λ")))
+(global-set-key (kbd "C-x <ESC> a") "α")
+(global-set-key (kbd "C-x <ESC> b") "β")
+(global-set-key (kbd "C-x <ESC> l") "λ")
 (global-set-key (kbd "C-x 8 ' n") (lambda () (interactive) (insert "ñ")))
-(global-set-key (kbd "C-x M-z") 'open-scratch-buffer)
+(global-set-key (kbd "C-x 9") 'open-scratch-buffer)
 (global-set-key (kbd "C-c C-o") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-c -") 'buffer/clear)
 (global-set-key (kbd "M-x") 'helm-M-x)
@@ -19,7 +21,8 @@
 (global-set-key [pause] 'toggle-current-window-dedication)
 (global-set-key (kbd "C-c C-j") 'replace-string)
 (global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "s--") 'er/contract-region)
+(global-set-key (kbd "M-n") 'er/mark-word)
+;; (global-set-key (kbd "s--") 'er/contract-region)
 (global-set-key (kbd "C-d") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x j") 'json-pretty-print-buffer)
@@ -36,8 +39,8 @@
 (global-set-key (kbd "C-c f") 'follow-mode)
 (global-set-key (kbd "C-x C-m") 'compile)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
-(global-set-key (kbd "C-x 4") 'split-window-right-and-move-there-dammit)
-(global-set-key (kbd "C-x 5") 'twist-split)
+(global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
+(global-set-key (kbd "C-x 6") 'twist-split)
 (global-set-key (kbd "C-x n") 'create-scratch-buffer)
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "S-<f1>") (lambda () (interactive) (dired "~/")))
@@ -66,11 +69,9 @@
 
 (global-set-key (kbd "M-<f2>") 'random-11-letter-string)
 
-
-
 ;; comment line
 (global-set-key (kbd "M-<f4>") 'html-html5-template)
-(global-set-key (kbd "M-<f5>") (lambda()  (interactive) (Lorem-ipsum-insert-paragraphs 200)))
+(global-set-key (kbd "M-<f5>") (lambda()  (interactive) (Lorem-ipsum-insert-paragraphs 20)))
 (global-set-key (kbd "M-<f6>") 'lorem-ipsum-insert-list)
 (global-set-key (kbd "C-x M-d") 'insert-current-date)
 (global-set-key (kbd "C-c i") 'snippet-latin)

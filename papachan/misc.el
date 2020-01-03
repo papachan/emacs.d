@@ -96,6 +96,10 @@
   (interactive)
   (insert "iso-8859-1"))
 
+(defun insert-time ()
+  (interactive "*")
+  (insert (format-time-string "%X")))
+
 (defun insert-current-date ()
   (interactive)
   (insert (format-time-string current-date-format (current-time))))
