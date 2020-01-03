@@ -20,7 +20,8 @@
               "https://www.emacswiki.org/emacs/download/lispxmp.el"
               "https://raw.github.com/bcbcarl/emacs-wttrin/master/wttrin.el"
               "https://raw.githubusercontent.com/informatimago/emacs/master/emacs-uptime.el"
-              "https://raw.githubusercontent.com/thorsdadt/json.el/master/json.el"))
+              "https://raw.githubusercontent.com/thorsdadt/json.el/master/json.el"
+              "https://raw.githubusercontent.com/Wilfred/loop.el/master/loop.el"))
   (download-elisp-files lst))
 
 (provide 'bootstrap)

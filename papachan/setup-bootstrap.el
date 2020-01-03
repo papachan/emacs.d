@@ -7,7 +7,14 @@
     "directory-files-recursive"
     "twittering-mode"
     "helm-aws"
-    "lorem-ipsum"))
+    "lorem-ipsum"
+    "loop"))
+
+(require 'iflipb)
+(require 'twittering-mode)
+(require 'helm-aws)
+(require 'lorem-ipsum)
+(require 'loop)
 
 (defun run-bootstrap (lst)
   "load files from dotfiles-lisp-dir"
