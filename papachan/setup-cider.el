@@ -60,8 +60,12 @@
     ; never start completions automatically
     (setq company-idle-delay nil)
     ;; company mode for completion
-    ;(add-hook 'cider-repl-mode-hook #'company-mode)
-    ;(add-hook 'cider-mode-hook #'company-mode)
+    ;; (add-hook 'cider-repl-mode-hook #'company-mode)
+    ;; (add-hook 'cider-mode-hook #'company-mode)
+
+    ;; (setq cider-repl-use-content-types nil)
+    ;; (setq cider-repl-display-in-current-window t)
+
     (global-set-key (kbd "M-TAB") #'company-complete) ; meta+tab, aka C-M-i, as manual trigger
     (custom-set-faces
      '(cider-test-success-face ((t (:foreground "green" :background nil)))))
