@@ -18,8 +18,11 @@
          ("/\\(views\\|html\\|templates\\)/.*\\.php\\'" . web-mode))
   :config
   (progn
+    (setq js-indent-level 2)
     (setq web-mode-markup-indent-offset 2)
     (setq web-mode-css-indent-offset 2)
+    (setq web-mode-code-indent-offset 2)
+    (setq web-mode-markup-indent-offset 2)
     (setq web-mode-extra-snippets
       '(("erb" . (("toto" . ("<% toto | %>\n\n<% end %>"))))
         ("php" . (("dowhile" . ("<?php do { ?>\n\n<?php } while (|); ?>"))
