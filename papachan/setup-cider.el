@@ -62,8 +62,6 @@
 
     (setq cider-repl-display-in-current-window t)
 
-    (global-set-key (kbd "M-TAB") #'company-complete) ; meta+tab, aka C-M-i, as manual trigger
-
     (custom-set-faces
      '(cider-test-success-face ((t (:foreground "green" :background nil)))))
     ;; paredit-mode
