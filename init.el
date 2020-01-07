@@ -108,7 +108,8 @@
                 "setup-smartmode"
                 "setup-multiple-cursors"
                 "unicode-emoticons"
-                "setup-dired-sidebar"))
+                "setup-dired-sidebar"
+                "setup-company"))
   (load (concat dotfiles-misc-dir file)))
 
 ; paths
