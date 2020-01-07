@@ -66,11 +66,12 @@
     ;; (setq cider-repl-use-content-types nil)
     ;; (setq cider-repl-display-in-current-window t)
 
-    (global-set-key (kbd "M-TAB") #'company-complete) ; meta+tab, aka C-M-i, as manual trigger
     (custom-set-faces
      '(cider-test-success-face ((t (:foreground "green" :background nil)))))
     ;; paredit-mode
-    (add-hook 'clojure-mode-hook 'paredit-mode)))
+    (add-hook 'clojure-mode-hook 'paredit-mode))
+  :bind (:map cider-repl-mode-map
+              ("C-X sc" . cider-repl-clear-buffer)))
 
 (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
 (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
