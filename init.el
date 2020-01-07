@@ -112,7 +112,8 @@
                 "setup-hiccup"
                 "unicode-emoticons"
                 "setup-dired-sidebar"
-                "setup-bootstrap"))
+                "setup-bootstrap"
+                "setup-company"))
   (load (concat dotfiles-misc-dir file)))
 
 (require 'restclient)
