@@ -316,8 +316,11 @@ If FILE already exists, signal an error."
   (join-line t))
 
 (defun insert-into-buffer (filename)
+  "Insert file content into buffer, useful when switching the content of a file"
   (interactive)
   (let ((buf (current-buffer)))
+    (with-current-buffer buf
+      (erase-buffer))
     (save-excursion
       (with-temp-buffer
         (insert-file-contents filename)
