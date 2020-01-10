@@ -6,6 +6,7 @@
 (define-key key-translation-map [dead-circumflex] "^")
 (define-key key-translation-map [dead-grave] "`")
 
+(global-set-key (kbd "M-g q") 'mark-sexp)
 (global-set-key (kbd "M-g a") (lambda () (interactive) (insert "~")))
 (global-set-key (kbd "M-g b") (lambda () (interactive) (insert "#")))
 (global-set-key (kbd "C-x <ESC> a") "α")
