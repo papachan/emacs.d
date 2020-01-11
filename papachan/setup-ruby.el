@@ -69,8 +69,8 @@ Name is relative to the project root.")
 (add-hook 'robe-mode-hook 'ac-robe-setup)
 
 ;; COMPANY
-(eval-after-load 'company
-  '(push 'company-robe company-backends))
+;; (eval-after-load 'company
+;;   '(push 'company-robe company-backends))
 
 ;; enh-ruby-mode
 (add-to-list 'ac-modes 'enh-ruby-mode)
