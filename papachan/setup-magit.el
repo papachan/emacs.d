@@ -76,7 +76,20 @@
     (define-key magit-status-mode-map (kbd "C-c e") 'magit-log-buffer-file)
     (setq magit-push-always-verify nil)
     ; remove git diff frame when open magit commit frame
-    (remove-hook 'server-switch-hook 'magit-commit-diff)))
+    (remove-hook 'server-switch-hook 'magit-commit-diff)
+
+    (setq magit-display-buffer-function
+      (lambda (buffer)
+        (display-buffer
+         buffer (if (and (derived-mode-p 'magit-mode)
+                         (memq (with-current-buffer buffer major-mode)
+                               '(magit-process-mode
+                                 magit-revision-mode
+                                 magit-diff-mode
+                                 magit-stash-mode
+                                 magit-status-mode)))
+                    nil
+                  '(display-buffer-same-window)))))))
 
 
 (provide 'setup-magit)
