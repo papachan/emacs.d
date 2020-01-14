@@ -39,6 +39,7 @@
 (depends-on "htmlize")
 (depends-on "hydra")
 (depends-on "idle-highlight-mode")
+(depends-on "iflipb")
 (depends-on "inf-ruby")
 (depends-on "inflections")
 (depends-on "ivy")

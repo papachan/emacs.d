@@ -21,7 +21,8 @@
 ;; (define-key key-translation-map [dead-circumflex] "^")
 ;; (define-key key-translation-map [dead-grave] "`")
 
-
+(global-set-key (kbd "C-.") 'other-window)
+(global-set-key (kbd "C-,") (lambda() (interactive) (other-window -1)))
 (global-set-key (kbd "M-g q") 'mark-sexp)
 (global-set-key (kbd "M-g a") (lambda () (interactive) (insert "~")))
 (global-set-key (kbd "M-g b") (lambda () (interactive) (insert "#")))
@@ -67,7 +68,7 @@
 (global-set-key (kbd "S-<f5>") (lambda () (interactive) (dired "~/Dropbox/")))
 (global-set-key (kbd "<f6>") 'reload-init-file)
 (global-set-key (kbd "<f7>") 'iflipb-next-buffer)
-(global-set-key (kbd "<f9>") 'iflipb-previous-buffer)
+(global-set-key (kbd "<S-f7>") 'iflipb-previous-buffer)
 (global-set-key (kbd "C-c n") 'my-dired-create-file)
 (global-set-key (kbd "C-<f11>") 'toggle-frame-fullscreen)
 (global-set-key (kbd "<f12>") 'run-cask-test)
