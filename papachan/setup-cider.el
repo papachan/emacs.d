@@ -66,6 +66,12 @@
     ;; (setq cider-repl-use-content-types nil)
     ;; (setq cider-repl-display-in-current-window t)
 
+    ;; cider repl on connect display on the same window
+    ;; (setq cider-repl-pop-to-buffer-on-connect nil)
+
+    ;; dont focus on the new window
+    (setq cider-repl-pop-to-buffer-on-connect 'display-only)
+
     (custom-set-faces
      '(cider-test-success-face ((t (:foreground "green" :background nil)))))
     ;; paredit-mode
