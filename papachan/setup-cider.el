@@ -60,7 +60,14 @@
 
     ;; (setq cider-repl-use-content-types nil)
 
+    ;; display cider repl in the current window
     (setq cider-repl-display-in-current-window t)
+
+    ;; dont focus on the new window
+    ;; (setq cider-repl-pop-to-buffer-on-connect 'display-only)
+
+    ;; hide cider repl on connect
+    ;; (setq cider-repl-pop-to-buffer-on-connect nil)
 
     (custom-set-faces
      '(cider-test-success-face ((t (:foreground "green" :background nil)))))
