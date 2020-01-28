@@ -1,3 +1,4 @@
+
 ;;; shortcuts.el file
 ;;
 (require 'rg)
@@ -5,6 +6,9 @@
 
 (define-key key-translation-map [dead-circumflex] "^")
 (define-key key-translation-map [dead-grave] "`")
+
+(global-set-key (kbd "M-g y") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig.txt")))
+(global-set-key (kbd "M-g j") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig1.txt")))
 
 (global-set-key (kbd "C-.") 'other-window)
 (global-set-key (kbd "C-,") (lambda() (interactive) (other-window -1)))
@@ -52,7 +56,7 @@
 (global-set-key (kbd "S-<f4>") (lambda () (interactive) (dired "~/Downloads")))
 (global-set-key (kbd "S-<f5>") (lambda () (interactive) (dired "~/Dropbox")))
 (global-set-key (kbd "S-<f6>") (lambda () (interactive) (dired "~/Desktop")))
-(global-set-key (kbd "<f6>") 'reload-init-file)
+;; (global-set-key (kbd "<f6>") 'reload-init-file)
 (global-set-key (kbd "<f7>") 'iflipb-next-buffer)
 (global-set-key (kbd "S-<f7>") 'iflipb-previous-buffer)
 (global-set-key (kbd "C-c n") 'my-dired-create-file)
