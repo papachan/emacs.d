@@ -21,9 +21,13 @@
 ;; (define-key key-translation-map [dead-circumflex] "^")
 ;; (define-key key-translation-map [dead-grave] "`")
 
+(global-set-key (kbd "M-g y") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig.txt")))
+(global-set-key (kbd "M-g j") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig1.txt")))
+
 (global-set-key (kbd "C-.") 'other-window)
 (global-set-key (kbd "C-,") (lambda() (interactive) (other-window -1)))
 (global-set-key (kbd "M-g q") 'mark-sexp)
+(global-set-key (kbd "M-g h") (lambda () (interactive) (insert "—")))
 (global-set-key (kbd "M-g a") (lambda () (interactive) (insert "~")))
 (global-set-key (kbd "M-g b") (lambda () (interactive) (insert "#")))
 (global-set-key (kbd "C-x 8 ' n") (lambda () (interactive) (insert "ñ")))

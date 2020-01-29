@@ -56,6 +56,8 @@
 (depends-on "package-build")
 (depends-on "pallet")
 (depends-on "paredit")
+(depends-on "parseclj")
+(depends-on "parseedn")
 (depends-on "php-mode")
 (depends-on "popup")
 (depends-on "powerline")
