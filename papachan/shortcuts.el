@@ -97,7 +97,8 @@
 ;; (global-set-key (kbd "C-<f7>") 'lorem-ipsum-insert-list)
 (global-set-key (kbd "C-x M-d") 'insert-current-date)
 (global-set-key (kbd "C-c i") 'snippet-latin)
-;; (global-unset-key (kbd "C-z"))
+;; C-z restricted to use Tmux, i3 etc
+(global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-x q"))
 
 (define-key global-map (kbd "C-c r") 'vr/replace)
@@ -114,7 +115,7 @@
   (global-set-key [(hyper s)] 'save-buffer)
   (global-set-key [(hyper l)] 'goto-line)
   (global-set-key [(hyper w)] (lambda () (interactive) (delete-window)))
-  (global-set-key [(hyper z)] 'undo)
+  ;; (global-set-key [(hyper z)] 'undo)
   (windmove-default-keybindings)
   (setq select-enable-clipboard t)
   (mac-switch-meta)))

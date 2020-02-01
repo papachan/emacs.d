@@ -5,7 +5,7 @@
 (use-package undo-tree
   :commands global-undo-tree-mode
   :diminish undo-tree-mode
-  :bind ("C-z" . undo-tree-visualize)
+  ;; :bind ("C-z" . undo-tree-visualize)
   :init
   (global-undo-tree-mode)
   ;; Each node in the undo tree should have a timestamp.
