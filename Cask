@@ -87,6 +87,7 @@
 (depends-on "smart-mode-line-powerline-theme")
 (depends-on "smartparens")
 (depends-on "swiper")
+(depends-on "terraform-mode")
 (depends-on "typescript-mode")
 (depends-on "undo-tree")
 (depends-on "use-package")
