@@ -11,6 +11,7 @@
   :ensure t
   :config (progn (setq cljr-suppress-middleware-warnings t)
                  (setq cljr-warn-on-eval nil)
+                 (setq cljr-eagerly-build-asts-on-startup nil)
                  (add-hook 'clojure-mode-hook (lambda ()
                         (clj-refactor-mode 1)
                         (cljr-add-keybindings-with-prefix "C-c C-m")))))
