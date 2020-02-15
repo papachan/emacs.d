@@ -14,9 +14,13 @@
   (show-paren-mode 1)
   (mouse-wheel-mode t)
   (blink-cursor-mode -1)
-  (if (eq system-type 'gnu/linux)
-      (load-file (expand-file-name "vendor/zerodark-theme/zerodark-theme.el" dotemacs-dir))
-    (setq zerodark-use-high-contrast-in-mode-line nil)))
+  (when (eq system-type 'gnu/linux)
+    (load-file (expand-file-name "vendor/zerodark-theme/zerodark-theme.el" dotemacs-dir))
+    (setq zerodark-use-high-contrast-in-mode-line nil)
+    (let ((x 78))
+      ;; transparent frame
+      (set-frame-parameter (selected-frame) 'alpha (cons x '(50)))
+      (add-to-list 'default-frame-alist '(alpha . (cons x '(50)))))))
 
 (provide 'appearance)
 
