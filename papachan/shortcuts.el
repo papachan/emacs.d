@@ -15,6 +15,7 @@
 (global-set-key (kbd "M-g q") 'mark-sexp)
 (global-set-key (kbd "M-g a") (lambda () (interactive) (insert "~")))
 (global-set-key (kbd "M-g b") (lambda () (interactive) (insert "#")))
+(global-set-key (kbd "M-g c") (lambda () (interactive) (insert "•")))
 (global-set-key (kbd "C-x <ESC> a") "α")
 (global-set-key (kbd "C-x <ESC> b") "β")
 (global-set-key (kbd "C-x <ESC> l") "λ")

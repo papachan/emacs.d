@@ -3,13 +3,6 @@
 (require 'yasnippet)
 (require 'python-mode)
 
-(use-package python-mode
-  :ensure t
-  :config (setq python-indent-offset 4))
-
-(use-package python
-	:mode ("\\.py" . python-mode))
-
 (defun clean-python-files ()
   (interactive)
   (shell-command "find . -name '*.py[co]' -delete")
@@ -20,6 +13,19 @@
 (defun create-empty-init-py()
   (interactive)
   (shell-command "touch __init__.py"))
+
+(use-package python-mode
+  :ensure t
+  :config (setq python-indent-offset 4))
+
+(use-package python
+  :ensure t
+  :defer t
+  :config
+  (setq python-indent-offset 4)
+  (add-to-list 'auto-mode-alist '("\\.pyi\\'" . python-mode))
+  :interpreter "python"
+  :mode ("\\.py\\'" . python-mode))
 
 
 (provide 'setup-python)
