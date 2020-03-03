@@ -313,6 +313,7 @@ If FILE already exists, signal an error."
     (newline)))
 
 (defun join-line* ()
+  "Join this line with the next line deleting extra white space."
   (interactive)
   (join-line t))
 
@@ -327,6 +328,16 @@ If FILE already exists, signal an error."
         (insert-file-contents filename)
         (goto-char 1)
         (append-to-buffer buf (point) (point-max))))))
+
+(defun send-output-log ()
+  "copy error output to sprunge"
+  (interactive)
+  (shell-command "cat ~/Desktop/output_error.log | curl -F 'sprunge=<-' http://sprunge.us"))
+
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(column-number-mode)
+(window-numbering-mode 1)
 
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)

@@ -3,6 +3,8 @@
 (require 'smartparens-ruby)
 (require 'compile)
 (require 'inf-ruby)
+(require 'company)
+(require 'robe)
 
 ;; Trick founded from EndlessParentheses
 ;; to launch ruby as cider repl

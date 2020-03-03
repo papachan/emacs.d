@@ -116,7 +116,6 @@
                 "setup-company"))
   (load (concat dotfiles-misc-dir file)))
 
-(require 'restclient)
 (require 'toggle-quotes)
 (require 'lispxmp)
 (require 'tea-time)

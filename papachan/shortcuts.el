@@ -10,6 +10,7 @@
 (global-set-key (kbd "M-g y") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig.txt")))
 (global-set-key (kbd "M-g j") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig1.txt")))
 
+(global-set-key (kbd "M-g x") 'send-output-log)
 (global-set-key (kbd "C-.") 'other-window)
 (global-set-key (kbd "C-,") (lambda() (interactive) (other-window -1)))
 (global-set-key (kbd "M-g q") 'mark-sexp)

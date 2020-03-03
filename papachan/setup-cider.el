@@ -4,6 +4,8 @@
 ;; Clojure IDE and REPL for Emacs
 (require 'cider)
 (require 'clj-refactor)
+(require 'flycheck-clj-kondo)
+(require 'helm-cider)
 ;; autocompletion
 (require 'company)
 
@@ -51,8 +53,8 @@
     ;; error buffer not popping up
     (setq cider-show-error-buffer nil)
     ; add hook for tdd with cider
-	(add-hook 'cider-mode-hook #'tdd-mode)
-	(add-hook 'cider-repl-mode-hook #'tdd-mode)
+	;; (add-hook 'cider-mode-hook #'tdd-mode)
+	;; (add-hook 'cider-repl-mode-hook #'tdd-mode)
     ; never start completions automatically
     (setq company-idle-delay nil)
     ;; company mode for completion
