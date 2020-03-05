@@ -9,6 +9,9 @@
 ;; autocompletion
 (require 'company)
 
+(use-package flycheck-clj-kondo
+  :ensure t)
+
 (use-package clj-refactor
   :ensure t
   :config (progn (setq cljr-suppress-middleware-warnings t)
@@ -75,13 +78,17 @@
     (custom-set-faces
      '(cider-test-success-face ((t (:foreground "green" :background nil)))))
     ;; paredit-mode
-    (add-hook 'clojure-mode-hook 'paredit-mode))
+    (add-hook 'clojure-mode-hook 'paredit-mode)
+
+    (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
+    (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
+    (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
+    (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode)))
   :bind (:map cider-repl-mode-map
               ("C-X sc" . cider-repl-clear-buffer)))
 
-(add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
-(add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
+(use-package helm-cider
+  :hook ((cider-mode . helm-cider-mode)))
 
 (provide 'setup-cider)
 ;;; setup-cider.el ends here

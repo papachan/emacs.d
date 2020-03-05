@@ -95,7 +95,6 @@
 (depends-on "visual-regexp")
 (depends-on "web-mode")
 (depends-on "wgrep")
-(depends-on "window-number")
 (depends-on "window-numbering")
 (depends-on "with-editor")
 (depends-on "writeroom-mode")
