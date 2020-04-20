@@ -6,6 +6,7 @@
 (require 'clj-refactor)
 ;; autocompletion
 (require 'company)
+(require 'flycheck-clj-kondo)
 
 (use-package clj-refactor
   :ensure t
@@ -13,7 +14,7 @@
             ;; set the eagerly-build var to nil
             ;; if you don't mind waiting the first time you use refactor
                  (setq cljr-eagerly-build-asts-on-startup nil)
-                 ;; (setq cljr-suppress-middleware-warnings t)
+                 (setq cljr-suppress-middleware-warnings t)
                  ;; (setq cljr-warn-on-eval nil)
                  (add-hook 'clojure-mode-hook (lambda ()
                         (clj-refactor-mode 1)

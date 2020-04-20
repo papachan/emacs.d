@@ -102,6 +102,12 @@
           blank (make-string len ?\s))
     (insert (concat blank name blank))))
 
+(defun git-clone-repo ()
+  (lambda())
+  (interactive)
+    (let ((url (read-from-minibuffer "Enter url:")))
+      (shell-command (concat "git clone " url))))
+
 (defun download-url-file ()
   (lambda ())
   (interactive)
@@ -326,6 +332,11 @@ If FILE already exists, signal an error."
         (insert-file-contents filename)
         (goto-char 1)
         (append-to-buffer buf (point) (point-max))))))
+
+(defun send-output-log ()
+  "copy error output to sprunge"
+  (interactive)
+  (shell-command "cat ~/Desktop/error_output.log | curl -F 'sprunge=<-' http://sprunge.us"))
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)

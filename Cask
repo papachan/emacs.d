@@ -24,6 +24,7 @@
 (depends-on "expand-region")
 (depends-on "f")
 (depends-on "flycheck")
+(depends-on "flycheck-clj-kondo")
 (depends-on "flycheck-elixir")
 (depends-on "font-lock+")
 (depends-on "frame-cmds")
