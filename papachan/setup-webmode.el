@@ -26,7 +26,16 @@
       '(("erb" . (("toto" . ("<% toto | %>\n\n<% end %>"))))
         ("php" . (("dowhile" . ("<?php do { ?>\n\n<?php } while (|); ?>"))
                   ("debug" . ("<?php error_log(__LINE__); ?>"))))
-       ))))
+        ))))
+
+(use-package javascript
+  :defer
+  :commands javascript-mode
+  :mode (("\\.jsx\\'" . javascript-mode))
+  :init
+  :config
+  (custom-set-variables
+   '(js-indent-level 2)))
 
 (provide 'setup-webmode)
 ;;; webmode.el ends here
