@@ -54,7 +54,7 @@
           "<html lang=\"en\">\n"
           "  <head>\n"
           "    <meta charset=\"UTF-8\">\n"
-          "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
+          "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n"
           "    <link href=\"https://fonts.googleapis.com/css?family=Open+Sans\" rel=\"stylesheet\">\n"
           "    <link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css\">\n"
           "  </head>\n"
@@ -64,19 +64,48 @@
           "  </body>\n"
           "</html>"))
 
-(defun snippet-reagent ()
+(defun snippet-clojurescript-reagent ()
   (lambda())
   (interactive)
   (insert "<!DOCTYPE html>\n"
-          "<html>\n"
+          "<html lang=\"en\">\n"
           "  <head>\n"
-          "    <title></title>\n"
           "    <meta charset=\"UTF-8\" />\n"
+          "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n"
+          "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n"
+          "    <title></title>\n"
           "    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n"
+          "    <link rel=\"icon\" href=\"https://clojurescript.org/images/cljs-logo-icon-32.png\" />\n"
           "  </head>\n"
           "  <body>\n"
+          "    <noscript>\n"
+          "      Javascript not enabled\n"
+          "    </noscript>\n"
           "    <div id=\"app\"></div>\n"
           "    <script src=\"cljs-out/dev-main.js\" type=\"text/javascript\"></script>\n"
+          "  </body>\n"
+          "</html>"))
+
+(defun snippet-clojurescript-shadow-cljs ()
+  (lambda())
+  (interactive)
+  (insert "<!DOCTYPE html>\n"
+          "<html lang=\"en\">\n"
+          "  <head>\n"
+          "    <meta charset=\"UTF-8\" />\n"
+          "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n"
+          "    <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n"
+          "    <title></title>\n"
+          "    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n"
+          "    <link rel=\"icon\" href=\"https://clojurescript.org/images/cljs-logo-icon-32.png\" />\n"
+          "  </head>\n"
+          "  <body>\n"
+          "    <noscript>\n"
+          "      Javascript not enabled\n"
+          "    </noscript>\n"
+          "    <div id=\"app\"></div>\n"
+          "    <script src=\"js/compiled/main.js\" type=\"text/javascript\"></script>\n"
+          "    <script>namespace.init();</script>"
           "  </body>\n"
           "</html>"))
 
