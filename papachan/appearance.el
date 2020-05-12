@@ -1,9 +1,7 @@
 ;;; Appearance --- load emacs theme here
-
+;;
 (require 'color)
 (require 'all-the-icons)
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
@@ -23,7 +21,8 @@
   (blink-cursor-mode -1)
   (cond
    ((eq system-type 'gnu/linux)
-    (load-file (expand-file-name "vendor/zerodark-theme/zerodark-theme.el" dotemacs-dir))
+    (load-file (expand-file-name "vendor/zerodark-theme/zerodark-theme.el" user-emacs-directory))
+    (load-theme 'zerodark t)
     (setq zerodark-use-high-contrast-in-mode-line nil))
    ((eq system-type 'darwin)
     (load-theme 'nimbus t))))

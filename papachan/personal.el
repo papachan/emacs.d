@@ -1,3 +1,5 @@
+;;; personal.el
+;;
 (cond
  ((eq system-type 'gnu/linux)
   (progn
@@ -20,3 +22,5 @@
        (set-face-font 'default font))
      "Fira Code")
     (set-cursor-color "#ff00cc"))))
+
+(provide 'personal)

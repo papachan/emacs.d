@@ -1,8 +1,9 @@
 ;;; setup-magit.el
-
+;;
 (require 'magit)
 
 (use-package magit
+  :ensure t
   :config
   (defun add-pull-request-refs (&optional remote local-ns)
     "Set pull requests refs from a REMOTE with LOCAL-NS namespace into Git config."
@@ -90,7 +91,6 @@
                                  magit-status-mode)))
                     nil
                   '(display-buffer-same-window)))))))
-
 
 (provide 'setup-magit)
 ;;; setup-magit.el ends here
