@@ -21,7 +21,7 @@
   (blink-cursor-mode -1)
   (cond
    ((eq system-type 'gnu/linux)
-    (load-file (expand-file-name "vendor/zerodark-theme/zerodark-theme.el" user-emacs-directory))
+    (load-file (expand-file-name "themes/zerodark-theme/zerodark-theme.el" user-emacs-directory))
     (load-theme 'zerodark t)
     (setq zerodark-use-high-contrast-in-mode-line nil))
    ((eq system-type 'darwin)
