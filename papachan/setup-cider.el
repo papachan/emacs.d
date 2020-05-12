@@ -9,86 +9,11 @@
 ;; autocompletion
 (require 'company)
 
-(use-package flycheck-clj-kondo
-  :ensure t)
-
-(use-package clj-refactor
-  :ensure t
-  :config (progn (setq cljr-suppress-middleware-warnings t)
-                 (setq cljr-warn-on-eval nil)
-                 (setq cljr-eagerly-build-asts-on-startup nil)
-                 (add-hook 'clojure-mode-hook (lambda ()
-                        (clj-refactor-mode 1)
-                        (cljr-add-keybindings-with-prefix "C-c C-m")))))
-
 (use-package cider
+  :bind (:map cider-repl-mode-map ("C-X sc" . cider-repl-clear-buffer))
   :config
-
-  (defun tdd-test ()
-    "Thin wrapper around `cider-test-run-tests'."
-    (when (cider-connected-p)
-      (cider-test-run-tests nil)))
-
-  (define-minor-mode tdd-mode
-    "Run all tests whenever a file is saved."
-    nil " TDD" nil
-    (if tdd-mode
-        (add-hook 'after-save-hook #'tdd-test nil 'local)
-      (remove-hook 'after-save-hook #'tdd-test 'local)))
   (progn
-    ;; REPL history file
-    (setq cider-repl-history-file
-          (expand-file-name "cider-history" dotemacs-dir))
-    ;; nice pretty printing
-    (setq cider-repl-use-pretty-printing t)
-    ;; nicer font lock in REPL
-    (setq cider-repl-use-clojure-font-lock t)
-    ;; result prefix for the REPL
-    (setq cider-repl-result-prefix ";; => ")
-    ;; never ending REPL history
-    (setq cider-repl-wrap-history t)
-    ;; looong history
-    (setq cider-repl-history-size 3000)
-    ;; eldoc for clojure
-    (add-hook 'cider-mode-hook #'eldoc-mode)
-    ;; set helper message to false
-    (setq cider-repl-display-help-banner nil)
-    ;; error buffer not popping up
-    (setq cider-show-error-buffer nil)
-    ; add hook for tdd with cider
-	;; (add-hook 'cider-mode-hook #'tdd-mode)
-	;; (add-hook 'cider-repl-mode-hook #'tdd-mode)
-    ; never start completions automatically
-    (setq company-idle-delay nil)
-    ;; company mode for completion
-    ;; (add-hook 'cider-repl-mode-hook #'company-mode)
-    ;; (add-hook 'cider-mode-hook #'company-mode)
-
-    ;; (setq cider-repl-use-content-types nil)
-
-    ;; display cider repl in the current window
-    (setq cider-repl-display-in-current-window t)
-
-    ;; dont focus on the new window
-    ;; (setq cider-repl-pop-to-buffer-on-connect 'display-only)
-
-    ;; hide cider repl on connect
-    ;; (setq cider-repl-pop-to-buffer-on-connect nil)
-
-    (custom-set-faces
-     '(cider-test-success-face ((t (:foreground "green" :background nil)))))
-    ;; paredit-mode
-    (add-hook 'clojure-mode-hook 'paredit-mode)
-
-    (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
-    (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
-    (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
-    (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode)))
-  :bind (:map cider-repl-mode-map
-              ("C-X sc" . cider-repl-clear-buffer)))
-
-(use-package helm-cider
-  :hook ((cider-mode . helm-cider-mode)))
+    (setq cljr-suppress-middleware-warnings t)))
 
 (provide 'setup-cider)
 ;;; setup-cider.el ends here
