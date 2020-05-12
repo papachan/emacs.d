@@ -23,7 +23,9 @@
    ((eq system-type 'gnu/linux)
     (load-file (expand-file-name "themes/zerodark-theme/zerodark-theme.el" user-emacs-directory))
     (load-theme 'zerodark t)
-    (setq zerodark-use-high-contrast-in-mode-line nil))
+    (setq zerodark-use-high-contrast-in-mode-line nil)
+    (let ((opacity '(87 87)))
+      (set-frame-parameter (selected-frame) 'alpha opacity)))
    ((eq system-type 'darwin)
     (load-theme 'nimbus t))))
 
