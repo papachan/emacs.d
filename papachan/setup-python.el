@@ -9,24 +9,24 @@
   (shell-command "find . -name __py*__ -print0 | xargs -0 rm -rf")
   (revert-buffer t t))
 
-; create empty __init__.py at the place
+;; create an empty __init__.py
 (defun create-empty-init-py()
   (interactive)
   (shell-command "touch __init__.py"))
 
 (use-package python-mode
   :ensure t
-  :config (setq python-indent-offset 4))
+  :config
+  (progn (setq python-indent-offset 4)
+         (setq py-shell-name "~/tmp/runenv.sh")))
 
 (use-package python
-  :ensure t
   :defer t
   :config
   (setq python-indent-offset 4)
-  (add-to-list 'auto-mode-alist '("\\.pyi\\'" . python-mode))
   :interpreter "python"
-  :mode ("\\.py\\'" . python-mode))
-
+  :mode (("\\.py\\'" . python-mode)
+         ("\\.pyi\\'" . python-mode)))
 
 (provide 'setup-python)
 ;;; setup-python.el ends here
