@@ -9,7 +9,11 @@
          ("\\.cl'" . lisp-mode)
          ("\\.asd'" . lisp-mode)
          ("\\.fasl'" . lisp-mode))
-  :hook ((lisp-mode-hook slime-repl-mode-hook). enable-paredit-mode))
+  :hook ((lisp-mode slime-repl-mode). enable-paredit-mode)
+  :config
+  (progn
+    (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)))
+
 
 (use-package slime-company
   :ensure t)

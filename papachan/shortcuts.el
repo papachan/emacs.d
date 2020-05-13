@@ -8,6 +8,9 @@
 (define-key key-translation-map [dead-circumflex] "^")
 (define-key key-translation-map [dead-grave] "`")
 
+(global-set-key (kbd "C-<next>") 'next-buffer)
+(global-set-key (kbd "C-<prior>") 'previous-buffer)
+
 (global-set-key (kbd "M-g y") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig.txt")))
 (global-set-key (kbd "M-g j") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig1.txt")))
 
@@ -56,10 +59,11 @@
 (global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
 (global-set-key (kbd "C-x 6") 'twist-split)
 
-
 ;; new *scratch* buffer keybing conflict with org-mode
-;; (global-set-key (kbd "C-x n") 'create-scratch-buffer)
+(global-set-key (kbd "C-x 4 n") 'create-scratch-buffer)
 
+;; hide tab bar
+(global-set-key (kbd "C-x t k") 'tab-bar-close-tab)
 
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "S-<f1>") (lambda () (interactive) (dired "~/")))
@@ -107,6 +111,7 @@
 ;(global-set-key (kbd "C-x r l") 'helm-bookmarks)
 (global-set-key (kbd "C-c C-v") 'other-frame)
 
+;; new line
 (global-set-key (kbd "C-c y") "\C-a\C- \C-n\M-w\C-y")
 
 (cond

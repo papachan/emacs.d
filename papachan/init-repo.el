@@ -4,7 +4,11 @@
                   ("org" . "http://orgmode.org/elpa/")
                   ("melpa-stable" . "http://stable.melpa.org/packages/")))
   (add-to-list 'package-archives source t))
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
 (require 'use-package)
-(package-initialize)
+;; (setq use-package-always-ensure t)
 
 (provide 'init-repo)

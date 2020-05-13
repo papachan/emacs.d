@@ -2,13 +2,14 @@
 ;;
 (require 'color)
 (require 'all-the-icons)
+(require 'smart-mode-line)
+(require 'window-numbering)
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
   (scroll-bar-mode 1)
   (display-time)
-
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (column-number-mode)
