@@ -29,6 +29,7 @@
 (require 'setup-lisp)
 (require 'setup-ivy)
 (require 'setup-helm)
+(require 'setup-smartmode)
 (require 'setup-magit)
 (require 'setup-cider)
 (require 'setup-eshell)
