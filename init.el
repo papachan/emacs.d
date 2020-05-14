@@ -31,6 +31,7 @@
 (require 'setup-eshell)
 (require 'setup-dired)
 (require 'setup-python)
+(require 'setup-dired-sidebar)
 (require 'shortcuts)
 (require 'bootstrap)
 (require 'toggle-quotes)
