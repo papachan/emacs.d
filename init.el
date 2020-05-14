@@ -16,6 +16,7 @@
 (mapcar 'add-pkg '("papachan" "lib"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'init-repo)
+(require 'setup-multiple-cursors)
 (require 'setup-tabs)
 (require 'functions)
 (require 'appearance)
