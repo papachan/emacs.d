@@ -18,6 +18,10 @@
   :ensure t
   :config
   (progn (setq python-indent-offset 4)
+         (setq indent-tabs-mode nil)
+         (setq python-indent 4)
+         (setq py-switch-buffers-on-execute-p t)
+         (setq py-split-window-on-execute nil)
          (setq py-shell-name "~/tmp/runenv.sh")))
 
 (use-package python

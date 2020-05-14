@@ -35,3 +35,5 @@
 (require 'toggle-quotes)
 (require 'iflipb)
 (require 'lorem-ipsum)
+(require 'lispxmp)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
