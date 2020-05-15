@@ -1,6 +1,7 @@
 (dolist (package '(a
                    alchemist
                    all-the-icons
+                   auto-complete
                    ansi
                    async
                    bind-key

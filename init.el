@@ -32,6 +32,7 @@
 (require 'setup-dired)
 (require 'setup-python)
 (require 'setup-dired-sidebar)
+(require 'setup-autocomplete)
 (require 'shortcuts)
 (require 'bootstrap)
 (require 'toggle-quotes)
