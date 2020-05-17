@@ -1,11 +1,22 @@
 ;;; setup-eshell.el
+(require 'esh-module)
+
+(defun eshell-new ()
+  (interactive)
+  (eshell t))
+
 (use-package eshell
-  :bind (("C-x e" . eshell))
+  :bind (("C-x e" . eshell)
+         ("C-x E" . eshell-new))
+  ;; :bind (:map eshell-mode-map ("<f9>" . emacs-uptime))
   :config
   (progn
-    (defun eshell-new ()
+    (defun eshell/magit ()
+      "Function to open magit-status for the current directory"
       (interactive)
-      (eshell t))
+      (require 'magit)
+      (magit-status-setup-buffer default-directory)
+      nil)
 
     (defun eshell/clear ()
       "clear the eshell buffer"
@@ -13,18 +24,22 @@
       (let ((inhibit-read-only t))
         (erase-buffer)))
 
-    (global-set-key  (kbd "C-x E") 'eshell-new)
-    (global-set-key  (kbd "C-l") 'eshell/clear)
-
     (add-hook 'eshell-mode-hook (lambda ()
                                   'ansi-color-for-comint-mode-on
+                                  (define-key eshell-mode-map (kbd "<f9>") 'emacs-uptime)
+                                  (define-key eshell-mode-map (kbd "C-l") 'eshell/clear)
                                   (setenv "PATH" (shell-command-to-string "source ~/.zshenv; echo -n $PATH"))
                                   (setq-local show-trailing-whitespace nil)
-                                  (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history))))
+                                  (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)))
+    (setq eshell-visual-commands '("ranger" "vi" "screen" "top" "less" "more" "ncspot"
+                                   "vim" "htop"))
+    (setq eshell-visual-subcommands '(("git" "log" "diff" "show")))
+
+    (add-to-list 'eshell-modules-list 'eshell-tramp))
   :init
-  (progn (setq eshell-mv-overwrite-files nil)
-         (setq eshell-banner-message (concat " Welcome back " user-login-name ".\n"))
-         (setq eshell-aliases-file (expand-file-name "eshell/alias" dotemacs-dir))))
+  (setq eshell-mv-overwrite-files nil)
+  (setq eshell-banner-message (concat " Welcome back " user-login-name ".\n"))
+  (setq eshell-aliases-file (expand-file-name "eshell/alias" dotemacs-dir)))
 
 (provide 'setup-eshell)
 ;;; setup-eshell.el ends here
