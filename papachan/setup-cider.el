@@ -2,18 +2,31 @@
 ;; clojure setup
 
 ;; Clojure IDE and REPL for Emacs
-(require 'cider)
-(require 'clj-refactor)
-(require 'flycheck-clj-kondo)
-(require 'helm-cider)
 ;; autocompletion
 (require 'company)
 
 (use-package cider
+  :ensure t
   :bind (:map cider-repl-mode-map ("C-X sc" . cider-repl-clear-buffer))
   :config
   (progn
-    (setq cljr-suppress-middleware-warnings t)))
+    ;; result prefix for the REPL
+    (setq cider-repl-result-prefix ";; => ")
+    ;; display cider repl in the current window
+    (setq cider-repl-display-in-current-window t)
+    ;; set helper message to false
+    (setq cider-repl-display-help-banner nil)
+    ;; error buffer not popping up
+    (setq cider-show-error-buffer nil)
+    ;; looong history
+    (setq cider-repl-history-size 3000)
+    ;; never ending REPL history
+    (setq cider-repl-wrap-history t)
+    ;; nice pretty printing
+    (setq cider-repl-use-pretty-printing t)))
+
+(use-package anakondo
+  :ensure t)
 
 (use-package flycheck-clj-kondo
   :ensure t)
@@ -28,9 +41,18 @@
                         (cljr-add-keybindings-with-prefix "C-c C-m")))))
 
 (use-package helm-cider
+  :ensure t
   :hook ((cider-mode . helm-cider-mode)))
 
-(add-hook 'clojure-mode-hook 'paredit-mode)
+(use-package clojure-mode
+  :ensure t
+  :config
+  (progn
+    (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
+    (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
+    (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
+    (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode)))
+  :hook ((clojure-mode . paredit-mode)))
 
 (provide 'setup-cider)
 ;;; setup-cider.el ends here

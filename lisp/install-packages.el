@@ -36,6 +36,7 @@
                    haskell-mode
                    helm
                    helm-core
+                   helm-posframe
                    helm-projectile
                    hl-todo
                    ht
