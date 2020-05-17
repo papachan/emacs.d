@@ -28,6 +28,7 @@
 (require 'setup-smartmode)
 (require 'setup-magit)
 (require 'setup-cider)
+(require 'setup-ibuffer)
 (require 'setup-eshell)
 (require 'setup-dired)
 (require 'setup-python)
