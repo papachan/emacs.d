@@ -110,6 +110,8 @@
 ;(global-set-key (kbd "C-x r l") 'helm-bookmarks)
 (global-set-key (kbd "C-c C-v") 'other-frame)
 
+(global-set-key (kbd "C-c <RET>") 'browse-url)
+
 ;; new line
 (global-set-key (kbd "C-c y") "\C-a\C- \C-n\M-w\C-y")
 
