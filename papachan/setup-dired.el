@@ -32,6 +32,7 @@
   :config
   (progn
     (put 'dired-find-alternate-file 'disabled nil)
+    (define-key dired-mode-map (kbd "M-c") 'copy-file)
     (define-key dired-mode-map (kbd "M-s") 'rg)
     (define-key dired-mode-map (kbd "C-c n") 'my-dired-create-file)
     (define-key dired-mode-map (kbd "<left>") 'dired-jump)

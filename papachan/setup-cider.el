@@ -26,7 +26,8 @@
     (setq cider-repl-use-pretty-printing t)))
 
 (use-package anakondo
-  :ensure t)
+  :ensure t
+  :commands anakondo-minor-mode)
 
 (use-package flycheck-clj-kondo
   :ensure t)
@@ -52,7 +53,8 @@
     (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
     (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
     (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode)))
-  :hook ((clojure-mode . paredit-mode)))
+  :hook ((clojure-mode . paredit-mode)
+         (clojure-mode . eldoc-mode)))
 
 (provide 'setup-cider)
 ;;; setup-cider.el ends here
