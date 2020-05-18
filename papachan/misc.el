@@ -97,8 +97,6 @@
 ;; delete other windows when open multiple files
 (add-hook 'emacs-startup-hook 'delete-other-windows)
 
-(setq explicit-shell-file-name "/usr/bin/zsh")
-
 (add-hook 'text-mode-hook 'goto-address-mode)
 
 (provide 'misc)

@@ -1,6 +1,14 @@
 ;;; setup-eshell.el
 (require 'esh-module)
 
+(use-package shell-pop
+  :ensure t
+  :disabled
+  :commands shell-pop
+  :init
+  (setq shell-pop-term-shell "/usr/local/bin/zsh")
+  (setq shell-pop-shell-type '("eshell" "*eshell*" (lambda nil (eshell)))))
+
 (defun eshell-new ()
   (interactive)
   (eshell t))
@@ -28,6 +36,7 @@
                                   'ansi-color-for-comint-mode-on
                                   (define-key eshell-mode-map (kbd "<f9>") 'emacs-uptime)
                                   (define-key eshell-mode-map (kbd "C-l") 'eshell/clear)
+                                  (define-key eshell-mode-map (kbd "C-d") 'kill-this-buffer)
                                   (setenv "PATH" (shell-command-to-string "source ~/.zshenv; echo -n $PATH"))
                                   (setq-local show-trailing-whitespace nil)
                                   (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)))
@@ -39,7 +48,9 @@
   :init
   (setq eshell-mv-overwrite-files nil)
   (setq eshell-banner-message (concat " Welcome back " user-login-name ".\n"))
-  (setq eshell-aliases-file (expand-file-name "eshell/alias" dotemacs-dir)))
+  (setq eshell-aliases-file (expand-file-name "eshell/alias" user-emacs-directory)))
+
+(setq explicit-shell-file-name "/usr/bin/zsh")
 
 (provide 'setup-eshell)
 ;;; setup-eshell.el ends here
