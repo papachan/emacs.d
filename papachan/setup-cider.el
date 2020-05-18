@@ -23,7 +23,9 @@
     ;; never ending REPL history
     (setq cider-repl-wrap-history t)
     ;; nice pretty printing
-    (setq cider-repl-use-pretty-printing t)))
+    (setq cider-repl-use-pretty-printing t)
+    ;; weird issues with highlighting code, highlight all branches of reader conditionals
+    (setq cider-font-lock-reader-conditionals nil)))
 
 (use-package anakondo
   :ensure t
@@ -34,12 +36,14 @@
 
 (use-package clj-refactor
   :ensure t
-  :config (progn (setq cljr-suppress-middleware-warnings t)
-                 (setq cljr-warn-on-eval nil)
-                 (setq cljr-eagerly-build-asts-on-startup nil)
-                 (add-hook 'clojure-mode-hook (lambda ()
-                        (clj-refactor-mode 1)
-                        (cljr-add-keybindings-with-prefix "C-c C-m")))))
+  :hook (clojure-mode . clj-refactor-mode)
+  :init
+  (setq cljr-suppress-middleware-warnings t)
+  (setq cljr-warn-on-eval nil)
+  (setq cljr-eagerly-build-asts-on-startup nil)
+  :config (progn (add-hook 'clojure-mode-hook (lambda ()
+                                                (clj-refactor-mode 1)
+                                                (cljr-add-keybindings-with-prefix "C-c C-m")))))
 
 (use-package helm-cider
   :ensure t
