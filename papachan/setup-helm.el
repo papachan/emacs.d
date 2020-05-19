@@ -16,6 +16,9 @@
 
 (use-package helm
   :ensure t
+  :bind (("M-x" . #'helm-M-x)
+         ("C-x C-f" . #'helm-find-files)
+         ("C-x r b" . #'helm-filtered-bookmarks))
   :config (progn
 	    (require 'helm-config)
 	    (setq helm-idle-delay 0.0
