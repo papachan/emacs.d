@@ -21,7 +21,7 @@
 (require 'functions)
 (require 'appearance)
 (require 'misc)
-(require 'personal)
+(require 'setup-font-system)
 (require 'setup-lisp)
 (require 'setup-ivy)
 (require 'setup-helm)
