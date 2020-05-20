@@ -29,7 +29,9 @@
 
 (use-package anakondo
   :ensure t
-  :commands anakondo-minor-mode)
+  :commands anakondo-minor-mode
+  :init
+  (require 'projectile))
 
 (use-package flycheck-clj-kondo
   :ensure t)

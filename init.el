@@ -40,4 +40,5 @@
 (require 'iflipb)
 (require 'lorem-ipsum)
 (require 'lispxmp)
+(require 'setup-markdown)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
