@@ -65,7 +65,11 @@
           (or (filename . ".*\.cljs$")
               (mode . clojure-mode)
               (mode . clojurescript-mode)
-              (mode . clojurec-mode))))))
+              (mode . clojurec-mode))))
+        ("Dired-mode"
+         ("Dired"
+          (or (mode . dired-sidebar-mode)
+              (mode . dired-mode))))))
 
 (defun ibuffer-next-saved-filter-groups-aux (list)
   (if (null ibuffer-saved-filter-groups)

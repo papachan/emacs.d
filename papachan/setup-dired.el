@@ -31,6 +31,7 @@
   (dired-mode-hook . auto-revert-mode)
   :config
   (progn
+    (setq inhibit-compacting-font-caches t)
     (put 'dired-find-alternate-file 'disabled nil)
     (define-key dired-mode-map (kbd "M-c") 'copy-file)
     (define-key dired-mode-map (kbd "M-s") 'rg)
