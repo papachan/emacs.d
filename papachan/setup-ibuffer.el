@@ -52,7 +52,46 @@
          ("Text" (or (mode . org-mode)
                      (filename . ".*\.md$")))
          ("crap" (name . "^\\*.*\\*$")))
-        ))
+        ("Elisp-mode"
+         (".el.gz elisp files"
+          (name . "\\.el\\.gz$"))
+         ("Elisp files"
+          (or
+           (mode . emacs-lisp-mode)
+           (name . "^\\*scratch\\*$")
+           (name . "^\\*Messages\\*$"))))
+        ("Clojure-Mode"
+         ("Clojure code"
+          (or (filename . ".*\.cljs$")
+              (mode . clojure-mode)
+              (mode . clojurescript-mode)
+              (mode . clojurec-mode))))))
+
+(defun ibuffer-next-saved-filter-groups-aux (list)
+  (if (null ibuffer-saved-filter-groups)
+      (error "No saved filters"))
+  (let ((next-filter-group) (list0 list))
+    (while (and (null next-filter-group) list0)
+      (if (equal ibuffer-filter-groups (cdr (car list0)))
+          (setq next-filter-group (car (car list0))))
+      (setq list0 (cdr list0)))
+    (setq list0 (or list0 list))
+    (setq ibuffer-filter-groups (cdr (car list0)))
+    (message "Switched to \"%s\" filter group!" (car (car list0))))
+  (setq ibuffer-hidden-filter-groups nil)
+  (ibuffer-update nil t))
+
+(defun ibuffer-next-saved-filter-groups ()
+  (interactive)
+  (ibuffer-next-saved-filter-groups-aux ibuffer-saved-filter-groups))
+
+(defun ibuffer-previous-saved-filter-groups ()
+  (interactive)
+  (ibuffer-next-saved-filter-groups-aux
+   (reverse ibuffer-saved-filter-groups)))
+
+(define-key ibuffer-mode-map (kbd "C-M-n") #'ibuffer-next-saved-filter-groups)
+(define-key ibuffer-mode-map (kbd "C-M-p") #'ibuffer-previous-saved-filter-groups)
 
 ;; Don't show empty groups
 (setq ibuffer-show-empty-filter-groups nil)
@@ -121,6 +160,8 @@
 
 (define-key ibuffer-mode-map (kbd "C-g") #'quit-window)
 (define-key ibuffer-mode-map (kbd "C-s") #'helm-buffers-list)
+(define-key ibuffer-mode-map [tab] 'next-line)
+(define-key ibuffer-mode-map [(shift tab)] 'previous-line)
 
 (add-hook 'ibuffer-mode-hook
           (lambda ()
