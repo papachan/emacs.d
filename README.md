@@ -1,68 +1,9 @@
 ### My emacs config
 
-this emacs settings is fully compatible with Linux and Mac Os. It provides support for both platforms linux and Mac os.
+this emacs settings is fully compatible with Linux and Mac Os. Run on emacs27 branch.
 
-### Install latest emacs from source
 
-```bash
-$ pacman -Sy base-devel
-$ wget https://ftp.gnu.org/pub/gnu/emacs/emacs-24.5.tar.xz
-$ tar -xf emacs-24.5.tar.* && cd emacs-24.5
-$ ./configure
-$ make
-$ make install
-```
-
-with debian pakages you have to install:
-```bash
-$ sudo apt-get install build-dep emacs24
-```
-
-Install from brew if you are using Os X
-```bash
-$ brew install emacs --HEAD --with-cocoa --with-gnutls --with-librsvg --with-imagemagick
-```
-
-Or Install emacsmacport:
-```bash
-$ brew tap railwaycat/emacsmacport
-$ brew install emacs-mac
-```
-
-### Check your emacs version
-
-* `M-x emacs-version`
-
-### install Cask Project management tool for Emacs:
-
-```bash
-$ curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
-```
-
-Or if you using Mac Os:
-
-```bash
-$ brew install cask
-```
-
-python:
-
-```bash
-pip install virtualenv rope ropemacs flake8
-```
-
-### Install packages and dependencies
-
-```bash
-./install.sh
-```
-
-if you have problem to install pallet
-
-```
-Dependency pallet failed to install: Package `package-build-0.1' is unavailable
-```
-
+### Enabling Ripgrep
 
 Install ripgrep for fast grep
 
@@ -71,6 +12,29 @@ Install ripgrep for fast grep
 $ sudo pacman -S ripgrep
 ```
 
-### Daily Emacs Shortcuts Cheatsheet
 
-* [Gist](https://gist.github.com/papachan/99a89ed85dfa2482d7c0)
+### Apparence
+
+This project use zerodark theme and Jetbrains Mono typeface.
+
+This truetype font can be downloaded here:  https://www.jetbrains.com/lp/mono/
+
+
+
+To enable zerodark, just eval this expression in your buffer:
+
+```
+(zerodark-setup-modeline-format)
+```
+
+Install all-the-icons
+
+```
+M-x all-the-icons-install-fonts
+```
+
+
+
+### Emacs Keymap Cheatsheet
+
+* [Daily Commands](https://github.com/papachan/emacs.d/blob/master/docs/emacs_cheatsheet.md)

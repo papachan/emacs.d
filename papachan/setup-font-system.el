@@ -1,3 +1,5 @@
+;;; setup-font-system.el
+;;
 (cond
  ((eq system-type 'gnu/linux)
   (progn
@@ -5,10 +7,10 @@
        (set-frame-font font)
        (set-face-attribute 'default nil
                            :font font
-                           :height 120
+                           :height 102
                            :weight 'normal)
        (set-face-font 'default font))
-     "Ubuntu Mono")))
+     "JetBrains Mono")))
  ((eq system-type 'darwin)
   (progn
     ((lambda (font)
@@ -20,3 +22,5 @@
        (set-face-font 'default font))
      "Fira Code")
     (set-cursor-color "#ff00cc"))))
+
+(provide 'setup-font-system)

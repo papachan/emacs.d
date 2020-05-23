@@ -1,11 +1,15 @@
-
 ;;; shortcuts.el file
 ;;
-(require 'rg)
 (require 'visual-regexp)
+
+;; Unset C-z
+(global-unset-key (kbd "C-z"))
 
 (define-key key-translation-map [dead-circumflex] "^")
 (define-key key-translation-map [dead-grave] "`")
+
+(global-set-key (kbd "C-<next>") 'next-buffer)
+(global-set-key (kbd "C-<prior>") 'previous-buffer)
 
 (global-set-key (kbd "M-g y") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig.txt")))
 (global-set-key (kbd "M-g j") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig1.txt")))
@@ -23,6 +27,7 @@
 (global-set-key (kbd "C-x <ESC> c") "©")
 (global-set-key (kbd "C-x <ESC> k") "➤")
 (global-set-key (kbd "C-x <ESC> h") "❤")
+(global-set-key (kbd "C-x 5 n") 'make-frame-command) ;; new frame
 (global-set-key (kbd "C-x 8 ' n") (lambda () (interactive) (insert "ñ")))
 (global-set-key (kbd "C-x 9") 'open-scratch-buffer)
 (global-set-key (kbd "C-c C-o") 'delete-trailing-whitespace)
@@ -35,7 +40,6 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "M-n") 'er/mark-word)
 ;; (global-set-key (kbd "s--") 'er/contract-region)
-(global-set-key (kbd "C-d") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x j") 'json-pretty-print-buffer)
 (global-set-key (kbd "C-c C-n") 'new-empty-buffer)
@@ -53,7 +57,13 @@
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
 (global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
 (global-set-key (kbd "C-x 6") 'twist-split)
-(global-set-key (kbd "C-x n") 'create-scratch-buffer)
+
+;; new *scratch* buffer keybing conflict with org-mode
+(global-set-key (kbd "C-x 4 n") 'create-scratch-buffer)
+
+;; hide tab bar
+(global-set-key (kbd "C-x t k") 'tab-bar-close-tab)
+
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "S-<f1>") (lambda () (interactive) (dired "~/")))
 (global-set-key (kbd "S-<f2>") (lambda () (interactive) (dired "~/.emacs.d")))
@@ -64,7 +74,7 @@
 ;; (global-set-key (kbd "<f6>") 'reload-init-file)
 (global-set-key (kbd "<f7>") 'iflipb-next-buffer)
 (global-set-key (kbd "S-<f7>") 'iflipb-previous-buffer)
-(global-set-key (kbd "C-c n") 'my-dired-create-file)
+;; (global-set-key (kbd "C-c n") 'my-dired-create-file)
 (global-set-key (kbd "C-<f11>") 'toggle-frame-fullscreen)
 (global-set-key (kbd "<f12>") 'run-cask-test)
 (global-set-key (kbd "<f8>") 'repeat-complex-command)
@@ -79,25 +89,30 @@
 (global-set-key (kbd "C-c <backspace>") 'join-line*)
 (global-set-key (kbd "C-c <deletechar>") 'fixup-whitespace)
 
-(global-set-key (kbd "M-<f2>") 'random-11-letter-string)
+;; (global-set-key (kbd "M-<f2>") 'random-11-letter-string)
 
 ;; comment line
-(global-set-key (kbd "M-<f4>") 'html-html5-template)
-(global-set-key (kbd "M-<f5>") (lambda()  (interactive) (Lorem-ipsum-insert-paragraphs 20)))
-(global-set-key (kbd "M-<f6>") 'lorem-ipsum-insert-list)
+(global-set-key (kbd "C-<f4>") 'html-html5-template)
+
+;; (global-set-key (kbd "C-<f5>") (lambda()  (interactive) (Lorem-ipsum-insert-paragraphs 20)))
+;; (global-set-key (kbd "C-<f6>") 'lorem-ipsum-insert-list)
+
 (global-set-key (kbd "C-x M-d") 'insert-current-date)
+
 (global-set-key (kbd "C-c i") 'snippet-latin)
-;; (global-unset-key (kbd "C-z"))
-(global-unset-key (kbd "C-x q"))
+
+;; (global-unset-key (kbd "C-x q"))
 
 (define-key global-map (kbd "C-c r") 'vr/replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 (define-key global-map (kbd "C-c g") 'vr/mc-mark)
 
-(global-set-key (kbd "M-s") 'rg)
 ;(global-set-key (kbd "C-x r l") 'helm-bookmarks)
 (global-set-key (kbd "C-c C-v") 'other-frame)
 
+(global-set-key (kbd "C-c <RET>") 'browse-url)
+
+;; new line
 (global-set-key (kbd "C-c y") "\C-a\C- \C-n\M-w\C-y")
 
 (cond

@@ -17,3 +17,5 @@ There are two things you can do about this warning:
 
 (add-to-list 'package-archives
              '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+(package-refresh-contents)

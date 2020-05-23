@@ -2,7 +2,7 @@
 (defun download-elisp-files (list)
   (while list
     (let ((url (car list))
-          (dir (concat dotemacs-dir "lib/")))
+          (dir (concat user-emacs-directory "lib/")))
       (unless (file-exists-p (concat dir (url-file-nondirectory url)))
         (url-copy-file url (concat dir (url-file-nondirectory url)))))
     (setq list (cdr list))))
@@ -23,6 +23,8 @@
               "https://raw.githubusercontent.com/thorsdadt/json.el/master/json.el"
               "https://raw.githubusercontent.com/Wilfred/loop.el/master/loop.el"))
   (download-elisp-files lst))
+
+(bootstrap)
 
 (provide 'bootstrap)
 ;;; bootstrap.el ends here
