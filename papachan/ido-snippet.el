@@ -9,5 +9,5 @@
     (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
   (add-hook 'ido-setup-hook 'ido-define-keys)
 
-
+(provide 'ido-snippet)
 ;;; ido-snippet ends here

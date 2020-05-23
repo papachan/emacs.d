@@ -7,6 +7,7 @@ Keybinding         | Description
 <kbd>C-x h TAB</kbd>| indent all lines
 <kbd>C-x C-c</kbd>| Save-buffers-kill-emacs (exit emacs)
 <kbd>C-<f11></kbd>| Fullscreen
+<kbd>C-x b</kbd>| ibuffers
 
 ### Global Bindings
 Keybinding         | Description
@@ -21,3 +22,11 @@ Keybinding         | Description
 <kbd>C-<PgUp></kbd>|next buffer
 <kbd>C-<PgDown></kbd>|prior buffer
 <kbd>C-c C-d</kbd>| put-the-date
+
+
+### Buffers
+Keybinding         | Description
+-------------------|------------------------------------------------------------
+<kbd>C-c M-n</kbd> | Next group filters buffers
+<kbd>C-c M-p</kbd> | Previous group filters buffers
+<kbd>C-s</kbd> | Helm Buffers list
