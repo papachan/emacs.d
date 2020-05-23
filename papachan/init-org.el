@@ -16,7 +16,7 @@
     (add-to-list 'org-emphasis-alist
              org-styles))
 
-(add-to-list 'auto-mode-alist '("\\.\\(org\\|txt\\|doc\\)\\'" . org-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(org\\|doc\\)\\'" . org-mode))
 
 (provide 'init-org)
 ;; init-org.el ends here

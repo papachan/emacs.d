@@ -41,4 +41,7 @@
 (require 'lorem-ipsum)
 (require 'lispxmp)
 (require 'setup-markdown)
+(require 'init-org)
+(require 'ido-snippet)
+(require 'setup-webmode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
