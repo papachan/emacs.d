@@ -1,5 +1,6 @@
 -*- mode: markdown -*-
 ### Basic commands
+
 Keybinding         | Description
 -------------------|------------------------------------------------------------
 <kbd>C-h C-a</kbd> | help start screen
@@ -9,6 +10,22 @@ Keybinding         | Description
 <kbd>C-[f11]</kbd>| Fullscreen
 <kbd>C-x b</kbd>| switch to buffer
 <kbd>C-x C-b</kbd>| ibuffers window
+<kbd>C-j</kbd> | Open a new line and indent
+
+
+### Clojure Bindings
+
+Keybinding         | Description
+-------------------|------------------------------------------------------------
+<kbd>C-x M-j</kbd>| Cider-jackin
+<kbd>C-c C-x M-j [Enter]</kbd>| Cider-jack-in-clj&cljs
+
+
+### Org Mode
+
+Keybinding         | Description
+-------------------|------------------------------------------------------------
+<kbd>C-c RET</kbd> | browse-url
 
 
 ### Global Bindings from my config
@@ -29,6 +46,9 @@ Keybinding         | Description
 <kbd>M-up</kbd>| move text line up
 <kbd>M-down</kbd>| move text line down
 <kbd>C-c C-e</kbd>| eval lisp with lispxmp
+<kbd>C-c y</kbd>| Copy and paste line
+<kbd>C-c w</kbd>| select-whole-line
+
 
 
 
