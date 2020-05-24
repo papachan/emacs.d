@@ -7,25 +7,35 @@
 
 (use-package cider
   :ensure t
-  :bind (:map cider-repl-mode-map ("C-X sc" . cider-repl-clear-buffer))
+  :defer t
+  :bind (:map cider-repl-mode-map
+              ("C-X sc" . cider-repl-clear-buffer))
   :config
-  (progn
-    ;; result prefix for the REPL
-    (setq cider-repl-result-prefix ";; => ")
-    ;; display cider repl in the current window
-    (setq cider-repl-display-in-current-window t)
-    ;; set helper message to false
-    (setq cider-repl-display-help-banner nil)
-    ;; error buffer not popping up
-    (setq cider-show-error-buffer nil)
-    ;; looong history
-    (setq cider-repl-history-size 3000)
-    ;; never ending REPL history
-    (setq cider-repl-wrap-history t)
-    ;; nice pretty printing
-    (setq cider-repl-use-pretty-printing t)
-    ;; weird issues with highlighting code, highlight all branches of reader conditionals
-    (setq cider-font-lock-reader-conditionals nil)))
+  (setq ;; result prefix for the REPL
+        cider-repl-result-prefix ";; => "
+        ;; display cider repl in the current window
+        cider-repl-display-in-current-window t
+        ;; set helper message to false
+        cider-repl-display-help-banner nil
+        ;; error buffer not popping up
+        cider-show-error-buffer nil
+        ;; looong history
+        cider-repl-history-size 3000
+        ;; never ending REPL history
+        cider-repl-wrap-history t
+        ;; nice pretty printing
+        cider-repl-use-pretty-printing t
+        ;; weird issues with highlighting code, highlight all branches of reader conditionals
+        cider-font-lock-reader-conditionals nil
+        ;; nrepl log messages
+        nrepl-log-messages t)
+  (cider-repl-toggle-pretty-printing)
+  (add-hook 'cider-mode-hook #'eldoc-mode)
+  (add-hook 'cider-repl-mode-hook #'eldoc-mode)
+  (add-hook 'cider-repl-mode-hook #'paredit-mode)
+  ;; company
+  (add-hook 'cider-repl-mode-hook #'company-mode)
+  (add-hook 'cider-mode-hook #'company-mode))
 
 (use-package anakondo
   :ensure t
@@ -53,14 +63,14 @@
 
 (use-package clojure-mode
   :ensure t
-  :config
-  (progn
-    (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
-    (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
-    (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
-    (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode)))
   :hook ((clojure-mode . paredit-mode)
-         (clojure-mode . eldoc-mode)))
+         (clojure-mode . eldoc-mode))
+  :init
+  (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
+  (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
+  (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
+  (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode)))
+
 
 (provide 'setup-cider)
 ;;; setup-cider.el ends here
