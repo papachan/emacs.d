@@ -1,6 +1,5 @@
-;; setup-webmode.el
-(require 'web-mode)
-
+;;; setup-webmode.el
+;;
 (use-package web-mode
   :ensure t
   :defer t
@@ -16,20 +15,18 @@
          ("\\.eex\\'"   . web-mode)
          ("/\\(views\\|html\\|templates\\)/.*\\.php\\'" . web-mode))
   :config
-  (progn
-    (setq js-indent-level 2)
-    (setq web-mode-markup-indent-offset 2)
-    (setq web-mode-css-indent-offset 2)
-    (setq web-mode-code-indent-offset 2)
-    (setq web-mode-markup-indent-offset 2)
-    (setq web-mode-extra-snippets
-      '(("erb" . (("toto" . ("<% toto | %>\n\n<% end %>"))))
-        ("php" . (("dowhile" . ("<?php do { ?>\n\n<?php } while (|); ?>"))
-                  ("debug" . ("<?php error_log(__LINE__); ?>"))))
-       ))))
+  (setq js-indent-level 2
+        web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2
+        web-mode-markup-indent-offset 2
+        web-mode-extra-snippets
+        '(("erb" . (("toto" . ("<% toto | %>\n\n<% end %>"))))
+          ("php" . (("dowhile" . ("<?php do { ?>\n\n<?php } while (|); ?>"))
+                    ("debug" . ("<?php error_log(__LINE__); ?>")))))))
 
 (use-package javascript
-  :defer
+  :defer t
   :commands javascript-mode
   :mode (("\\.jsx\\'" . javascript-mode))
   :init
