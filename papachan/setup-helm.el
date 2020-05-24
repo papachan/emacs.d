@@ -2,7 +2,6 @@
 ;;
 (use-package helm-posframe
   :ensure t
-  :hook (after-init . helm-posframe-enable)
   :init
   (add-hook 'helm-org-rifle-after-command-hook 'helm-posframe-cleanup)
   :custom
@@ -19,15 +18,19 @@
   :bind (("M-x" . #'helm-M-x)
          ("C-x C-f" . #'helm-find-files)
          ("C-x r b" . #'helm-filtered-bookmarks))
-  :config (progn
-	    (require 'helm-config)
-	    (setq helm-idle-delay 0.0
-                  helm-ff-skip-boring-files t
-                  helm-mode-fuzzy-match t
-                  helm-completion-in-region-fuzzy-match t
-                  helm-candidate-number-limit 100
-                  helm-display-buffer-reuse-frame t
-                  helm-display-buffer-width 80)
-	    (helm-mode t)))
+  :config
+  (require 'helm-config)
+  (setq helm-idle-delay 0.0
+        helm-ff-skip-boring-files t
+        helm-mode-fuzzy-match t
+        helm-completion-in-region-fuzzy-match t
+        helm-candidate-number-limit 100
+        helm-display-buffer-reuse-frame t
+        helm-display-buffer-width 80)
+  (helm-mode t)
+  (helm-posframe-enable))
+
+;; unset list-directory
+(fmakunbound 'list-directory)
 
 (provide 'setup-helm)
