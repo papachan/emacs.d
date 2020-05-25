@@ -17,6 +17,7 @@ Keybinding         | Description
 
 Keybinding         | Description
 -------------------|------------------------------------------------------------
+<kbd>C-c C-x j j</kbd>| Launch cider
 <kbd>C-x M-j</kbd>| Cider-jackin
 <kbd>C-c C-x M-j [Enter]</kbd>| Cider-jack-in-clj&cljs
 

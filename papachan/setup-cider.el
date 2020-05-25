@@ -53,9 +53,11 @@
   (setq cljr-suppress-middleware-warnings t)
   (setq cljr-warn-on-eval nil)
   (setq cljr-eagerly-build-asts-on-startup nil)
-  :config (progn (add-hook 'clojure-mode-hook (lambda ()
-                                                (clj-refactor-mode 1)
-                                                (cljr-add-keybindings-with-prefix "C-c C-m")))))
+  :config
+  (add-hook 'clojure-mode-hook (lambda ()
+                                 (clj-refactor-mode 1)
+                                 (yas-minor-mode 1)
+                                 (cljr-add-keybindings-with-prefix "C-c C-m"))))
 
 (use-package helm-cider
   :ensure t
@@ -70,7 +72,6 @@
   (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
   (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
   (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode)))
-
 
 (provide 'setup-cider)
 ;;; setup-cider.el ends here

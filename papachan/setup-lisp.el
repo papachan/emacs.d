@@ -2,6 +2,9 @@
 ;;
 (require 'slime)
 
+(setq common-lisp-hyperspec-root
+      (concat "file://" (expand-file-name "~/common-lisp/HyperSpec/")))
+
 (use-package lisp-mode
   :mode (("\\.el'" . lisp-mode)
          ("\\.lisp'" . lisp-mode)
