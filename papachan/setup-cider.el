@@ -63,10 +63,15 @@
   :ensure t
   :hook ((cider-mode . helm-cider-mode)))
 
+(use-package clojurescript-mode
+  :hook ((clojurescript-mode . paredit-mode)
+         (clojurescript-mode . (lambda () (auto-complete-mode -1)))))
+
 (use-package clojure-mode
   :ensure t
   :hook ((clojure-mode . paredit-mode)
-         (clojure-mode . eldoc-mode))
+         (clojure-mode . eldoc-mode)
+         (clojure-mode . (lambda () (auto-complete-mode -1))))
   :init
   (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
   (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
