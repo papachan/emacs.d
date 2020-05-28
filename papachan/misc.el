@@ -99,5 +99,8 @@
 
 (add-hook 'text-mode-hook 'goto-address-mode)
 
+;; automatically scroll
+(setq compilation-scroll-output t)
+
 (provide 'misc)
 ;;; misc.el ends here

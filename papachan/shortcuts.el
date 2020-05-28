@@ -42,7 +42,6 @@
 ;; (global-set-key (kbd "s--") 'er/contract-region)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x j") 'json-pretty-print-buffer)
-(global-set-key (kbd "C-c C-n") 'new-empty-buffer)
 (global-set-key (kbd "C-c C-d") 'put-the-date)
 (global-set-key (kbd "C-c w") 'select-whole-line)
 (global-set-key (kbd "C-x q") 'shutdown-emacs)
@@ -60,6 +59,7 @@
 
 ;; new *scratch* buffer keybing conflict with org-mode
 (global-set-key (kbd "C-x 4 n") 'create-scratch-buffer)
+(global-set-key (kbd "C-c C-n") 'new-empty-buffer)
 
 ;; hide tab bar
 (global-set-key (kbd "C-x t k") 'tab-bar-close-tab)
