@@ -18,6 +18,10 @@
          ("Dired"
           (or (mode . dired-sidebar-mode)
               (mode . dired-mode)))
+         ("Others"
+          (or
+           (name . "^\\*scratch*")
+           (name . "^\\*Messages\\*$")))
          ("Elisp files"
           (mode . emacs-lisp-mode))
          ("Clojure-edn"
@@ -35,15 +39,11 @@
            (mode . inf-ruby-mode)
            (mode . ruby-mode)
            (mode . enh-ruby-mode)))
-         ("Others"
+         ("Cider"
           (or
-           (name . "^\\*scratch\\*$")
-           (name . "^\\*Messages\\*$")
-           (name . "^\\*Compile-log\\*$")
-           (name . "^\\*Help\\*$")
-           (name . "^\\*Warnings\\*$")
-           (name . "^\\*Bookmark List\\*$")
-           ))
+           (name . "^\\*cider-repl")
+           (name . "^\\*nrepl-server")
+           (name . "^\\*nrepl-messages")))
          ("SQL" (mode . sql-mode))
          ("Log" (filename . ".*\.log$"))
          ("Python" (mode . python-mode))

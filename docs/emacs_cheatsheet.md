@@ -13,6 +13,9 @@ Keybinding         | Description
 <kbd>C-x C-b</kbd>| ibuffers window
 <kbd>C-j</kbd> | Open a new line and indent
 <kbd>C-u 66 ;</kbd>|  create a line with 66 chars ;
+<kbd>M-z</kbd>| Zap to chrs
+<kbd>C-c a</kbd>| Increment
+<kbd>C-c x</kbd>| Decrease one
 
 
 ### Clojure Bindings
