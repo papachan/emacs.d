@@ -28,7 +28,8 @@
 (use-package javascript
   :defer t
   :commands javascript-mode
-  :mode (("\\.jsx\\'" . javascript-mode))
+  :mode (("\\.jsx\\'" . javascript-mode)
+         ("\\.tsx\\'" . javascript-mode))
   :init
   :config
   (custom-set-variables
