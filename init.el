@@ -34,6 +34,7 @@
 (require 'setup-python)
 (require 'setup-dired-sidebar)
 (require 'setup-autocomplete)
+(require 'setup-undo)
 (require 'shortcuts)
 (require 'bootstrap)
 (require 'toggle-quotes)
