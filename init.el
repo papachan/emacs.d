@@ -17,6 +17,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'init-repo)
 (require 'setup-multiple-cursors)
+(require 'setup-gnus)
 (require 'setup-tabs)
 (require 'functions)
 (require 'appearance)

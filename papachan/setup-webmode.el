@@ -13,6 +13,7 @@
          ("\\.twig\\'"  . web-mode)
          ("\\.css\\'"   . web-mode)
          ("\\.eex\\'"   . web-mode)
+         ("\\.ejs\\'"   . web-mode)
          ("/\\(views\\|html\\|templates\\)/.*\\.php\\'" . web-mode))
   :config
   (setq js-indent-level 2

@@ -16,6 +16,11 @@ Keybinding         | Description
 <kbd>M-z</kbd>| Zap to chrs
 <kbd>C-c a</kbd>| Increment
 <kbd>C-c x</kbd>| Decrease one
+<kbd>C-x s</kbd>| Save-buffer
+<kbd>C-x k</kbd>| Kill-buffer
+<kbd>C-x [right]</kbd>| next-buffer
+
+
 
 
 ### Clojure Bindings
