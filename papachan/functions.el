@@ -16,11 +16,13 @@
   (interactive)
   (insert "<!DOCTYPE html>\n"
           "<html lang=\"en\">\n"
-          "<head>\n"
-          "<meta charset=\"UTF-8\"/>\n"
-          "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"/>\n"
-          "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>\n"
-          "<title></title>\n</head>\n"
+          "  <head>\n"
+          "    <meta charset=\"UTF-8\"/>\n"
+          "    <title></title>\n"
+          "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"/>\n"
+          "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n"
+          "    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n"
+          "  </head>\n"
           "<body>\n<div id=\"app\"></div\n\n</body>\n</html>"))
 
 (defun snippet-html5 ()
@@ -85,7 +87,7 @@
           "  </body>\n"
           "</html>"))
 
-(defun snippet-latin ()
+(defun insert-snippet-latin-unicode ()
   (lambda())
   (interactive)
   (insert "iso-8859-1"))

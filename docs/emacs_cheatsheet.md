@@ -47,6 +47,7 @@ Keybinding         | Description
 Keybinding         | Description
 -------------------|------------------------------------------------------------
 <kbd>C-c C-e</kbd>| eval with lispxmp
+<kbd>C-[f4]</kbd>| insert html snippet
 <kbd>S-[f8]</kbd>  | open dired-sidebar
 <kbd>C-x r b</kbd> | open bookmarks list with helm
 <kbd>C-x h TAB</kbd>| indent all lines
