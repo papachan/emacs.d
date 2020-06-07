@@ -21,7 +21,11 @@
          ("Others"
           (or
            (name . "^\\*scratch*")
-           (name . "^\\*Messages\\*$")))
+           (name . "^\\*Messages\\*$")
+           (name . "^\\*Group\\*$")
+           (name . "^\\*Python*")
+           (name . "^\\*slime-repl sbcl\\*$")
+           (name . "^\\*inferior-lisp\\*$")))
          ("Elisp files"
           (mode . emacs-lisp-mode))
          ("Clojure-edn"

@@ -12,5 +12,10 @@
                 (nnir-search-engine imap)
                 (nnimap-stream ssl))))
 
+(setq gnus-posting-styles
+      '((".*"
+	 (address "your_email")
+	 (name "your_name"))))
+
 (provide 'setup-gnus)
 ;;; setup-gnus.el ends here
