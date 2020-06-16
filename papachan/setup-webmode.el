@@ -1,5 +1,9 @@
 ;;; setup-webmode.el
 ;;
+(use-package css-mode
+  :mode (("\\.css\\'"   . css-mode)
+         ("\\.scss\\'"  . css-mode)))
+
 (use-package web-mode
   :ensure t
   :defer t
@@ -11,7 +15,6 @@
          ("\\.gsp\\'"   . web-mode)
          ("\\.gs\\'"    . web-mode)
          ("\\.twig\\'"  . web-mode)
-         ("\\.css\\'"   . web-mode)
          ("\\.eex\\'"   . web-mode)
          ("\\.ejs\\'"   . web-mode)
          ("/\\(views\\|html\\|templates\\)/.*\\.php\\'" . web-mode))

@@ -92,14 +92,14 @@
 ;; (global-set-key (kbd "M-<f2>") 'random-11-letter-string)
 
 (global-set-key (kbd "C-<f4>") 'html-html5-template)
-(global-set-key (kbd "C-<f7>") 'snippet-html)
+(global-set-key (kbd "C-<f7>") 'insert-html-snippet)
 
 ;; (global-set-key (kbd "C-<f5>") (lambda()  (interactive) (Lorem-ipsum-insert-paragraphs 20)))
 ;; (global-set-key (kbd "C-<f6>") 'lorem-ipsum-insert-list)
 
 (global-set-key (kbd "C-x M-d") 'insert-current-date)
 
-(global-set-key (kbd "C-c i") 'insert-snippet-latin-unicode)
+(global-set-key (kbd "C-c i") 'insert-latin-unicode)
 
 ;; (global-unset-key (kbd "C-x q"))
 

@@ -10,8 +10,25 @@
   (with-current-buffer (current-buffer)
       (erase-buffer)))
 
+(defun insert-bootstrap-snippet ()
+  (lambda())
+  (interactive)
+  (insert "<!DOCTYPE html>"
+          "<html lang=\"en\">"
+          "<head>"
+          "<meta charset=\"utf-8\">"
+          "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">"
+          "<title></title>"
+          "<!-- Bootstrap CSS -->"
+          "<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\" integrity=\"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh\" crossorigin=\"anonymous\">"
+          "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>"
+          "</head>"
+          "<body>"
+          "</body>"
+          "</html>"))
+
 ; adding html snippet
-(defun snippet-html ()
+(defun insert-html-snippet ()
   (lambda())
   (interactive)
   (insert "<!DOCTYPE html>\n"
@@ -25,7 +42,7 @@
           "  </head>\n"
           "<body>\n<div id=\"app\"></div\n\n</body>\n</html>"))
 
-(defun snippet-html5 ()
+(defun insert-html5-snippet ()
   (lambda())
   (interactive)
   (insert "<!DOCTYPE html>\n"
@@ -42,7 +59,7 @@
           "  </body>\n"
           "</html>"))
 
-(defun snippet-clojurescript-reagent ()
+(defun insert-cljs-reagent-snippet ()
   (lambda())
   (interactive)
   (insert "<!DOCTYPE html>\n"
@@ -64,7 +81,7 @@
           "  </body>\n"
           "</html>"))
 
-(defun snippet-clojurescript-shadow-cljs ()
+(defun insert-cljs-shadowcljs-snippet ()
   (lambda())
   (interactive)
   (insert "<!DOCTYPE html>\n"
@@ -87,7 +104,7 @@
           "  </body>\n"
           "</html>"))
 
-(defun insert-snippet-latin-unicode ()
+(defun insert-latin-unicode ()
   (lambda())
   (interactive)
   (insert "iso-8859-1"))
