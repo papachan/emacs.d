@@ -8,8 +8,16 @@
 (use-package cider
   :ensure t
   :defer t
-  :bind (:map cider-repl-mode-map
-              ("C-X sc" . cider-repl-clear-buffer))
+  :bind ((:map cider-repl-mode-map
+               ("C-X sc" . cider-repl-clear-buffer))
+         (:map cider-repl-mode-map
+               ("C-c C-x" . cider-ns-refresh))
+         (:map cider-repl-mode-map
+               ("RET" . cider-repl-newline-and-indent))
+         (:map cider-repl-mode-map
+               ("C-<return>" . cider-repl-return))
+         (:map cider-mode-map
+               ("C-c C-a" . cider-eval-print-last-sexp)))
   :config
   (setq ;; result prefix for the REPL
         cider-repl-result-prefix ";; => "

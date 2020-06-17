@@ -30,9 +30,25 @@ Keybinding         | Description
 <kbd>C-c C-x j j</kbd>| Launch cider
 <kbd>C-x M-j</kbd>| Cider-jackin
 <kbd>C-c C-x M-j [Enter]</kbd>| Cider-jack-in-clj&cljs
-<kbd>M-></kbd>|     cider-jump-to-var
+<kbd>M-></kbd>| cider-jump-to-var
 <kbd>M-.</kbd>| cider-find-var
 <kbd>C-c C-q</kbd>| cider-quit
+<kbd>C-c C-f</kbd>| cider-pprint-eval-defun-at-point
+<kbd>C-c C-a</kbd>| cider-eval-print-last-sexp
+<kbd>C-c C-v C-r</kbd> | cider-eval-region
+<kbd>C-c C-v C-n</kbd> | cider-eval-ns-form
+<kbd>C-x C-e</kbd> | cider-eval-last-sexp
+<kbd>C-c C-v C-v</kbd> | cider-eval-sexp-at-point
+<kbd>C-M-x</kbd> | cider-eval-defun-at-point
+<kbd>C-c C-a</kbd> | cider-eval-print-last-sexp
+<kbd>C-c C-v C-o</kbd> | cider-eval-sexp-up-to-point
+<kbd>C-c M-;</kbd> | cider-eval-defun-to-comment
+<kbd>C-c C-v C-z</kbd> | cider-eval-defun-up-to-point
+<kbd>C-c M-e</kbd> | cider-eval-last-sexp-to-repl
+<kbd>C-c C-v C-c</kbd> | cider-eval-last-sexp-in-context
+<kbd>C-c C-v C-w</kbd> | cider-eval-last-sexp-and-replace
+<kbd>C-c C-v C-b</kbd> | cider-eval-sexp-at-point-in-context
+<kbd>C-c C-x</kbd>| cider-ns-refresh
 
 
 ### Org Mode
