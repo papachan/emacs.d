@@ -115,6 +115,8 @@
 ;; new line
 (global-set-key (kbd "C-c y") "\C-a\C- \C-n\M-w\C-y")
 
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
+
 (cond
  ((equal system-type 'darwin)
   (global-set-key [(hyper a)] 'mark-whole-buffer)
