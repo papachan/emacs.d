@@ -24,11 +24,12 @@
 (global-set-key (kbd "C-x <ESC> a") "α")
 (global-set-key (kbd "C-x <ESC> b") "β")
 (global-set-key (kbd "C-x <ESC> l") "λ")
+(global-set-key (kbd "C-x <ESC> n") "ñ")
 (global-set-key (kbd "C-x <ESC> c") "©")
 (global-set-key (kbd "C-x <ESC> k") "➤")
 (global-set-key (kbd "C-x <ESC> h") "❤")
 (global-set-key (kbd "C-x 5 n") 'make-frame-command) ;; new frame
-(global-set-key (kbd "C-x 8 ' n") (lambda () (interactive) (insert "ñ")))
+(global-set-key (kbd "C-x 5 3") 'gnus-other-frame)
 (global-set-key (kbd "C-x 9") 'open-scratch-buffer)
 (global-set-key (kbd "C-c C-o") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-c -") 'buffer/clear)

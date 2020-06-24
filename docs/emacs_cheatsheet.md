@@ -19,6 +19,7 @@ Keybinding         | Description
 <kbd>C-x s</kbd>| Save-buffer
 <kbd>C-x k</kbd>| Kill-buffer
 <kbd>C-x [right]</kbd>| next-buffer
+<kbd>C-x C-m</kbd>| Compile with Makefile
 
 
 
@@ -81,6 +82,7 @@ Keybinding         | Description
 <kbd>C-c C-e</kbd>| eval lisp with lispxmp
 <kbd>C-c y</kbd>| Copy and paste line
 <kbd>C-c w</kbd>| select-whole-line
+<kbd>C-c t</kbd>| shell-pop
 
 
 ### Buffers
