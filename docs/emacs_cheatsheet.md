@@ -20,6 +20,7 @@ Keybinding         | Description
 <kbd>C-x k</kbd>| Kill-buffer
 <kbd>C-x [right]</kbd>| next-buffer
 <kbd>C-x C-m</kbd>| Compile with Makefile
+<kbd>C-[backspace]</kbd>| backward-kill-word
 
 
 

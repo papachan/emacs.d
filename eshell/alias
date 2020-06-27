@@ -9,3 +9,4 @@ alias clean find ./ -name ".DS_Store" -depth -exec rm {} \;
 alias clean_all_py_files find . -name __py*__ -print0 | xargs -0 rm -rf
 alias gds magit-diff-staged
 alias gd magit-diff-unstaged
+alias open nautilus $1
