@@ -11,6 +11,7 @@
 (global-set-key (kbd "C-<next>") 'next-buffer)
 (global-set-key (kbd "C-<prior>") 'previous-buffer)
 
+;; paste replace git config file
 (global-set-key (kbd "M-g y") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig.txt")))
 (global-set-key (kbd "M-g j") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig1.txt")))
 
@@ -60,6 +61,7 @@
 
 ;; new *scratch* buffer keybing conflict with org-mode
 (global-set-key (kbd "C-x 4 n") 'create-scratch-buffer)
+(global-set-key (kbd "C-x 4 ,") 'new-org-mode-buffer)
 (global-set-key (kbd "C-c C-n") 'new-empty-buffer)
 
 ;; hide tab bar

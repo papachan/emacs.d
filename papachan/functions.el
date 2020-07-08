@@ -234,6 +234,16 @@ If FILE already exists, signal an error."
     (funcall (and initial-major-mode))
     (setq buffer-offer-save t)))
 
+(defun new-org-mode-buffer ()
+  (interactive)
+  (let ((buffer (get-buffer-create (generate-new-buffer-name "*scratch-org*"))))
+    (pop-to-buffer buffer)
+    (with-current-buffer buffer
+      (funcall (and initial-major-mode))
+      (insert "-*- mode: org -*-\n\n")
+      (insert "* First Headline\n")
+      (org-mode))))
+
 (defun toggle-current-window-dedication ()
  (interactive)
  (let* ((window    (selected-window))

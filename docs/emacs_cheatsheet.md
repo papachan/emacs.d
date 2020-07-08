@@ -95,3 +95,4 @@ Keybinding         | Description
 <kbd>C-s</kbd> | Helm Buffers list
 <kbd>C-c C-n</kbd>| new-empty-buffer
 <kbd>C-x 4 n</kbd>| create-scratch-buffer
+<kbd>C-x 4 ,</kbd>| new-org-mode-buffer
