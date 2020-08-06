@@ -84,6 +84,8 @@ Keybinding         | Description
 <kbd>C-c y</kbd>| Copy and paste line
 <kbd>C-c w</kbd>| select-whole-line
 <kbd>C-c t</kbd>| shell-pop
+<kbd>M-g y</kbd>| paste gitconfig into buffer
+<kbd>M-g j</kbd>| paste gitconfig into buffer
 
 
 ### Buffers

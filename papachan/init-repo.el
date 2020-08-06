@@ -1,4 +1,7 @@
-;;; init-repo.el
+;;; init-repo.el --- Summary
+;;; Commentary:
+;;; Code:
+(require 'package)
 (dolist (source '(("gnu" . "http://elpa.gnu.org/packages/")
                   ("melpa" . "https://melpa.org/packages/")
                   ("org" . "http://orgmode.org/elpa/")
@@ -9,6 +12,8 @@
   (package-install 'use-package))
 
 (require 'use-package)
+;; (require 'use-package-ensure)
 ;; (setq use-package-always-ensure t)
 
 (provide 'init-repo)
+;;; init-repo ends here

@@ -16,6 +16,7 @@
 (mapcar 'add-pkg '("papachan" "lib"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'init-repo)
+(require 'init-flycheck)
 (require 'setup-multiple-cursors)
 (require 'setup-gnus)
 (require 'setup-tabs)
@@ -46,4 +47,6 @@
 (require 'init-org)
 (require 'ido-snippet)
 (require 'setup-webmode)
+(require 'setup-projectile)
+(require 'setup-groovy)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
