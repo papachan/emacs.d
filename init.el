@@ -49,4 +49,5 @@
 (require 'setup-webmode)
 (require 'setup-projectile)
 (require 'setup-groovy)
+(require 'init-direnv)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

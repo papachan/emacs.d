@@ -70,6 +70,7 @@
                             'magit-insert-unpushed-to-upstream-or-recent
                             'magit-insert-unpulled-from-upstream
                             'replace)
+    (setq magit-diff-highlight-indentation '(("" . tabs)))
     (setq magit-repository-directories
           '( "~/git" ))
     (setq magit-log-section-commit-count 30)
