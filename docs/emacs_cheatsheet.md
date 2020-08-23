@@ -51,6 +51,8 @@ Keybinding         | Description
 <kbd>C-c C-v C-w</kbd> | cider-eval-last-sexp-and-replace
 <kbd>C-c C-v C-b</kbd> | cider-eval-sexp-at-point-in-context
 <kbd>C-c C-x</kbd>| cider-ns-refresh
+<kbd>C-c C-t t</kbd> | cider-test-run-test
+<kbd>C-c C-t a</kbd> | cider-test-rerun-test
 
 
 ### Org Mode
