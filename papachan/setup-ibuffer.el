@@ -1,5 +1,6 @@
-;;; setup-ibuffer.el
-;;
+;;; setup-ibuffer.el --- Summary
+;;; Commentary:
+;;; Code:
 (require 'ibuffer)
 
 (setq ibuffer-saved-filter-groups
@@ -98,7 +99,7 @@
   (ibuffer-next-saved-filter-groups-aux
    (reverse ibuffer-saved-filter-groups)))
 
-(define-key ibuffer-mode-map (kbd "C-M-n") #'ibuffer-next-saved-filter-groups)
+(define-key ibuffer-mode-map (kbd "C-M-m") #'ibuffer-next-saved-filter-groups)
 (define-key ibuffer-mode-map (kbd "C-M-p") #'ibuffer-previous-saved-filter-groups)
 
 ;; Don't show empty groups

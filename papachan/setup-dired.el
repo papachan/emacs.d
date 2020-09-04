@@ -20,7 +20,6 @@
       (dired-add-file new)
       (dired-move-to-filename))))
 
-
 (use-package dired
   :init
   (progn

@@ -23,12 +23,18 @@ Keybinding         | Description
 <kbd>C-[backspace]</kbd>| backward-kill-word
 
 
+### Helm Bindings
+Keybinding         | Description
+-------------------|------------------------------------------------------------
+<kbd>C-x c M-g a</kbd> | helm-do-grep-ag
+
 
 
 ### Clojure Bindings
 
 Keybinding         | Description
 -------------------|------------------------------------------------------------
+<kbd>C-x h tab</kbd>| indent code
 <kbd>C-c C-x j j</kbd>| Launch cider
 <kbd>C-x M-j</kbd>| Cider-jackin
 <kbd>C-c C-x M-j [Enter]</kbd>| Cider-jack-in-clj&cljs
@@ -88,14 +94,15 @@ Keybinding         | Description
 <kbd>C-c t</kbd>| shell-pop
 <kbd>M-g y</kbd>| paste gitconfig into buffer
 <kbd>M-g j</kbd>| paste gitconfig into buffer
+<kbd>M-s</kbd>| rg (search in files with ripgrep)
 
 
 ### Buffers
 
 Keybinding         | Description
 -------------------|------------------------------------------------------------
-<kbd>C-c M-n</kbd> | Next group filters buffers
-<kbd>C-c M-p</kbd> | Previous group filters buffers
+<kbd>C-M-m</kbd> | Next group filters buffers
+<kbd>C-M-p</kbd> | Previous group filters buffers
 <kbd>C-s</kbd> | Helm Buffers list
 <kbd>C-c C-n</kbd>| new-empty-buffer
 <kbd>C-x 4 n</kbd>| create-scratch-buffer
