@@ -1,108 +1,101 @@
-(dolist (package '(a
-                   alchemist
+(dolist (package '(all-the-icons-dired
                    all-the-icons
-                   all-the-icons-dired
+                   anakondo
                    auto-complete
-                   ansi
-                   async
-                   bind-key
                    cask
-                   cider
+                   ansi
                    clj-refactor
-                   clojure-mode
+                   clojure-mode-extra-font-locking
                    color-theme
                    commander
-                   company
                    composable
-                   dash
-                   dired-hacks-utils
                    dired-sidebar
                    dired-subtree
-                   elfeed
-                   elixir-mode
-                   enh-ruby-mode
-                   epl
-                   erlang
+                   dired-hacks-utils
+                   direnv
                    expand-region
-                   f
-                   flycheck
                    flycheck-clj-kondo
-                   flycheck-elixir
-                   gh
+                   flycheck
                    git
-                   git-commit
-                   gnu-elpa-keyring-update
-                   graphql-mode
-                   haskell-emacs
-                   haskell-mode
+                   git-timemachine
+                   groovy-mode
+                   helm-cider
+                   cider
+                   clojure-mode
+                   helm-posframe
                    helm
                    helm-core
-                   helm-posframe
-                   helm-projectile
-                   hl-todo
-                   ht
                    htmlize
                    hydra
                    idle-highlight-mode
                    iflipb
-                   inf-ruby
                    inflections
-                   ivy
-                   kotlin-mode
-                   let-alist
-                   logito
-                   macrostep
-                   magit
+                   lsp-mode
+                   f
+                   dash-functional
+                   lv
                    magit-gh-pulls
-                   magit-org-todos
-                   magit-todos
+                   magit
+                   git-commit
+                   gh
+                   logito
                    markdown-mode
                    marshal
+                   ht
                    maxframe
                    memoize
                    move-text
                    multiple-cursors
+                   origami
+                   dash
                    package-build
-                   pallet
                    paredit
-                   parseclj
                    parseedn
+                   parseclj
+                   a
                    pcache
                    pcre2el
                    php-mode
-                   pkg-info
                    popup
-                   powerline
+                   posframe
                    projectile
+                   pkg-info
+                   epl
                    python-mode
-                   pyvenv
                    queue
                    rg
-                   rich-minority
-                   s
-                   seq
                    sesman
+                   shell-pop
                    shut-up
-                   slime
                    slime-company
-                   smart-mode-line
+                   company
+                   slime
+                   macrostep
                    smart-mode-line-powerline-theme
-                   smartparens
+                   smart-mode-line
+                   rich-minority
+                   powerline
                    spinner
+                   string-inflection
                    swiper
+                   ivy
                    transient
                    typescript-mode
                    undo-tree
                    use-package
+                   bind-key
                    visual-regexp
+                   vterm
                    web-mode
                    wgrep
                    window-numbering
                    with-editor
+                   async
                    xterm-color
                    yaml-mode
-                   yasnippet
-                   yasnippet-snippets))
+                   yasnippet-snippets
+                   s
+                   yasnippet))
   (package-install package))
 
 ;; (progn (package-refresh-contents)

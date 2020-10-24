@@ -1,7 +1,7 @@
-;;; setup-magit.el
-;;
-(require 'magit)
-
+;;; setup-magit.el --- Summary
+;;; Commentary:
+;;; Code:
+(use-package git-timemachine)
 (use-package magit
   :ensure t
   :config

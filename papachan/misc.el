@@ -8,7 +8,6 @@
 (require 'move-text)
 (require 'linum)
 
-
 ;; local env
 (setenv "LC_CTYPE" "en_US.UTF-8")
 (set-language-environment "UTF-8")
@@ -101,6 +100,12 @@
 
 ;; automatically scroll
 (setq compilation-scroll-output t)
+
+;; Emacs 27.1
+;; Fix performance problem with long lines files
+(global-so-long-mode 1)
+(setq bidi-inhibit-bpa t)
+(setq bidi-paragraph-direction 'left-to-right)
 
 (provide 'misc)
 ;;; misc.el ends here

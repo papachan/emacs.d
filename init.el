@@ -15,6 +15,9 @@
 
 (mapcar 'add-pkg '("papachan" "lib"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; remove cl deprecated warnings
+(setq byte-compile-warnings '(cl-functions))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'init-repo)
 (require 'init-flycheck)
 (require 'setup-multiple-cursors)

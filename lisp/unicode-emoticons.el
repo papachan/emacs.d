@@ -64,7 +64,8 @@
     ("salut" "(*ﾟｰﾟ)ﾉ")
     ("fight" "(๑•̀ㅂ•́)و✧")
     ("ohm" "ᕮ☉益☉ᕭ")
-    ("buh" "(≧▽≦)/")))
+    ("buh" "(≧▽≦)/")
+    ("shy" "(｡◕‿◕｡)")))
 
 (add-to-list 'abbrev-minor-mode-table-alist
 	     `(unicode-emoticons-mode ,unicode-emoticons-mode-abbrev-table))
