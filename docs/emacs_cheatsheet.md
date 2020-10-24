@@ -46,6 +46,7 @@ Keybinding         | Description
 <kbd>C-c C-v C-r</kbd> | cider-eval-region
 <kbd>C-c C-v C-n</kbd> | cider-eval-ns-form
 <kbd>C-x C-e</kbd> | cider-eval-last-sexp
+<kbd>C-c C-p</kbd> | cider-eval-last-sexp in popup
 <kbd>C-c C-v C-v</kbd> | cider-eval-sexp-at-point
 <kbd>C-M-x</kbd> | cider-eval-defun-at-point
 <kbd>C-c C-a</kbd> | cider-eval-print-last-sexp
