@@ -1,5 +1,17 @@
-;;; setup-helm.el
-;;
+;;; setup-helm.el --- Summary
+;;; Commentary:
+;;; Code:
+
+(use-package helm-projectile
+  :ensure t
+  :commands (helm-projectile helm-projectile-find-files helm-projectile-switch-project)
+  :config (helm-projectile-on))
+
+(use-package helm-ag
+  :ensure t
+  :bind ("M-g ." . helm-ag)
+  :commands (helm-ag helm-projectile-ag))
+
 (use-package helm-posframe
   :ensure t
   :init
@@ -34,3 +46,4 @@
 (fmakunbound 'list-directory)
 
 (provide 'setup-helm)
+;;; setup-helm.el ends here

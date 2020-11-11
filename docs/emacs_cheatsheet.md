@@ -21,6 +21,7 @@ Keybinding         | Description
 <kbd>C-x [right]</kbd>| next-buffer
 <kbd>C-x C-m</kbd>| Compile with Makefile
 <kbd>C-[backspace]</kbd>| backward-kill-word
+<kbd>C-c [enter]</kbd>| open-url
 
 
 ### Helm Bindings
@@ -60,6 +61,12 @@ Keybinding         | Description
 <kbd>C-c C-x</kbd>| cider-ns-refresh
 <kbd>C-c C-t t</kbd> | cider-test-run-test
 <kbd>C-c C-t a</kbd> | cider-test-rerun-test
+<kbd>C-c M-r</kbd> | cider-restart
+<kbd>C-c M-n r</kbd> | cider-ns-refresh
+<kbd>C-u C-c M-n r</kbd> | cider-ns-reload-all
+<kbd>C-c C-z</kbd> | cider-switch-to-repl-buffer
+<kbd>C-u C-c C-z</kbd> | cider-switch-to-repl-buffer with prefix
+
 
 
 ### Org Mode

@@ -82,10 +82,16 @@
       ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10)
 
+;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
+
 ;; (setq show-paren-style 'expression) ; highlight entire expression
 (setq show-paren-style 'parenthesis) ; highlight brackets
 ;; (setq show-paren-style 'mixed) ; highlight brackets if visible, else entire expression
+
+;; enable auto pair
+;; (electric-pair-mode 1)
+;; (setq electric-pair-preserve-balance nil)
 
 (setq compilation-read-command nil) ; compile in a status buffer
 

@@ -13,6 +13,7 @@
                       (mode . magit-revision-mode)))
          ("emacs-config" (or (filename . "\\.emacs\\.d")
                              (filename . ".emacs.d/.*.el$")))
+         ("term" (name . "\*ansi-term-*\*"))
          ("Bash" (mode . sh-mode))
          ("Eshell" (or (name . "\*shell\*")
                        (mode . eshell-mode)))

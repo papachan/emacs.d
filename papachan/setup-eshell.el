@@ -1,4 +1,6 @@
-;;; setup-eshell.el
+;;; setup-eshell.el --- Summary
+;;; Commentary:
+;;; Code:
 (require 'esh-module)
 
 (use-package shell-pop
@@ -22,9 +24,8 @@
   (eshell t))
 
 (use-package eshell
-  :bind (("C-x e" . eshell)
-         ("C-x E" . eshell-new))
-  ;; :bind (:map eshell-mode-map ("<f9>" . emacs-uptime))
+  :bind (("C-x t e" . eshell)
+         ("C-x n e" . eshell-new))
   :config
   (progn
     (defun eshell/magit ()

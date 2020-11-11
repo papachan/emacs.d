@@ -1,6 +1,6 @@
-;;; fucntions.el file
-;;
-
+;;; functions.el --- Summary
+;;; Commentary:
+;;; Code:
 (defvar current-date-format "%Y-%m-%d")
 (defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y")
 (defvar current-time-format "%a %H:%M:%S")
@@ -212,7 +212,8 @@ If FILE already exists, signal an error."
              (setq n (1+ n))
              (get-buffer bufname)))
     (switch-to-buffer (get-buffer-create bufname))
-    (emacs-lisp-mode)))
+    ;; (emacs-lisp-mode) ;; if you want to create a new buffer with elisp-mode enabled instead of fundamental-mode
+    ))
 
 (defun twist-split ()
   (interactive)
@@ -370,4 +371,4 @@ If FILE already exists, signal an error."
       (shell-command (concat "git clone " url))))
 
 (provide 'functions)
-;;; misc.el ends here
+;;; functions.el ends here

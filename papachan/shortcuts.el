@@ -13,9 +13,9 @@
 
 ;; paste replace git config file
 (global-set-key (kbd "M-g y") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig.txt")))
-(global-set-key (kbd "M-g j") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig1.txt")))
+(global-set-key (kbd "M-g i") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig2.txt")))
 
-(global-set-key (kbd "M-g x") 'send-output-log)
+;; (global-set-key (kbd "M-g x") 'send-output-log)
 (global-set-key (kbd "C-.") 'other-window)
 (global-set-key (kbd "C-,") (lambda() (interactive) (other-window -1)))
 (global-set-key (kbd "M-g q") 'mark-sexp)
@@ -29,6 +29,7 @@
 (global-set-key (kbd "C-x <ESC> c") "©")
 (global-set-key (kbd "C-x <ESC> k") "➤")
 (global-set-key (kbd "C-x <ESC> h") "❤")
+(global-set-key (kbd "C-x <ESC> c") "ç")
 (global-set-key (kbd "C-x 5 n") 'make-frame-command) ;; new frame
 (global-set-key (kbd "C-x 5 3") 'gnus-other-frame)
 (global-set-key (kbd "C-x 9") 'open-scratch-buffer)
@@ -110,7 +111,6 @@
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 (define-key global-map (kbd "C-c g") 'vr/mc-mark)
 
-;(global-set-key (kbd "C-x r l") 'helm-bookmarks)
 (global-set-key (kbd "C-c C-v") 'other-frame)
 
 (global-set-key (kbd "C-c <RET>") 'browse-url)

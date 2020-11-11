@@ -1,5 +1,6 @@
 ;;; Appearance --- load emacs theme here
-;;
+;;; Commentary:
+;;; Code:
 (require 'color)
 (require 'all-the-icons)
 (require 'smart-mode-line)
@@ -16,8 +17,6 @@
   (window-numbering-mode 1)
   ;; Highlight current line
   (global-hl-line-mode 1)
-  ;; Highlight matching parentheses when the point is on them.
-  (show-paren-mode 1)
   (mouse-wheel-mode t)
   (blink-cursor-mode -1)
   (cond
@@ -33,5 +32,4 @@
     (load-theme 'nimbus t))))
 
 (provide 'appearance)
-
 ;;; appearance.el ends here

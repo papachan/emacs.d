@@ -19,9 +19,11 @@
   (projectile-global-mode)
   (setq projectile-enable-caching nil
         projectile-track-known-projects-automatically nil)
-  ;; (setq projectile-completion-system 'helm)
-  ;; (helm-projectile-on)
-  ;; (setq projectile-switch-project-action 'projectile-dired)
+  (add-to-list 'projectile-globally-ignored-files "*.min.js")
+  (add-to-list 'projectile-globally-ignored-directories "js/compiled")
+  (add-to-list 'projectile-globally-ignored-directories "resources/public/js")
+  (add-to-list 'projectile-globally-ignored-directories "node[_-]modules")
+  (add-to-list 'projectile-globally-ignored-directories "target")
   (setq projectile-mode-line '(:eval (format " Prj[%s]" (projectile-project-name)))))
 
 (provide 'setup-projectile)

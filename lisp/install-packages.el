@@ -9,20 +9,23 @@
                    color-theme
                    commander
                    composable
+                   dash-functional
                    dired-sidebar
                    dired-subtree
                    dired-hacks-utils
-                   direnv
                    expand-region
                    flycheck-clj-kondo
                    flycheck
                    git
+                   f
                    git-timemachine
                    groovy-mode
+                   helm-ag
                    helm-cider
                    cider
                    clojure-mode
                    helm-posframe
+                   helm-projectile
                    helm
                    helm-core
                    htmlize
@@ -30,9 +33,6 @@
                    idle-highlight-mode
                    iflipb
                    inflections
-                   lsp-mode
-                   f
-                   dash-functional
                    lv
                    magit-gh-pulls
                    magit
@@ -64,6 +64,7 @@
                    python-mode
                    queue
                    rg
+                   seq
                    sesman
                    shell-pop
                    shut-up
