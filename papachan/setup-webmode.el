@@ -1,5 +1,6 @@
-;;; setup-webmode.el
-;;
+;;; setup-webmode.el --- Summary
+;;; Commentary:
+;;; Code:
 (use-package css-mode
   :mode (("\\.css\\'"   . css-mode)
          ("\\.scss\\'"  . css-mode)))
@@ -40,4 +41,4 @@
    '(js-indent-level 2)))
 
 (provide 'setup-webmode)
-;;; webmode.el ends here
+;;; setup-webmode.el ends here

@@ -1,18 +1,7 @@
-;;; setup-helm.el
-;;
-(use-package helm-posframe
-  :ensure t
-  :init
-  (add-hook 'helm-org-rifle-after-command-hook 'helm-posframe-cleanup)
-  :custom
-  (helm-posframe-height 15)
-  (helm-posframe-width (round (* (frame-width) 1.15)))
-  (helm-posframe-parameters '((left-fringe . 0)
-                              (right-fringe . 0)
-                              (internal-border-width . 12)))
-  :config
-   (setq helm-posframe-poshandler 'posframe-poshandler-frame-center))
-
+;;; setup-helm.el --- Summary
+;;; Commentary:
+;;; Code:
+;; (require 'helm-projectile)
 (use-package helm
   :ensure t
   :bind (("M-x" . #'helm-M-x)
@@ -27,10 +16,14 @@
         helm-candidate-number-limit 100
         helm-display-buffer-reuse-frame t
         helm-display-buffer-width 80)
-  (helm-mode t)
-  (helm-posframe-enable))
+  (helm-mode t))
 
-;; unset list-directory
-(fmakunbound 'list-directory)
+(use-package helm-cider
+  :ensure t
+  :hook ((cider-mode . helm-cider-mode)))
+
+;; (setq helm-projectile-fuzzy-match nil)
+;; (helm-projectile-on)
 
 (provide 'setup-helm)
+;;; setup-helm.el ends here

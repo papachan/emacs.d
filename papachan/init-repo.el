@@ -11,9 +11,5 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-(require 'use-package)
-;; (require 'use-package-ensure)
-;; (setq use-package-always-ensure t)
-
 (provide 'init-repo)
-;;; init-repo ends here
+;;; init-repo.el ends here

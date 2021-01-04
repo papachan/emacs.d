@@ -13,6 +13,7 @@
                       (mode . magit-revision-mode)))
          ("emacs-config" (or (filename . "\\.emacs\\.d")
                              (filename . ".emacs.d/.*.el$")))
+         ("term" (name . "\*ansi-term-*\*"))
          ("Bash" (mode . sh-mode))
          ("Eshell" (or (name . "\*shell\*")
                        (mode . eshell-mode)))
@@ -168,7 +169,7 @@
               " " filename)))
 
 (define-key ibuffer-mode-map (kbd "C-g") #'quit-window)
-(define-key ibuffer-mode-map (kbd "C-s") #'helm-buffers-list)
+;; (define-key ibuffer-mode-map (kbd "C-s") #'helm-buffers-list)
 (define-key ibuffer-mode-map [tab] 'next-line)
 (define-key ibuffer-mode-map [(shift tab)] 'previous-line)
 
