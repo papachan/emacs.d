@@ -1,5 +1,6 @@
-;;; setup-multiple-cursors.el
-;;
+;;; setup-multiple-cursors.el --- Summary
+;;; Commentary:
+;;; Code:
 (use-package multiple-cursors
  :ensure t
  :commands

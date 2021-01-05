@@ -1,9 +1,6 @@
 ;;; setup-swiper.el --- Summary
 ;;; Commentary:
 ;;; Code:
-;;; setup-ivy.el --- Summary
-;;; Commentary:
-;;; Code:
 (use-package ivy
   :bind (("C-c C-r" . ivy-resume)
          ("<f6>" . ivy-resume))

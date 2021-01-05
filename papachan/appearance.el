@@ -1,5 +1,6 @@
 ;;; Appearance --- load emacs theme here
-;;
+;;; Commentary:
+;;; Code:
 (require 'zerodark-theme)
 
 (progn
