@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 ;; (require 'helm-projectile)
+(use-package helm-ag
+  :bind ("C-x c M-g a" . #'helm-do-ag))
+
 (use-package helm
   :ensure t
   :bind (("M-x" . #'helm-M-x)
