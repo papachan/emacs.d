@@ -38,6 +38,13 @@
   :bind (("C-x t e" . eshell)
          ("C-x t E" . eshell-new)))
 
+(use-package undo-tree
+  :commands global-undo-tree-mode
+  :diminish undo-tree-mode
+  :bind ("C-z" . undo-tree-visualize)
+  :init
+  (global-undo-tree-mode))
+
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ;; to ensure files have no trailing whitespace
 
 (setq whitespace-line-column 90
