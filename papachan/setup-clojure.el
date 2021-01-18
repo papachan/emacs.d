@@ -8,7 +8,8 @@
   :ensure t
   :hook ((clojure-mode . paredit-mode)
          (clojure-mode . eldoc-mode)
-         (clojure-mode . flycheck-mode))
+         (clojure-mode . flycheck-mode)
+         (clojure-mode . company-mode))
   ;; (clojure-mode . (lambda () (auto-complete-mode -1)))
   :init
   (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
@@ -19,7 +20,8 @@
   (require 'flycheck-clj-kondo))
 
 (use-package clojurescript-mode
-  :hook (clojurescript-mode . paredit-mode))
+  :hook ((clojurescript-mode . paredit-mode)
+         (clojurescript-mode . company-mode)))
 ;; (clojurescript-mode . (lambda () (auto-complete-mode -1)))
 
 (use-package clj-refactor
