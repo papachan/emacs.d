@@ -20,5 +20,6 @@
 ;; new line
 (global-set-key (kbd "C-c y") "\C-a\C- \C-n\M-w\C-y")
 (global-set-key (kbd "C-c -") 'buffer/clear)
+(global-set-key (kbd "C-c d") (lambda () (interactive) (dired ".")))
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
