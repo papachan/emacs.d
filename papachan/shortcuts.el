@@ -11,10 +11,6 @@
 (global-set-key (kbd "C-<next>") 'next-buffer)
 (global-set-key (kbd "C-<prior>") 'previous-buffer)
 
-;; paste replace git config file
-(global-set-key (kbd "M-g y") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig.txt")))
-(global-set-key (kbd "M-g i") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig2.txt")))
-
 ;; (global-set-key (kbd "M-g x") 'send-output-log)
 (global-set-key (kbd "C-.") 'other-window)
 (global-set-key (kbd "C-,") (lambda() (interactive) (other-window -1)))
@@ -49,7 +45,8 @@
 (global-set-key (kbd "C-c w") 'select-whole-line)
 (global-set-key (kbd "C-x q") 'shutdown-emacs)
 (global-set-key (kbd "C-c o") 'insert-a-blank-line)
-(global-set-key (kbd "C-c d") 'kill-whole-line)
+;; (global-set-key (kbd "C-c d") 'kill-whole-line)
+(global-set-key (kbd "C-c d") (lambda () (interactive) (dired ".")))
 (global-set-key (kbd "C-c m") 'magit-status)
 (global-set-key (kbd "M-H") 'common-lisp-hyperspec)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
