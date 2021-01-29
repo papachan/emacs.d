@@ -69,6 +69,7 @@
 
 (recentf-mode 1)
 (setq recentf-max-menu-items 10)
+(setq recentf-max-saved-items 10)
 
 ;; Always use spaces, not tabs, when indenting
 (setq-default indent-tabs-mode nil)

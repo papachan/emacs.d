@@ -1,7 +1,6 @@
 ;;; setup-helm.el --- Summary
 ;;; Commentary:
 ;;; Code:
-;; (require 'helm-projectile)
 (use-package helm-ag
   :bind ("C-x c M-g a" . #'helm-do-ag))
 
@@ -24,9 +23,6 @@
 (use-package helm-cider
   :ensure t
   :hook ((cider-mode . helm-cider-mode)))
-
-;; (setq helm-projectile-fuzzy-match nil)
-;; (helm-projectile-on)
 
 (provide 'setup-helm)
 ;;; setup-helm.el ends here

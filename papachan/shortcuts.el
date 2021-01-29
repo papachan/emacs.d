@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (require 'expand-region)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (global-set-key (kbd "C-c =") 'er/expand-region) ;; windows issue with C-=
 (global-set-key (kbd "M-n") 'er/mark-word)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
