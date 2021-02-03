@@ -370,5 +370,9 @@ If FILE already exists, signal an error."
     (let ((url (read-from-minibuffer "Enter url:")))
       (shell-command (concat "git clone " url))))
 
+(defun dos2unix()
+  (interactive)
+  (set-buffer-file-coding-system 'utf-8-unix))
+
 (provide 'functions)
 ;;; functions.el ends here

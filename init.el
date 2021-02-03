@@ -59,6 +59,9 @@
 (setq create-lockfiles nil)
 (setq make-backup-files nil)
 
+;; require a final newline
+(setq require-final-newline t)
+
 (column-number-mode)
 
 (mouse-wheel-mode t)
