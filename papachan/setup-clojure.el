@@ -1,6 +1,7 @@
 ;;; setup-clojure.el --- Summary
 ;;; Commentary:
 ;;; Code:
+(require 'rainbow-delimiters)
 (use-package anakondo
   :ensure t
   :commands anakondo-minor-mode
@@ -32,6 +33,7 @@
   :hook ((clojure-mode . paredit-mode)
          (clojure-mode . eldoc-mode)
          (clojure-mode . flycheck-mode)
+         (clojure-mode . rainbow-delimiters-mode)
          (clojure-mode . (lambda () (auto-complete-mode -1))))
   :init
   (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))

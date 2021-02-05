@@ -52,4 +52,6 @@
 (require 'setup-undo)
 (require 'setup-webmode)
 (require 'shortcuts)
+(when (eq system-type 'darwin)
+  (require 'init-osx-keys))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -117,19 +117,5 @@
 
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
-(cond
- ((equal system-type 'darwin)
-  ;; fix Super instead of option
-  (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier 'none)
-  (global-set-key [(hyper a)] 'mark-whole-buffer)
-  (global-set-key [(hyper v)] 'yank)
-  (global-set-key [(hyper s)] 'save-buffer)
-  (global-set-key [(hyper l)] 'goto-line)
-  (global-set-key [(hyper w)] (lambda () (interactive) (delete-window)))
-  (global-set-key [(hyper z)] 'undo)
-  (windmove-default-keybindings)
-  (setq select-enable-clipboard t)))
-
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
