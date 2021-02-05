@@ -1,6 +1,8 @@
 ;;; setup-clojure.el --- Summary
 ;;; Commentary:
 ;;; Code:
+
+(require 'rainbow-delimiters)
 (use-package flycheck-clj-kondo
   :ensure t)
 
@@ -9,6 +11,7 @@
   :hook ((clojure-mode . paredit-mode)
          (clojure-mode . eldoc-mode)
          (clojure-mode . flycheck-mode)
+         (clojure-mode . rainbow-delimiters-mode)
          (clojure-mode . company-mode))
   ;; (clojure-mode . (lambda () (auto-complete-mode -1)))
   :init
