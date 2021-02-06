@@ -21,6 +21,7 @@
 (global-set-key (kbd "C-c y") "\C-a\C- \C-n\M-w\C-y")
 (global-set-key (kbd "C-c -") 'buffer/clear)
 (global-set-key (kbd "C-c d") (lambda () (interactive) (dired ".")))
+(global-set-key (kbd "C-x j") 'json-pretty-print-buffer)
 (global-set-key (kbd "C-c C-b") 'dos2unix)
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
