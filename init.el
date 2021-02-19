@@ -33,6 +33,7 @@
 (require 'setup-multiple-cursors)
 (require 'ido-snippet)
 (require 'setup-swiper)
+(require 'setup-projectile)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package eshell
   :bind (("C-x t e" . eshell)
@@ -46,6 +47,8 @@
   (global-undo-tree-mode))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ;; to ensure files have no trailing whitespace
+
+(setq ring-bell-function 'ignore)
 
 (setq whitespace-line-column 90
       whitespace-style '(tabs trailing tab-mark lines-trail))
