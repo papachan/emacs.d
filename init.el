@@ -35,6 +35,19 @@
 (require 'setup-swiper)
 (require 'setup-projectile)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package aggressive-indent
+  :ensure t
+  :hook ((clojure-mode clojurescript-mode emacs-lisp-mode cider-repl) . aggressive-indent-mode)
+  :config
+  ;; Indentation of function forms
+  ;; https://github.com/clojure-emacs/clojure-mode#indentation-of-function-forms
+  ;; (setq clojure-indent-style 'align-arguments)
+  (setq clojure-indent-style 'always-indent)
+  ;;
+  ;; Vertically align s-expressions
+  ;; https://github.com/clojure-emacs/clojure-mode#vertical-alignment
+  (setq clojure-align-forms-automatically nil))
+
 (use-package eshell
   :bind (("C-x t e" . eshell)
          ("C-x t E" . eshell-new)))
