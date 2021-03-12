@@ -20,7 +20,10 @@
   (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
   (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
   :config
-  (require 'flycheck-clj-kondo))
+  (require 'flycheck-clj-kondo)
+  ;; indentation
+  (setq clojure-indent-style 'align-arguments
+        clojure-align-forms-automatically t))
 
 (use-package clojurescript-mode
   :hook ((clojurescript-mode . paredit-mode)
