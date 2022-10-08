@@ -20,6 +20,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'init-repo)
 (require 'setup-dired-sidebar)
+(require 'setup-lsp-mode)
 (require 'setup-ibuffer)
 (require 'setup-webmode)
 (require 'ido-snippet)
@@ -31,9 +32,11 @@
 (require 'shortcuts)
 (require 'appearance)
 (require 'setup-multiple-cursors)
+(require 'setup-projectile)
 (require 'ido-snippet)
 (require 'setup-swiper)
 (require 'setup-projectile)
+(require 'setup-dotnet)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package aggressive-indent
   :ensure t
@@ -56,6 +59,8 @@
   :commands global-undo-tree-mode
   :diminish undo-tree-mode
   :bind ("C-z" . undo-tree-visualize)
+  :config
+  (setq undo-tree-auto-save-history nil)
   :init
   (global-undo-tree-mode))
 
@@ -100,7 +105,7 @@
 
 (scroll-bar-mode 1)
 (menu-bar-mode -1)
-(tool-bar-mode 1)
+(tool-bar-mode -1)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 

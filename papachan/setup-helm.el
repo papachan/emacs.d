@@ -2,7 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 (use-package helm-ag
-  :bind ("C-x c M-g a" . #'helm-do-ag))
+  :bind ("C-x c M-g a" . #'helm-ag) ;; helm-do-ag
+  )
 
 (use-package helm
   :ensure t
