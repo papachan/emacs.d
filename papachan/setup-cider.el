@@ -47,9 +47,9 @@
   ;; company
   (add-hook 'cider-repl-mode-hook #'company-mode))
 
-(use-package helm-cider
-  :ensure t
-  :hook ((cider-mode . helm-cider-mode)))
+;; (use-package helm-cider
+;;   :ensure t
+;;   :hook ((cider-mode . helm-cider-mode)))
 
 (provide 'setup-cider)
 ;;; setup-cider.el ends here

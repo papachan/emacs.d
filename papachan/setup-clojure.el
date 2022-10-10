@@ -21,7 +21,6 @@
   :config
   (add-hook 'clojure-mode-hook (lambda ()
                                  (clj-refactor-mode 1)
-                                 (yas-minor-mode 1)
                                  (cljr-add-keybindings-with-prefix "C-c C-m"))))
 
 (use-package clojurescript-mode
@@ -34,7 +33,8 @@
          (clojure-mode . eldoc-mode)
          (clojure-mode . flycheck-mode)
          (clojure-mode . rainbow-delimiters-mode)
-         (clojure-mode . (lambda () (auto-complete-mode -1))))
+         ;; (clojure-mode . (lambda () (auto-complete-mode -1)))
+         )
   :init
   (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
   (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
@@ -43,11 +43,7 @@
   :config
   (require 'flycheck-clj-kondo))
 
-;; (define-key cider-repl-mode-map (kbd "RET") #'cider-repl-newline-and-indent)
-;; (define-key cider-repl-mode-map (kbd "C-<return>") #'cider-repl-return)
-
-;; (define-key cider-repl-mode-map (kbd "RET") #'cider-repl-newline-and-indent)
-;; (define-key cider-repl-mode-map (kbd "C-<return>") #'cider-repl-return)
+(add-hook 'clojure-mode-hook (lambda () (paredit-mode nil)))
 
 (provide 'setup-clojure)
 ;;; setup-clojure.el ends here

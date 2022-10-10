@@ -21,8 +21,8 @@
 (setq whitespace-line-column 90
       whitespace-style '(tabs trailing tab-mark lines-tail))
 
-(if (fboundp 'desktop-save-mode)
-    (desktop-save-mode 1))
+;; (if (fboundp 'desktop-save-mode)
+;;     (desktop-save-mode 1))
 
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
@@ -69,18 +69,7 @@
 (setq tramp-default-method "ssh")
 
 ; linum mode
-(linum-mode)
-
-;; ido-mode is like magic pixie dust!
-(ido-mode t)
-(setq ido-enable-prefix nil
-      ido-enable-flex-matching t
-      ido-auto-merge-work-directories-length nil
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point 'guess
-      ido-use-virtual-buffers t
-      ido-handle-duplicate-virtual-buffers 2
-      ido-max-prospects 10)
+(linum-mode -1)
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)

@@ -1,4 +1,6 @@
 ;;; setup-dired-sidebar.el
+;;;
+;;;
 (require 'all-the-icons-dired)
 
 (use-package dired-sidebar
