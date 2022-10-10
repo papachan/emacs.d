@@ -9,5 +9,8 @@
   :init
   (global-undo-tree-mode))
 
+(with-eval-after-load 'undo-tree
+  (setq undo-tree-auto-save-history nil))
+
 (provide 'setup-undo)
 ;;; setup-undo.el ends here

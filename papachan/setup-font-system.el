@@ -1,5 +1,6 @@
-;;; setup-font-system.el
-;;
+;;; setup-font-system.el -- Summary
+;;; Commentary:
+;;; Code:
 (cond
  ((eq system-type 'gnu/linux)
   (progn
@@ -24,3 +25,4 @@
     (set-cursor-color "#ff00cc"))))
 
 (provide 'setup-font-system)
+;;; setup-font-system.el ends here
