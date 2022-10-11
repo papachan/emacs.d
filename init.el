@@ -2,9 +2,9 @@
 ;;;
 ;;;
 
-(when (version< emacs-version "27")
-  (error "This config requires at least GNU Emacs 27, but you're running %s" emacs-version))
 
+(when (version<= emacs-version "28")
+  (error "This config requires at least GNU Emacs 28, but you're running %s" emacs-version))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun add-pkg (pkg-name)
   (let ((n (file-name-as-directory
