@@ -67,9 +67,5 @@
 ;;                                  (yas-minor-mode 1)
 ;;                                  (cljr-add-keybindings-with-prefix "C-c C-m"))))
 
-;; (use-package helm-cider
-;;   :ensure t
-;;   :hook ((cider-mode . helm-cider-mode)))
-
 (provide 'setup-cider)
 ;;; setup-cider.el ends here

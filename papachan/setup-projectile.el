@@ -3,7 +3,7 @@
 
 ;;; Code:
 (require 'projectile)
-(require 'helm-projectile)
+;; (require 'helm-projectile)
 
 (defun file-fuzzy-finder ()
   "Open files with projectile-find-file or projectile-find-file-in-directory."
@@ -28,9 +28,9 @@
   (add-to-list 'projectile-globally-ignored-directories "target")
   (setq projectile-mode-line '(:eval (format " Prj[%s]" (projectile-project-name)))))
 
-(use-package helm-projectile
-  :ensure t
-  :config (helm-projectile-on))
+;; (use-package helm-projectile
+;;   :ensure t
+;;   :config (helm-projectile-on))
 
 (provide 'setup-projectile)
 ;;; setup-projectile.el ends here

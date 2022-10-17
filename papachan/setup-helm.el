@@ -1,9 +1,8 @@
 ;;; setup-helm.el --- Summary
 ;;; Commentary:
 ;;; Code:
-(use-package helm-ag
-  :bind ("C-x c M-g a" . #'helm-ag) ;; helm-do-ag
-  )
+
+(require 'helm)
 
 (use-package helm
   :ensure t
@@ -21,9 +20,13 @@
         helm-display-buffer-width 80)
   (helm-mode t))
 
-(use-package helm-cider
-  :ensure t
-  :hook ((cider-mode . helm-cider-mode)))
+(use-package helm-ag
+  :bind ("C-x c M-g a" . #'helm-ag) ;; helm-do-ag
+  )
+
+;; (use-package helm-cider
+;;   :ensure t
+;;   :hook ((cider-mode . helm-cider-mode)))
 
 (provide 'setup-helm)
 ;;; setup-helm.el ends here
