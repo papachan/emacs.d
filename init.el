@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(when (version< emacs-version "27")
+(when (version< emacs-version "28")
   (error "This config requires at least GNU Emacs 27, but you're running %s" emacs-version))
 
 (defun add-pkg (pkg-name)
@@ -14,10 +14,7 @@
 
 ;; add papachan directory to path
 (mapcar 'add-pkg '("papachan"))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; remove cl deprecated warnings
-(setq byte-compile-warnings '(cl-functions))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (require 'init-repo)
 (require 'setup-dired-sidebar)
 (require 'setup-lsp-mode)
@@ -38,18 +35,6 @@
 (require 'setup-projectile)
 (require 'setup-dotnet)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package aggressive-indent
-  :ensure t
-  :hook ((clojure-mode clojurescript-mode emacs-lisp-mode cider-repl) . aggressive-indent-mode)
-  :config
-  ;; Indentation of function forms
-  ;; https://github.com/clojure-emacs/clojure-mode#indentation-of-function-forms
-  ;; (setq clojure-indent-style 'align-arguments)
-  (setq clojure-indent-style 'always-indent)
-  ;;
-  ;; Vertically align s-expressions
-  ;; https://github.com/clojure-emacs/clojure-mode#vertical-alignment
-  (setq clojure-align-forms-automatically nil))
 
 (use-package eshell
   :bind (("C-x t e" . eshell)
