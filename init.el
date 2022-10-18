@@ -70,28 +70,3 @@
   (global-hl-line-mode 1)
   (mouse-wheel-mode t)
   (blink-cursor-mode -1))
-
-;; hello
-(put 'dired-find-alternate-file 'disabled nil)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(cider-lein-command
-   "/home/papachan/.sdkman/candidates/leiningen/current/bin/lein")
- '(custom-safe-themes
-   '("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" default))
- '(package-selected-packages
-   '(s pinentry git-timemachine clj-refactor flycheck-clj-kondo anakondo csharp-mode markdown-mode yaml-mode company company-lsp all-the-icons-dired dired-sidebar helm-ag helm-projectile php-mode visual-regexp undo-tree swiper-helm rainbow-delimiters rg window-numbering expand-region all-the-icons cider clojure-mode smart-mode-line-powerline-theme swiper smart-mode-line multiple-cursors helm magit paredit move-text use-package))
- '(safe-local-variable-values
-   '((cider-preferred-build-tool . "lein")
-     (cider-clojure-cli-global-options . "-M:dev")
-     (cider-clojure-cli-global-options . "-A:dev")
-     (cider-preferred-build-tool . "clojure-cli"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
