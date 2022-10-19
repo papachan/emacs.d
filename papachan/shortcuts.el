@@ -10,8 +10,6 @@
 (global-set-key (kbd "C-<prior>") 'previous-buffer)
 (global-set-key (kbd "C-c y") "\C-a\C- \C-n\M-w\C-y");; new line
 (global-set-key (kbd "M-g q") 'mark-sexp)
-;; dont work:
-;;(global-set-key (kbd "M-;") 'comment-region)
 (global-set-key (kbd "C-x 5 n") 'make-frame-command) ;; new frame
 (global-set-key (kbd "C-x 5 3") 'gnus-other-frame)
 (global-set-key (kbd "C-c C-o") 'delete-trailing-whitespace)

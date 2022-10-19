@@ -9,9 +9,7 @@
                          :height 110
                          :weight 'normal)
      (set-face-font 'default font))
-   "JetBrains Mono"
-   ;; "Source Code Pro"
-   ))
+   "JetBrains Mono"))
 
 (provide 'setup-font-system)
 ;;; setup-font-system.el ends here
