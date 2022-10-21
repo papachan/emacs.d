@@ -4,7 +4,6 @@
 (require 'color)
 (require 'all-the-icons)
 (require 'smart-mode-line)
-(require 'window-numbering)
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
@@ -14,7 +13,6 @@
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (column-number-mode)
-  (window-numbering-mode 1)
   ;; Highlight current line
   (global-hl-line-mode 1)
   (mouse-wheel-mode t)

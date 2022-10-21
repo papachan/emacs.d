@@ -2,28 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package helm-projectile
-  :ensure t
-  :commands (helm-projectile helm-projectile-find-files helm-projectile-switch-project)
-  :config (helm-projectile-on))
-
 (use-package helm-ag
   :ensure t
-  :bind ("M-g ." . helm-ag)
-  :commands (helm-ag helm-projectile-ag))
-
-;; (use-package helm-posframe
-;;   :ensure t
-;;   :init
-;;   (add-hook 'helm-org-rifle-after-command-hook 'helm-posframe-cleanup)
-;;   :custom
-;;   (helm-posframe-height 15)
-;;   (helm-posframe-width (round (* (frame-width) 1.15)))
-;;   (helm-posframe-parameters '((left-fringe . 0)
-;;                               (right-fringe . 0)
-;;                               (internal-border-width . 12)))
-;;   :config
-;;    (setq helm-posframe-poshandler 'posframe-poshandler-frame-center))
+  :bind ("C-x c M-g a" . #'helm-ag) ;; helm-do-ag
+  )
 
 (use-package helm
   :ensure t
@@ -39,9 +21,7 @@
         helm-candidate-number-limit 100
         helm-display-buffer-reuse-frame t
         helm-display-buffer-width 80)
-  (helm-mode t)
-  ;; (helm-posframe-enable)
-  )
+  (helm-mode t))
 
 ;; unset list-directory
 (fmakunbound 'list-directory)
