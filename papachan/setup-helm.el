@@ -28,5 +28,11 @@
 ;;   :ensure t
 ;;   :hook ((cider-mode . helm-cider-mode)))
 
+(use-package swiper-helm
+  :ensure t
+  :bind
+  (("C-s" . swiper-helm)
+   ("C-r" . swiper-helm)))
+
 (provide 'setup-helm)
 ;;; setup-helm.el ends here
