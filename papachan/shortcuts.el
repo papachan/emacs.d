@@ -15,15 +15,19 @@
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
 ;; new *scratch* buffer keybing conflict with org-mode
 (global-set-key (kbd "C-x 4 n") 'create-scratch-buffer)
+(global-set-key (kbd "C-x 5 n") 'make-frame-command)
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-<f11>") 'toggle-frame-fullscreen)
 (global-set-key (kbd "C-x w") 'toggle-truncate-line)
 ;; new line
 (global-set-key (kbd "C-c y") "\C-a\C- \C-n\M-w\C-y")
 (global-set-key (kbd "C-c -") 'buffer/clear)
-(global-set-key (kbd "C-c d") (lambda () (interactive) (dired ".")))
+;; Dired
+(global-set-key (kbd "C-x c d") (lambda () (interactive) (dired ".")))
 (global-set-key (kbd "C-x j") 'json-pretty-print-buffer)
 (global-set-key (kbd "C-c C-b") 'dos2unix)
 
+(global-set-key (kbd "C-c a") 'increment-number-at-point)
+(global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
 (provide 'shortcuts)
 ;;; shortcuts.el ends here

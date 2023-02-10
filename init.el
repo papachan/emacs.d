@@ -3,7 +3,7 @@
 ;;; Code:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (when (version< emacs-version "28")
-  (error "This config requires at least GNU Emacs 27, but you're running %s" emacs-version))
+  (error "This config requires at least GNU Emacs 28, but you're running %s" emacs-version))
 
 (defun add-pkg (pkg-name)
   (let ((n (file-name-as-directory
@@ -15,26 +15,13 @@
 ;; add papachan directory to path
 (mapcar 'add-pkg '("papachan"))
 
-(require 'init-repo)
-(require 'setup-dired-sidebar)
-(require 'setup-lsp-mode)
-(require 'setup-ibuffer)
-(require 'setup-webmode)
-(require 'ido-snippet)
-(require 'setup-helm)
-(require 'setup-clojure)
-(require 'setup-magit)
-(require 'setup-cider)
-(require 'functions)
-(require 'shortcuts)
-(require 'appearance)
-(require 'setup-multiple-cursors)
-(require 'setup-projectile)
-(require 'ido-snippet)
-(require 'setup-swiper)
-(require 'setup-projectile)
-(require 'setup-dotnet)
+(defvar init-directory (file-name-directory (expand-file-name "~/.emacs.d/init.el")))
+(mapc 'load (file-expand-wildcards (concat init-directory "papachan/*.el")))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun eshell-new ()
+  (interactive)
+  (eshell t))
 
 (use-package eshell
   :bind (("C-x t e" . eshell)
@@ -104,4 +91,9 @@
 (move-text-default-bindings)
 ;; Highlight current line
 (global-hl-line-mode 1)
+
+(use-package idle-highlight-mode
+  :config (setq idle-highlight-idle-time 0.2)
+  :hook ((prog-mode text-mode) . idle-highlight-mode))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

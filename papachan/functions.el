@@ -307,6 +307,13 @@ If FILE already exists, signal an error."
   (interactive)
   (my-change-number-at-point '1+))
 
+(defun increment-number-at-point ()
+  (interactive)
+  (skip-chars-backward "0-9")
+  (or (looking-at "[0-9]+")
+      (error "No number at point"))
+  (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
+
 (defun my-decrement-number-at-point ()
   "Decrement number at point like vim's C-x"
   (interactive)

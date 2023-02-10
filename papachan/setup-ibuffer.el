@@ -17,17 +17,13 @@
          ("Bash" (mode . sh-mode))
          ("Eshell" (or (name . "\*shell\*")
                        (mode . eshell-mode)))
+         ("C#"
+          (or (filename . ".*\.cs$")
+              (filename . ".*\.csproj$")
+              (mode . csharp-mode)))
          ("Dired"
           (or (mode . dired-sidebar-mode)
               (mode . dired-mode)))
-         ("Others"
-          (or
-           (name . "^\\*scratch*")
-           (name . "^\\*Messages\\*$")
-           (name . "^\\*Group\\*$")
-           (name . "^\\*Python*")
-           (name . "^\\*slime-repl sbcl\\*$")
-           (name . "^\\*inferior-lisp\\*$")))
          ("Elisp files"
           (mode . emacs-lisp-mode))
          ("Clojure-edn"
@@ -75,7 +71,15 @@
         ("Dired-mode"
          ("Dired"
           (or (mode . dired-sidebar-mode)
-              (mode . dired-mode))))))
+              (mode . dired-mode))))
+                 ("Others"
+          (or
+           (name . "^\\*scratch*")
+           (name . "^\\*Messages\\*$")
+           (name . "^\\*Group\\*$")
+           (name . "^\\*Python*")
+           (name . "^\\*slime-repl sbcl\\*$")
+           (name . "^\\*inferior-lisp\\*$")))))
 
 (defun ibuffer-next-saved-filter-groups-aux (list)
   (if (null ibuffer-saved-filter-groups)
