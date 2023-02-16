@@ -96,4 +96,9 @@
   :config (setq idle-highlight-idle-time 0.2)
   :hook ((prog-mode text-mode) . idle-highlight-mode))
 
+(use-package iflipb
+  :ensure t
+  :bind
+  ("<f8>" . iflipb-next-buffer)
+  ("<f7>" . iflipb-previous-buffer))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
