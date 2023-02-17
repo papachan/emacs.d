@@ -23,6 +23,12 @@
         helm-display-buffer-width 80)
   (helm-mode t))
 
+(use-package swiper-helm
+  :ensure t
+  :bind
+  (("C-s" . swiper-helm)
+   ("C-r" . swiper-helm)))
+
 ;; unset list-directory
 (fmakunbound 'list-directory)
 

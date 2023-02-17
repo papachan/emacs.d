@@ -17,6 +17,10 @@
          ("Bash" (mode . sh-mode))
          ("Eshell" (or (name . "\*shell\*")
                        (mode . eshell-mode)))
+         ("C#"
+          (or (filename . ".*\.cs$")
+              (filename . ".*\.csproj$")
+              (mode . csharp-mode)))
          ("Dired"
           (or (mode . dired-sidebar-mode)
               (mode . dired-mode)))
