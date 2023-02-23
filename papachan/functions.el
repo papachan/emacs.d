@@ -11,8 +11,8 @@
       (erase-buffer)))
 
 (defun insert-bootstrap-snippet ()
-  (lambda())
   (interactive)
+  (lambda())
   (insert "<!DOCTYPE html>"
           "<html lang=\"en\">"
           "<head>"
@@ -29,8 +29,8 @@
 
 ; adding html snippet
 (defun insert-html-snippet ()
-  (lambda())
   (interactive)
+  (lambda())
   (insert "<!DOCTYPE html>\n"
           "<html lang=\"en\">\n"
           "  <head>\n"
@@ -43,8 +43,8 @@
           "<body>\n<div id=\"app\"></div\n\n</body>\n</html>"))
 
 (defun insert-html5-snippet ()
-  (lambda())
   (interactive)
+  (lambda())
   (insert "<!DOCTYPE html>\n"
           "<html lang=\"en\">\n"
           "  <head>\n"
@@ -60,8 +60,8 @@
           "</html>"))
 
 (defun insert-cljs-reagent-snippet ()
-  (lambda())
   (interactive)
+  (lambda())
   (insert "<!DOCTYPE html>\n"
           "<html lang=\"en\">\n"
           "  <head>\n"
@@ -82,8 +82,8 @@
           "</html>"))
 
 (defun insert-cljs-shadowcljs-snippet ()
-  (lambda())
   (interactive)
+  (lambda())
   (insert "<!DOCTYPE html>\n"
           "<html lang=\"en\">\n"
           "  <head>\n"
@@ -105,8 +105,8 @@
           "</html>"))
 
 (defun insert-latin-unicode ()
-  (lambda())
   (interactive)
+  (lambda())
   (insert "iso-8859-1"))
 
 (defun insert-time ()
@@ -126,8 +126,8 @@
   (insert (format-time-string current-time-format (current-time))))
 
 (defun insert-title ()
-  (lambda())
   (interactive)
+  (lambda())
   (let ((name
          (format "===%s==="
                  (read-from-minibuffer "Enter your title:"))))
@@ -354,8 +354,8 @@ If FILE already exists, signal an error."
         (append-to-buffer buf (point) (point-max))))))
 
 (defun download-url-file ()
-  (lambda ())
   (interactive)
+  (lambda ())
   (let ((url (read-from-minibuffer "Enter url:")))
     (url-copy-file url (url-file-nondirectory url))))
 
@@ -365,8 +365,8 @@ If FILE already exists, signal an error."
   (shell-command "cat ~/Desktop/output_error.log | curl -F 'sprunge=<-' http://sprunge.us"))
 
 (defun git-clone-repo ()
-  (lambda())
   (interactive)
+  (lambda())
     (let ((url (read-from-minibuffer "Enter url:")))
       (shell-command (concat "git clone " url))))
 
