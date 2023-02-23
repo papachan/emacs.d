@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (use-package multiple-cursors
+ :straight t
  :ensure t
  :commands
  (mc/mark-next-like-this

@@ -6,3 +6,4 @@
   :hook (csharp-mode . dotnet-mode))
 
 (provide 'setup-dotnet)
+;;; setup-dotnet.el ends here

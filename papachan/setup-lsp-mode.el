@@ -1,4 +1,4 @@
-;;; setup-lsp-mode.el
+;;; setup-lsp-mode.el --- Summary
 ;;; Commentary:
 ;;; Code:
 (require 'lsp-mode)
