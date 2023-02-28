@@ -26,7 +26,7 @@
 (global-set-key (kbd "C-c C-d") 'put-the-date)
 (global-set-key (kbd "C-c w") 'select-whole-line)
 (global-set-key (kbd "C-c o") 'insert-a-blank-line)
-(global-set-key (kbd "C-c d") (lambda () (interactive) (dired ".")))
+(global-set-key (kbd "C-x c d") (lambda () (interactive) (dired ".")))
 (global-set-key (kbd "C-c m") 'magit-status)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
@@ -55,7 +55,8 @@
 (global-set-key (kbd "C-c i") 'insert-latin-unicode)
 (define-key global-map (kbd "C-c r") 'vr/replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
-(define-key global-map (kbd "C-c g") 'vr/mc-mark)
+(define-key global-map (kbd "C-c q") 'vr/query-replace)
+(global-set-key (kbd "C-c %") 'query-replace-regexp)
 (global-set-key (kbd "C-c C-v") 'other-frame)
 (global-set-key (kbd "C-c <RET>") 'browse-url)
 
