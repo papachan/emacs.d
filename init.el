@@ -41,6 +41,10 @@
 (use-package all-the-icons
   :if (display-graphic-p))
 
+(use-package idle-highlight-mode
+  :config (setq idle-highlight-idle-time 0.2)
+  :hook ((prog-mode text-mode) . idle-highlight-mode))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; (setq-default magit-process-password-prompt-regexps
 ;;   '("^\\(Enter \\)?[Pp]assphrase\\( for \\(RSA \\)?key '.*'\\)?: ?$"
@@ -56,6 +60,12 @@
 (setq js-indent-level 2)
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . javascript-mode))
+
+;; dotnet
+(add-to-list 'auto-mode-alist '("\\.fsproj\\'" . xml-mode))
+(add-to-list 'auto-mode-alist '("\\.axaml\\'" . xml-mode))
+(add-to-list 'auto-mode-alist '("\\.xaml\\'" . xml-mode))
+(add-to-list 'auto-mode-alist '("\\.csproj\\'" . xml-mode))
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))

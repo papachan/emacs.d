@@ -5,6 +5,7 @@
 
 ;; Unset C-z
 ;; (global-unset-key (kbd "M->"))
+(global-set-key (kbd "C-x C-;") 'comment-region)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-<next>") 'next-buffer)
 (global-set-key (kbd "C-<prior>") 'previous-buffer)
