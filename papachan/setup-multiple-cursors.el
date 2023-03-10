@@ -15,7 +15,8 @@
  (("C->" . mc/mark-next-like-this)
   ("C-<" . mc/skip-to-next-like-this)
   ("C-*" . mc/mark-all-like-this)
-  ("C-c C->" . mc/mark-all-dwim)))
+  ("C-c C->" . mc/mark-all-dwim)
+  ("M-RET" . set-rectangular-region-anchor)))
 
 (autoload 'mc/mark-next-like-this "multiple-cursors" nil t)
 
