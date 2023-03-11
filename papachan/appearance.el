@@ -24,6 +24,7 @@
     ;; setup modeline
     ;; (zerodark-setup-modeline-format)
     (setq zerodark-use-high-contrast-in-mode-line nil)
+    ;; transparency
     (let ((opacity '(87 87)))
       (set-frame-parameter (selected-frame) 'alpha opacity)))
    ((eq system-type 'darwin)
