@@ -1,5 +1,7 @@
+alias d 'dired $1'
 alias ff find-file $1
 alias FF find-file-other-window $1
+alias fd 'find-dired $PWD ""'
 alias ppf projectile-find-file
 alias ppo helm-projectile
 alias lsdir ls -l | egrep '^d'
