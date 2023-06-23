@@ -20,13 +20,14 @@
 
 (require 'use-package)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defvar init-directory (file-name-directory (expand-file-name "~/.emacs.d/init.el")))
 (defun add-pkg (pkg-name)
   (let ((n (file-name-as-directory
             (concat (file-name-directory
                      (or (buffer-file-name) load-file-name))
                     pkg-name))))
     (add-to-list 'load-path n)))
-
+;; (mapc 'load (file-expand-wildcards (concat init-directory "papachan/*.el")))
 (mapcar 'add-pkg '("papachan" "lib"))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (if (fboundp 'desktop-save-mode)

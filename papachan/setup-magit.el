@@ -6,7 +6,6 @@
 (require 'pinentry)
 (use-package git-timemachine :ensure t)
 (use-package magit
-  :ensure t
   :init
   (pinentry-start)
 
