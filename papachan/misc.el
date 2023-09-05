@@ -6,7 +6,6 @@
 (require 'ido)
 (require 'recentf)
 (require 'move-text)
-(require 'linum)
 
 ;; local env
 (setenv "LC_CTYPE" "en_US.UTF-8")
@@ -68,8 +67,10 @@
 ; tramp with ssh
 (setq tramp-default-method "ssh")
 
-; linum mode
-(linum-mode -1)
+;; toggle display of line numbers in the buffer.
+(display-line-numbers-mode -1)
+;; toggle display-line-numbers mode in all buffers.
+(global-display-line-numbers-mode)
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
