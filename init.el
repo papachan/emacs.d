@@ -22,17 +22,6 @@
 
 ;; pixel-scroll-precision-mode
 
-(dolist (mode '(text-mode-hook
-                ibuffer-mode-hook
-                prog-mode-hook
-                org-mode-hook
-                term-mode-hook
-                shell-mode-hook
-                eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
-;; (add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
-(global-display-line-numbers-mode -1)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defvar init-directory (file-name-directory (expand-file-name "~/.emacs.d/init.el")))
 (defun add-pkg (pkg-name)
