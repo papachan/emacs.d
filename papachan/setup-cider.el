@@ -6,7 +6,10 @@
 (use-package cider
   :ensure t
   :defer t
-  :bind ((:map cider-repl-mode-map
+  :after clojure-mode
+  :commands (cider-mode cider-connect cider-jack-in)
+  :bind (("C-c M-j" . cider-jack-in)
+         (:map cider-repl-mode-map
                ("C-X sc" . cider-repl-clear-buffer))
          (:map cider-repl-mode-map
                ("C-c C-x" . cider-ns-refresh))

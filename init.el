@@ -101,4 +101,9 @@
   :bind
   ("<f8>" . iflipb-next-buffer)
   ("<f7>" . iflipb-previous-buffer))
+
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+                                  (paredit-mode +1)
+                                  (company-mode +1)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

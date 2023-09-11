@@ -71,8 +71,8 @@
                             'magit-insert-unpulled-from-upstream
                             'replace)
     (setq magit-diff-highlight-indentation '(("" . tabs)))
-    (setq magit-repository-directories
-          '( "~/git" ))
+    ;; (setq magit-repository-directories
+    ;;       '( "~/git" ))
     (setq magit-log-section-commit-count 30)
     (define-key magit-status-mode-map (kbd "C-x C-k") 'magit-kill-file-on-line)
     (define-key magit-status-mode-map (kbd "C-c e") 'magit-log-buffer-file)
