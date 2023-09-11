@@ -13,7 +13,6 @@
          ("C-x C-f" . #'helm-find-files)
          ("C-x r b" . #'helm-filtered-bookmarks))
   :config
-  (require 'helm-config)
   (setq helm-idle-delay 0.0
         helm-ff-skip-boring-files t
         helm-mode-fuzzy-match t
