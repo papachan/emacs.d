@@ -21,7 +21,9 @@
               ("C-<tab>" . company-complete)
               :map company-active-map
               ("C-n" . company-select-next)
-              ("C-p" . company-select-previous)))
+              ("C-p" . company-select-previous)
+              ("M-<". company-select-first)
+	      ("M->". company-select-last)))
 
 (provide 'setup-company)
 ;;; setup-company.el ends here
