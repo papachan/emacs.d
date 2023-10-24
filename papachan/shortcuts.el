@@ -2,6 +2,7 @@
 ;;
 (require 'visual-regexp)
 (require 'expand-region)
+(require 'pcre2el)
 
 ;; Unset C-z
 ;; (global-unset-key (kbd "M->"))
@@ -60,6 +61,7 @@
 (global-set-key (kbd "C-c %") 'query-replace-regexp)
 (global-set-key (kbd "C-c C-v") 'other-frame)
 (global-set-key (kbd "C-c <RET>") 'browse-url)
+(global-set-key [(meta %)] 'pcre-query-replace-regexp)
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here

@@ -1,6 +1,7 @@
+;; -*- lexical-binding: t; -*-
 ;;; init.el --- --- user init file
-;;;
-;;;
+;;; commentary:
+;;; code:
 
 (when (version< emacs-version "28")
   (error "This config requires at least GNU Emacs 28, but you're running %s" emacs-version))

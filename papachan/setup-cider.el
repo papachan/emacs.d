@@ -12,6 +12,7 @@
   :after clojure-mode
   :commands (cider-mode cider-connect cider-jack-in)
   :bind (("C-c M-j" . cider-jack-in)
+         ("C-c C-a" . cider-eval-print-last-sexp)
          (:map cider-repl-mode-map
                ("C-X sc" . cider-repl-clear-buffer))
          (:map cider-repl-mode-map
@@ -19,9 +20,7 @@
          (:map cider-repl-mode-map
                ("RET" . cider-repl-newline-and-indent))
          (:map cider-repl-mode-map
-               ("C-<return>" . cider-repl-return))
-         (:map cider-mode-map
-               ("C-c C-a" . cider-eval-print-last-sexp)))
+               ("C-<return>" . cider-repl-return)))
   :config
   (setq ;; result prefix for the REPL
    cider-repl-result-prefix ";; => "

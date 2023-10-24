@@ -1,7 +1,16 @@
 ;;; setup-clojure.el --- Summary
 ;;; Commentary:
 ;;; Code:
+(require 'html-to-hiccup)
 (require 'rainbow-delimiters)
+(use-package html-to-hiccup
+  :ensure t
+  :bind (:map clojure-mode-map
+              ("H-h" . html-to-hiccup-convert-region)
+              ("H-y" . html-to-hiccup-yank))
+  :config
+  (setq html-to-hiccup-use-shorthand-p t))
+
 (use-package anakondo
   :ensure t
   :commands anakondo-minor-mode

@@ -5,10 +5,30 @@
 (defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y")
 (defvar current-time-format "%a %H:%M:%S")
 
+(defun change-legacy-deps-to-deps ($string &optional $from $to)
+  (interactive
+   (if (use-region-p)
+       (list nil (region-beginning) (region-end))
+     (let ((bds (bounds-of-thing-at-point 'paragraph)))
+       (list nil (car bds) (cdr bds)))))
+  (let (workOnStringP inputStr outputStr)
+    (setq workOnStringP (if $string t nil))
+    (setq inputStr (if workOnStringP $string (buffer-substring-no-properties $from $to)))
+    (setq outputStr
+          (let ((case-fold-search t))
+            (and (string-match "\\[\\(.*\\)\\\s\\(.*\\)\\]" inputStr)
+                 (concat (match-string 1 inputStr) " {:mvn/version " (match-string 2 inputStr) "}"))))
+    (if workOnStringP
+        outputStr
+      (save-excursion
+        (delete-region $from $to)
+        (goto-char $from)
+        (insert outputStr)))))
+
 (defun buffer/clear ()
   (interactive)
   (with-current-buffer (current-buffer)
-      (erase-buffer)))
+    (erase-buffer)))
 
 (defun insert-bootstrap-snippet ()
   (interactive)
@@ -165,11 +185,6 @@ If FILE already exists, signal an error."
     (when new
       (dired-add-file new)
       (dired-move-to-filename))))
-
-(defun run-cask-test ()
-  (interactive "")
-  (save-buffer 0)
-  (shell-command "make test"))
 
 ;; select whole line
 (defun select-whole-line ()
