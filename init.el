@@ -85,3 +85,7 @@
   (global-hl-line-mode 1)
   (mouse-wheel-mode t)
   (blink-cursor-mode -1))
+
+;; smart-mode-line
+(setq sml/theme 'respectful)
+(sml/setup)
