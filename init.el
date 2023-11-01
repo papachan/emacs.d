@@ -47,8 +47,8 @@
 (require 'setup-markdown)
 (require 'setup-multiple-cursors)
 (require 'setup-projectile)
-(require 'setup-python)
-(require 'setup-smartmode)
+;; (require 'setup-python)
+;; (require 'setup-smartmode)
 (require 'setup-string-inflection)
 (require 'setup-tabs)
 (require 'setup-undo)
@@ -56,4 +56,9 @@
 (require 'shortcuts)
 (when (eq system-type 'darwin)
   (require 'init-osx-keys))
+
+(use-package idle-highlight-mode
+  :config (setq idle-highlight-idle-time 0.2)
+  :hook ((prog-mode text-mode) . idle-highlight-mode))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

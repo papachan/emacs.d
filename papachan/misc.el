@@ -6,7 +6,6 @@
 (require 'ido)
 (require 'recentf)
 (require 'move-text)
-(require 'linum)
 
 ;; local env
 (setenv "LC_CTYPE" "en_US.UTF-8")
@@ -66,10 +65,7 @@
 (move-text-default-bindings)
 
 ; tramp with ssh
-(setq tramp-default-method "ssh")
-
-; linum mode
-(linum-mode)
+(setq-default tramp-default-method "ssh")
 
 ;; ido-mode is like magic pixie dust!
 (ido-mode t)
@@ -79,8 +75,9 @@
       ido-create-new-buffer 'always
       ido-use-filename-at-point 'guess
       ido-use-virtual-buffers t
-      ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10)
+
+(setq-default ido-handle-duplicate-virtual-buffers 2)
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
@@ -93,7 +90,7 @@
 ;; (electric-pair-mode 1)
 ;; (setq electric-pair-preserve-balance nil)
 
-(setq compilation-read-command nil) ; compile in a status buffer
+(setq-default compilation-read-command nil) ; compile in a status buffer
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ;; to ensure files have no trailing whitespace
 
@@ -105,7 +102,7 @@
 (add-hook 'text-mode-hook 'goto-address-mode)
 
 ;; automatically scroll
-(setq compilation-scroll-output t)
+(setq-default compilation-scroll-output t)
 
 ;; Emacs 27.1
 ;; Fix performance problem with long lines files

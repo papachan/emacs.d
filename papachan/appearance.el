@@ -3,7 +3,6 @@
 ;;; Code:
 (require 'color)
 (require 'all-the-icons)
-(require 'smart-mode-line)
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
@@ -25,7 +24,7 @@
     ;; (zerodark-setup-modeline-format)
     (setq zerodark-use-high-contrast-in-mode-line nil)
     ;; transparency
-    (let ((opacity '(87 87)))
+    (let ((opacity '(100 100)))
       (set-frame-parameter (selected-frame) 'alpha opacity)))
    ((eq system-type 'darwin)
     (load-theme 'nimbus t))))

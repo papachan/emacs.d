@@ -19,7 +19,9 @@
   (projectile-global-mode)
   (setq projectile-enable-caching nil
         projectile-track-known-projects-automatically nil)
+  ;; ignore some files
   (add-to-list 'projectile-globally-ignored-files "*.min.js")
+  ;; ignore some directories
   (add-to-list 'projectile-globally-ignored-directories "js/compiled")
   (add-to-list 'projectile-globally-ignored-directories "resources/public/js")
   (add-to-list 'projectile-globally-ignored-directories "node[_-]modules")

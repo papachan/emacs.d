@@ -24,7 +24,7 @@
               "https://raw.githubusercontent.com/Wilfred/loop.el/master/loop.el"))
   (download-elisp-files lst))
 
-(bootstrap)
+;; (bootstrap)
 
 (provide 'bootstrap)
 ;;; bootstrap.el ends here

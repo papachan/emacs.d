@@ -31,7 +31,6 @@
 (global-set-key (kbd "C-x 9") 'open-scratch-buffer)
 (global-set-key (kbd "C-c C-o") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-c -") 'buffer/clear)
-(global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-c >") 'my-indent-region)
 (global-set-key (kbd "C-c <") 'my-unindent-region)
 (global-set-key [pause] 'toggle-current-window-dedication)
@@ -46,7 +45,7 @@
 (global-set-key (kbd "C-x q") 'shutdown-emacs)
 (global-set-key (kbd "C-c o") 'insert-a-blank-line)
 ;; (global-set-key (kbd "C-c d") 'kill-whole-line)
-(global-set-key (kbd "C-c d") (lambda () (interactive) (dired ".")))
+(global-set-key (kbd "C-x c d") (lambda () (interactive) (dired ".")))
 (global-set-key (kbd "C-c m") 'magit-status)
 (global-set-key (kbd "M-H") 'common-lisp-hyperspec)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
@@ -56,6 +55,7 @@
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
 (global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
 (global-set-key (kbd "C-x 6") 'twist-split)
+(global-set-key (kbd "C-x C-;") 'comment-region)
 
 ;; new *scratch* buffer keybing conflict with org-mode
 (global-set-key (kbd "C-x 4 n") 'create-scratch-buffer)
