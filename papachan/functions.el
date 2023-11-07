@@ -6,13 +6,15 @@
 (defvar current-time-format "%a %H:%M:%S")
 
 (defun buffer/clear ()
+  "Buffer clear."
   (interactive)
   (with-current-buffer (current-buffer)
       (erase-buffer)))
 
 (defun insert-bootstrap-snippet ()
-  (lambda())
+  "Insert an html content."
   (interactive)
+  (lambda())
   (insert "<!DOCTYPE html>"
           "<html lang=\"en\">"
           "<head>"
@@ -29,8 +31,9 @@
 
 ; adding html snippet
 (defun insert-html-snippet ()
-  (lambda())
+  "Insert an html snippet."
   (interactive)
+  (lambda())
   (insert "<!DOCTYPE html>\n"
           "<html lang=\"en\">\n"
           "  <head>\n"
@@ -43,8 +46,9 @@
           "<body>\n<div id=\"app\"></div\n\n</body>\n</html>"))
 
 (defun insert-html5-snippet ()
-  (lambda())
+  "Insert an html5 template."
   (interactive)
+  (lambda())
   (insert "<!DOCTYPE html>\n"
           "<html lang=\"en\">\n"
           "  <head>\n"
@@ -60,8 +64,9 @@
           "</html>"))
 
 (defun insert-cljs-reagent-snippet ()
-  (lambda())
+  "Insert a cljs reagent template."
   (interactive)
+  (lambda())
   (insert "<!DOCTYPE html>\n"
           "<html lang=\"en\">\n"
           "  <head>\n"
@@ -82,8 +87,9 @@
           "</html>"))
 
 (defun insert-cljs-shadowcljs-snippet ()
-  (lambda())
+  "Insert a cljs template."
   (interactive)
+  (lambda())
   (insert "<!DOCTYPE html>\n"
           "<html lang=\"en\">\n"
           "  <head>\n"
@@ -105,29 +111,40 @@
           "</html>"))
 
 (defun insert-latin-unicode ()
-  (lambda())
+  "Insert ISO latin unicode encoding."
   (interactive)
+  (lambda())
   (insert "iso-8859-1"))
 
 (defun insert-time ()
+  "Insert time."
   (interactive "*")
   (insert (format-time-string "%X")))
 
 (defun insert-current-date ()
+  "Insert current date.  (dd DD MMM aaa HH:mm:ss zzz)."
+  (interactive)
+  (insert (shell-command-to-string "date")))
+
+(defun insert-current-iso-date ()
+  "Insert current date YYYY-MM-DD."
   (interactive)
   (insert (format-time-string current-date-format (current-time))))
 
 (defun insert-current-date-time ()
+  "Insert current date.  (dd DD MMM aaa HH:mm:ss zzz)."
   (interactive "*")
   (insert (format-time-string current-date-time-format (current-time))))
 
 (defun insert-current-time ()
+  "Insert current time."
   (interactive "*")
   (insert (format-time-string current-time-format (current-time))))
 
 (defun insert-title ()
-  (lambda())
+  "Insert centered title."
   (interactive)
+  (lambda())
   (let ((name
          (format "===%s==="
                  (read-from-minibuffer "Enter your title:"))))
@@ -136,7 +153,7 @@
     (insert (concat blank name blank))))
 
 (defun notify-popup (title message)
-  "use terminal notify-send"
+  "TITLE: a title.  If MESSAGE: a message to be sent."
   (interactive)
   (let ((str-action (if (eq system-type 'darwin)
                  (concat "terminal-notifier -title " title " -message " message)
@@ -166,10 +183,10 @@ If FILE already exists, signal an error."
       (dired-add-file new)
       (dired-move-to-filename))))
 
-(defun run-cask-test ()
-  (interactive "")
-  (save-buffer 0)
-  (shell-command "make test"))
+;; (defun run-cask-test ()
+;;   (interactive "")
+;;   (save-buffer 0)
+;;   (shell-command "make test"))
 
 ;; select whole line
 (defun select-whole-line ()
@@ -179,29 +196,26 @@ If FILE already exists, signal an error."
   (set-mark (line-beginning-position)))
 
 (defun insert-a-blank-line ()
-  "insert a new line above the line containing the cursor."
+  "Insert a new line above the line containing the cursor."
   (interactive)
   (save-excursion
     (move-beginning-of-line 1)
     (newline)))
 
 (defun shutdown-emacs ()
+  "Shutdown Emacs."
   (interactive)
   (kill-emacs
    (if (featurep 'x) 0 1)))
 
-(defun put-the-date ()
-  (interactive)
-  (insert (shell-command-to-string "date")))
-
-; confirmation before quiting emacs
 (defun quit-emacs ()
+  "Confirmation before quiting Emacs."
   (interactive)
   (if (y-or-n-p "Quit Emacs? ")
       (save-buffers-kill-emacs)))
 
 (defun create-scratch-buffer nil
-  "create a new scratch buffer to work in. (could be *scratch* - *scratchX*)"
+  "Create a new scratch buffer to work in.  Could be *scratch* - *scratchx*."
   (interactive)
   (let ((n 0)
         bufname)
@@ -216,6 +230,7 @@ If FILE already exists, signal an error."
     ))
 
 (defun twist-split ()
+  "Twist split buffer."
   (interactive)
   (setq buffer2 (window-buffer (second (window-list))))
   (if (window-top-child (frame-root-window))
@@ -224,11 +239,13 @@ If FILE already exists, signal an error."
   (set-window-buffer (second (window-list)) buffer2))
 
 (defun split-window-right-and-move-there-dammit ()
+  "Split a buffer."
   (interactive)
   (split-window-right)
   (windmove-right))
 
 (defun new-empty-buffer ()
+  "New empty buffer."
   (interactive)
   (let ((buf (generate-new-buffer "untitled")))
     (switch-to-buffer buf)
@@ -236,6 +253,7 @@ If FILE already exists, signal an error."
     (setq buffer-offer-save t)))
 
 (defun new-org-mode-buffer ()
+  "New \"org-mode\" buffer."
   (interactive)
   (let ((buffer (get-buffer-create (generate-new-buffer-name "*scratch-org*"))))
     (pop-to-buffer buffer)
@@ -246,7 +264,8 @@ If FILE already exists, signal an error."
       (org-mode))))
 
 (defun toggle-current-window-dedication ()
- (interactive)
+  "Toggle current window."
+  (interactive)
  (let* ((window    (selected-window))
         (dedicated (window-dedicated-p window)))
    (set-window-dedicated-p window (not dedicated))
@@ -256,6 +275,7 @@ If FILE already exists, signal an error."
 
 ;; Unindent
 (defun my-indent-region (N)
+  "N as an argument."
   (interactive "p")
   (if (use-region-p)
       (progn (indent-rigidly (region-beginning) (region-end) (* N 2))
@@ -263,6 +283,7 @@ If FILE already exists, signal an error."
     (self-insert-command N)))
 
 (defun my-unindent-region (N)
+  "N as an argument."
   (interactive "p")
   (if (use-region-p)
       (progn (indent-rigidly (region-beginning) (region-end) (* N -2))
@@ -270,10 +291,12 @@ If FILE already exists, signal an error."
     (self-insert-command N)))
 
 (defun reload-init-file ()
+  ""
   (interactive)
   (load-file "~/.emacs.d/init.el"))
 
 (defun open-scratch-buffer ()
+  ""
   (interactive)
   (switch-to-buffer "*scratch*"))
 
@@ -288,11 +311,12 @@ If FILE already exists, signal an error."
         (message "Buffer %s not associated with a file; killed default-directory %s" (buffer-name) result)))))
 
 (defun revert-buffer-without-confirmation()
-  "revert buffer without asking for confirmation"
+  "Revert buffer without asking for confirmation."
   (interactive "")
   (revert-buffer t t t))
 
 (defun my-change-number-at-point (change)
+  "CHANGE as an argument.  Private method for my-increment-number-at-point."
   (let ((number (number-at-point))
         (point (point)))
     (when number
@@ -303,17 +327,17 @@ If FILE already exists, signal an error."
         (goto-char point)))))
 
 (defun my-increment-number-at-point ()
-  "Increment number at point like vim's C-a"
+  "Increment number at point like vim's ‘C-a’."
   (interactive)
   (my-change-number-at-point '1+))
 
 (defun my-decrement-number-at-point ()
-  "Decrement number at point like vim's C-x"
+  "Decrement number at point like vim's ‘C-x‘."
   (interactive)
   (my-change-number-at-point '1-))
 
 (defun file-path-on-clipboard ()
-  "Put the current file name on the clipboard"
+  "Put the current file name on the clipboard."
   (interactive)
   (let ((filename (if (equal major-mode 'dired-mode)
                       default-directory
@@ -325,6 +349,7 @@ If FILE already exists, signal an error."
       (message filename))))
 
 (defun random-11-letter-string ()
+  "Random 11 letters."
   (interactive)
   (progn
     (dotimes (_ 11)
@@ -341,8 +366,8 @@ If FILE already exists, signal an error."
   (interactive)
   (join-line t))
 
-(defun insert-into-buffer (filename)
-  "Insert file content into buffer, useful when switching the content of a file"
+(defun insert-file-into-buffer (filename)
+  "FILENAME path as an argument, insert file content into buffer."
   (interactive)
   (let ((buf (current-buffer)))
     (with-current-buffer buf
@@ -354,19 +379,21 @@ If FILE already exists, signal an error."
         (append-to-buffer buf (point) (point-max))))))
 
 (defun download-url-file ()
-  (lambda ())
+  "Method to download a file."
   (interactive)
+  (lambda ())
   (let ((url (read-from-minibuffer "Enter url:")))
     (url-copy-file url (url-file-nondirectory url))))
 
 (defun send-output-log ()
-  "copy error output to sprunge"
+  "Copy error output to sprunge."
   (interactive)
   (shell-command "cat ~/Desktop/output_error.log | curl -F 'sprunge=<-' http://sprunge.us"))
 
 (defun git-clone-repo ()
-  (lambda())
+  "Method to cone a repo."
   (interactive)
+  (lambda())
     (let ((url (read-from-minibuffer "Enter url:")))
       (shell-command (concat "git clone " url))))
 

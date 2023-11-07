@@ -76,8 +76,7 @@
 (global-set-key (kbd "<f7>") 'iflipb-next-buffer)
 (global-set-key (kbd "S-<f7>") 'iflipb-previous-buffer)
 ;; (global-set-key (kbd "C-c n") 'my-dired-create-file)
-(global-set-key (kbd "C-<f11>") 'toggle-frame-fullscreen)
-(global-set-key (kbd "<f12>") 'run-cask-test)
+;; (global-set-key (kbd "<f12>") 'run-cask-test)
 (global-set-key (kbd "<f8>") 'repeat-complex-command)
 ;(global-set-key (kbd "<f12>") 'my-save-and-compile)
 (global-set-key (kbd "C-c v") 'revert-buffer-without-confirmation)
@@ -97,8 +96,6 @@
 
 ;; (global-set-key (kbd "C-<f5>") (lambda()  (interactive) (Lorem-ipsum-insert-paragraphs 20)))
 ;; (global-set-key (kbd "C-<f6>") 'lorem-ipsum-insert-list)
-
-(global-set-key (kbd "C-x M-d") 'insert-current-date)
 
 (global-set-key (kbd "C-c i") 'insert-latin-unicode)
 
