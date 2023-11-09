@@ -5,11 +5,35 @@
 (defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y")
 (defvar current-time-format "%a %H:%M:%S")
 
+(defun change-legacy-deps-to-deps (str &optional from to)
+  "Method receives an argument STR as an old vector format.
+\ FROM is the beginning of the selected region.
+\ TO is the end of the selected region.
+\ This method transform Vectors deps to the new deps format."
+  (interactive
+   (if (use-region-p)
+       (list nil (region-beginning) (region-end))
+     (let ((bds (bounds-of-thing-at-point 'paragraph)))
+       (list nil (car bds) (cdr bds)))))
+  (let (workOnStringP inputStr outputStr)
+    (setq workOnStringP (if str t nil))
+    (setq inputStr (if workOnStringP str (buffer-substring-no-properties from to)))
+    (setq outputStr
+          (let ((case-fold-search t))
+            (and (string-match "\\[\\(.*\\)\\\s\\(.*\\)\\]" inputStr)
+                 (concat (match-string 1 inputStr) " {:mvn/version " (match-string 2 inputStr) "}"))))
+    (if workOnStringP
+        outputStr
+      (save-excursion
+        (delete-region from to)
+        (goto-char from)
+        (insert outputStr)))))
+
 (defun buffer/clear ()
   "Buffer clear."
   (interactive)
   (with-current-buffer (current-buffer)
-      (erase-buffer)))
+    (erase-buffer)))
 
 (defun insert-bootstrap-snippet ()
   "Insert an html content."
