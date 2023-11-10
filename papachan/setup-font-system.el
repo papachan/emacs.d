@@ -6,7 +6,7 @@
      (set-frame-font font)
      (set-face-attribute 'default nil
                          :font font
-                         :height 110
+                         :height 102
                          :weight 'normal)
      (set-face-font 'default font))
    "JetBrains Mono"))

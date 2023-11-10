@@ -16,76 +16,43 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-;; update all packages
-;; (setq use-package-always-ensure t)
-
 (require 'use-package)
-
-;; pixel-scroll-precision-mode
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defvar init-directory (file-name-directory (expand-file-name "~/.emacs.d/init.el")))
+
 (defun add-pkg (pkg-name)
   (let ((n (file-name-as-directory
             (concat (file-name-directory
                      (or (buffer-file-name) load-file-name))
                     pkg-name))))
     (add-to-list 'load-path n)))
-;; (mapc 'load (file-expand-wildcards (concat init-directory "papachan/*.el")))
+
 (mapcar 'add-pkg '("papachan" "lib"))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(if (fboundp 'desktop-save-mode)
-    (desktop-save-mode 1))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(mapc 'load (file-expand-wildcards "~/.emacs.d/papachan/*.el"))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; appearance.el
-(load-file (expand-file-name "themes/zerodark-theme/zerodark-theme.el" user-emacs-directory))
-(load-theme 'zerodark t)
 
-(use-package all-the-icons
-  :if (display-graphic-p))
+(require 'appearance)
+(require 'setup-helm)
+(require 'ido-snippet)
+(require 'init-flycheck)
+(require 'misc)
+(require 'functions)
+(require 'setup-font-system)
+(require 'setup-multiple-cursors)
+(require 'setup-magit)
+(require 'setup-lisp)
+(require 'setup-dired-sidebar)
+(require 'setup-eshell)
+(require 'setup-ibuffer)
+(require 'setup-dired)
+(require 'setup-cider)
+(require 'setup-ivy)
+(require 'setup-idle-highlight)
+(require 'setup-web)
+;; (require 'setup-autocomplete)
+(require 'setup-projectile)
+(require 'setup-company)
+(require 'setup-clojure)
+(require 'shortcuts)
 
-(use-package idle-highlight-mode
-  :config (setq idle-highlight-idle-time 0.2)
-  :hook ((prog-mode text-mode) . idle-highlight-mode))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (setq-default magit-process-password-prompt-regexps
-;;   '("^\\(Enter \\)?[Pp]assphrase\\( for \\(RSA \\)?key '.*'\\)?: ?$"
-;;     ;; Match-group 99 is used to identify the "user@host" part.
-;;     "^\\(Enter \\)?[Pp]assword\\( for '\\(https?://\\)?\\(?99:.*\\)'\\)?: ?$"
-;;     ;; Pinentry Curses box in the terminal when used with GnuPG
-;;     "Please enter the passphrase for the ssh key"
-;;     "^.*'s password: ?$"
-;;     "^Yubikey for .*: ?$"
-;;     "^Enter PIN for .*: ?$"))
-
-;; web
-(setq js-indent-level 2)
-(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . javascript-mode))
-
-;; dotnet
-(add-to-list 'auto-mode-alist '("\\.fsproj\\'" . xml-mode))
-(add-to-list 'auto-mode-alist '("\\.axaml\\'" . xml-mode))
-(add-to-list 'auto-mode-alist '("\\.xaml\\'" . xml-mode))
-(add-to-list 'auto-mode-alist '("\\.csproj\\'" . xml-mode))
-
-(when window-system
-  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (tooltip-mode -1)
-  (scroll-bar-mode -1)
-  (display-time)
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (column-number-mode)
-  (window-numbering-mode 1)
-  ;; Highlight current line
-  (global-hl-line-mode 1)
-  (mouse-wheel-mode t)
-  (blink-cursor-mode -1))
-
-;; smart-mode-line
-(setq sml/theme 'respectful)
-(sml/setup)
+(provide 'init)
+;;; init.el ends here

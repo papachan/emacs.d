@@ -2,9 +2,9 @@
 ;;; Commentary:
 ;;; Cider setup
 ;;; Clojure IDE and REPL for Emacs
+
 ;;; Code:
 (require 'company)
-(require 'helm-cider)
 
 (use-package cider
   :ensure t
@@ -46,16 +46,9 @@
   (add-hook 'cider-repl-mode-hook (lambda ()
                                     (cider-repl-toggle-pretty-printing)
                                     (tab-line-mode -1)))
-  ;; (add-hook 'cider-repl-mode-hook #'paredit-mode)
-  ;; (add-hook 'cider-repl-mode-hook #'company-mode)
   :hook
   (cider-repl-mode . paredit-mode)
-  (cider-repl-mode . company-mode)
-  (cider-repl-mode . (lambda () (helm-cider-mode 1))))
-
-;; (use-package helm-cider
-;;   :ensure t
-;;   :hook ((cider-mode . helm-cider-mode)))
+  (cider-repl-mode . company-mode))
 
 (provide 'setup-cider)
 ;;; setup-cider.el ends here

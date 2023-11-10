@@ -1,8 +1,10 @@
 ;;; setup-clojure.el --- Summary
 ;;; Commentary:
+
 ;;; Code:
 (require 'html-to-hiccup)
 (require 'rainbow-delimiters)
+
 (use-package html-to-hiccup
   :ensure t
   :bind (:map clojure-mode-map
@@ -42,8 +44,8 @@
          (clojure-mode . eldoc-mode)
          (clojure-mode . flycheck-mode)
          (clojure-mode . rainbow-delimiters-mode)
-         ;; (clojure-mode . (lambda () (auto-complete-mode -1)))
-         )
+         ;; disable auto-complete with clojure
+         (clojure-mode . (lambda () (auto-complete-mode -1))))
   :init
   (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
   (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))

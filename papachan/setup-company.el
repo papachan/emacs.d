@@ -8,7 +8,6 @@
   :pin "melpa"
   :init
   (global-company-mode t)
-  ;; (global-set-key (kbd "M-/") 'company-complete)
   :config
   (define-key company-active-map (kbd "M-n") nil)
   (define-key company-active-map (kbd "M-p") nil)
@@ -16,7 +15,6 @@
   (company-minimum-prefix-length 3)
   (company-idle-delay 0.1)
   (company-show-quick-access "off")
-  ;; (company-quick-access-hint-function (lambda (param) " unknown"))
   :bind (:map company-mode-map
               ("C-<tab>" . company-complete)
               :map company-active-map

@@ -1,4 +1,6 @@
-;;; misc.el file
+;;; misc.el --- Summary
+;;; Commentary:
+;;; Code:
 (require 'expand-region)
 (require 'window-numbering) ;; Kill buffers which haven't been modified in a while
 (require 'midnight)
@@ -6,6 +8,12 @@
 (require 'ido)
 (require 'recentf)
 (require 'move-text)
+
+;; (setq inhibit-startup-screen t)
+
+(push '(menu-bar-lines . 0) default-frame-alist)
+(push '(tool-bar-lines . 0) default-frame-alist)
+(push '(vertical-scroll-bars) default-frame-alist)
 
 ;; local env
 (setenv "LC_CTYPE" "en_US.UTF-8")
@@ -20,8 +28,8 @@
 (setq whitespace-line-column 90
       whitespace-style '(tabs trailing tab-mark lines-tail))
 
-;; (if (fboundp 'desktop-save-mode)
-;;     (desktop-save-mode 1))
+(if (fboundp 'desktop-save-mode)
+    (desktop-save-mode 1))
 
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
@@ -65,12 +73,19 @@
 (move-text-default-bindings)
 
 ; tramp with ssh
-(setq tramp-default-method "ssh")
+(setq-default tramp-default-method "ssh")
 
-;; toggle display of line numbers in the buffer.
-(display-line-numbers-mode -1)
-;; toggle display-line-numbers mode in all buffers.
-(global-display-line-numbers-mode)
+;; ido-mode is like magic pixie dust!
+(ido-mode t)
+(setq ido-enable-prefix nil
+      ido-enable-flex-matching t
+      ido-auto-merge-work-directories-length nil
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point 'guess
+      ido-use-virtual-buffers t
+      ido-max-prospects 10)
+
+(setq-default ido-handle-duplicate-virtual-buffers 2)
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
@@ -83,7 +98,7 @@
 ;; (electric-pair-mode 1)
 ;; (setq electric-pair-preserve-balance nil)
 
-(setq compilation-read-command nil) ; compile in a status buffer
+(setq-default compilation-read-command nil) ; compile in a status buffer
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ;; to ensure files have no trailing whitespace
 
@@ -95,7 +110,7 @@
 (add-hook 'text-mode-hook 'goto-address-mode)
 
 ;; automatically scroll
-(setq compilation-scroll-output t)
+(setq-default compilation-scroll-output t)
 
 ;; Emacs 27.1
 ;; Fix performance problem with long lines files
