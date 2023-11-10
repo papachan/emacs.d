@@ -6,6 +6,11 @@
 (use-package flycheck-clj-kondo
   :ensure t)
 
+(use-package html-to-hiccup
+  :ensure t
+  :config
+  (setq html-to-hiccup-use-shorthand-p t))
+
 (use-package clojure-mode
   :ensure t
   :hook ((clojure-mode . paredit-mode)
