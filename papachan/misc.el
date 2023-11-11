@@ -7,6 +7,13 @@
 (require 'recentf)
 (require 'move-text)
 
+(use-package emacs
+  :custom
+  ;; disable system beep
+  (setq visible-bell t)
+  ;; Move files to trash when deleting
+  (setq delete-by-moving-to-trash t))
+
 ;; local env
 (setenv "LC_CTYPE" "en_US.UTF-8")
 (set-language-environment "UTF-8")
@@ -39,14 +46,8 @@
 (setq create-lockfiles nil)
 (setq make-backup-files nil)
 
-;; disable system beep
-(setq visible-bell t)
-
 ;; Ignore case when searching
 (setq case-fold-search t)
-
-;; Move files to trash when deleting
-(setq delete-by-moving-to-trash t)
 
 ;; Number of characters until the fill column
 (setq fill-column 80)
@@ -68,9 +69,9 @@
 (setq tramp-default-method "ssh")
 
 ;; toggle display of line numbers in the buffer.
-(display-line-numbers-mode -1)
+;; (display-line-numbers-mode -1)
 ;; toggle display-line-numbers mode in all buffers.
-(global-display-line-numbers-mode)
+(global-display-line-numbers-mode nil)
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
@@ -102,6 +103,20 @@
 (global-so-long-mode 1)
 (setq bidi-inhibit-bpa t)
 (setq bidi-paragraph-direction 'left-to-right)
+
+(when window-system
+  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+  (tooltip-mode -1)
+  (scroll-bar-mode -1)
+  (display-time)
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (column-number-mode)
+  (window-numbering-mode 1)
+  ;; Highlight current line
+  (global-hl-line-mode 1)
+  (mouse-wheel-mode t)
+  (blink-cursor-mode -1))
 
 (provide 'misc)
 ;;; misc.el ends here

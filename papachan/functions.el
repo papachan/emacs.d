@@ -260,14 +260,19 @@ If FILE already exists, signal an error."
       (insert "* First Headline\n")
       (org-mode))))
 
+(defun insert-shebang-for-lisp ()
+  "Insert into buffer a shebang for Lisp file."
+  (interactive)
+  (insert ";;; -*- Mode: Lisp; Syntax: Common-Lisp -*-"))
+
 (defun toggle-current-window-dedication ()
- (interactive)
- (let* ((window    (selected-window))
-        (dedicated (window-dedicated-p window)))
-   (set-window-dedicated-p window (not dedicated))
-   (message "Window %sdedicated to %s"
-            (if dedicated "no longer " "")
-            (buffer-name))))
+  (interactive)
+  (let* ((window    (selected-window))
+         (dedicated (window-dedicated-p window)))
+    (set-window-dedicated-p window (not dedicated))
+    (message "Window %sdedicated to %s"
+             (if dedicated "no longer " "")
+             (buffer-name))))
 
 ;; Unindent
 (defun my-indent-region (N)
@@ -303,7 +308,7 @@ If FILE already exists, signal an error."
         (message "Buffer %s not associated with a file; killed default-directory %s" (buffer-name) result)))))
 
 (defun revert-buffer-without-confirmation()
-  "revert buffer without asking for confirmation"
+  "Revert buffer without asking for confirmation"
   (interactive "")
   (revert-buffer t t t))
 

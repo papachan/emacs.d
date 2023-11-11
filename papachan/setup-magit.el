@@ -9,6 +9,8 @@
   :init
   (pinentry-start)
 
+  :bind (("C-c m" . magit-status))
+
   :config
   (setq magit-save-repository-buffers nil) ; Disable Magit asking to save files
   (setq magit-uniquify-buffer-names nil)   ; Make magit buffers be wrapped w/ *
