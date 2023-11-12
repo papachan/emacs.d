@@ -17,7 +17,6 @@
 (global-set-key (kbd "C-x 4 n") 'create-scratch-buffer)
 (global-set-key (kbd "C-x 5 n") 'make-frame-command)
 (global-set-key (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "C-<f11>") 'toggle-frame-fullscreen)
 (global-set-key (kbd "C-x w") 'toggle-truncate-line)
 ;; new line
 (global-set-key (kbd "C-c y") "\C-a\C- \C-n\M-w\C-y")
