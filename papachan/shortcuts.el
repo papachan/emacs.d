@@ -10,7 +10,6 @@
 (global-set-key (kbd "C-c w") 'select-whole-line)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-c C-o") 'delete-trailing-whitespace)
-(global-set-key (kbd "C-c m") 'magit-status)
 (global-set-key (kbd "C-c o") 'insert-a-blank-line)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
 ;; new *scratch* buffer keybing conflict with org-mode

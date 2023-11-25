@@ -4,6 +4,7 @@
 (use-package git-timemachine)
 (use-package magit
   :ensure t
+  :bind (("C-c m" . magit-status))
   :config
   (defun add-pull-request-refs (&optional remote local-ns)
     "Set pull requests refs from a REMOTE with LOCAL-NS namespace into Git config."

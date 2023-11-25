@@ -30,6 +30,9 @@
   (setq clojure-indent-style 'align-arguments
         clojure-align-forms-automatically t))
 
+(use-package parseedn
+  :ensure t)
+
 (use-package clojurescript-mode
   :hook ((clojurescript-mode . paredit-mode)
          (clojurescript-mode . company-mode)))

@@ -22,6 +22,7 @@
   (setq projectile-enable-caching nil
         projectile-track-known-projects-automatically nil)
   (add-to-list 'projectile-globally-ignored-files "*.min.js")
+  (add-to-list 'projectile-globally-ignored-directories ".cpcache")
   (add-to-list 'projectile-globally-ignored-directories "js/compiled")
   (add-to-list 'projectile-globally-ignored-directories "resources/public/js")
   (add-to-list 'projectile-globally-ignored-directories "node[_-]modules")
