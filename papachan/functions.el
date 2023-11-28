@@ -415,11 +415,6 @@ If FILE already exists, signal an error."
   (let ((url (read-from-minibuffer "Enter url:")))
     (url-copy-file url (url-file-nondirectory url))))
 
-(defun send-output-log ()
-  "copy error output to sprunge"
-  (interactive)
-  (shell-command "cat ~/Desktop/output_error.log | curl -F 'sprunge=<-' http://sprunge.us"))
-
 (defun git-clone-repo ()
   "Method to clone a repo."
   (interactive)
