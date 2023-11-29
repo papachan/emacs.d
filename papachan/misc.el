@@ -3,9 +3,10 @@
 (require 'window-numbering) ;; Kill buffers which haven't been modified in a while
 (require 'midnight)
 (require 'whitespace)
-(require 'ido)
 (require 'recentf)
 (require 'move-text)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 (use-package emacs
   :custom
@@ -54,8 +55,6 @@
 
 ;; prevent vertical split
 (setq split-height-threshold 999)
-
-(defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq vc-follow-symlinks t)
 
@@ -112,9 +111,9 @@
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (column-number-mode)
-  (window-numbering-mode 1)
   ;; Highlight current line
   (global-hl-line-mode 1)
+  (window-numbering-mode 1)
   (mouse-wheel-mode t)
   (blink-cursor-mode -1))
 

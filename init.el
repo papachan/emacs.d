@@ -37,7 +37,6 @@
 (require 'appearance)
 (require 'misc)
 (require 'functions)
-(require 'shortcuts)
 (require 'ido-snippet)
 (require 'setup-cider)
 (require 'setup-clojure)
@@ -58,3 +57,4 @@
 (require 'setup-web)
 (require 'setup-idle-highlight)
 (require 'init-undo-tree)
+(require 'shortcuts)
