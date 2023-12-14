@@ -19,8 +19,8 @@
 (load-theme 'zerodark t)
 (zerodark-setup-modeline-format)
 
-(setq sml/theme 'respectful)
-(sml/setup)
+;; (setq sml/theme 'respectful)
+;; (sml/setup)
 
 (provide 'appearance)
 ;;; appearance.el ends here

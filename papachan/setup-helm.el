@@ -9,7 +9,7 @@
          ("C-x r b" . #'helm-filtered-bookmarks))
   :config
   (setq helm-ff-skip-boring-files t
-        helm-ff-skip-git-ignored-files t
+        ;helm-ff-skip-git-ignored-files t
         ;; helm-idle-delay 0.0
         ;; helm-mode-fuzzy-match t
         ;; helm-completion-in-region-fuzzy-match t
