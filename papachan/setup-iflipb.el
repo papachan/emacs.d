@@ -5,8 +5,8 @@
 (use-package iflipb
   :ensure t
   :bind
-  ("<f9>" . iflipb-next-buffer)
-  ("<f7>" . iflipb-previous-buffer))
+  ("C-," . iflipb-next-buffer)
+  ("C-." . iflipb-previous-buffer))
 
 (provide 'setup-iflipb)
 ;;; setup-iflipb.el ends here

@@ -20,6 +20,10 @@
 
 (require 'use-package)
 
+(require 'project)
+
+(define-key ctl-x-map "p" project-prefix-map)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defvar init-directory (file-name-directory (expand-file-name "~/.emacs.d/init.el")))
 (defun add-pkg (pkg-name)
@@ -47,7 +51,7 @@
 (require 'setup-ibuffer)
 (require 'setup-iflipb)
 ;; (require 'setup-ivy)
-;; (provide 'init-flycheck)
+(provide 'init-flycheck)
 (require 'setup-lisp)
 (require 'setup-lsp-mode)
 (require 'setup-magit)
