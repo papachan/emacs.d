@@ -9,5 +9,8 @@
   :hook ((dired-mode . all-the-icons-dired-mode))
   :commands (dired-sidebar-toggle-sidebar))
 
+(use-package dired
+  :hook ((dired-mode . all-the-icons-dired-mode)))
+
 (provide 'setup-dired-sidebar)
 ;;; setup-dired-sidebar.el ends here

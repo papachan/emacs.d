@@ -110,11 +110,15 @@
 ;; Don't show empty groups
 (setq ibuffer-show-empty-filter-groups nil)
 
+;; Sort
+(setq ibuffer-default-sorting-mode  'major-mode)
+
 ;; Files that are part of the same project might be in different
 ;; filter group.
 (setq find-file-visit-truename t)
 
 (defun ibuffer-next-buffer-aux (list)
+  "LIST as argument."
   (if (null list)
       (error "No buffers!"))
   (let* ((current-buffer (ibuffer-current-buffer t))
@@ -137,12 +141,12 @@
 
 ;; navigation
 (defun ibuffer-next-buffer ()
-  "Jump to next buffer in IBuffer according to `(buffer-list)'"
+  "Jump to next buffer in IBuffer according to `(buffer-list)'."
   (interactive)
   (ibuffer-next-buffer-aux (buffer-list)))
 
 (defun ibuffer-previous-buffer ()
-  "Jump to previous buffer in IBuffer according to `(buffer-list)'"
+  "Jump to previous buffer in IBuffer according to `(buffer-list)'."
   (interactive)
   (ibuffer-next-buffer-aux
    (reverse (buffer-list))))

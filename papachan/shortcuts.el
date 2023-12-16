@@ -43,6 +43,7 @@
 (global-set-key (kbd "C-c <backspace>") 'join-line*)
 (global-set-key (kbd "C-c <deletechar>") 'fixup-whitespace)
 (global-set-key (kbd "C-c C-v") 'other-frame)
+(global-set-key (kbd "C-x j") 'json-pretty-print-buffer)
 
 (define-key global-map (kbd "C-c r") 'vr/replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)

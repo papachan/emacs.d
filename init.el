@@ -3,7 +3,7 @@
 ;;; commentary:
 ;;; code:
 
-(when (version< emacs-version "28")
+(when (version< emacs-version "29")
   (error "This config requires at least GNU Emacs 28, but you're running %s" emacs-version))
 
 (require 'package)
@@ -16,8 +16,6 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-(require 'use-package)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defvar init-directory (file-name-directory (expand-file-name "~/.emacs.d/init.el")))
 
@@ -28,7 +26,7 @@
                     pkg-name))))
     (add-to-list 'load-path n)))
 
-(mapcar 'add-pkg '("papachan" "lib"))
+(mapc 'add-pkg '("papachan" "lib"))
 
 (require 'appearance)
 (require 'setup-helm)
@@ -53,6 +51,7 @@
 (require 'setup-company)
 (require 'setup-clojure)
 (require 'shortcuts)
+(require 'setup-iflipb)
 
 (provide 'init)
 ;;; init.el ends here
