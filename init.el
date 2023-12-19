@@ -52,6 +52,7 @@
 (require 'setup-clojure)
 (require 'shortcuts)
 (require 'setup-iflipb)
+(require 'setup-chatgpt)
 
 (provide 'init)
 ;;; init.el ends here
