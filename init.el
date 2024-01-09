@@ -20,6 +20,7 @@
 
 (require 'use-package)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'project)
 
 (define-key ctl-x-map "p" project-prefix-map)
@@ -50,6 +51,7 @@
 (require 'setup-helm)
 (require 'setup-ibuffer)
 (require 'setup-iflipb)
+(require 'setup-chatgpt)
 ;; (require 'setup-ivy)
 (provide 'init-flycheck)
 (require 'setup-lisp)

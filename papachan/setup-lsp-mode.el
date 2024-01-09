@@ -4,10 +4,11 @@
 (use-package lsp-mode
   :ensure t
   :init
+  (add-hook 'clojure-mode-hook #'lsp)
+  (add-hook 'clojurescript-mode-hook #'lsp)
+  (add-hook 'clojurec-mode-hook #'lsp)
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c C-l")
-
-  :hook ((clojure-mode . lsp))
 
   :config
   (setq lsp-headerline-breadcrumb-enable t
