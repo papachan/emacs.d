@@ -8,6 +8,7 @@
 (load-file (expand-file-name "themes/zerodark-theme/zerodark-theme.el" user-emacs-directory))
 (load-theme 'zerodark t)
 
+(require 'magit)
 (zerodark-setup-modeline-format)
 
 (provide 'appearance)

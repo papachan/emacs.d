@@ -4,6 +4,7 @@
 ;;; Code:
 (require 'html-to-hiccup)
 (require 'rainbow-delimiters)
+(require 'clojure-mode-extra-font-locking)
 
 (use-package html-to-hiccup
   :ensure t
