@@ -5,6 +5,9 @@
 (when (version< emacs-version "28")
   (error "This config requires at least GNU Emacs 28, but you're running %s" emacs-version))
 
+;; prefer newer non-byte compiled sources to older byte compiled ones
+(setq load-prefer-newer t)
+
 (require 'package)
 (dolist (source '(("gnu" . "http://elpa.gnu.org/packages/")
                   ("melpa" . "https://melpa.org/packages/")

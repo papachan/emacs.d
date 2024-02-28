@@ -30,11 +30,13 @@
   :config
   (add-hook 'clojure-mode-hook (lambda ()
                                  (clj-refactor-mode 1)
-                                 (cljr-add-keybindings-with-prefix "C-c C-m"))))
+                                 ;; (cljr-add-keybindings-with-prefix "C-c C-m")
+                                 )))
 
 (use-package clojurescript-mode
   :hook ((clojurescript-mode . paredit-mode)
-         (clojurescript-mode . (lambda () (auto-complete-mode -1)))))
+         ;; (clojurescript-mode . (lambda () (auto-complete-mode -1)))
+         ))
 
 (use-package clojure-mode
   :ensure t
