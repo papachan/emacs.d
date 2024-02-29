@@ -54,5 +54,7 @@
 (require 'setup-iflipb)
 (require 'setup-chatgpt)
 
+(setq warning-minimum-level :emergency)
+
 (provide 'init)
 ;;; init.el ends here
