@@ -1,14 +1,8 @@
 ;;; setup-magit.el --- Who doesn't love Magit?
-;;
 ;;; Commentary:
-;;
 ;;; Code:
-(require 'pinentry)
 (use-package git-timemachine :ensure t)
 (use-package magit
-  :init
-  (pinentry-start)
-
   :config
   (setq magit-save-repository-buffers nil) ; Disable Magit asking to save files
   (setq magit-uniquify-buffer-names nil)   ; Make magit buffers be wrapped w/ *

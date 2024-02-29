@@ -10,7 +10,7 @@
   :ensure t
   :defer t
   :after clojure-mode
-  :commands (cider-mode cider-connect cider-jack-in)
+  :commands (cider-jack-in cider-jack-in-clojurescript)
   :bind (("C-c M-j" . cider-jack-in)
          ("C-c C-a" . cider-eval-print-last-sexp)
          (:map cider-repl-mode-map
@@ -39,7 +39,11 @@
    ;; weird issues with highlighting code, highlight all branches of reader conditionals
    cider-font-lock-reader-conditionals nil
    ;; nrepl log messages
-   nrepl-log-messages t)
+   nrepl-log-messages t
+   ;; Hide *nrepl-connection* and *nrepl-server* buffers from appearing
+   ;; in some buffer switching commands like switch-to-buffer
+   nrepl-hide-special-buffers nil)
+  (cider-add-to-alist 'cider-jack-in-dependencies "refactor-nrepl/refactor-nrepl" "3.9.1")
   (add-hook 'cider-mode-hook #'eldoc-mode)
   (add-hook 'cider-mode-hook #'company-mode)
   (add-hook 'cider-repl-mode-hook #'eldoc-mode)

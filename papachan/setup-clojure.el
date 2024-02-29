@@ -4,7 +4,6 @@
 ;;; Code:
 (require 'html-to-hiccup)
 (require 'rainbow-delimiters)
-(require 'clojure-mode-extra-font-locking)
 
 (use-package html-to-hiccup
   :ensure t
@@ -47,13 +46,15 @@
          (clojure-mode . rainbow-delimiters-mode)
          ;; disable auto-complete with clojure
          (clojure-mode . (lambda () (auto-complete-mode -1))))
-  :init
-  (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
-  (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
-  (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
-  (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
+
+  :mode (("\\.edn$" . clojure-mode)
+         ("\\.cljs$" . clojurescript-mode)
+         ("\\.cljx$" . clojurex-mode)
+         ("\\.cljc$" . clojurec-mode))
+
   :config
-  (require 'flycheck-clj-kondo))
+  (require 'flycheck-clj-kondo)
+  (require 'clojure-mode-extra-font-locking))
 
 (add-hook 'clojure-mode-hook (lambda () (paredit-mode nil)))
 
