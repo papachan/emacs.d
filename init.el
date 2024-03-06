@@ -2,8 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(when (version< emacs-version "28")
+(when (version< emacs-version "29")
   (error "This config requires at least GNU Emacs 28, but you're running %s" emacs-version))
+
+;; prefer newer non-byte compiled sources to older byte compiled ones
+(setq load-prefer-newer t)
 
 (defun add-pkg (pkg-name)
   (let ((n (file-name-as-directory
