@@ -4,20 +4,12 @@
 ;;; code:
 
 (when (version< emacs-version "29")
-  (error "This config requires at least GNU Emacs 28, but you're running %s" emacs-version))
+  (error "This config requires at least GNU Emacs 29, but you're running %s" emacs-version))
 
-(require 'package)
-(dolist (source '(("gnu" . "http://elpa.gnu.org/packages/")
-                  ("melpa" . "https://melpa.org/packages/")
-                  ("org" . "http://orgmode.org/elpa/")
-                  ("melpa-stable" . "http://stable.melpa.org/packages/")))
-  (add-to-list 'package-archives source t))
-
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+(setq load-prefer-newer t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defvar init-directory (file-name-directory (expand-file-name "~/.emacs.d/init.el")))
+;; (defvar init-directory (file-name-directory (expand-file-name "~/.emacs.d/init.el")))
 
 (defun add-pkg (pkg-name)
   (let ((n (file-name-as-directory
@@ -28,6 +20,7 @@
 
 (mapc 'add-pkg '("papachan" "lib"))
 
+(require 'init-repo)
 (require 'appearance)
 (require 'setup-helm)
 (require 'ido-snippet)
@@ -52,7 +45,8 @@
 (require 'setup-clojure)
 (require 'shortcuts)
 (require 'setup-iflipb)
-(require 'setup-chatgpt)
+;; (require 'setup-chatgpt)
+;; (require 'setup-lsp-mode)
 
 (setq warning-minimum-level :emergency)
 
