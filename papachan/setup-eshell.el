@@ -2,6 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 (require 'esh-module)
+(require 'eshell)
+(require 'em-alias)
 
 (use-package shell-pop
   :ensure t
@@ -22,6 +24,28 @@
 (defun eshell-new ()
   (interactive)
   (eshell t))
+
+(eshell/alias "d" "dired $1")
+(eshell/alias "cls" "clear")
+(eshell/alias "df" "df -h")
+(eshell/alias "ff" "find-file $1")
+(eshell/alias "FF" "find-file-other-window $1")
+(eshell/alias "fd" "find-dired $PWD \" \"")
+(eshell/alias "ppf" "projectile-find-file")
+(eshell/alias "ppo" "helm-projectile")
+(eshell/alias "lsdir" "ls -l | egrep '^d'")
+(eshell/alias "Dd" "cd ~/Desktop")
+(eshell/alias "repos" "cd ~/git")
+(eshell/alias "sc" "cd ~/dev/source_code")
+(eshell/alias "clean_mac" "find ./ -name \".DS_Store\" -depth -exec rm {} \\;")
+(eshell/alias "clean_all_py_files" "find . -name __py*__ -print0 | xargs -0 rm -rf")
+(eshell/alias "gds" "magit-diff-staged")
+(eshell/alias "gd" "magit-diff-unstaged")
+(eshell/alias "open" "nautilus $1")
+(eshell/alias "ps-grep" "ps ax | grep -i $1")
+(eshell/alias "sudo" "eshell/sudo $*")
+(eshell/alias "ddu" "du -h --max-depth=1 | *sort -hr")
+(eshell/alias "clj-repl" "clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version \"1.1.2\"} cider/cider-nrepl {:mvn/version \"0.48.0\"} refactor-nrepl/refactor-nrepl {:mvn/version \"3.9.1\"}} :aliases {:cider/nrepl {:main-opts [\"-m\" \"nrepl.cmdline\" \"--middleware\" \"[cider.nrepl/cider-middleware]\"]}}}' -M:cider/nrepl -h 0.0.0.0 -p $1")
 
 (use-package eshell
   :bind (("C-x t e" . eshell)
