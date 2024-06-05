@@ -23,7 +23,8 @@
         slime-lisp-implementations '((sbcl ("C:\\Program Files\\Steel Bank Common Lisp\\sbcl.exe"))))
   :config
   (global-set-key (kbd "C-c C-q") 'slime-repl-quit)
-  (slime-setup '(slime-company)))
+  (load (expand-file-name "~/quicklisp/slime-helper.el"))
+  (slime-setup '(slime-fancy slime-company)))
 
 (provide 'setup-lisp)
 ;;; setup-lisp.el ends here

@@ -18,14 +18,13 @@
          (clojure-mode . flycheck-mode)
          (clojure-mode . rainbow-delimiters-mode)
          (clojure-mode . company-mode))
-  ;; (clojure-mode . (lambda () (auto-complete-mode -1)))
-  :init
-  (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
-  (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
-  (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
-  (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
+  :mode (("\\.edn$" . clojure-mode)
+         ("\\.cljs$" . clojurescript-mode)
+         ("\\.cljx$" . clojurex-mode)
+         ("\\.cljc$" . clojurec-mode))
   :config
   (require 'flycheck-clj-kondo)
+  (require 'clojure-mode-extra-font-locking)
   ;; indentation
   (setq clojure-indent-style 'align-arguments
         clojure-align-forms-automatically t))
