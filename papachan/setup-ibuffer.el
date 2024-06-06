@@ -45,6 +45,7 @@
           (or
            (name . "^\\*cider-repl")
            (name . "^\\*nrepl-server")
+           (name . "^\\*nrepl-error")
            (name . "^\\*nrepl-messages")))
          ("SQL" (mode . sql-mode))
          ("Log" (filename . ".*\.log$"))
