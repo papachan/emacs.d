@@ -54,5 +54,8 @@
 
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
+(global-set-key (kbd "<pinch>") 'ignore)
+(global-set-key (kbd "<C-wheel-up>") 'ignore)
+(global-set-key (kbd "<C-wheel-down>") 'ignore)
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
