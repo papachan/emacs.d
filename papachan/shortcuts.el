@@ -57,5 +57,7 @@
 (global-set-key (kbd "<pinch>") 'ignore)
 (global-set-key (kbd "<C-wheel-up>") 'ignore)
 (global-set-key (kbd "<C-wheel-down>") 'ignore)
+
+(global-set-key (kbd "C-c f") 'reopen-last-closed-file)
 (provide 'shortcuts)
 ;;; shortcuts.el ends here

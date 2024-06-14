@@ -413,5 +413,36 @@ If FILE already exists, signal an error."
     (let ((url (read-from-minibuffer "Enter url:")))
       (shell-command (concat "git clone " url))))
 
+;; new functions
+(defun insert-clj-uuid (n)
+  "Insert a Clojure UUID tagged literal in the form of #uuid
+  \"11111111-1111-1111-1111-111111111111\". The prefix argument N
+  specifies the padding used."
+  (interactive "P")
+  (let ((n (or n 1)))
+    (if (or (< n 0) (> n 9))
+        (error "Argument N must be between 0 and 9."))
+    (let ((n (string-to-char (number-to-string n))))
+      (insert
+       (format "#uuid \"%s-%s-%s-%s-%s\""
+               (make-string 8 n)
+               (make-string 4 n)
+               (make-string 4 n)
+               (make-string 4 n)
+               (make-string 12 n))))))
+
+(defun backward-copy-word ()
+  "Something"
+  (interactive)
+  (save-excursion
+    (copy-region-as-kill (point) (progn (backward-word) (point)))))
+
+(defun reopen-last-closed-file ()
+  "Reopen the last file that was closed."
+  (interactive)
+  (if recentf-list
+      (find-file (car recentf-list))
+    (message "No recently closed files")))
+
 (provide 'functions)
 ;;; functions.el ends here
