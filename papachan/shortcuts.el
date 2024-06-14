@@ -27,5 +27,6 @@
 
 (global-set-key (kbd "C-c a") 'increment-number-at-point)
 (global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
+(global-set-key (kbd "C-c f") 'reopen-last-closed-file)
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
