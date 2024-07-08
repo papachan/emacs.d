@@ -53,7 +53,8 @@
           (or
            (name . "^\\*cider-repl")
            (name . "^\\*nrepl-server")
-           (name . "^\\*nrepl-messages")))
+           (name . "^\\*nrepl-messages")
+           (name . "^\\*cider-error")))
          ("SQL" (mode . sql-mode))
          ("Log" (filename . ".*\.log$"))
          ("Python" (mode . python-mode))
