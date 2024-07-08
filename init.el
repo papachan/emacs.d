@@ -67,3 +67,4 @@
 (require 'setup-idle-highlight)
 (require 'init-undo-tree)
 (require 'shortcuts)
+(require 'setup-eshell)
