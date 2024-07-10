@@ -40,4 +40,5 @@
 (require 'setup-iflipb)
 (require 'setup-idle-highlight)
 (require 'shortcuts)
+(require 'setup-eros)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
