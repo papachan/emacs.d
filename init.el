@@ -68,3 +68,4 @@
 (require 'init-undo-tree)
 (require 'shortcuts)
 (require 'setup-eshell)
+(require 'setup-eros)
