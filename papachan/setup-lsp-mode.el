@@ -8,12 +8,13 @@
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c C-l")
   :hook ((clojure-mode . lsp))
-         ;; (dart-mode . lsp)
-         ;; (java-mode . lsp)
   :config
   (setq lsp-headerline-breadcrumb-enable t
         lsp-lens-enable t
-        lsp-signature-auto-activate nil)
+        lsp-signature-auto-activate nil
+        ;; lsp-enable-completion-at-point nil ; uncomment to use cider completion instead of lsp
+        lsp-enable-indentation nil)
+  ;; (setq lsp-print-io t)
   (dolist (clojure-all-modes '(clojure-mode
                                clojurec-mode
                                clojurescript-mode
