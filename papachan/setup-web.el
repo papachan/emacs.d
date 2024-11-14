@@ -4,6 +4,11 @@
 (setq js-indent-level 2)
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . javascript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx$" . typescript-mode))
+
+(use-package typescript-mode
+  :defer t)
+
 
 (provide 'setup-web)
 ;;; setup-web.el ends here
