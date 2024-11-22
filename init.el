@@ -21,6 +21,7 @@
 (mapc 'add-pkg '("papachan" "lib"))
 
 (require 'init-repo)
+(require 'init-org)
 (require 'appearance)
 (require 'setup-helm)
 (require 'ido-snippet)

@@ -416,8 +416,8 @@ If FILE already exists, signal an error."
 ;; new functions
 (defun insert-clj-uuid (n)
   "Insert a Clojure UUID tagged literal in the form of #uuid
-  \"11111111-1111-1111-1111-111111111111\". The prefix argument N
-  specifies the padding used."
+\"11111111-1111-1111-1111-111111111111\". The prefix argument N
+specifies the padding used."
   (interactive "P")
   (let ((n (or n 1)))
     (if (or (< n 0) (> n 9))
@@ -432,7 +432,6 @@ If FILE already exists, signal an error."
                (make-string 12 n))))))
 
 (defun backward-copy-word ()
-  "Something"
   (interactive)
   (save-excursion
     (copy-region-as-kill (point) (progn (backward-word) (point)))))
