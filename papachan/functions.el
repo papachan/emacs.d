@@ -130,19 +130,26 @@
   (insert "iso-8859-1"))
 
 (defun insert-time ()
+  "Insert time stamp as 08:59:39."
   (interactive "*")
   (insert (format-time-string "%X")))
 
-(defun insert-current-date ()
+(defun insert-current-iso-date ()
+  "Insert current date with YYYY-MM-DD format."
   (interactive)
   (insert (format-time-string current-date-format (current-time))))
 
+(defun insert-time-stamp-short ()
+  "Insert short date/time stamp as 2024-11-29 10:41."
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d %R")))
+
 (defun insert-current-date-time ()
-  (interactive "*")
+  (interactive)
   (insert (format-time-string current-date-time-format (current-time))))
 
 (defun insert-current-time ()
-  (interactive "*")
+  (interactive)
   (insert (format-time-string current-time-format (current-time))))
 
 (defun insert-title ()
@@ -420,6 +427,16 @@ If FILE already exists, signal an error."
   (if recentf-list
       (find-file (car recentf-list))
     (message "No recently closed files")))
+
+;; https://olddeuteronomy.github.io/post/some-excerpts-from-config-2-functions/
+(defun nuke-all-buffers ()
+  "Kill all buffers, leaving *scratch* only."
+  (interactive)
+  (mapc
+   (lambda (buffer)
+     (kill-buffer buffer))
+   (buffer-list))
+  (delete-other-windows))
 
 (provide 'functions)
 ;;; functions.el ends here
