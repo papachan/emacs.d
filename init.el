@@ -22,6 +22,7 @@
 (require 'misc)
 (require 'appearance)
 (require 'functions)
+(require 'init-org)
 (require 'setup-cider)
 (require 'setup-clojure)
 (require 'setup-dired-sidebar)
@@ -41,4 +42,6 @@
 (require 'setup-idle-highlight)
 (require 'shortcuts)
 (require 'setup-eros)
+(require 'setup-python)
+(require 'setup-yasnippet)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
