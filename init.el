@@ -71,3 +71,4 @@
 (require 'shortcuts)
 (require 'setup-eshell)
 (require 'setup-eros)
+(require 'setup-yasnippet)
