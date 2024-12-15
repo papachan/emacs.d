@@ -47,8 +47,9 @@
 (require 'shortcuts)
 (require 'setup-iflipb)
 (require 'setup-eros)
-;; (require 'setup-chatgpt)
+(require 'setup-chatgpt)
 ;; (require 'setup-lsp-mode)
+(require 'setup-yasnippet)
 
 (setq warning-minimum-level :emergency)
 

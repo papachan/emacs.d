@@ -32,17 +32,14 @@
                                  (cljr-add-keybindings-with-prefix "C-c C-m"))))
 
 (use-package clojurescript-mode
-  :hook ((clojurescript-mode . paredit-mode)
-         (clojurescript-mode . (lambda () (auto-complete-mode -1)))))
+  :hook ((clojurescript-mode . paredit-mode)))
 
 (use-package clojure-mode
   :ensure t
   :hook ((clojure-mode . paredit-mode)
          (clojure-mode . eldoc-mode)
          (clojure-mode . flycheck-mode)
-         (clojure-mode . rainbow-delimiters-mode)
-         ;; disable auto-complete with clojure
-         (clojure-mode . (lambda () (auto-complete-mode -1))))
+         (clojure-mode . rainbow-delimiters-mode))
 
   :mode (("\\.edn$" . clojure-mode)
          ("\\.cljs$" . clojurescript-mode)
