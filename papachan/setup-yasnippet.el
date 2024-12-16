@@ -4,10 +4,13 @@
 ;;; Code:
 
 (use-package yasnippet
-  :config
+  :diminish yas-minor-mode
+  :init
   (require 'yasnippet)
   (yas-global-mode 1)
-  (yas-load-directory "~/.emacs.d/snippets/"))
+  :config
+  (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
+  (yas-reload-all))
 
 (provide 'setup-yasnippet)
 ;;; setup-yasnippet.el ends here
