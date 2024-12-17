@@ -6,8 +6,13 @@
 
 (setq ring-bell-function 'ignore)
 
-(setq whitespace-line-column 90
-      whitespace-style '(tabs trailing tab-mark lines-trail))
+(use-package whitespace
+  :init
+  (dolist (hook '(prog-mode-hook text-mode-hook))
+    (add-hook hook #'whitespace-mode))
+  :config
+  (setq whitespace-line-column 90)
+  (setq whitespace-style '(face tabs empty trailing lines-tail tab-mark)))
 
 (if (fboundp 'desktop-save-mode)
     (desktop-save-mode 1))
