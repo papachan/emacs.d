@@ -25,8 +25,13 @@
 ;; (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-(setq whitespace-line-column 90
-      whitespace-style '(tabs trailing tab-mark lines-tail))
+(use-package whitespace
+  :init
+  (dolist (hook '(prog-mode-hook text-mode-hook))
+    (add-hook hook #'whitespace-mode))
+  :config
+  (setq whitespace-line-column 90) ;; limit line length
+  (setq whitespace-style '(face tabs empty trailing lines-tail tab-mark)))
 
 (if (fboundp 'desktop-save-mode)
     (desktop-save-mode 1))
