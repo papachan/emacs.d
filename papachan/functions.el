@@ -6,28 +6,33 @@
 (defvar current-time-format "%a %H:%M:%S")
 
 (defun change-legacy-deps-to-deps (str &optional from to)
-  "Method receives an argument STR as an old vector format.
-\ FROM is the beginning of the selected region.
-\ TO is the end of the selected region.
-\ This method transform Vectors deps to the new deps format."
+  "Transform legacy vector dependencies to the new map format.
+If called interactively and a region is selected, it transforms the content of the region.
+Otherwise, it operates on the paragraph at point.
+When called programmatically, STR is the input string to transform.
+
+FROM and TO specify the region boundaries for interactive use."
   (interactive
    (if (use-region-p)
        (list nil (region-beginning) (region-end))
      (let ((bds (bounds-of-thing-at-point 'paragraph)))
        (list nil (car bds) (cdr bds)))))
-  (let (workOnStringP inputStr outputStr)
-    (setq workOnStringP (if str t nil))
-    (setq inputStr (if workOnStringP str (buffer-substring-no-properties from to)))
-    (setq outputStr
+  (let ((work-on-string-p (when str t))
+        (input-str (if str
+                       str
+                     (buffer-substring-no-properties from to)))
+        output-str)
+    (setq output-str
           (let ((case-fold-search t))
-            (and (string-match "\\[\\(.*\\)\\\s\\(.*\\)\\]" inputStr)
-                 (concat (match-string 1 inputStr) " {:mvn/version " (match-string 2 inputStr) "}"))))
-    (if workOnStringP
-        outputStr
+            (if (string-match "\\[\\(.*?\\)\\s-+\\(.*?\\)]" input-str)
+                (concat (match-string 1 input-str) " {:mvn/version \"" (match-string 2 input-str) "\"}")
+              input-str)))  ; Return input-str unchanged if no match is found
+    (if work-on-string-p
+        output-str
       (save-excursion
         (delete-region from to)
         (goto-char from)
-        (insert outputStr)))))
+        (insert output-str)))))
 
 (defun buffer/clear ()
   "Buffer clear."
