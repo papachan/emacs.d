@@ -35,7 +35,16 @@ FROM and TO specify the region boundaries for interactive use."
         (insert output-str)))))
 
 (defun buffer/clear ()
-  "Buffer clear."
+  "Clear the contents of the current buffer.
+
+This function erases all text in the current buffer, making it empty.
+It is an interactive command, meaning it can be called directly by the user,
+for example, by using `M-x buffer/clear`.
+
+Usage:
+  M-x buffer/clear
+
+Internally, the function uses `erase-buffer` to remove all text from the current buffer."
   (interactive)
   (with-current-buffer (current-buffer)
     (erase-buffer)))
@@ -72,7 +81,22 @@ FROM and TO specify the region boundaries for interactive use."
   (insert (format-time-string current-time-format (current-time))))
 
 (defun insert-centered-title ()
-  "Insert centered title into a text buffer."
+  "Insert a centered title into the current text buffer.
+
+This function prompts the user to enter a title, formats it with
+'===' at the beginning and end, and then inserts it centered within
+a 72-character wide line in the current buffer. The title is centered
+by adding an appropriate number of spaces before and after the title.
+
+Usage:
+- Call this function interactively (e.g., M-x insert-centered-title)
+- Enter the desired title when prompted in the minibuffer.
+
+Example:
+If the user enters 'Chapter 1', the following text will be inserted:
+
+                              ===Chapter 1===
+"
   (interactive)
   (lambda())
   (let ((name
@@ -82,18 +106,19 @@ FROM and TO specify the region boundaries for interactive use."
           blank (make-string len ?\s))
     (insert (concat blank name blank))))
 
-(defun notify-popup (title message)
-  "TITLE: a title.  If MESSAGE: a message to be sent.  Use terminal notify-send"
-  (interactive)
-  (let ((str-action (if (eq system-type 'darwin)
-                 (concat "terminal-notifier -title " title " -message " message)
-               (if (eq system-type 'gnu/linux)
-                   (concat "notify-send " title ":" message)))))
-    (shell-command str-action)))
-
 (defun my-dired-create-file (file)
-  "Create a file called FILE.
-If FILE already exists, signal an error."
+  "Create a file called FILE in the current Dired directory.
+
+If FILE already exists, signal an error.
+
+Usage:
+- Call this function interactively (e.g., M-x my-dired-create-file)
+- Enter the desired file name when prompted.
+
+Arguments:
+- FILE: The name of the file to create. The function ensures that the
+  full path is expanded and any necessary parent directories are created.
+"
   (interactive
    (list (read-file-name "Create file: " (dired-current-directory))))
   (let* ((expanded (expand-file-name file))
@@ -163,7 +188,23 @@ If FILE already exists, signal an error."
   (set-window-buffer (second (window-list)) buffer2))
 
 (defun split-window-right-and-move-there-dammit ()
-  "Split a buffer."
+  "Split the current window vertically and move to the newly created window.
+
+This function splits the current window into two side-by-side windows
+by creating a new window to the right of the current one. After splitting,
+the focus is moved to the newly created right window.
+
+Usage:
+- Call this function interactively (e.g., M-x split-window-right-and-move-there-dammit).
+
+Example:
+- If you have a single window open and you call this function, the window
+  will be split into two, with the new window on the right and the focus
+  automatically moved to it.
+
+This function is useful for users who frequently need to split their window
+and immediately start working in the new window.
+"
   (interactive)
   (split-window-right)
   (windmove-right))
@@ -177,7 +218,19 @@ If FILE already exists, signal an error."
     (setq buffer-offer-save t)))
 
 (defun new-org-mode-buffer ()
-  "New \"org-mode\" buffer."
+  "Create a new buffer in Org mode.
+
+This function creates a new buffer with a unique name, switches to it,
+and sets its major mode to Org mode. The buffer is initialized with a
+header line indicating Org mode and a first headline.
+
+Usage:
+- Call this function interactively (e.g., M-x new-org-mode-buffer).
+
+Example:
+- When you call this function, a new buffer named something like '*scratch-org*<number>'
+  will be created and switched to, containing the initial shebang for org-mode.
+"
   (interactive)
   (let ((buffer (get-buffer-create (generate-new-buffer-name "*scratch-org*"))))
     (pop-to-buffer buffer)
@@ -187,7 +240,7 @@ If FILE already exists, signal an error."
       (insert "* First Headline\n")
       (org-mode))))
 
-(defun insert-shebang-for-lisp ()
+(defun insert-common-lisp-shebang ()
   "Insert into buffer a shebang for Lisp file."
   (interactive)
   (insert ";;; -*- Mode: Lisp; Syntax: Common-Lisp -*-"))
@@ -323,8 +376,26 @@ If FILE already exists, signal an error."
 
 (defun insert-clj-uuid (n)
   "Insert a Clojure UUID tagged literal in the form of #uuid
-  \"11111111-1111-1111-1111-111111111111\". The prefix argument N
-  specifies the padding used."
+ \"11111111-1111-1111-1111-111111111111\".
+
+The prefix argument N specifies the padding used to generate the UUID.
+If N is not provided, it defaults to 1. Valid values for N are between 0 and 9, inclusive.
+
+This function inserts a UUID where each segment is composed of the digit N repeated.
+For example, if N is 5, the inserted UUID will be #uuid
+\"55555555-5555-5555-5555-555555555555\".
+
+Arguments:
+N -- The padding digit used to generate the UUID. Must be between 0 and 9.
+
+Usage:
+- Call the function interactively with a prefix argument to specify N.
+- If called without a prefix argument, the function defaults to using 1 as the padding digit.
+
+Example:
+M-x insert-clj-uuid 3
+Inserts: #uuid \"33333333-3333-3333-3333-333333333333\"
+"
   (interactive "P")
   (let ((n (or n 1)))
     (if (or (< n 0) (> n 9))
@@ -339,7 +410,12 @@ If FILE already exists, signal an error."
                (make-string 12 n))))))
 
 (defun backward-copy-word ()
-  "Something"
+  "Copy the word before the cursor to the kill ring.
+This function copies the word located immediately before the
+cursor's current position. It uses `save-excursion` to ensure
+the cursor's position is not changed after the operation. The
+copied word is added to the kill ring, which allows it to be
+pasted (yanked) elsewhere using standard Emacs yank."
   (interactive)
   (save-excursion
     (copy-region-as-kill (point) (progn (backward-word) (point)))))
