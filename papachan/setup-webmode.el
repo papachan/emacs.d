@@ -33,12 +33,17 @@
 (use-package javascript
   :defer t
   :commands javascript-mode
-  :mode (("\\.jsx\\'" . javascript-mode)
-         ("\\.tsx\\'" . javascript-mode))
+  :mode ("\\.jsx\\'" . javascript-mode)
   :init
   :config
   (custom-set-variables
    '(js-indent-level 2)))
+
+(use-package typescript-mode
+  :mode (("\\.ts\\'" . typescript-mode)
+         ("\\.tsx\\'" . typescript-mode))
+  :config
+  (setq typescript-indent-level 2))
 
 (provide 'setup-webmode)
 ;;; setup-webmode.el ends here
