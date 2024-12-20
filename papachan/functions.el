@@ -6,31 +6,46 @@
 (defvar current-time-format "%a %H:%M:%S")
 
 (defun change-legacy-deps-to-deps (str &optional from to)
-  "Method receives an argument STR as an old vector format.
-\ FROM is the beginning of the selected region.
-\ TO is the end of the selected region.
-\ This method transform Vectors deps to the new deps format."
+  "Transform legacy vector dependencies to the new map format.
+If called interactively and a region is selected, it transforms the content of
+the region.
+Otherwise, it operates on the paragraph at point.
+When called programmatically, STR is the input string to transform.
+
+FROM and TO specify the region boundaries for interactive use."
   (interactive
    (if (use-region-p)
        (list nil (region-beginning) (region-end))
      (let ((bds (bounds-of-thing-at-point 'paragraph)))
        (list nil (car bds) (cdr bds)))))
-  (let (workOnStringP inputStr outputStr)
-    (setq workOnStringP (if str t nil))
-    (setq inputStr (if workOnStringP str (buffer-substring-no-properties from to)))
-    (setq outputStr
+  (let ((work-on-string-p (when str t))
+        (input-str (if str
+                       str
+                     (buffer-substring-no-properties from to)))
+        output-str)
+    (setq output-str
           (let ((case-fold-search t))
-            (and (string-match "\\[\\(.*\\)\\\s\\(.*\\)\\]" inputStr)
-                 (concat (match-string 1 inputStr) " {:mvn/version " (match-string 2 inputStr) "}"))))
-    (if workOnStringP
-        outputStr
+            (if (string-match "\\[\\(.*?\\)\\s-+\\(.*?\\)]" input-str)
+                (concat (match-string 1 input-str) " {:mvn/version \"" (match-string 2 input-str) "\"}")
+              input-str)))  ; Return input-str unchanged if no match is found
+    (if work-on-string-p
+        output-str
       (save-excursion
         (delete-region from to)
         (goto-char from)
-        (insert outputStr)))))
+        (insert output-str)))))
 
 (defun buffer/clear ()
-  "Buffer clear."
+  "Clear the contents of the current buffer.
+
+This function erases all text in the current buffer, making it empty.
+It is an interactive command, meaning it can be called directly by the user,
+for example, by using `M-x buffer/clear`.
+
+Usage:
+  M-x buffer/clear
+
+Internally, the function uses `erase-buffer` to remove all text from the current buffer."
   (interactive)
   (with-current-buffer (current-buffer)
     (erase-buffer)))
@@ -72,14 +87,28 @@
   (insert (format-time-string current-time-format (current-time))))
 
 (defun insert-centered-title ()
-  "Insert centered title into a text buffer."
+  "Insert a centered title into the current text buffer.
+
+This function prompts the user to enter a title, formats it with
+'===' at the beginning and end, and then inserts it centered within
+a 72-character wide line in the current buffer.
+
+The title is centered by adding an appropriate number of spaces
+before and after the title.
+
+Usage:
+- Call this function interactively (e.g., \\M-\\x insert-centered-title)
+- Enter the desired title when prompted in the minibuffer.
+
+Example:
+If the user enters 'Chapter 1', the following text will be inserted:
+
+                              ===Chapter 1===
+"
   (interactive)
-  (lambda())
-  (let ((name
-         (format "===%s==="
-                 (read-from-minibuffer "Enter your title:"))))
-    (setq len  (/ (- 72 (length name)) 2)
-          blank (make-string len ?\s))
+  (let* ((name (format "===%s===" (read-from-minibuffer "Enter your title:")))
+         (len (/ (- 72 (length name)) 2))
+         (blank (make-string len ?\s)))
     (insert (concat blank name blank))))
 
 (defun notify-popup (title message)
