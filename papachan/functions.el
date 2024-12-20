@@ -7,7 +7,8 @@
 
 (defun change-legacy-deps-to-deps (str &optional from to)
   "Transform legacy vector dependencies to the new map format.
-If called interactively and a region is selected, it transforms the content of the region.
+If called interactively and a region is selected, it transforms the content of
+the region.
 Otherwise, it operates on the paragraph at point.
 When called programmatically, STR is the input string to transform.
 
@@ -52,7 +53,6 @@ Internally, the function uses `erase-buffer` to remove all text from the current
 (defun insert-latin-unicode ()
   "Insert ISO latin unicode encoding."
   (interactive)
-  (lambda())
   (insert "iso-8859-1"))
 
 (defun insert-time ()
@@ -85,11 +85,13 @@ Internally, the function uses `erase-buffer` to remove all text from the current
 
 This function prompts the user to enter a title, formats it with
 '===' at the beginning and end, and then inserts it centered within
-a 72-character wide line in the current buffer. The title is centered
-by adding an appropriate number of spaces before and after the title.
+a 72-character wide line in the current buffer.
+
+The title is centered by adding an appropriate number of spaces
+before and after the title.
 
 Usage:
-- Call this function interactively (e.g., M-x insert-centered-title)
+- Call this function interactively (e.g., \\M-\\x insert-centered-title)
 - Enter the desired title when prompted in the minibuffer.
 
 Example:
@@ -98,12 +100,9 @@ If the user enters 'Chapter 1', the following text will be inserted:
                               ===Chapter 1===
 "
   (interactive)
-  (lambda())
-  (let ((name
-         (format "===%s==="
-                 (read-from-minibuffer "Enter your title:"))))
-    (setq len  (/ (- 72 (length name)) 2)
-          blank (make-string len ?\s))
+  (let* ((name (format "===%s===" (read-from-minibuffer "Enter your title:")))
+         (len (/ (- 72 (length name)) 2))
+         (blank (make-string len ?\s)))
     (insert (concat blank name blank))))
 
 (defun my-dired-create-file (file)
@@ -396,7 +395,8 @@ Example:
 M-x insert-clj-uuid 3
 Inserts: #uuid \"33333333-3333-3333-3333-333333333333\"
 "
-  (interactive "P")
+  (interactive "p") ;; This allows the function to accept a numeric prefix argument.
+                    ;; If no prefix is provided, n will default to 1.
   (let ((n (or n 1)))
     (if (or (< n 0) (> n 9))
         (error "Argument N must be between 0 and 9."))
