@@ -426,5 +426,6 @@ pasted (yanked) elsewhere using standard Emacs yank."
   (if recentf-list
       (find-file (car recentf-list))
     (message "No recently closed files")))
+
 (provide 'functions)
 ;;; functions.el ends here
