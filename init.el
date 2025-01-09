@@ -32,6 +32,7 @@
 (require 'setup-multiple-cursors)
 (require 'setup-magit)
 (require 'setup-lisp)
+(require 'setup-lsp-mode)
 (require 'setup-dired-sidebar)
 (require 'setup-eshell)
 (require 'setup-ibuffer)
