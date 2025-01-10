@@ -38,3 +38,7 @@ transient
 .lsp-session-v1
 eln-cache
 projects
+.chatgpt-shell.el
+lisp/**/
+snippets/*.docx
+snippets/**/
