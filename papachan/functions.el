@@ -26,7 +26,7 @@ FROM and TO specify the region boundaries for interactive use."
     (setq output-str
           (let ((case-fold-search t))
             (if (string-match "\\[\\(.*?\\)\\s-+\\(.*?\\)]" input-str)
-                (concat (match-string 1 input-str) " {:mvn/version \"" (match-string 2 input-str) "\"}")
+                (concat (match-string 1 input-str) " {:mvn/version " (match-string 2 input-str) "}")
               input-str)))  ; Return input-str unchanged if no match is found
     (if work-on-string-p
         output-str
