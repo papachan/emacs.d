@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (require 'expand-region)
-(require 'window-numbering) ;; Kill buffers which haven't been modified in a while
+;; (require 'window-numbering) ;; Kill buffers which haven't been modified in a while
 (require 'midnight)
 (require 'whitespace)
 (require 'ido)
@@ -42,7 +42,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (column-number-mode)
-(window-numbering-mode 1)
+;; (window-numbering-mode 1)
 
 ;; Always use spaces, not tabs, when indenting
 (setq-default indent-tabs-mode nil)
