@@ -15,7 +15,9 @@
   :config
   (setq lsp-headerline-breadcrumb-enable t
         lsp-lens-enable t
-        lsp-signature-auto-activate nil)
+        lsp-signature-auto-activate nil
+        ;; lsp-enable-completion-at-point nil ; uncomment to use cider completion instead of lsp
+        lsp-enable-indentation nil)
   (dolist (clojure-all-modes '(clojure-mode
                                clojurec-mode
                                clojurescript-mode
