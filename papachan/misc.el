@@ -30,7 +30,7 @@
   (dolist (hook '(prog-mode-hook text-mode-hook))
     (add-hook hook #'whitespace-mode))
   :config
-  (setq whitespace-line-column 90) ;; limit line length
+  (setq whitespace-line-column 99) ;; limit line length
   (setq whitespace-style '(face tabs empty trailing lines-tail tab-mark)))
 
 (if (fboundp 'desktop-save-mode)
@@ -62,11 +62,11 @@
 ;; Move files to trash when deleting
 (setq delete-by-moving-to-trash t)
 
-;; Number of characters until the fill column
-(setq fill-column 80)
-
 ;; prevent vertical split
-(setq split-height-threshold 999)
+;; (setq split-height-threshold 999)
+(setq split-height-threshold 4
+      split-width-threshold 40
+      split-window-preferred-function 'split-window-really-sensibly)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
