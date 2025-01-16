@@ -2,10 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace) ;; to ensure files have no trailing whitespace
-
-(setq ring-bell-function 'ignore)
-
 (use-package whitespace
   :init
   (dolist (hook '(prog-mode-hook text-mode-hook))
@@ -13,6 +9,11 @@
   :config
   (setq whitespace-line-column 90)
   (setq whitespace-style '(face tabs empty trailing lines-tail tab-mark)))
+
+;; to ensure files have no trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(setq ring-bell-function 'ignore)
 
 (if (fboundp 'desktop-save-mode)
     (desktop-save-mode 1))
