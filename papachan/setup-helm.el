@@ -12,10 +12,7 @@
 
 (use-package helm
   :ensure t
-  :bind (("M-x" . helm-M-x)
-         ("C-x C-f" . helm-find-files)
-         ("C-x r b" . helm-filtered-bookmarks)
-         ("C-x C-r" . helm-recentf))
+  :bind (("C-x C-f" . helm-find-files))
   :config
   (setq helm-ff-skip-boring-files t
         helm-ff-skip-git-ignored-files t

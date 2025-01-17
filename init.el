@@ -45,12 +45,12 @@
 (require 'setup-projectile)
 (require 'setup-company)
 (require 'setup-clojure)
-(require 'shortcuts)
 (require 'setup-iflipb)
 (require 'setup-eros)
 (require 'setup-chatgpt)
 ;; (require 'setup-lsp-mode)
 (require 'setup-yasnippet)
+(require 'shortcuts)
 
 (setq warning-minimum-level :emergency)
 

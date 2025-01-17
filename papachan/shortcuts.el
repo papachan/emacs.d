@@ -1,5 +1,6 @@
 ;;; shortcuts.el --- Summary
-;;
+;;; Commentary:
+;;; Code:
 (require 'visual-regexp)
 
 ;; Unset C-z
