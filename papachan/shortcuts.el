@@ -26,7 +26,7 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-c w") 'select-whole-line)
 (global-set-key (kbd "C-c o") 'insert-a-blank-line)
-(global-set-key (kbd "C-x c d") (lambda () (interactive) (dired ".")))
+(global-set-key (kbd "C-x c d") 'current-directory)
 (global-set-key (kbd "C-c m") 'magit-status)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)

@@ -389,5 +389,9 @@ specifies the padding used."
    (buffer-list))
   (delete-other-windows))
 
+(defun current-directory ()
+  (interactive)
+  (dired "."))
+
 (provide 'functions)
 ;;; functions.el ends here
