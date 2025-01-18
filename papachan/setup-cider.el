@@ -48,12 +48,6 @@
   ;; company
   (add-hook 'cider-repl-mode-hook #'company-mode))
 
-;; (use-package anakondo
-;;   :ensure t
-;;   :commands anakondo-minor-mode
-;;   :init
-;;   (require 'projectile))
-
 ;; (use-package flycheck-clj-kondo
 ;;   :ensure t)
 

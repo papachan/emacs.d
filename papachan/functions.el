@@ -427,5 +427,9 @@ pasted (yanked) elsewhere using standard Emacs yank."
       (find-file (car recentf-list))
     (message "No recently closed files")))
 
+(defun current-directory ()
+  (interactive)
+  (dired "."))
+
 (provide 'functions)
 ;;; functions.el ends here

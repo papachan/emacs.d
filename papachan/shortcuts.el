@@ -20,9 +20,9 @@
 (global-set-key (kbd "C-c y") "\C-a\C- \C-n\M-w\C-y")
 (global-set-key (kbd "C-c -") 'buffer/clear)
 ;; Dired
-(global-set-key (kbd "C-x c d") (lambda () (interactive) (dired ".")))
+(global-set-key (kbd "C-x c d") 'current-directory)
 (global-set-key (kbd "C-x j") 'json-pretty-print-buffer)
-(global-set-key (kbd "C-c C-b") 'dos2unix)
+;; (global-set-key (kbd "C-c C-b") 'dos2unix)
 ;; (global-set-key (kbd "") 'backward-copy-word)
 
 (global-set-key (kbd "C-c a") 'increment-number-at-point)
