@@ -4,10 +4,10 @@
 
 (use-package helm
   :ensure t
-  :bind (("M-x" . helm-M-x)
-         ("C-x C-f" . helm-find-files)
-         ("C-x r b" . helm-filtered-bookmarks)
-         ("C-x C-r" . helm-recentf))
+  :bind (("M-x" . #'helm-M-x)
+         ("C-x C-f" . #'helm-find-files)
+         ("C-x r b" . #'helm-filtered-bookmarks)
+         ("C-x C-r" . #'helm-recentf))
   :config
   (setq helm-ff-skip-boring-files t
         ;helm-ff-skip-git-ignored-files t
@@ -22,7 +22,7 @@
 
 (use-package helm-ag
   :ensure t
-  :bind ("C-x c M-g a" . helm-ag) ;; helm-do-ag
+  :bind ("C-x c M-g a" . #'helm-ag) ;; helm-do-ag
   )
 
 (use-package swiper
