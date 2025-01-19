@@ -24,8 +24,7 @@
 (global-set-key (kbd "C-x j") 'json-pretty-print-buffer)
 (global-set-key (kbd "C-c w") 'select-whole-line)
 (global-set-key (kbd "C-c o") 'insert-a-blank-line)
-(global-set-key (kbd "C-x c d") (lambda () (interactive) (dired ".")))
-(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+(global-set-key (kbd "C-x c d") 'current-directory)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
 (global-set-key (kbd "C-c f") 'follow-mode)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
@@ -37,10 +36,10 @@
 (global-set-key (kbd "C-c C-n") 'new-empty-buffer)
 (global-set-key (kbd "RET") 'newline-and-indent)
 ;; (global-set-key (kbd "S-<f1>") (lambda () (interactive) (dired "~/")))
-(global-set-key (kbd "S-<f2>") (lambda () (interactive) (dired "~/.emacs.d"))) ;; replace auto-scrolling shortcut
+;; (global-set-key (kbd "S-<f2>") (lambda () (interactive) (dired "~/.emacs.d"))) ;; replace auto-scrolling shortcut
 ;; (global-set-key (kbd "S-<f3>") (lambda () (interactive) (dired "~/Dropbox/documents/")))
-(global-set-key (kbd "S-<f4>") (lambda () (interactive) (dired "~/Dropbox")))
-(global-set-key (kbd "S-<f5>") (lambda () (interactive) (dired "~/Downloads")))
+;; (global-set-key (kbd "S-<f4>") (lambda () (interactive) (dired "~/Dropbox")))
+;; (global-set-key (kbd "S-<f5>") (lambda () (interactive) (dired "~/Downloads")))
 (global-set-key (kbd "<f8>") 'repeat-complex-command)
 (global-set-key (kbd "C-c v") 'revert-buffer-without-confirmation)
 (global-set-key (kbd "C-c a") 'my-increment-number-at-point)
@@ -56,8 +55,8 @@
 (global-set-key (kbd "C-c %") 'query-replace-regexp)
 (global-set-key (kbd "C-c C-v") 'other-frame)
 
-(global-set-key (kbd "M-g 1") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig.txt")))
-(global-set-key (kbd "M-g 2") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig-papachan.txt")))
+;; (global-set-key (kbd "M-g 1") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig.txt")))
+;; (global-set-key (kbd "M-g 2") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig-papachan.txt")))
 
 (global-set-key (kbd "C-c f") 'reopen-last-closed-file)
 (provide 'shortcuts)

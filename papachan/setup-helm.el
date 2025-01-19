@@ -5,11 +5,6 @@
 ;; unset list-directory
 (fmakunbound 'list-directory)
 
-(use-package helm-ag
-  :ensure t
-  :bind ("C-x c M-g a" . helm-ag)
-  :commands (helm-ag))
-
 (use-package helm
   :ensure t
   :bind (("M-x" . #'helm-M-x)
@@ -23,6 +18,11 @@
         helm-display-buffer-width 80
         helm-split-window-inside-p t)
   (helm-mode t))
+
+(use-package helm-ag
+  :ensure t
+  :bind ("C-x c M-g a" . #'helm-ag)
+  :commands (helm-ag))
 
 (use-package swiper
   :ensure t)

@@ -438,5 +438,9 @@ If FILE already exists, signal an error."
    (buffer-list))
   (delete-other-windows))
 
+(defun current-directory ()
+  (interactive)
+  (dired "."))
+
 (provide 'functions)
 ;;; functions.el ends here
