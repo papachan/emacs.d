@@ -15,6 +15,17 @@
   ;; Move files to trash when deleting
   (setq delete-by-moving-to-trash t))
 
+(use-package whitespace
+  :init
+  (dolist (hook '(prog-mode-hook text-mode-hook))
+    (add-hook hook #'whitespace-mode))
+  :config
+  (setq whitespace-line-column 90)
+  (setq whitespace-style '(face tabs empty trailing lines-tail tab-mark)))
+
+ ;; to ensure files have no trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; local env
 (setenv "LC_CTYPE" "en_US.UTF-8")
 (set-language-environment "UTF-8")
@@ -25,9 +36,6 @@
 ;; (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-(setq whitespace-line-column 90
-      whitespace-style '(tabs trailing tab-mark lines-tail))
-
 ;; (if (fboundp 'desktop-save-mode)
 ;;     (desktop-save-mode 1))
 
@@ -37,7 +45,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (column-number-mode)
-(window-numbering-mode 1)
+(window-numbering-mode -1)
 
 ;; Always use spaces, not tabs, when indenting
 (setq-default indent-tabs-mode nil)
@@ -54,7 +62,10 @@
 (setq fill-column 80)
 
 ;; prevent vertical split
-(setq split-height-threshold 999)
+;; (setq split-height-threshold 999)
+(setq split-height-threshold 4
+      split-width-threshold 40
+      split-window-preferred-function 'split-window-really-sensibly)
 
 (setq vc-follow-symlinks t)
 
@@ -84,8 +95,6 @@
 ;; (setq electric-pair-preserve-balance nil)
 
 (setq compilation-read-command nil) ; compile in a status buffer
-
-(add-hook 'before-save-hook 'delete-trailing-whitespace) ;; to ensure files have no trailing whitespace
 
 (put 'dired-find-alternate-file 'disabled nil)
 

@@ -14,7 +14,8 @@
   :ensure t
   :bind (("M-x" . #'helm-M-x)
          ("C-x C-f" . #'helm-find-files)
-         ("C-x r b" . #'helm-filtered-bookmarks))
+         ("C-x r b" . #'helm-filtered-bookmarks)
+         ("C-x C-r" . #'helm-recentf))
   :config
   (setq helm-ff-skip-boring-files t
         helm-candidate-number-limit 100
