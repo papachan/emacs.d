@@ -12,7 +12,10 @@
 
 (use-package helm
   :ensure t
-  :bind (("C-x C-f" . helm-find-files))
+  :bind (("M-x" . #'helm-M-x)
+         ("C-x C-f" . #'helm-find-files)
+         ("C-x r b" . #'helm-filtered-bookmarks)
+         ("C-x C-r" . #'helm-recentf))
   :config
   (setq helm-ff-skip-boring-files t
         helm-ff-skip-git-ignored-files t
@@ -21,7 +24,7 @@
         ;; helm-completion-in-region-fuzzy-match t
         helm-candidate-number-limit 100
         helm-display-buffer-reuse-frame t
-        helm-display-buffer-width 80
+        ;; helm-display-buffer-width 80
         helm-split-window-inside-p t)
   (helm-mode t))
 
