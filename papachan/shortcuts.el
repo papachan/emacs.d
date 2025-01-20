@@ -2,15 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 (require 'visual-regexp)
+(require 'expand-region)
 
 ;; Unset C-z
 (global-unset-key (kbd "C-z"))
 
 (global-set-key (kbd "C-<next>") 'next-buffer)
 (global-set-key (kbd "C-<prior>") 'previous-buffer)
-
-(global-set-key (kbd "C-.") 'other-window)
-(global-set-key (kbd "C-,") (lambda() (interactive) (other-window -1)))
 (global-set-key (kbd "M-g q") 'mark-sexp)
 (global-set-key (kbd "C-x 5 n") 'make-frame-command) ;; new frame
 (global-set-key (kbd "C-x 5 3") 'gnus-other-frame)
@@ -29,7 +27,6 @@
 (global-set-key (kbd "C-x c d") 'current-directory)
 (global-set-key (kbd "C-c m") 'magit-status)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
-(global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
 (global-set-key (kbd "C-x 6") 'twist-split)
 (global-set-key (kbd "C-x C-;") 'comment-region)
@@ -60,5 +57,6 @@
 (global-set-key (kbd "<C-wheel-down>") 'ignore)
 
 (global-set-key (kbd "C-c f") 'reopen-last-closed-file)
+
 (provide 'shortcuts)
 ;;; shortcuts.el ends here

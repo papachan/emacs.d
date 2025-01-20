@@ -48,7 +48,6 @@
 (require 'setup-iflipb)
 (require 'setup-eros)
 (require 'setup-chatgpt)
-;; (require 'setup-lsp-mode)
 (require 'setup-yasnippet)
 (require 'shortcuts)
 
