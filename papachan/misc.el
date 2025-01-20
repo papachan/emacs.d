@@ -9,12 +9,6 @@
 (require 'recentf)
 (require 'move-text)
 
-;; (setq inhibit-startup-screen t)
-
-(push '(menu-bar-lines . 0) default-frame-alist)
-(push '(tool-bar-lines . 0) default-frame-alist)
-(push '(vertical-scroll-bars) default-frame-alist)
-
 ;; local env
 (setenv "LC_CTYPE" "en_US.UTF-8")
 (set-language-environment "UTF-8")
@@ -22,8 +16,24 @@
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
-;; (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(use-package emacs
+  :custom
+  ;; Prevent lock files from creating.
+  (setq create-lockfiles nil)
+  (setq make-backup-files nil)
+
+  ;; disable system beep
+  (setq visible-bell t)
+
+  ;; Ignore case when searching
+  (setq case-fold-search t)
+
+  ;; Move files to trash when deleting
+  (setq delete-by-moving-to-trash t))
 
 (use-package whitespace
   :init
@@ -49,26 +59,11 @@
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
 
-;; Prevent lock files from creating.
-(setq create-lockfiles nil)
-(setq make-backup-files nil)
-
-;; disable system beep
-(setq visible-bell t)
-
-;; Ignore case when searching
-(setq case-fold-search t)
-
-;; Move files to trash when deleting
-(setq delete-by-moving-to-trash t)
-
 ;; prevent vertical split
 ;; (setq split-height-threshold 999)
 (setq split-height-threshold 4
       split-width-threshold 40
       split-window-preferred-function 'split-window-really-sensibly)
-
-(defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq vc-follow-symlinks t)
 
