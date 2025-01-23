@@ -21,7 +21,7 @@
 
 (use-package helm-ag
   :ensure t
-  :bind ("C-x c M-g a" . #'helm-ag)
+  :bind ("C-x c M-g a" . #'helm-do-grep-ag)
   :commands (helm-ag))
 
 (use-package swiper
@@ -33,6 +33,10 @@
   :bind
   (("C-s" . swiper-helm)
    ("C-r" . swiper-helm)))
+
+(use-package helm-cider
+  :ensure t
+  :hook ((cider-mode . helm-cider-mode)))
 
 (provide 'setup-helm)
 ;;; setup-helm.el ends here
