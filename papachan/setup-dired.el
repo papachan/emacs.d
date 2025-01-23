@@ -17,6 +17,8 @@
          (match-string 1))))))
 
 (use-package dired
+  :custom
+  (dired-listing-switches "-alFh --group-directories-first")
   :config
   (progn
     (define-key dired-mode-map (kbd "M-c") 'copy-file)
