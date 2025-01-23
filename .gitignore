@@ -42,3 +42,6 @@ workspace
 transient
 fonts
 projects
+snippets/**/
+snippets/*.docx
+org-persist
