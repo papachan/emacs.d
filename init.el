@@ -25,6 +25,7 @@
 (require 'init-org)
 (require 'setup-cider)
 (require 'setup-clojure)
+(require 'setup-dired)
 (require 'setup-dired-sidebar)
 (require 'setup-dotnet)
 (require 'setup-helm)
@@ -40,8 +41,8 @@
 (require 'setup-lisp)
 (require 'setup-iflipb)
 (require 'setup-idle-highlight)
-(require 'shortcuts)
 (require 'setup-eros)
 (require 'setup-python)
 (require 'setup-yasnippet)
+(require 'shortcuts)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
