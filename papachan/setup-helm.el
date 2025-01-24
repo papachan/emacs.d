@@ -22,8 +22,7 @@
 
 (use-package helm-ag
   :ensure t
-  :bind ("C-x c M-g a" . #'helm-ag) ;; helm-do-ag
-  )
+  :bind ("C-x c M-g a" . #'helm-do-grep-ag))
 
 (use-package swiper
   :ensure t)
