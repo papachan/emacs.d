@@ -6,6 +6,15 @@
 (require 'company)
 (require 'helm-cider)
 
+(defun clerk-show ()
+  (interactive)
+  (when-let
+      ((filename
+        (buffer-file-name)))
+    (save-buffer)
+    (cider-interactive-eval
+     (concat "(nextjournal.clerk/show! \"" filename "\")"))))
+
 (use-package cider
   :ensure t
   :defer t
