@@ -12,6 +12,8 @@
 
   :config
   (setq lsp-headerline-breadcrumb-enable t
+        lsp-ui-doc-enable nil
+        lsp-ui-sideline-enable nil
         lsp-lens-enable t
         lsp-signature-auto-activate nil
         lsp-enable-indentation nil)
