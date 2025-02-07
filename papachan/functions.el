@@ -1,6 +1,7 @@
 ;;; functions.el --- Summary
 ;;; Commentary:
 ;;; Code:
+(require 's)
 (defvar current-date-format "%Y-%m-%d")
 (defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y")
 (defvar current-time-format "%a %H:%M:%S")
@@ -430,6 +431,43 @@ pasted (yanked) elsewhere using standard Emacs yank."
 (defun current-directory ()
   (interactive)
   (dired "."))
+
+(defun un-camelcase-word-at-point ()
+  "un-camelcase the word at point, replacing uppercase chars with
+the lowercase version preceded by an underscore.
+
+The first char, if capitalized (eg, PascalCase) is just
+downcased, no preceding underscore.
+"
+  (interactive)
+  (save-excursion
+    (let ((bounds (bounds-of-thing-at-point 'word)))
+      (replace-regexp "\\([A-Z]\\)" "_\\1" nil
+                      (1+ (car bounds)) (cdr bounds))
+      (downcase-region (car bounds) (cdr bounds)))))
+
+(defun to-snake-case (start end)
+  "Change selected text to snake case format.
+
+Snake case is a naming convention where words are separated by
+underscores (_) and all letters are in lowercase. For example,
+the string 'CamelCaseString' would be transformed to 'camel_case_string'.
+
+Usage:
+- Select the region of text you want to transform.
+- Call this function interactively (e.g., M-x to-snake-case).
+
+The interactive argument \"r\" refers to the region's start and end points.
+
+Example:
+- If you select the text 'CamelCaseString' and call this function,
+  it will be transformed to 'camel_case_string'."
+  (interactive "r")
+  (if (use-region-p)
+      (let ((camel-case-str (buffer-substring start end)))
+        (delete-region start end)
+        (insert (s-snake-case camel-case-str)))
+    (message "No region selected")))
 
 (provide 'functions)
 ;;; functions.el ends here
