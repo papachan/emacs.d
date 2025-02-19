@@ -19,4 +19,12 @@
     (setq frame-title-format
           (nth (random (length quotes)) quotes)))
 
+(insert (nth (random (length quotes))
+             quotes))
+
+(message "%S" (nth (random (length quotes))
+           quotes))
+
+
+
 (provide 'pynchon)

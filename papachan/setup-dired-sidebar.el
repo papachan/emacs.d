@@ -11,7 +11,7 @@
                                       (tab-line-mode -1))))
   :config
   (add-hook 'dired-sidebar-mode-hook (lambda ()
-                                        (tab-line-mode -1)))
+                                       (tab-line-mode -1)))
   :commands (dired-sidebar-toggle-sidebar))
 
 (provide 'setup-dired-sidebar)

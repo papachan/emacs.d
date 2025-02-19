@@ -26,6 +26,9 @@
   (add-to-list 'projectile-globally-ignored-directories "resources/public/js")
   (add-to-list 'projectile-globally-ignored-directories "node[_-]modules")
   (add-to-list 'projectile-globally-ignored-directories "target")
+  (add-to-list 'projectile-globally-ignored-directories ".shadow-cljs")
+  (add-to-list 'projectile-globally-ignored-directories ".lsp")
+  (add-to-list 'projectile-globally-ignored-directories ".rev")
   (setq projectile-mode-line '(:eval (format " Prj[%s]" (projectile-project-name)))))
 
 ;; (use-package helm-projectile
