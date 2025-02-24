@@ -6,7 +6,7 @@
 (require 'expand-region)
 
 (global-set-key (kbd "C-x C-;") 'comment-region)
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
+(global-set-key (kbd "C-x k") 'kill-current-buffer)
 (global-set-key (kbd "C-<next>") 'next-buffer)
 (global-set-key (kbd "C-<prior>") 'previous-buffer)
 (global-set-key (kbd "C-c y") "\C-a\C- \C-n\M-w\C-y");; new line
