@@ -11,7 +11,8 @@
                       (mode . magit-log-mode)
                       (mode . magit-process-mode)
                       (mode . magit-revision-mode)
-                      (name . "magit-refs:*\*")))
+                      (name . "magit-refs:*\*")
+                      (name . "magit-diff:*\*")))
          ("emacs-config" (or (filename . "\\.emacs\\.d")
                              (filename . ".emacs.d/.*.el$")))
          ("term" (name . "\*ansi-term-*\*"))
@@ -149,8 +150,15 @@
   (ibuffer-next-buffer-aux
    (reverse (buffer-list))))
 
+(defun ibuffer-kill-buffer-crap ()
+  (interactive)
+  (kill-matching-buffers-no-ask "*helm-mode*")
+  (kill-matching-buffers-no-ask "*helm *")
+  (kill-matching-buffers-no-ask "*magit-*"))
+
 (define-key ibuffer-mode-map (kbd "C-b") #'ibuffer-next-buffer)
 (define-key ibuffer-mode-map (kbd "C-f") #'ibuffer-previous-buffer)
+(define-key ibuffer-mode-map (kbd "i") #'ibuffer-kill-buffer-crap)
 
 ;; Use human readable Size column instead of original one
 (define-ibuffer-column size-h
