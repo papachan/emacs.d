@@ -153,8 +153,13 @@
 (defun ibuffer-kill-buffer-crap ()
   (interactive)
   (kill-matching-buffers-no-ask "*helm-mode*")
+  (kill-matching-buffers-no-ask "*swiper*")
+  (kill-matching-buffers-no-ask "*xref*")
+  (kill-matching-buffers-no-ask "*helm-projectile*")
   (kill-matching-buffers-no-ask "*helm *")
-  (kill-matching-buffers-no-ask "*magit-*"))
+  (kill-matching-buffers-no-ask "*magit-*")
+  ;; refresh ibuffer
+  (ibuffer-update nil t))
 
 (define-key ibuffer-mode-map (kbd "C-b") #'ibuffer-next-buffer)
 (define-key ibuffer-mode-map (kbd "C-f") #'ibuffer-previous-buffer)
