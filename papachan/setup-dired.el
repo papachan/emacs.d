@@ -24,6 +24,7 @@
     (define-key dired-mode-map (kbd "M-c") 'copy-file)
     (define-key dired-mode-map (kbd "M-s") 'rg)
     (define-key dired-mode-map "z" #'dired-get-size)
+    (define-key dired-mode-map (kbd "C-X C-m") 'compile) ;; call Makefile
     (define-key dired-mode-map "q"
                 (lambda ()
                   "move to the parent directory"
