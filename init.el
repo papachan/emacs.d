@@ -2,8 +2,8 @@
 ;;; commentary:
 ;;; code:
 
-(when (version< emacs-version "28")
-  (error "This config requires at least GNU Emacs 28, but you're running %s" emacs-version))
+(when (version< emacs-version "29")
+  (error "This config requires at least GNU Emacs 30, but you're running %s" emacs-version))
 
 ;; prefer newer non-byte compiled sources to older byte compiled ones
 (setq load-prefer-newer t)
@@ -36,38 +36,46 @@
                      (or (buffer-file-name) load-file-name))
                     pkg-name))))
     (add-to-list 'load-path n)))
-;; (mapc 'load (file-expand-wildcards (concat init-directory "papachan/*.el")))
+
 (mapcar 'add-pkg '("papachan" "lib"))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defvar papachan/init-modules '(appearance
+                                misc
+                                functions
+                                ido-snippet
+                                setup-cider
+                                setup-clojure
+                                setup-company
+                                setup-dired
+                                setup-dired-sidebar
+                                setup-font-system
+                                setup-helm
+                                setup-ibuffer
+                                setup-iflipb
+                                setup-chatgpt
+                                init-flycheck
+                                setup-lisp
+                                setup-lsp-mode
+                                setup-magit
+                                setup-multiple-cursors
+                                setup-projectile
+                                setup-shell
+                                setup-web
+                                setup-python
+                                setup-idle-highlight
+                                init-undo-tree
+                                shortcuts
+                                setup-eshell
+                                setup-eros
+                                setup-yasnippet)
+  "List of configuration modules to load.")
+
+(dolist (module papachan/init-modules)
+  (condition-case err
+      (require module)
+    (error
+     (message "Failed to load module \"%s\": %s" module err))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (if (fboundp 'desktop-save-mode)
     (desktop-save-mode 1))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'appearance)
-(require 'misc)
-(require 'functions)
-(require 'ido-snippet)
-(require 'setup-cider)
-(require 'setup-clojure)
-(require 'setup-company)
-(require 'setup-dired)
-(require 'setup-dired-sidebar)
-(require 'setup-font-system)
-(require 'setup-helm)
-(require 'setup-ibuffer)
-(require 'setup-iflipb)
-(require 'setup-chatgpt)
-(require 'init-flycheck)
-(require 'setup-lisp)
-(require 'setup-lsp-mode)
-(require 'setup-magit)
-(require 'setup-multiple-cursors)
-(require 'setup-projectile)
-(require 'setup-shell)
-(require 'setup-web)
-(require 'setup-python)
-(require 'setup-idle-highlight)
-(require 'init-undo-tree)
-(require 'shortcuts)
-(require 'setup-eshell)
-(require 'setup-eros)
-(require 'setup-yasnippet)

@@ -480,5 +480,14 @@ Example:
         (insert (s-snake-case camel-case-str)))
     (message "No region selected")))
 
+;; https://github.com/Fuco1/.emacs.d/blob/master/site-lisp/my-advices.el#L7
+(defadvice kill-line (before kill-line-autoreindent activate)
+  "Kill excess whitespace when joining lines.
+If the next line is joined to the current line, kill the extra indent whitespace in front of the next line."
+  (when (and (eolp) (not (bolp)))
+    (save-excursion
+      (forward-char 1)
+      (just-one-space 1))))
+
 (provide 'functions)
 ;;; functions.el ends here
