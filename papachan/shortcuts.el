@@ -7,7 +7,7 @@
 (global-set-key (kbd "M-n") 'er/mark-word)
 (global-set-key (kbd "C-c <deletechar>") 'fixup-whitespace)
 (global-set-key (kbd "C-c w") 'select-whole-line)
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
+(global-set-key (kbd "C-x k") 'kill-current-buffer)
 (global-set-key (kbd "C-c C-o") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-c o") 'insert-a-blank-line)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
@@ -22,11 +22,10 @@
 ;; Dired
 (global-set-key (kbd "C-x c d") 'current-directory)
 (global-set-key (kbd "C-x j") 'json-pretty-print-buffer)
-;; (global-set-key (kbd "C-c C-b") 'dos2unix)
-;; (global-set-key (kbd "") 'backward-copy-word)
-
 (global-set-key (kbd "C-c a") 'increment-number-at-point)
 (global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
 (global-set-key (kbd "C-c f") 'reopen-last-closed-file)
+;; (global-set-key (kbd "C-c C-b") 'dos2unix)
+;; (global-set-key (kbd "") 'backward-copy-word)
 (provide 'shortcuts)
 ;;; shortcuts.el ends here

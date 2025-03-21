@@ -28,7 +28,10 @@
   (add-to-list 'projectile-globally-ignored-directories "js/compiled")
   (add-to-list 'projectile-globally-ignored-directories "resources/public/js")
   (add-to-list 'projectile-globally-ignored-directories "public/js")
+  (add-to-list 'projectile-globally-ignored-directories ".shadow-cljs")
+  (add-to-list 'projectile-globally-ignored-directories ".lsp")
   (add-to-list 'projectile-globally-ignored-directories "node[_-]modules")
+  (add-to-list 'projectile-globally-ignored-directories "node_modules")
   (add-to-list 'projectile-globally-ignored-directories "target")
   (setq projectile-mode-line '(:eval (format " Prj[%s]" (projectile-project-name)))))
 

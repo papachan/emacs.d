@@ -4,8 +4,8 @@
 ;;; Code:
 
 (use-package dired
-  :custom
-  (dired-listing-switches "-alFh --group-directories-first")
+  ;; :custom
+  ;; (dired-listing-switches "-alFh --group-directories-first")
   :config
   (progn
     (define-key dired-mode-map (kbd "M-s") 'rg)

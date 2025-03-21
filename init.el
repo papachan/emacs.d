@@ -15,34 +15,39 @@
                     pkg-name))))
     (add-to-list 'load-path n)))
 
-;; add papachan directory to path
-(mapcar 'add-pkg '("papachan"))
+(mapc 'add-pkg '("papachan"))
 
-(require 'init-repo)
-(require 'misc)
-(require 'appearance)
-(require 'functions)
-(require 'init-org)
-(require 'setup-cider)
-(require 'setup-clojure)
-(require 'setup-dired)
-(require 'setup-dired-sidebar)
-(require 'setup-dotnet)
-(require 'setup-helm)
-(require 'setup-ibuffer)
-(require 'setup-lsp-mode)
-(require 'setup-magit)
-(require 'setup-multiple-cursors)
-(require 'setup-projectile)
-(require 'setup-swiper)
-(require 'setup-webmode)
-(require 'setup-eshell)
-(require 'setup-undotree)
-(require 'setup-lisp)
-(require 'setup-iflipb)
-(require 'setup-idle-highlight)
-(require 'setup-eros)
-(require 'setup-python)
-(require 'setup-yasnippet)
-(require 'shortcuts)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defvar papachan/init-modules '(init-repo
+                                misc
+                                appearance
+                                functions
+                                init-org
+                                setup-cider
+                                setup-clojure
+                                setup-dired
+                                setup-dired-sidebar
+                                setup-dotnet
+                                setup-helm
+                                setup-ibuffer
+                                setup-lsp-mode
+                                setup-magit
+                                setup-multiple-cursors
+                                setup-projectile
+                                setup-swiper
+                                setup-webmode
+                                setup-eshell
+                                setup-undotree
+                                setup-lisp
+                                setup-iflipb
+                                setup-idle-highlight
+                                setup-eros
+                                setup-python
+                                setup-yasnippet
+                                shortcuts))
+(dolist (module papachan/init-modules)
+  (condition-case err
+      (require module)
+    (error
+     (message "Failed to load module \"%s\": %s " module err))))
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

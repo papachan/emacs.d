@@ -43,27 +43,17 @@
     (interactive)
     (magit-mode-setup #'magit-staging-mode))
 
-  ;; Protect against accident pushes to upstream
-  (defadvice magit-push-current-to-upstream
-      (around my-protect-accidental-magit-push-current-to-upstream)
-    "Protect against accidental push to upstream.
-     Causes `magit-git-push' to ask the user for confirmation first."
-    (let ((my-magit-ask-before-push t))
-      ad-do-it))
-
-  (defadvice magit-git-push (around my-protect-accidental-magit-git-push)
-    "Maybe ask the user for confirmation before pushing.
-     Advice to `magit-push-current-to-upstream' triggers this query."
+  (defun magit-push--protected-branch (magit-push-fun &rest args)
+    "Prompt for confirmation before permitting a push to upstream."
     (if (bound-and-true-p my-magit-ask-before-push)
         ;; Arglist is (BRANCH TARGET ARGS)
-        (if (yes-or-no-p (format "Push %s branch upstream to %s? "
-                                 (ad-get-arg 0) (ad-get-arg 1)))
-            ad-do-it
+        (if (yes-or-no-p (format "Push branch %s? " (magit-get-current-branch)))
+            (apply magit-push-fun args)
           (error "Push to upstream aborted by user"))
-      ad-do-it))
+      (apply magit-push-fun args)))
 
-  (ad-activate 'magit-push-current-to-upstream)
-  (ad-activate 'magit-git-push)
+  (advice-add 'magit-push-current-to-pushremote :around #'magit-push--protected-branch)
+  (advice-add 'magit-push-current-to-upstream :around #'magit-push--protected-branch)
 
   (progn
     (magit-add-section-hook 'magit-status-sections-hook
@@ -82,17 +72,17 @@
     (remove-hook 'server-switch-hook 'magit-commit-diff)
 
     (setq magit-display-buffer-function
-      (lambda (buffer)
-        (display-buffer
-         buffer (if (and (derived-mode-p 'magit-mode)
-                         (memq (with-current-buffer buffer major-mode)
-                               '(magit-process-mode
-                                 magit-revision-mode
-                                 magit-diff-mode
-                                 magit-stash-mode
-                                 magit-status-mode)))
-                    nil
-                  '(display-buffer-same-window)))))))
+          (lambda (buffer)
+            (display-buffer
+             buffer (if (and (derived-mode-p 'magit-mode)
+                             (memq (with-current-buffer buffer major-mode)
+                                   '(magit-process-mode
+                                     magit-revision-mode
+                                     magit-diff-mode
+                                     magit-stash-mode
+                                     magit-status-mode)))
+                        nil
+                      '(display-buffer-same-window)))))))
 
 (provide 'setup-magit)
 ;;; setup-magit.el ends here
