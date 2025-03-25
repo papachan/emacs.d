@@ -4,6 +4,7 @@
 ;;; Code:
 (require 'visual-regexp)
 (require 'expand-region)
+(require 'change-inner)
 
 (global-set-key (kbd "C-x C-;") 'comment-region)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
@@ -20,6 +21,8 @@
 (global-set-key [pause] 'toggle-current-window-dedication)
 (global-set-key (kbd "C-c C-j") 'replace-string)
 (global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "M-i") 'change-inner)
+(global-set-key (kbd "M-o") 'change-outer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x j") 'json-pretty-print-buffer)
 (global-set-key (kbd "C-c w") 'select-whole-line)
