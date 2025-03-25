@@ -32,7 +32,9 @@
   :ensure t
   :bind
   (("C-s" . swiper-helm)
-   ("C-r" . swiper-helm)))
+   ("C-r" . swiper-helm))
+  :config
+  (require 'ivy))
 
 (use-package helm-cider
   :ensure t
