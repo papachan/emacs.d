@@ -1,4 +1,4 @@
-;;; setup-yasnippet.el -- Summary
+;;; setup-yasnippet.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

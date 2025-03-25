@@ -1,4 +1,4 @@
-;;; setup-clojure.el --- Summary
+;;; setup-clojure.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 (require 'html-to-hiccup)

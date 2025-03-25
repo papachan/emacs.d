@@ -1,4 +1,4 @@
-;;; setup-shell.el --- Summary
+;;; setup-shell.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 (require 'em-smart)

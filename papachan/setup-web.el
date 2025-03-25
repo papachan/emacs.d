@@ -1,4 +1,4 @@
-;;; setup-web.el --- Summary
+;;; setup-web.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 (setq js-indent-level 2)

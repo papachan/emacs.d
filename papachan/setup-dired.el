@@ -1,11 +1,11 @@
-;;; setup-dired.el --- Summary
+;;; setup-dired.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
 
 ;; https://oremacs.com/2015/01/12/dired-file-size/
 (defun dired-get-size ()
-  "Display file size in dired."
+  "Display file size in Dired."
   (interactive)
   (let ((files (dired-get-marked-files)))
     (with-temp-buffer

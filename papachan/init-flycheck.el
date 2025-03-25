@@ -1,4 +1,4 @@
-;;; init-flycheck.el --- On-the-fly syntax checking
+;;; init-flycheck.el --- On-the-fly syntax checking.  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;
 

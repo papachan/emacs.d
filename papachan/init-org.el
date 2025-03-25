@@ -1,4 +1,4 @@
-;;; init-org.el --- Summary
+;;; init-org.el --- -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

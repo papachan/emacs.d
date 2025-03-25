@@ -1,4 +1,4 @@
-;;; setup-font-system.el --- Summary
+;;; setup-font-system.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 (progn

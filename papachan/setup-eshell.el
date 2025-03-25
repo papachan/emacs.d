@@ -1,4 +1,4 @@
-;;; setup-eshell.el --- Summary
+;;; setup-eshell.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 (require 'esh-module)

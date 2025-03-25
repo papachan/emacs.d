@@ -1,4 +1,4 @@
-;;; setup-chatgpt.el --- Initialize chatgpt-shell configurations
+;;; setup-chatgpt.el --- Initialize chatgpt-shell configurations. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;
 

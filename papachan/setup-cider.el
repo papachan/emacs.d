@@ -1,4 +1,4 @@
-;;; setup-cider.el --- Summary
+;;; setup-cider.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Cider setup
 ;;; Clojure IDE and REPL for Emacs

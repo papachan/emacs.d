@@ -1,4 +1,4 @@
-;;; setup-ibuffer.el --- Summary
+;;; setup-ibuffer.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 (require 'ibuffer)

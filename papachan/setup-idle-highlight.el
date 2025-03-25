@@ -1,4 +1,4 @@
-;;; setup-idle-highlight.el --- Summary
+;;; setup-idle-highlight.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

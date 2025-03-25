@@ -1,4 +1,4 @@
-;;; setup-magit.el --- Magit for life!
+;;; setup-magit.el --- Magit for life! -*- lexical-binding: t -*-
 ;;
 ;;; Commentary:
 ;;

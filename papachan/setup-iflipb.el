@@ -1,4 +1,4 @@
-;;; setup-iflipb.el --- Summary
+;;; setup-iflipb.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

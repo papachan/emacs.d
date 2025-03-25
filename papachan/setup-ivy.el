@@ -1,4 +1,4 @@
-;;; setup-ivy.el --- Summary
+;;; setup-ivy.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 (require 'swiper)

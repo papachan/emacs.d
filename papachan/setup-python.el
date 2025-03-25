@@ -1,4 +1,4 @@
-;;; setup-python.el --- Summary
+;;; setup-python.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

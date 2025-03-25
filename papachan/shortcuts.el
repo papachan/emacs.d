@@ -1,4 +1,4 @@
-;;; shortcuts.el file -- Summary
+;;; shortcuts.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

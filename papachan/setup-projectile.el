@@ -1,4 +1,4 @@
-;;; setup-projectile.el --- projectile
+;;; setup-projectile.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

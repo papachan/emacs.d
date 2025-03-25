@@ -1,4 +1,4 @@
-;;; setup-lisp.el --- Summary
+;;; setup-lisp.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

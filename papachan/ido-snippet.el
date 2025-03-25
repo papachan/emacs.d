@@ -1,4 +1,4 @@
-;;; ido-snippet.el --- Summary
+;;; ido-snippet.el --- -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (require 'ido)

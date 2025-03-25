@@ -1,4 +1,4 @@
-;;; misc.el file
+;;; misc.el file --- -*- lexical-binding: t -*-
 (require 'expand-region)
 (require 'window-numbering) ;; Kill buffers which haven't been modified in a while
 (require 'midnight)

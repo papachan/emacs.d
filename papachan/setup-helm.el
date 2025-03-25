@@ -1,4 +1,4 @@
-;;; setup-helm.el --- Summary
+;;; setup-helm.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

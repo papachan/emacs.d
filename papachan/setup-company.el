@@ -1,4 +1,4 @@
-;;; setup-company.el --- Summary
+;;; setup-company.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 (require 'company)

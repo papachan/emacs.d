@@ -1,4 +1,4 @@
-;;; functions.el --- Summary
+;;; functions.el --- -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 (require 's)

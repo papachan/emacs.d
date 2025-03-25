@@ -1,6 +1,9 @@
-;;; setup-dired-sidebar.el
-;;;
-;;;
+;;; setup-dired-sidebar.el --- -*- lexical-binding: t -*-
+;;; Commentary:
+;;
+
+;;; Code:
+
 (require 'all-the-icons-dired)
 
 (use-package dired-sidebar
