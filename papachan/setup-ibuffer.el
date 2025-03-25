@@ -160,6 +160,7 @@
   (kill-matching-buffers-no-ask "*helm *")
   (kill-matching-buffers-no-ask "*magit-*")
   (kill-matching-buffers-no-ask "*lsp-log*")
+  (kill-matching-buffers-no-ask "*Async-native-compile-log*")
   ;; refresh ibuffer
   (ibuffer-update nil t))
 
