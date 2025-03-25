@@ -2,9 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 (require 'expand-region)
+(require 'change-inner)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-c =") 'er/expand-region) ;; windows issue with C-=
 (global-set-key (kbd "M-n") 'er/mark-word)
+(global-set-key (kbd "M-i") 'change-inner)
+(global-set-key (kbd "M-o") 'change-outer)
 (global-set-key (kbd "C-c <deletechar>") 'fixup-whitespace)
 (global-set-key (kbd "C-c w") 'select-whole-line)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
