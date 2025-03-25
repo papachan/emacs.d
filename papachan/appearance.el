@@ -1,4 +1,4 @@
-;;; Appearance --- load emacs theme here
+;;; Appearance --- load emacs theme here.  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -8,7 +8,7 @@
 (use-package dired-rainbow
   :after dired
   :config
-  (dired-rainbow-define lang1 "#87b524" ("clj" "cljs" "cljc" "el"))
+  (dired-rainbow-define lang1 "#87b524" ("clj" "cljs" "cljc" "edn"))
   (dired-rainbow-define zipped "#e92c13" ("gz" "zip"))
   (dired-rainbow-define lang2 "#b48ead" ("lua" "css" "sass" "scss" "html" "json"))
   (dired-rainbow-define text "#88c0d0" ("org" "md" "toml" "yml" "yaml" "txt"))
