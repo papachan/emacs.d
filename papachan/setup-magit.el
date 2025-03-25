@@ -1,4 +1,4 @@
-;;; setup-magit.el --- Who doesn't love Magit?
+;;; setup-magit.el --- Magit for life!
 ;;
 ;;; Commentary:
 ;;
@@ -14,6 +14,15 @@
   :config
   (setq magit-save-repository-buffers nil) ; Disable Magit asking to save files
   (setq magit-uniquify-buffer-names nil)   ; Make magit buffers be wrapped w/ *
+
+  (define-advice magit-push-current-to-upstream (:before (args) query-yes-or-no)
+  "Prompt for confirmation before permitting a push to upstream."
+  (when-let ((branch (magit-get-current-branch)))
+    (unless (yes-or-no-p (format "Push %s branch upstream to %s? "
+                                 branch
+                                 (or (magit-get-upstream-branch branch)
+                                     (magit-get "branch" branch "remote"))))
+      (user-error "Push to upstream aborted by user"))))
 
   (setq magit-display-buffer-function
       (lambda (buffer)
