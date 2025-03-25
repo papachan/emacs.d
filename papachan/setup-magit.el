@@ -43,6 +43,15 @@
     (interactive)
     (magit-mode-setup #'magit-staging-mode))
 
+  (define-advice magit-push-current-to-upstream (:before (args) query-yes-or-no)
+  "Prompt for confirmation before permitting a push to upstream."
+  (when-let ((branch (magit-get-current-branch)))
+    (unless (yes-or-no-p (format "Push %s branch upstream to %s? "
+                                 branch
+                                 (or (magit-get-upstream-branch branch)
+                                     (magit-get "branch" branch "remote"))))
+      (user-error "Push to upstream aborted by user"))))
+
   (progn
     (magit-add-section-hook 'magit-status-sections-hook
                             'magit-insert-unpulled-from-upstream-or-recent
