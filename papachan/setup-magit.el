@@ -43,18 +43,6 @@
     (interactive)
     (magit-mode-setup #'magit-staging-mode))
 
-  (defun magit-push--protected-branch (magit-push-fun &rest args)
-    "Prompt for confirmation before permitting a push to upstream."
-    (if (bound-and-true-p my-magit-ask-before-push)
-        ;; Arglist is (BRANCH TARGET ARGS)
-        (if (yes-or-no-p (format "Push branch %s? " (magit-get-current-branch)))
-            (apply magit-push-fun args)
-          (error "Push to upstream aborted by user"))
-      (apply magit-push-fun args)))
-
-  (advice-add 'magit-push-current-to-pushremote :around #'magit-push--protected-branch)
-  (advice-add 'magit-push-current-to-upstream :around #'magit-push--protected-branch)
-
   (progn
     (magit-add-section-hook 'magit-status-sections-hook
                             'magit-insert-unpulled-from-upstream-or-recent
