@@ -8,25 +8,31 @@
 ;; prefer newer non-byte compiled sources to older byte compiled ones
 (setq load-prefer-newer t)
 
-(require 'package)
-(dolist (source '(("gnu" . "http://elpa.gnu.org/packages/")
-                  ("melpa" . "https://melpa.org/packages/")
-                  ("org" . "http://orgmode.org/elpa/")
-                  ("melpa-stable" . "http://stable.melpa.org/packages/")))
+(setq package-enable-at-startup t)
+
+(setq package-vc-register-as-project nil)
+
+(dolist (source ' (("gnu" . "http://elpa.gnu.org/packages/")
+                   ("melpa" . "https://melpa.org/packages/")
+                   ("melpa-stable" . "http://stable.melpa.org/packages/")))
   (add-to-list 'package-archives source t))
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
-;; update all packages
-;; (setq use-package-always-ensure t)
-
-(require 'use-package)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'project)
+(setq package-archive-priorities
+      '(("gnu" . 3)
+        ("melpa-stable" . 2)
+        ("melpa" . 1)))
 
 (define-key ctl-x-map "p" project-prefix-map)
+
+(use-package which-key
+    :ensure nil
+    :diminish
+    :config
+    (setq which-key-sort-order 'which-key-key-order-alpha
+          which-key-add-column-padding 1
+          which-key-min-display-lines 6)
+    (which-key-setup-side-window-bottom)
+    (which-key-mode t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defvar init-directory (file-name-directory (expand-file-name "~/.emacs.d/init.el")))

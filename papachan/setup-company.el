@@ -5,7 +5,6 @@
 
 (use-package company
   :ensure t
-  :pin "melpa"
   :init
   (global-company-mode t)
   ;; (global-set-key (kbd "M-/") 'company-complete)
