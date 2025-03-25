@@ -159,6 +159,7 @@
   (kill-matching-buffers-no-ask "*helm-projectile*")
   (kill-matching-buffers-no-ask "*helm *")
   (kill-matching-buffers-no-ask "*magit-*")
+  (kill-matching-buffers-no-ask "*lsp-log*")
   ;; refresh ibuffer
   (ibuffer-update nil t))
 
