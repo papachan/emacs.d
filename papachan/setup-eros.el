@@ -1,3 +1,8 @@
+;;; setup-eros.el --- -*- lexical-binding: t; -*-
+;;; Commentary:
+;;
+
+;;; Code:
 (require 'edebug)
 
 ;; Inline evaluation (use M-C-x).
@@ -32,3 +37,4 @@
               #'adviced:edebug-previous-result))
 
 (provide 'setup-eros)
+;;; setup-eros.el ends here
