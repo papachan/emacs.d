@@ -161,6 +161,8 @@
   (kill-matching-buffers-no-ask "*magit-*")
   (kill-matching-buffers-no-ask "*lsp-log*")
   (kill-matching-buffers-no-ask "*Async-native-compile-log*")
+  (kill-matching-buffers-no-ask "*Compile-Log*")
+  (kill-matching-buffers-no-ask "*Warnings*")
   ;; refresh ibuffer
   (ibuffer-update nil t))
 
