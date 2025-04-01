@@ -14,13 +14,20 @@
   ;; (setq chatgpt-shell-openrouter-key "")
   ;; (setq chatgpt-shell-perplexity-key "")
   ;; (setq chatgpt-shell-kagi-key "")
+  (setq chatgpt-shell-openai-key "")
   (setq chatgpt-shell-model-version "o1-mini")
-  ;; "o1"
+  ;; "o1" ;; Uses advanced reasoning
   ;; "o1-preview"
+  ;; "o3-mini-high" ;; Great at coding and logic
   ;; "o1-mini"
-  ;; "gpt-4.5-preview"
-  ;; "gpt-4o"
-  ;; "gpt-3.5-turbo"
+  ;; "o3-mini"  ;; Fast at advanced reasoning
+  ;; "gpt-4.5-preview" ;; Good for writing and exploring ideas
+  ;; "chatgpt-4o" ;;
+  ;; "chatgpt-4o-search-preview" ;;
+  ;; "chatgpt-4o-latest" ;;
+  ;; "chatgpt-4o-mini" ;;
+  ;; "chatgpt-4o-mini-search-preview" ;;
+  ;; "gpt-3.5-turbo" ;; old
   (setq chatgpt-shell-streaming t))
 
 (provide 'setup-chatgpt)
