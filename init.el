@@ -24,6 +24,7 @@
                                 init-org
                                 setup-cider
                                 setup-clojure
+                                setup-chatgpt
                                 setup-dired
                                 setup-dired-sidebar
                                 setup-dotnet
@@ -49,5 +50,4 @@
       (require module)
     (error
      (message "Failed to load module \"%s\": %s " module err))))
-
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
