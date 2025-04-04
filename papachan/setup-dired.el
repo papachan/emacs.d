@@ -16,6 +16,23 @@
          (re-search-backward "\\(^[ 0-9.,]+[A-Za-z]+\\).*total$")
          (match-string 1))))))
 
+;; http://xahlee.info/emacs/emacs/elisp_dired_rename_space_to_underscore.html
+(defun xah-dired-rename-space-to-underscore ()
+  "Replace space in filenames.
+This function renames the currently selected or marked files in Dired
+mode, replacing all spaces in their filenames with underscores (_).
+  If the function is called outside of Dired mode, it raises an error."
+  (interactive)
+  (require 'dired-aux)
+  (if (eq major-mode 'dired-mode)
+      (let ((markedFiles (dired-get-marked-files )))
+        (mapc (lambda (x)
+                (when (string-match " " x )
+                  (dired-rename-file x (replace-regexp-in-string " " "_" x) nil)))
+              markedFiles)
+        (revert-buffer))
+    (user-error "Not in Dired")))
+
 (use-package dired
   ;; :custom
   ;; (dired-listing-switches "-alFh --group-directories-first")
@@ -24,6 +41,7 @@
     (define-key dired-mode-map (kbd "M-c") 'copy-file)
     (define-key dired-mode-map (kbd "M-s") 'rg)
     (define-key dired-mode-map "z" #'dired-get-size)
+    (define-key dired-mode-map "_" #'xah-dired-rename-space-to-underscore)
     (define-key dired-mode-map (kbd "C-X C-m") 'compile) ;; call Makefile
     (define-key dired-mode-map "q"
                 (lambda ()
