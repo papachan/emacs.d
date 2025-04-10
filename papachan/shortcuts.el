@@ -5,6 +5,7 @@
 (require 'visual-regexp)
 (require 'expand-region)
 (require 'change-inner)
+(require 'toggle-quotes)
 
 (global-set-key (kbd "C-x C-;") 'comment-region)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
