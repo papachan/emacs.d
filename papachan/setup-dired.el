@@ -38,6 +38,7 @@ mode, replacing all spaces in their filenames with underscores (_).
   ;; (dired-listing-switches "-alFh --group-directories-first")
   :config
   (progn
+    (setq dired-dwim-target t)
     (define-key dired-mode-map (kbd "M-c") 'copy-file)
     (define-key dired-mode-map (kbd "M-s") 'rg)
     (define-key dired-mode-map "z" #'dired-get-size)
