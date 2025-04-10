@@ -152,15 +152,21 @@
    (reverse (buffer-list))))
 
 (defun ibuffer-kill-buffer-crap ()
+  "Close all useless buffers from a list."
   (interactive)
-  (kill-matching-buffers-no-ask "*helm-mode*")
-  (kill-matching-buffers-no-ask "*swiper*")
-  (kill-matching-buffers-no-ask "*xref*")
-  (kill-matching-buffers-no-ask "*helm-projectile*")
-  (kill-matching-buffers-no-ask "*helm *")
-  (kill-matching-buffers-no-ask "*magit-*")
-  (kill-matching-buffers-no-ask "*lsp-log*")
-  (kill-matching-buffers-no-ask "*Async-native-compile-log*")
+  (let ((buffers-lst '("*helm-mode*"
+                       "*swiper*"
+                       "*xref*"
+                       "*helm-projectile*"
+                       "*helm *"
+                       "*magit-*"
+                       "*lsp-log*"
+                       "*Async-native-compile-log*"
+                       "*Compile-Log*"
+                       "*Warnings*"
+                       "*Dired log*")))
+    (dolist (buff buffers-lst)
+      (kill-matching-buffers-no-ask buff)))
   ;; refresh ibuffer
   (ibuffer-update nil t))
 
