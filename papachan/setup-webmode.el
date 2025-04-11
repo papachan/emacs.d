@@ -24,7 +24,6 @@
         web-mode-markup-indent-offset 2
         web-mode-css-indent-offset 2
         web-mode-code-indent-offset 2
-        web-mode-markup-indent-offset 2
         web-mode-extra-snippets
         '(("erb" . (("toto" . ("<% toto | %>\n\n<% end %>"))))
           ("php" . (("dowhile" . ("<?php do { ?>\n\n<?php } while (|); ?>"))
