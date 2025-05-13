@@ -5,22 +5,6 @@
 (require 'eshell)
 (require 'em-alias)
 
-(use-package shell-pop
-  :ensure t
-  :bind (("C-c t" . shell-pop))
-  :config
-  (setq shell-pop-term-shell "/usr/bin/zsh")
-  ;; shell-pop-shell-type '("eshell" "*eshell*" (lambda nil (eshell)))
-  (setq shell-pop-shell-type (quote ("ansi-term" "*ansi-term*" (lambda nil (ansi-term shell-pop-term-shell)))))
-  ;; need to do this manually or not picked up by `shell-pop'
-  (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type)
-  (setq shell-pop-window-size 34)
-  (setq shell-pop-full-span t)
-  (setq shell-pop-window-position "bottom")
-  (setq shell-pop-autocd-to-working-dir t)
-  (setq shell-pop-restore-window-configuration t)
-  (setq shell-pop-cleanup-buffer-at-process-exit t))
-
 (defun eshell-new ()
   (interactive)
   (eshell t))
@@ -83,8 +67,6 @@
   (setq eshell-mv-overwrite-files nil)
   (setq eshell-banner-message (concat " Welcome back " user-login-name ".\n"))
   (setq eshell-aliases-file (expand-file-name "eshell/alias" user-emacs-directory)))
-
-(setq explicit-shell-file-name "/usr/bin/zsh")
 
 (provide 'setup-eshell)
 ;;; setup-eshell.el ends here

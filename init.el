@@ -12,6 +12,7 @@
 
 (setq package-vc-register-as-project nil)
 
+(require 'package)
 (dolist (source ' (("gnu" . "http://elpa.gnu.org/packages/")
                    ("melpa" . "https://melpa.org/packages/")
                    ("melpa-stable" . "http://stable.melpa.org/packages/")))

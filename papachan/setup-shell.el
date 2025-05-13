@@ -8,32 +8,23 @@
   :ensure t
   :init (exec-path-from-shell-initialize))
 
-(defun eshell-new ()
-  (interactive)
-  (eshell t))
-
-(defun eshell/clear ()
-  "clear the eshell buffer"
-  (interactive)
-  (let ((inhibit-read-only t))
-    (erase-buffer)))
-
-(use-package eshell
+(use-package shell-pop
+  :ensure t
+  :bind (("C-c t" . shell-pop))
   :config
-  (global-set-key  (kbd "C-x t e") 'eshell)
-  (global-set-key  (kbd "C-x t E") 'eshell-new)
+  (setq shell-pop-term-shell "/usr/bin/zsh")
+  ;; shell-pop-shell-type '("eshell" "*eshell*" (lambda nil (eshell)))
+  (setq shell-pop-shell-type (quote ("ansi-term" "*ansi-term*" (lambda nil (ansi-term shell-pop-term-shell)))))
+  ;; need to do this manually or not picked up by `shell-pop'
+  (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type)
+  (setq shell-pop-window-size 34)
+  (setq shell-pop-full-span t)
+  (setq shell-pop-window-position "bottom")
+  (setq shell-pop-autocd-to-working-dir t)
+  (setq shell-pop-restore-window-configuration t)
+  (setq shell-pop-cleanup-buffer-at-process-exit t))
 
-  (setq eshell-banner-message (concat " Welcome back " user-login-name ".\n"))
-
-  (add-hook 'eshell-mode-hook (lambda ()
-                                (define-key eshell-mode-map (kbd "C-x v") 'eshell/clear)
-                                'ansi-color-for-comint-mode-on
-                                (setq-local show-trailing-whitespace nil)
-                                (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)))
-
-  :init
-  (setq eshell-mv-overwrite-files nil)
-  (message "EShell system is loaded and configured."))
+(setq explicit-shell-file-name "/usr/bin/zsh")
 
 (provide 'setup-shell)
 ;;; setup-shell.el ends here
