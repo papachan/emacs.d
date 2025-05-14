@@ -1,8 +1,11 @@
 ;;; shortcuts.el --- Summary
 ;;; Commentary:
 ;;; Code:
-(require 'expand-region)
-(require 'change-inner)
+(require 'toggle-quotes)
+
+(use-package expand-region :ensure t)
+(use-package change-inner :ensure t)
+
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-c =") 'er/expand-region) ;; windows issue with C-=
 (global-set-key (kbd "M-n") 'er/mark-word)
@@ -28,6 +31,7 @@
 (global-set-key (kbd "C-c a") 'increment-number-at-point)
 (global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
 (global-set-key (kbd "C-c f") 'reopen-last-closed-file)
+(global-set-key (kbd "C-'") 'toggle-quotes)
 ;; (global-set-key (kbd "C-c C-b") 'dos2unix)
 ;; (global-set-key (kbd "") 'backward-copy-word)
 (provide 'shortcuts)

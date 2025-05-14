@@ -2,9 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'rainbow-delimiters)
-(use-package flycheck-clj-kondo
-  :ensure t)
+(use-package rainbow-delimiters :ensure t)
+
+(use-package flycheck-clj-kondo :ensure t)
 
 (use-package html-to-hiccup
   :ensure t
@@ -29,8 +29,7 @@
   (setq clojure-indent-style 'align-arguments
         clojure-align-forms-automatically t))
 
-(use-package parseedn
-  :ensure t)
+(use-package parseedn :ensure t)
 
 (use-package clojurescript-mode
   :hook ((clojurescript-mode . paredit-mode)

@@ -1,7 +1,6 @@
 ;;; setup-helm.el --- Summary
 ;;; Commentary:
 ;;; Code:
-
 (use-package helm
   :ensure t
   :bind (("M-x" . #'helm-M-x)
@@ -31,7 +30,9 @@
   :ensure t
   :bind
   (("C-s" . swiper-helm)
-   ("C-r" . swiper-helm)))
+   ("C-r" . swiper-helm))
+  :config
+  (require 'ivy))
 
 ;; (use-package helm-cider
 ;;   :ensure t

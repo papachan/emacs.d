@@ -15,7 +15,7 @@
                     pkg-name))))
     (add-to-list 'load-path n)))
 
-(mapc 'add-pkg '("papachan"))
+(mapc 'add-pkg '("papachan" "lib"))
 
 (defvar papachan/init-modules '(init-repo
                                 misc
