@@ -3,6 +3,7 @@
 ;;; Code:
 (require 'html-to-hiccup)
 (require 'rainbow-delimiters)
+
 (use-package html-to-hiccup
   :ensure t
   :bind (:map clojure-mode-map
@@ -29,9 +30,7 @@
   (setq cljr-eagerly-build-asts-on-startup nil)
   :config
   (add-hook 'clojure-mode-hook (lambda ()
-                                 (clj-refactor-mode 1)
-                                 ;; (cljr-add-keybindings-with-prefix "C-c C-m")
-                                 )))
+                                 (clj-refactor-mode 1))))
 
 (use-package clojurescript-mode
   :hook ((clojurescript-mode . paredit-mode)
@@ -54,7 +53,9 @@
   :config
   (require 'flycheck-clj-kondo))
 
-(add-hook 'clojure-mode-hook (lambda () (paredit-mode nil)))
+;; in Mac C-right or C-left are bound to Mission control
+
+;; (add-hook 'clojure-mode-hook (lambda () (paredit-mode nil)))
 
 (provide 'setup-clojure)
 ;;; setup-clojure.el ends here

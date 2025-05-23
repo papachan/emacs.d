@@ -38,6 +38,8 @@ mode, replacing all spaces in their filenames with underscores (_).
   ;; (dired-listing-switches "-alFh --group-directories-first")
   :config
   (progn
+    (when (string= system-type "darwin") ;; Mac don't support --dired option
+      (setq dired-use-ls-dired nil))
     (setq dired-dwim-target t)
     (define-key dired-mode-map (kbd "M-c") 'copy-file)
     (define-key dired-mode-map (kbd "M-s") 'rg)

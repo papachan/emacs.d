@@ -7,11 +7,11 @@
   :diminish undo-tree-mode
   :init
   (global-undo-tree-mode)
+  :config
+  (setq undo-tree-auto-save-history nil
+        split-height-threshold 0)
   :custom
-  (undo-tree-auto-save-history nil)
-  (undo-tree-visualizer-diff t)
-  (undo-tree-history-directory-alist `(("." . ,(expand-file-name ".backup" user-emacs-directory))))
-  (undo-tree-visualizer-timestamps t))
+  (setq undo-tree-auto-save-history nil))
 
 (provide 'init-undo-tree)
 ;;; init-undo-tree.el ends here

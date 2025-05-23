@@ -5,6 +5,12 @@
 (require 'eshell)
 (require 'em-alias)
 
+(defun eshell/clear ()
+  "clear the eshell buffer"
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)))
+
 (defun eshell-new ()
   (interactive)
   (eshell t))
@@ -25,48 +31,43 @@
 (eshell/alias "clean_all_py_files" "find . -name __py*__ -print0 | xargs -0 rm -rf")
 (eshell/alias "gds" "magit-diff-staged")
 (eshell/alias "gd" "magit-diff-unstaged")
-(eshell/alias "open" "nautilus $1")
+;; (eshell/alias "open" "nautilus $1")
 (eshell/alias "ps-grep" "ps ax | grep -i $1")
 (eshell/alias "sudo" "eshell/sudo $*")
 (eshell/alias "ddu" "du -h --max-depth=1 | *sort -hr")
 (eshell/alias "clj-repl" "clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version \"1.1.2\"} cider/cider-nrepl {:mvn/version \"0.50.3\"} refactor-nrepl/refactor-nrepl {:mvn/version \"3.10.0\"}} :aliases {:cider/nrepl {:main-opts [\"-m\" \"nrepl.cmdline\" \"--middleware\" \"[cider.nrepl/cider-middleware]\"]}}}' -M:cider/nrepl -h 0.0.0.0 -p $1")
 
+(defun eshell/magit ()
+  "Function to open magit-status for the current directory"
+  (interactive)
+  (require 'magit)
+  (magit-status-setup-buffer default-directory)
+  nil)
+
 (use-package eshell
   :bind (("C-x t e" . eshell)
          ("C-x n e" . eshell-new))
   :config
-  (progn
-    (defun eshell/magit ()
-      "Function to open magit-status for the current directory"
-      (interactive)
-      (require 'magit)
-      (magit-status-setup-buffer default-directory)
-      nil)
+  (setq eshell-banner-message (concat " Welcome back " user-login-name ".\n")
+        eshell-visual-commands '("ranger" "vi" "screen" "top" "less" "more" "ncspot"
+                                 "vim" "htop")
+        eshell-visual-subcommands '(("git" "log" "diff" "show")))
 
-    (defun eshell/clear ()
-      "clear the eshell buffer"
-      (interactive)
-      (let ((inhibit-read-only t))
-        (erase-buffer)))
+  (add-hook 'eshell-mode-hook (lambda ()
+                                'ansi-color-for-comint-mode-on
+                                (define-key eshell-mode-map (kbd "<f9>") 'emacs-uptime)
+                                (define-key eshell-mode-map (kbd "C-x v") 'eshell/clear)
+                                (define-key eshell-mode-map (kbd "C-d") 'kill-this-buffer)
+                                (setenv "PATH" (shell-command-to-string "source ~/.zshenv; echo -n $PATH"))
+                                (setq-local show-trailing-whitespace nil)
+                                ;; (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)
+                                ))
+  (add-to-list 'eshell-modules-list 'eshell-tramp)
 
-    (add-hook 'eshell-mode-hook (lambda ()
-                                  'ansi-color-for-comint-mode-on
-                                  (define-key eshell-mode-map (kbd "<f9>") 'emacs-uptime)
-                                  (define-key eshell-mode-map (kbd "C-l") 'eshell/clear)
-                                  (define-key eshell-mode-map (kbd "C-d") 'kill-this-buffer)
-                                  (setenv "PATH" (shell-command-to-string "source ~/.zshenv; echo -n $PATH"))
-                                  (setq-local show-trailing-whitespace nil)
-                                  ;; (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)
-                                  ))
-    (setq eshell-visual-commands '("ranger" "vi" "screen" "top" "less" "more" "ncspot"
-                                   "vim" "htop"))
-    (setq eshell-visual-subcommands '(("git" "log" "diff" "show")))
-
-    (add-to-list 'eshell-modules-list 'eshell-tramp))
   :init
-  (setq eshell-mv-overwrite-files nil)
-  (setq eshell-banner-message (concat " Welcome back " user-login-name ".\n"))
-  (setq eshell-aliases-file (expand-file-name "eshell/alias" user-emacs-directory)))
+  (setq eshell-mv-overwrite-files nil
+        eshell-banner-message (concat " Welcome back " user-login-name ".\n")
+        eshell-aliases-file (expand-file-name "eshell/alias" user-emacs-directory)))
 
 (provide 'setup-eshell)
 ;;; setup-eshell.el ends here

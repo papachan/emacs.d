@@ -3,8 +3,7 @@
 ;;; Cider setup
 ;;; Clojure IDE and REPL for Emacs
 ;;; Code:
-(require 'company)
-(require 'helm-cider)
+(use-package company :ensure t)
 
 (defun clerk-show ()
   (interactive)
@@ -49,18 +48,17 @@
    cider-font-lock-reader-conditionals nil
    ;; nrepl log messages
    nrepl-log-messages t)
-  (add-hook 'cider-mode-hook #'eldoc-mode)
-  (add-hook 'cider-mode-hook #'company-mode)
-  (add-hook 'cider-repl-mode-hook #'eldoc-mode)
-  (add-hook 'cider-repl-mode-hook (lambda ()
-                                    (cider-repl-toggle-pretty-printing)
-                                    (tab-line-mode -1)))
-  ;; (add-hook 'cider-repl-mode-hook #'paredit-mode)
-  ;; (add-hook 'cider-repl-mode-hook #'company-mode)
+
   :hook
+  (cider-mode . eldoc-mode)
+  (cider-mode . company-mode)
   (cider-repl-mode . paredit-mode)
   (cider-repl-mode . company-mode)
-  (cider-repl-mode . (lambda () (helm-cider-mode 1))))
+  (cider-repl-mode . eldoc-mode)
+  (cider-repl-mode . (lambda ()
+                       (cider-repl-toggle-pretty-printing)
+                       (tab-line-mode -1)
+                       (helm-cider-mode 1))))
 
 (use-package kaocha-runner
   :after (cider-mode)

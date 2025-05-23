@@ -3,11 +3,11 @@
 ;;; Commentary:
 ;;
 ;;; Code:
-(require 'pinentry)
+;; (require 'pinentry)
 (use-package git-timemachine :ensure t)
 (use-package magit
-  :init
-  (pinentry-start)
+  ;; :init
+  ;; (pinentry-start)
 
   :bind (("C-c m" . magit-status))
 

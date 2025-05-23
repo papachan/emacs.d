@@ -8,7 +8,7 @@
 
 (use-package dired-sidebar
   :ensure t
-  :bind (("S-<f8>" . dired-sidebar-toggle-sidebar))
+  :bind (("S-<f8>" . dired-sidebar-toggle-sidebar)) ;; fn Shift <f8> in mac
   :hook ((dired-mode . all-the-icons-dired-mode)
          (dired-sidebar-mode-hook . (lambda ()
                                       (tab-line-mode -1))))

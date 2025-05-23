@@ -23,23 +23,5 @@
   (progn
     (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)))
 
-(use-package slime-company
-  :ensure t)
-
-(use-package slime
-  :ensure t
-  :init
-  (setq inferior-lisp-program (executable-find "sbcl")
-        slime-lisp-implementations
-        '((sbcl ("/usr/bin/sbcl") :coding-system utf-8-unix))
-        slime-net-coding-system 'utf-8-unix)
-  :config
-  (let ((helper-file (expand-file-name "~/quicklisp/slime-helper.el")))
-    (if (file-exists-p helper-file)
-        (load helper-file)
-      (warn "(ql:quickload \"quicklisp-slime-helper\") must be run in quicklisp before")))
-  (global-set-key (kbd "C-c C-q") 'slime-repl-quit)
-  (slime-setup '(slime-company)))
-
 (provide 'setup-lisp)
 ;;; setup-lisp.el ends here

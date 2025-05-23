@@ -1,9 +1,11 @@
 ;;; misc.el file --- -*- lexical-binding: t -*-
-(require 'expand-region)
-(require 'window-numbering) ;; Kill buffers which haven't been modified in a while
+
+(use-package expand-region :ensure t)
+(use-package window-numbering :ensure t) ;; Kill buffers which haven't been modified in a while
+(use-package move-text :ensure t)
+;; (require 'midnight)
 (require 'whitespace)
 (require 'recentf)
-(require 'move-text)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -19,8 +21,8 @@
   (dolist (hook '(prog-mode-hook text-mode-hook))
     (add-hook hook #'whitespace-mode))
   :config
-  (setq whitespace-line-column 90)
-  (setq whitespace-style '(face tabs empty trailing lines-tail tab-mark)))
+  ;; (setq whitespace-line-column 90)
+  (setq whitespace-style '(face tabs empty trailing tab-mark))) ;; add lines-tail for max cols
 
  ;; to ensure files have no trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -124,6 +126,11 @@
   (window-numbering-mode 1)
   (mouse-wheel-mode t)
   (blink-cursor-mode -1))
+
+;; make Emacs interpret the command key as super or control
+(setq mac-command-modifier 'super)
+;; enable option at right for mac keyboard
+(setq ns-right-alternate-modifier 'none)
 
 (provide 'misc)
 ;;; misc.el ends here

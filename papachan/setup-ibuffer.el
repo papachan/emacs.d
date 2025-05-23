@@ -164,7 +164,9 @@
                        "*Async-native-compile-log*"
                        "*Compile-Log*"
                        "*Warnings*"
-                       "*Dired log*")))
+                       "*Dired log*"
+                       "*undo-tree Diff*"
+                       "*Backtrace*")))
     (dolist (buff buffers-lst)
       (kill-matching-buffers-no-ask buff)))
   ;; refresh ibuffer

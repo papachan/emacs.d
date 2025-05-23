@@ -25,16 +25,6 @@
 
 (define-key ctl-x-map "p" project-prefix-map)
 
-(use-package which-key
-    :ensure nil
-    :diminish
-    :config
-    (setq which-key-sort-order 'which-key-key-order-alpha
-          which-key-add-column-padding 1
-          which-key-min-display-lines 6)
-    (which-key-setup-side-window-bottom)
-    (which-key-mode t))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defvar init-directory (file-name-directory (expand-file-name "~/.emacs.d/init.el")))
 (defun add-pkg (pkg-name)
