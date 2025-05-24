@@ -3,7 +3,7 @@
 ;;; Cider setup
 ;;; Clojure IDE and REPL for Emacs
 ;;; Code:
-(require 'company)
+(use-package company :ensure t)
 (require 'helm-cider)
 
 (defun clerk-show ()

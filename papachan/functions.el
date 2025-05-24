@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (require 's)
+
 (defvar current-date-format "%Y-%m-%d")
 (defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y")
 (defvar current-time-format "%a %H:%M:%S")

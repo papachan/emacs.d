@@ -1,9 +1,9 @@
 ;;; misc.el file --- -*- lexical-binding: t -*-
-(require 'expand-region)
-(require 'window-numbering) ;; Kill buffers which haven't been modified in a while
+(use-package expand-region :ensure t)
+(use-package window-numbering :ensure t) ;; Kill buffers which haven't been modified in a while
+(use-package move-text :ensure t)
 (require 'whitespace)
 (require 'recentf)
-(require 'move-text)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
