@@ -2,7 +2,12 @@
 
 (use-package expand-region :ensure t)
 (use-package window-numbering :ensure t) ;; Kill buffers which haven't been modified in a while
-(use-package move-text :ensure t)
+
+(use-package move-text
+  :ensure t
+  :init
+  (move-text-default-bindings))
+
 ;; (require 'midnight)
 (require 'whitespace)
 (require 'recentf)
@@ -72,9 +77,6 @@
 
 ; electric mode
 (electric-indent-mode +1)
-
-; move-text
-(move-text-default-bindings)
 
 ; tramp with ssh
 (setq tramp-default-method "ssh")
