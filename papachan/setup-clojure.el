@@ -57,5 +57,8 @@
 
 ;; (add-hook 'clojure-mode-hook (lambda () (paredit-mode nil)))
 
+(use-package clojure-ts-mode
+  :ensure t)
+
 (provide 'setup-clojure)
 ;;; setup-clojure.el ends here
