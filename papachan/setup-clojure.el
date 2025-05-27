@@ -51,14 +51,13 @@
   (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
   (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
   :config
-  (require 'flycheck-clj-kondo))
+  (require 'flycheck-clj-kondo)
+  (add-hook 'clojure-mode-hook 'display-line-numbers-mode))
 
 ;; in Mac C-right or C-left are bound to Mission control
 
-;; (add-hook 'clojure-mode-hook (lambda () (paredit-mode nil)))
-
-(use-package clojure-ts-mode
-  :ensure t)
+;; (use-package clojure-ts-mode
+;;   :ensure t)
 
 (provide 'setup-clojure)
 ;;; setup-clojure.el ends here
