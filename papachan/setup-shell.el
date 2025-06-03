@@ -8,7 +8,7 @@
   :ensure t
   :init (exec-path-from-shell-initialize))
 
-;; (setq explicit-shell-file-name "/bin/zsh")
+(setq system-uses-terminfo nil)
 
 (provide 'setup-shell)
 ;;; setup-shell.el ends here

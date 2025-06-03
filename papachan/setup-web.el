@@ -8,8 +8,7 @@
   :bind ("C-c C-;" . web-mode-comment-or-uncomment)
   :mode ("\\.html\\'" . web-mode)
   :config
-  (setq js-indent-level 2
-        web-mode-markup-indent-offset 2
+  (setq web-mode-markup-indent-offset 2
         web-mode-css-indent-offset 2
         web-mode-code-indent-offset 2))
 
@@ -22,6 +21,7 @@
          ("\\.jsx\\'" . javascript-mode)
          ("\\.mjs\\'" . javascript-mode))
   :init
+  (setq js-indent-indent 2)
   :config
   (custom-set-variables
    '(js-indent-level 2)))

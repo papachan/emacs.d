@@ -84,7 +84,7 @@
 ;; toggle display of line numbers in the buffer.
 ;; (display-line-numbers-mode -1)
 ;; toggle display-line-numbers mode in all buffers.
-(global-display-line-numbers-mode nil)
+;; (global-display-line-numbers-mode nil)
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
