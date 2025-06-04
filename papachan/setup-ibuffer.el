@@ -158,6 +158,8 @@
                        "*swiper*"
                        "*xref*"
                        "*helm-projectile*"
+                       "*helm-mode-magit-status*"
+                       "*helm-mode-switch-to-buffer*"
                        "*helm *"
                        "*magit-*"
                        "*lsp-log*"
@@ -166,7 +168,8 @@
                        "*Warnings*"
                        "*Dired log*"
                        "*undo-tree Diff*"
-                       "*Backtrace*")))
+                       "*Backtrace*"
+                       "*grep*")))
     (dolist (buff buffers-lst)
       (kill-matching-buffers-no-ask buff)))
   ;; refresh ibuffer

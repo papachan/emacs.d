@@ -14,8 +14,8 @@
   ;; (setq chatgpt-shell-openrouter-key "")
   ;; (setq chatgpt-shell-perplexity-key "")
   ;; (setq chatgpt-shell-kagi-key "")
-  (setq chatgpt-shell-openai-key "")
-  (setq chatgpt-shell-model-version "o1-mini")
+  ;; (setq chatgpt-shell-openai-key "")
+  ;; (setq chatgpt-shell-model-version "o1-mini")
   ;; "o1" ;; Uses advanced reasoning
   ;; "o1-preview"
   ;; "o3-mini-high" ;; Great at coding and logic

@@ -125,6 +125,7 @@
   (column-number-mode)
   ;; Highlight current line
   (global-hl-line-mode 1)
+  (line-number-mode 1)
   (window-numbering-mode 1)
   (mouse-wheel-mode t)
   (blink-cursor-mode -1))

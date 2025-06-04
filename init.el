@@ -49,7 +49,7 @@
                                 setup-helm
                                 setup-ibuffer
                                 setup-iflipb
-                                setup-chatgpt
+                                ;; setup-chatgpt
                                 init-flycheck
                                 setup-lisp
                                 setup-lsp-mode
