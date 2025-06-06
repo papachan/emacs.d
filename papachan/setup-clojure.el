@@ -52,9 +52,9 @@
   (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
   (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
   :config
-  (require 'flycheck-clj-kondo))
+  (require 'flycheck-clj-kondo)
+  (add-hook 'clojure-mode-hook (lambda () (paredit-mode nil))))
 
-(add-hook 'clojure-mode-hook (lambda () (paredit-mode nil)))
 
 (provide 'setup-clojure)
 ;;; setup-clojure.el ends here

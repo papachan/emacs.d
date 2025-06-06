@@ -22,7 +22,7 @@
   (setq shell-pop-window-position "bottom")
   (setq shell-pop-autocd-to-working-dir t)
   (setq shell-pop-restore-window-configuration t)
-  (setq shell-pop-cleanup-buffer-at-process-exit t))
+  (setq shell-pop-cleanup-buffer-at-process-exit nil))
 
 (setq explicit-shell-file-name "/usr/bin/zsh")
 
