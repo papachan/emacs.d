@@ -20,6 +20,9 @@
 
 (use-package helm-ag
   :ensure t
+  :custom
+  (helm-ag-base-command
+   "rg -S --no-heading --smart-case --color=never --line-number --max-columns 400")
   :bind ("C-x c M-g a" . #'helm-do-grep-ag))
 
 (use-package swiper
