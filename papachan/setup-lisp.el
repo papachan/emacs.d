@@ -2,8 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(add-hook 'lisp-mode-hook #'enable-paredit-mode)
-
 (use-package paredit
   :ensure t
   :pin "melpa"
@@ -18,10 +16,12 @@
          ("\\.cl'" . lisp-mode)
          ("\\.asd'" . lisp-mode)
          ("\\.fasl'" . lisp-mode))
-  :hook ((lisp-mode slime-repl-mode). enable-paredit-mode)
-  :config
-  (progn
-    (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)))
+  :hook ((lisp-mode slime-repl-mode). enable-paredit-mode))
+
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+                                  (setq display-line-numbers 'relative)))
+
+(add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
 
 (provide 'setup-lisp)
 ;;; setup-lisp.el ends here

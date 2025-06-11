@@ -33,9 +33,7 @@
                                  (clj-refactor-mode 1))))
 
 (use-package clojurescript-mode
-  :hook ((clojurescript-mode . paredit-mode)
-         ;; (clojurescript-mode . (lambda () (auto-complete-mode -1)))
-         ))
+  :hook ((clojurescript-mode . paredit-mode)))
 
 (use-package clojure-mode
   :ensure t
@@ -43,18 +41,14 @@
          (clojure-mode . eldoc-mode)
          (clojure-mode . flycheck-mode)
          (clojure-mode . rainbow-delimiters-mode)
-         ;; (clojure-mode . (lambda () (auto-complete-mode -1)))
-         )
+         (clojure-mode . display-line-numbers-mode))
   :init
   (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
   (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
   (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
   (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
   :config
-  (require 'flycheck-clj-kondo)
-  (add-hook 'clojure-mode-hook 'display-line-numbers-mode))
-
-;; in Mac C-right or C-left are bound to Mission control
+  (require 'flycheck-clj-kondo))
 
 ;; (use-package clojure-ts-mode
 ;;   :ensure t)
