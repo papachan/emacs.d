@@ -8,5 +8,9 @@
                                   (clojure . t)
                                   (python . t)))
 
+(add-hook 'org-mode-hook
+  (lambda ()
+    (setq display-line-numbers-mode nil)))
+
 (provide 'init-org)
 ;;; init-org.el ends here
