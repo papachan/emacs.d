@@ -5,7 +5,8 @@
 
 (setq ibuffer-saved-filter-groups
       '(("default"
-         ("Org" (mode . org-mode))
+         ("Org" (or (mode . org-mode)
+                    (filename . ".*\.txt$")))
          ("Magit" (or (mode . magit-mode)
                       (mode . magit-status-mode)
                       (mode . magit-log-mode)

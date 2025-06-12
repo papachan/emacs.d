@@ -51,5 +51,22 @@ mode, replacing all spaces in their filenames with underscores (_).
                   (interactive)
                   (find-alternate-file "..")))))
 
+(use-package dired-sidebar
+  :ensure t
+  ;; :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
+  :commands (dired-sidebar-toggle-sidebar))
+
+(use-package dired-rainbow
+  :after dired
+  :config
+  (dired-rainbow-define lang1 "#87b524" ("clj" "cljs" "cljc" "edn"))
+  (dired-rainbow-define zipped "#e92c13" ("gz" "zip"))
+  (dired-rainbow-define lang2 "#b48ead" ("lua" "css" "sass" "scss" "html" "json"))
+  (dired-rainbow-define text "#88c0d0" ("org" "md" "toml" "yml" "yaml" "txt"))
+  (dired-rainbow-define document "#1fb7b6" ("odt" "pdf" "epub" "odp" "docx"))
+  (dired-rainbow-define media "#e70bb8" ("jpg" "jpeg" "png" "gif"))
+  (dired-rainbow-define csv "#76d46c" ("csv" "xlsx" "xls"))
+  (dired-rainbow-define-chmod executable-unix "#bf616a" "-.*x.*"))
+
 (provide 'setup-dired)
 ;;; setup-dired.el ends here

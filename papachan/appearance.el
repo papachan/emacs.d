@@ -3,19 +3,8 @@
 ;;; Code:
 
 (use-package all-the-icons
+  :ensure t
   :if (display-graphic-p))
-
-(use-package dired-rainbow
-  :after dired
-  :config
-  (dired-rainbow-define lang1 "#87b524" ("clj" "cljs" "cljc" "edn"))
-  (dired-rainbow-define zipped "#e92c13" ("gz" "zip"))
-  (dired-rainbow-define lang2 "#b48ead" ("lua" "css" "sass" "scss" "html" "json"))
-  (dired-rainbow-define text "#88c0d0" ("org" "md" "toml" "yml" "yaml" "txt"))
-  (dired-rainbow-define document "#1fb7b6" ("odt" "pdf" "epub" "odp" "docx"))
-  (dired-rainbow-define media "#e70bb8" ("jpg" "jpeg" "png" "gif"))
-  (dired-rainbow-define csv "#76d46c" ("csv" "xlsx" "xls"))
-  (dired-rainbow-define-chmod executable-unix "#bf616a" "-.*x.*"))
 
 (load-file (expand-file-name "themes/zerodark-theme/zerodark-theme.el" user-emacs-directory))
 (load-theme 'zerodark t)
