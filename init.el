@@ -2,7 +2,7 @@
 ;;; commentary:
 ;;; code:
 
-(when (version< emacs-version "29")
+(when (version< emacs-version "30")
   (error "This config requires at least GNU Emacs 30, but you're running %s" emacs-version))
 
 ;; prefer newer non-byte compiled sources to older byte compiled ones
@@ -13,15 +13,18 @@
 (setq package-vc-register-as-project nil)
 
 (require 'package)
+
 (dolist (source ' (("gnu" . "http://elpa.gnu.org/packages/")
                    ("melpa" . "https://melpa.org/packages/")
                    ("melpa-stable" . "http://stable.melpa.org/packages/")))
   (add-to-list 'package-archives source t))
 
 (setq package-archive-priorities
-      '(("gnu" . 3)
+      '(("gnu" . 1)
         ("melpa-stable" . 2)
-        ("melpa" . 1)))
+        ("melpa" . 3)))
+
+(package-initialize)
 
 (define-key ctl-x-map "p" project-prefix-map)
 
