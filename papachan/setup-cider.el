@@ -14,6 +14,14 @@
 ;;     (cider-interactive-eval
 ;;      (concat "(nextjournal.clerk/show! \"" filename "\")"))))
 
+(defun open-portal ()
+  (interactive)
+  (cider-interactive-eval
+   "(require '[portal.api :as p])
+     (do
+       (def p (p/open))
+       (add-tap #'p/submit))"))
+
 (use-package cider
   :ensure t
   :defer t
@@ -21,6 +29,7 @@
   :commands (cider-mode cider-connect cider-jack-in)
   :bind (("C-c M-j" . cider-jack-in)
          ("C-c C-a" . cider-eval-print-last-sexp)
+         ("C-M-g"   . open-portal)
          (:map cider-repl-mode-map
                ("C-X sc" . cider-repl-clear-buffer))
          (:map cider-repl-mode-map
