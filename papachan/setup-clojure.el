@@ -47,7 +47,9 @@
   (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
   (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
   :config
-  (require 'flycheck-clj-kondo))
+  (require 'flycheck-clj-kondo)
+  (setq clojure-indent-style 'align-arguments
+        clojure-align-forms-automatically t))
 
 ;; (use-package clojure-ts-mode
 ;;   :ensure t)
