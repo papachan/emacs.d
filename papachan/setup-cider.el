@@ -5,14 +5,14 @@
 ;;; Code:
 (use-package company :ensure t)
 
-(defun clerk-show ()
-  (interactive)
-  (when-let
-      ((filename
-        (buffer-file-name)))
-    (save-buffer)
-    (cider-interactive-eval
-     (concat "(nextjournal.clerk/show! \"" filename "\")"))))
+;; (defun clerk-show ()
+;;   (interactive)
+;;   (when-let
+;;       ((filename
+;;         (buffer-file-name)))
+;;     (save-buffer)
+;;     (cider-interactive-eval
+;;      (concat "(nextjournal.clerk/show! \"" filename "\")"))))
 
 (use-package cider
   :ensure t
@@ -69,9 +69,9 @@
               ("C-c k w" . kaocha-runner-show-warnings)
               ("C-c k h" . kaocha-runner-hide-windows)))
 
-;; (use-package helm-cider
-;;   :ensure t
-;;   :hook ((cider-mode . helm-cider-mode)))
+(use-package helm-cider
+  :ensure t
+  :hook ((cider-mode . helm-cider-mode)))
 
 (provide 'setup-cider)
 ;;; setup-cider.el ends here
