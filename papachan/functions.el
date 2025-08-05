@@ -396,5 +396,19 @@ If the next line is joined to the current line, kill the extra indent whitespace
       (forward-char 1)
       (just-one-space 1))))
 
+(defun get-point (symbol &optional arg)
+  "Get the point.  args: SYMBOL, ARG."
+  (funcall symbol arg)
+  (point))
+
+(defun copy-backward-word ()
+  "Copy word before point."
+  (interactive "")
+  (save-excursion
+    (let ((beg (get-point 'backward-word 1))
+          (end (progn (skip-syntax-forward "^ " (line-end-position))
+                      (point))))
+      (copy-region-as-kill beg end))))
+
 (provide 'functions)
 ;;; functions.el ends here
