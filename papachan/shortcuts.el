@@ -62,8 +62,9 @@
 (define-key global-map (kbd "C-c r") 'vr/replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
-(global-set-key (kbd "C-c %") 'query-replace-regexp)
+;; (global-set-key (kbd "C-c %") 'query-replace-regexp)
 (global-set-key (kbd "C-c C-v") 'other-frame)
+(global-set-key (kbd "C-c i") 'copy-backward-word)
 
 ;; (global-set-key (kbd "M-g 1") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig.txt")))
 ;; (global-set-key (kbd "M-g 2") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig-papachan.txt")))
