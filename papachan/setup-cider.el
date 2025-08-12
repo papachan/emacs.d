@@ -26,7 +26,7 @@
   :after clojure-mode
   :commands (cider-mode cider-connect cider-jack-in)
   :bind (("C-c M-j" . cider-jack-in)
-         ("C-M g" . open-portal)
+         ;; ("C-M g" . open-portal)
          (:map cider-repl-mode-map
                ("C-X sc" . cider-repl-clear-buffer))
          (:map cider-repl-mode-map

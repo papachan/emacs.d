@@ -2,8 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(when (version< emacs-version "29")
-  (error "This config requires at least GNU Emacs 29, but you're running %s" emacs-version))
+(when (version< emacs-version "30")
+  (error "This config requires at least GNU Emacs 30, but you're running %s" emacs-version))
 
 ;; prefer newer non-byte compiled sources to older byte compiled ones
 (setq load-prefer-newer t)

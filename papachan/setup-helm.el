@@ -21,7 +21,7 @@
 
 (use-package helm-ag
   :ensure t
-  :bind ("C-x c M-g a" . #'helm-ag))
+  :bind ("C-x c M-g a" . #'helm-do-ag))
 
 (use-package swiper
   :ensure t)
