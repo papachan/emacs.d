@@ -35,7 +35,7 @@
 (eshell/alias "ps-grep" "ps ax | grep -i $1")
 (eshell/alias "sudo" "eshell/sudo $*")
 (eshell/alias "ddu" "du -h --max-depth=1 | *sort -hr")
-(eshell/alias "clj-repl" "clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version \"1.3.1\"} cider/cider-nrepl {:mvn/version \"0.56.0\"} refactor-nrepl/refactor-nrepl {:mvn/version \"3.11.0\"}} :aliases {:cider/nrepl {:main-opts [\"-m\" \"nrepl.cmdline\" \"--middleware\" \"[cider.nrepl/cider-middleware]\"]}}}' -M:cider/nrepl -h 0.0.0.0 -p $1")
+(eshell/alias "clj-repl" "clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version \"1.3.1\"} cider/cider-nrepl {:mvn/version \"0.57.0\"} refactor-nrepl/refactor-nrepl {:mvn/version \"3.11.0\"}} :aliases {:cider/nrepl {:main-opts [\"-m\" \"nrepl.cmdline\" \"--middleware\" \"[cider.nrepl/cider-middleware]\"]}}}' -M:cider/nrepl -h 0.0.0.0 -p $1")
 
 (defun eshell/magit ()
   "Function to open magit-status for the current directory"

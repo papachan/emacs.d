@@ -409,5 +409,16 @@ If the next line is joined to the current line, kill the extra indent whitespace
                       (point))))
       (copy-region-as-kill beg end))))
 
+(defvar my-jira-instance-url "https://url.atlassian.net"
+  "Your Jira instance base URL.")
+
+(defun my-open-jira-ticket (ticket-code)
+  "Open a Jira ticket in your default web browser.
+The TICKET-CODE should be in the format \"XXX-123\"."
+  (interactive "")
+  (let* ((jira-url (format "%s/browse/%s" my-jira-instance-url (upcase ticket-code))))
+    (browse-url jira-url)
+    (message "Opening Jira ticket: %s" jira-url)))
+
 (provide 'functions)
 ;;; functions.el ends here
