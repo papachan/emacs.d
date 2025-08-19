@@ -17,8 +17,8 @@
   :init
   (require 'projectile))
 
-(use-package flycheck-clj-kondo
-  :ensure t)
+;; (use-package flycheck-clj-kondo
+;;   :ensure t)
 
 (use-package clj-refactor
   :ensure t
@@ -47,7 +47,6 @@
   (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
   (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
   :config
-  (require 'flycheck-clj-kondo)
   (setq clojure-indent-style 'align-arguments
         clojure-align-forms-automatically t))
 
