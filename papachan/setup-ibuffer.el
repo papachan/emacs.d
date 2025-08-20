@@ -25,6 +25,11 @@
           (or (filename . ".*\.cs$")
               (filename . ".*\.csproj$")
               (mode . csharp-mode)))
+         ("Tests Cypress"
+          (or
+           (mode . JavaScript-mode)
+           (filename . ".*\.js$")
+           (filename . ".*\.cy.js$")))
          ("Dired"
           (or (mode . dired-sidebar-mode)
               (mode . dired-mode)))
