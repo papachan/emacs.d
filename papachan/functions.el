@@ -396,10 +396,16 @@ If the next line is joined to the current line, kill the extra indent whitespace
       (forward-char 1)
       (just-one-space 1))))
 
+(defvar my-syntax-table
+  (let ((table (make-syntax-table)))
+    (modify-syntax-entry ?- "w")
+    table))
+
 (defun get-point (symbol &optional arg)
   "Get the point.  args: SYMBOL, ARG."
-  (funcall symbol arg)
-  (point))
+  (with-syntax-table my-syntax-table
+    (funcall symbol arg)
+    (point)))
 
 (defun copy-backward-word ()
   "Copy word before point."
