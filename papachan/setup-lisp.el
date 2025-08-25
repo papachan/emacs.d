@@ -18,8 +18,9 @@
          ("\\.fasl'" . lisp-mode))
   :hook ((lisp-mode slime-repl-mode). enable-paredit-mode))
 
-(add-hook 'emacs-lisp-mode-hook (lambda ()
-                                  (setq display-line-numbers 'relative)))
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (setq display-line-numbers t)))
 
 (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
 

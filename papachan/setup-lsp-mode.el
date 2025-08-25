@@ -28,5 +28,10 @@
                                clojurex-mode))
     (add-to-list 'lsp-language-id-configuration `(,clojure-all-modes . "clojure"))))
 
+(use-package lsp-ui
+  :ensure t
+  :config
+  (setq lsp-ui-doc-enable nil))
+
 (provide 'setup-lsp-mode)
 ;;; setup-lsp-mode.el ends here

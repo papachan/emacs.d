@@ -1,12 +1,36 @@
-;;; functions.el --- -*- lexical-binding: t; -*-
+;;; functions.el --- Personal utility functions -*- lexical-binding: t; -*-
+
 ;;; Commentary:
+;; A collection of utility functions for daily Emacs usage.
+
 ;;; Code:
+
 (require 's)
-(defvar current-date-format "%Y-%m-%d")
-(defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y")
-(defvar current-time-format "%a %H:%M:%S")
+
+;;; Variables
+
+(defvar current-date-format "%Y-%m-%d"
+  "Format string for current date.")
+
+(defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y"
+  "Format string for current date and time.")
+
+(defvar current-time-format "%a %H:%M:%S"
+  "Format string for current time.")
+
+(defvar my-jira-instance-url "https://your-domain.atlassian.net"
+  "Your Jira instance base URL.")
+
+(defvar my-syntax-table
+  (let ((table (make-syntax-table)))
+    (modify-syntax-entry ?- "w" table)
+    table)
+  "Syntax table that treats hyphens as word characters.")
+
+;;; General functions
 
 (defun change-legacy-deps-to-deps ($string &optional $from $to)
+  "Convert legacy Clojure dependency format to new deps format."
   (interactive
    (if (use-region-p)
        (list nil (region-beginning) (region-end))
@@ -26,15 +50,14 @@
         (goto-char $from)
         (insert outputStr)))))
 
+
+;;; Buffer Operations
+
 (defun buffer/clear ()
+  "Clear the current buffer."
   (interactive)
   (with-current-buffer (current-buffer)
     (erase-buffer)))
-
-(defun insert-latin-unicode ()
-  (interactive)
-  (lambda())
-  (insert "iso-8859-1"))
 
 (defun insert-time ()
   "Insert time stamp as 08:59:39."
@@ -52,22 +75,23 @@
   (insert (format-time-string "%Y-%m-%d %R")))
 
 (defun insert-current-date-time ()
+  "Insert current date and time using configured format."
   (interactive)
   (insert (format-time-string current-date-time-format (current-time))))
 
 (defun insert-current-time ()
+  "Insert current time using configured format."
   (interactive)
   (insert (format-time-string current-time-format (current-time))))
 
 (defun insert-title ()
+  "Insert a centered title with === formatting."
   (interactive)
-  (lambda())
-  (let ((name
-         (format "===%s==="
-                 (read-from-minibuffer "Enter your title:"))))
-    (setq len  (/ (- 72 (length name)) 2)
-          blank (make-string len ?\s))
-    (insert (concat blank name blank))))
+  (let* ((title (read-from-minibuffer "Enter your title:"))
+         (formatted-title (format "===%s===" title))
+         (padding-length (/ (- 72 (length formatted-title)) 2))
+         (padding (make-string padding-length ?\s)))
+    (insert (concat padding formatted-title padding))))
 
 (defun notify-popup (title message)
   "use terminal notify-send"
@@ -77,6 +101,8 @@
                (if (eq system-type 'gnu/linux)
                    (concat "notify-send " title ":" message)))))
     (shell-command str-action)))
+
+;;; File and Directory Operations
 
 (defun my-dired-create-file (file)
   "Create a file called FILE.
@@ -129,8 +155,8 @@ If FILE already exists, signal an error."
   (if (y-or-n-p "Quit Emacs? ")
       (save-buffers-kill-emacs)))
 
-(defun create-scratch-buffer nil
-  "create a new scratch buffer to work in. (could be *scratch* - *scratchX*)"
+(defun create-scratch-buffer ()
+  "Create a new scratch buffer to work in (could be *scratch* - *scratchX*)."
   (interactive)
   (let ((n 0)
         bufname)
@@ -145,6 +171,7 @@ If FILE already exists, signal an error."
     ))
 
 (defun twist-split ()
+  "Toggle between horizontal and vertical window split."
   (interactive)
   (setq buffer2 (window-buffer (second (window-list))))
   (if (window-top-child (frame-root-window))
@@ -153,11 +180,13 @@ If FILE already exists, signal an error."
   (set-window-buffer (second (window-list)) buffer2))
 
 (defun split-window-right-and-move-there-dammit ()
+  "Split window right and move focus to the new window."
   (interactive)
   (split-window-right)
   (windmove-right))
 
 (defun new-empty-buffer ()
+  "Create a new empty buffer."
   (interactive)
   (let ((buf (generate-new-buffer "untitled")))
     (switch-to-buffer buf)
@@ -165,6 +194,7 @@ If FILE already exists, signal an error."
     (setq buffer-offer-save t)))
 
 (defun new-org-mode-buffer ()
+  "Create a new Org mode scratch buffer."
   (interactive)
   (let ((buffer (get-buffer-create (generate-new-buffer-name "*scratch-org*"))))
     (pop-to-buffer buffer)
@@ -180,6 +210,7 @@ If FILE already exists, signal an error."
   (insert ";;; -*- Mode: Lisp; Syntax: Common-Lisp -*-"))
 
 (defun toggle-current-window-dedication ()
+  "Toggle dedication of the current window to its buffer."
   (interactive)
   (let* ((window    (selected-window))
          (dedicated (window-dedicated-p window)))
@@ -190,6 +221,7 @@ If FILE already exists, signal an error."
 
 ;; Unindent
 (defun my-indent-region (N)
+  "Indent region by N*2 spaces if region is active, otherwise self-insert."
   (interactive "p")
   (if (use-region-p)
       (progn (indent-rigidly (region-beginning) (region-end) (* N 2))
@@ -197,6 +229,7 @@ If FILE already exists, signal an error."
     (self-insert-command N)))
 
 (defun my-unindent-region (N)
+  "Unindent region by N*2 spaces if region is active, otherwise self-insert."
   (interactive "p")
   (if (use-region-p)
       (progn (indent-rigidly (region-beginning) (region-end) (* N -2))
@@ -204,10 +237,12 @@ If FILE already exists, signal an error."
     (self-insert-command N)))
 
 (defun reload-init-file ()
+  "Reload the Emacs initialization file."
   (interactive)
   (load-file "~/.emacs.d/init.el"))
 
 (defun open-scratch-buffer ()
+  "Switch to the *scratch* buffer."
   (interactive)
   (switch-to-buffer "*scratch*"))
 
@@ -222,11 +257,12 @@ If FILE already exists, signal an error."
         (message "Buffer %s not associated with a file; killed default-directory %s" (buffer-name) result)))))
 
 (defun revert-buffer-without-confirmation()
-  "Revert buffer without asking for confirmation"
+  "Revert buffer without asking for confirmation."
   (interactive "")
   (revert-buffer t t t))
 
 (defun my-change-number-at-point (change)
+  "Apply CHANGE function to the number at point."
   (let ((number (number-at-point))
         (point (point)))
     (when number
@@ -237,17 +273,17 @@ If FILE already exists, signal an error."
         (goto-char point)))))
 
 (defun my-increment-number-at-point ()
-  "Increment number at point like vim's C-a"
+  "Increment number at point like vim's \\C-\\a."
   (interactive)
   (my-change-number-at-point '1+))
 
 (defun my-decrement-number-at-point ()
-  "Decrement number at point like vim's C-x"
+  "Decrement number at point like vim's \\C-\\x."
   (interactive)
   (my-change-number-at-point '1-))
 
 (defun file-path-on-clipboard ()
-  "Put the current file name on the clipboard"
+  "Put the current file name on the clipboard."
   (interactive)
   (let ((filename (if (equal major-mode 'dired-mode)
                       default-directory
@@ -259,6 +295,7 @@ If FILE already exists, signal an error."
       (message filename))))
 
 (defun random-11-letter-string ()
+  "Insert a random 11-character alphanumeric string."
   (interactive)
   (progn
     (dotimes (_ 11)
@@ -275,8 +312,11 @@ If FILE already exists, signal an error."
   (interactive)
   (join-line t))
 
+;;; Buffer Operations
+
 (defun insert-into-buffer (filename)
-  "Insert file content into buffer, useful when switching the content of a file"
+  "Insert file content into buffer, useful when switching the content of a file.
+Arguments: FILENAME"
   (interactive)
   (let ((buf (current-buffer)))
     (with-current-buffer buf
@@ -288,17 +328,13 @@ If FILE already exists, signal an error."
         (append-to-buffer buf (point) (point-max))))))
 
 (defun download-url-file ()
+  "Download a file from a URL to the current directory."
   (interactive)
-  (lambda ())
   (let ((url (read-from-minibuffer "Enter url:")))
     (url-copy-file url (url-file-nondirectory url))))
 
-(defun send-output-log ()
-  "copy error output to sprunge"
-  (interactive)
-  (shell-command "cat ~/Desktop/output_error.log | curl -F 'sprunge=<-' http://sprunge.us"))
-
 (defun git-clone-repo ()
+  "Clone a Git repository from a URL."
   (interactive)
   (lambda())
     (let ((url (read-from-minibuffer "Enter url:")))
@@ -306,13 +342,12 @@ If FILE already exists, signal an error."
 
 ;; new functions
 (defun insert-clj-uuid (n)
-  "Insert a Clojure UUID tagged literal in the form of #uuid
-  \"11111111-1111-1111-1111-111111111111\". The prefix argument N
-  specifies the padding used."
+  "Insert a Clojure UUID tagged literal.
+The prefix argument N specifies the padding digit used (0-9)."
   (interactive "P")
   (let ((n (or n 1)))
     (if (or (< n 0) (> n 9))
-        (error "Argument N must be between 0 and 9."))
+        (error "Argument N must be between 0 and 9"))
     (let ((n (string-to-char (number-to-string n))))
       (insert
        (format "#uuid \"%s-%s-%s-%s-%s\""
@@ -322,11 +357,11 @@ If FILE already exists, signal an error."
                (make-string 4 n)
                (make-string 12 n))))))
 
-(defun backward-copy-word ()
-  "Something"
-  (interactive)
-  (save-excursion
-    (copy-region-as-kill (point) (progn (backward-word) (point)))))
+;; (defun backward-copy-word ()
+;;   "Something"
+;;   (interactive)
+;;   (save-excursion
+;;     (copy-region-as-kill (point) (progn (backward-word) (point)))))
 
 (defun reopen-last-closed-file ()
   "Reopen the last file that was closed."
@@ -346,16 +381,13 @@ If FILE already exists, signal an error."
   (delete-other-windows))
 
 (defun current-directory ()
+  "Open Dired in the current directory."
   (interactive)
   (dired "."))
 
 (defun un-camelcase-word-at-point ()
-  "un-camelcase the word at point, replacing uppercase chars with
-the lowercase version preceded by an underscore.
-
-The first char, if capitalized (eg, PascalCase) is just
-downcased, no preceding underscore.
-"
+  "Convert camelCase word at point to snake_case.
+The first char, if capitalized (eg, PascalCase) is just downcased."
   (interactive)
   (save-excursion
     (let ((bounds (bounds-of-thing-at-point 'word)))
@@ -364,15 +396,17 @@ downcased, no preceding underscore.
       (downcase-region (car bounds) (cdr bounds)))))
 
 (defun to-snake-case (start end)
-"Change selected text to snake case format.
+  "Change selected text to snake case format (Arguments START END).
+
+Snake case separates words with underscores and uses lowercase letters.
 
 Snake case is a naming convention where words are separated by
-underscores (_) and all letters are in lowercase. For example,
+underscores (_) and all letters are in lowercase.  For example,
 the string 'CamelCaseString' would be transformed to 'camel_case_string'.
 
 Usage:
 - Select the region of text you want to transform.
-- Call this function interactively (e.g., M-x to-snake-case).
+- Call this function interactively (e.g., \\M-\\x to-snake-case).
 
 The interactive argument \"r\" refers to the region's start and end points.
 
@@ -389,16 +423,11 @@ Example:
 ;; https://github.com/Fuco1/.emacs.d/blob/master/site-lisp/my-advices.el#L7
 (defadvice kill-line (before kill-line-autoreindent activate)
   "Kill excess whitespace when joining lines.
-If the next line is joined to the current line, kill the extra indent whitespace in front of the next line."
+If the next line is joined to the current line, kill the extra indent whitespace."
   (when (and (eolp) (not (bolp)))
     (save-excursion
       (forward-char 1)
       (just-one-space 1))))
-
- (defvar my-syntax-table
-      (let ((table (make-syntax-table)))
-        (modify-syntax-entry ?- "w")
-        table))
 
 (defun get-point (symbol &optional arg)
   "Get the point.  arguments: SYMBOL, ARG."
@@ -414,9 +443,6 @@ If the next line is joined to the current line, kill the extra indent whitespace
           (end (progn (skip-syntax-forward "^ " (line-end-position))
                       (point))))
       (copy-region-as-kill beg end))))
-
-(defvar my-jira-instance-url "https://url.atlassian.net"
-  "Your Jira instance base URL.")
 
 (defun my-open-jira-ticket (ticket-code)
   "Open a Jira ticket in your default web browser.
