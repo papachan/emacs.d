@@ -4,7 +4,7 @@
 
 (use-package rainbow-delimiters :ensure t)
 
-(use-package flycheck-clj-kondo :ensure t)
+;; (use-package flycheck-clj-kondo :ensure t)
 
 (use-package html-to-hiccup
   :ensure t
@@ -15,7 +15,7 @@
   :ensure t
   :hook ((clojure-mode . paredit-mode)
          (clojure-mode . eldoc-mode)
-         (clojure-mode . flycheck-mode)
+         ;; (clojure-mode . flycheck-mode)
          (clojure-mode . rainbow-delimiters-mode)
          (clojure-mode . company-mode))
   :mode (("\\.edn$" . clojure-mode)
@@ -23,7 +23,7 @@
          ("\\.cljx$" . clojurex-mode)
          ("\\.cljc$" . clojurec-mode))
   :config
-  (require 'flycheck-clj-kondo)
+  ;; (require 'flycheck-clj-kondo)
   (require 'clojure-mode-extra-font-locking)
   ;; indentation
   (setq clojure-indent-style 'align-arguments
