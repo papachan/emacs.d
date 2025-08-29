@@ -5,6 +5,8 @@
 
 (setq ibuffer-saved-filter-groups
       '(("default"
+         ("Claude" (or (name . "\*claude llm \(.*\)")
+                       (name . "\*gemini llm \(.*\)")))
          ("Org" (or (mode . org-mode)
                     (filename . ".*\.txt$")))
          ("Magit" (or (mode . magit-mode)

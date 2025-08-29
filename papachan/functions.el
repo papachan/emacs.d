@@ -357,12 +357,6 @@ The prefix argument N specifies the padding digit used (0-9)."
                (make-string 4 n)
                (make-string 12 n))))))
 
-;; (defun backward-copy-word ()
-;;   "Something"
-;;   (interactive)
-;;   (save-excursion
-;;     (copy-region-as-kill (point) (progn (backward-word) (point)))))
-
 (defun reopen-last-closed-file ()
   "Reopen the last file that was closed."
   (interactive)

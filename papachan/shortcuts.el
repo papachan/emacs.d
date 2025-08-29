@@ -9,6 +9,7 @@
 
 (use-package change-inner :ensure t)
 
+(global-unset-key (kbd "C-z"))
 (global-set-key (kbd "s-c") 'kill-ring-save)
 (global-set-key (kbd "s-s") 'save-buffer)
 (global-set-key (kbd "s-v") 'yank)
