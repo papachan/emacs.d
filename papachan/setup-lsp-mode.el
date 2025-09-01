@@ -12,11 +12,16 @@
 
   :config
   (setq lsp-headerline-breadcrumb-enable t
-        lsp-ui-doc-enable nil
+        lsp-inhibit-message t
         lsp-ui-sideline-enable nil
+        lsp-ui-doc-enable nil
         lsp-lens-enable t
         lsp-signature-auto-activate nil
-        lsp-enable-indentation nil)
+        lsp-enable-indentation nil
+        lsp-ui-sideline-show-flycheck t
+        lsp-ui-flycheck-live-reporting t
+        lsp-highlight-symbol-at-point t
+        company-minimum-prefix-length 1)
   (dolist (clojure-all-modes '(clojure-mode
                                clojurec-mode
                                clojurescript-mode

@@ -1,7 +1,6 @@
 ;;; setup-clojure.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
-(require 'html-to-hiccup)
 (require 'rainbow-delimiters)
 (use-package html-to-hiccup
   :ensure t
@@ -34,18 +33,14 @@
                                  )))
 
 (use-package clojurescript-mode
-  :hook ((clojurescript-mode . paredit-mode)
-         ;; (clojurescript-mode . (lambda () (auto-complete-mode -1)))
-         ))
+  :hook ((clojurescript-mode . paredit-mode)))
 
 (use-package clojure-mode
   :ensure t
   :hook ((clojure-mode . paredit-mode)
          (clojure-mode . eldoc-mode)
          (clojure-mode . flycheck-mode)
-         (clojure-mode . rainbow-delimiters-mode)
-         ;; (clojure-mode . (lambda () (auto-complete-mode -1)))
-         )
+         (clojure-mode . rainbow-delimiters-mode))
   :init
   (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
   (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
@@ -55,6 +50,8 @@
   (require 'flycheck-clj-kondo)
   (add-hook 'clojure-mode-hook (lambda () (paredit-mode nil))))
 
+;; (use-package clojure-ts-mode
+;;   :ensure t)
 
 (provide 'setup-clojure)
 ;;; setup-clojure.el ends here
