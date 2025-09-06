@@ -1,10 +1,28 @@
-;;; functions.el --- Summary
+;;; functions.el --- Personal utility functions -*- lexical-binding: t; -*-
 ;;; Commentary:
+;; A collection of utility functions for daily Emacs usage.
+
 ;;; Code:
+
 (require 's)
-(defvar current-date-format "%Y-%m-%d")
-(defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y")
-(defvar current-time-format "%a %H:%M:%S")
+
+(defvar current-date-format "%Y-%m-%d"
+  "Format string for current date.")
+
+(defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y"
+  "Format string for current date and time.")
+
+(defvar current-time-format "%a %H:%M:%S"
+  "Format string for current time.")
+
+(defvar my-jira-instance-url "https://your-domain.atlassian.net"
+  "Your Jira instance base URL.")
+
+(defvar my-syntax-table
+  (let ((table (make-syntax-table)))
+    (modify-syntax-entry ?- "w" table)
+    table)
+  "Syntax table that treats hyphens as word characters.")
 
 (defun change-legacy-deps-to-deps (str &optional from to)
   "Transform legacy vector dependencies to the new map format.
@@ -22,8 +40,7 @@ FROM and TO specify the region boundaries for interactive use."
   (let ((work-on-string-p (when str t))
         (input-str (if str
                        str
-                     (buffer-substring-no-properties from to)))
-        output-str)
+                     (buffer-substring-no-properties from to))))
     (setq output-str
           (let ((case-fold-search t))
             (if (string-match "\\[\\(.*?\\)\\s-+\\(.*?\\)]" input-str)
@@ -57,7 +74,7 @@ Internally, the function uses `erase-buffer` to remove all text from the current
   (insert "iso-8859-1"))
 
 (defun insert-time ()
-  "Insert time."
+  "Insert time stamp as 08:59:39."
   (interactive "*")
   (insert (format-time-string "%X")))
 
@@ -67,18 +84,23 @@ Internally, the function uses `erase-buffer` to remove all text from the current
   (insert (shell-command-to-string "date")))
 
 (defun insert-current-iso-date ()
-  "Insert current date YYYY-MM-DD."
+  "Insert current date with YYYY-MM-DD format."
   (interactive)
   (insert (format-time-string current-date-format (current-time))))
 
+(defun insert-time-stamp-short ()
+  "Insert short date/time stamp as 2024-11-29 10:41."
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d %R")))
+
 (defun insert-current-date-time ()
   "Insert current date.  (dd DD MMM aaa HH:mm:ss zzz)."
-  (interactive "*")
+  (interactive)
   (insert (format-time-string current-date-time-format (current-time))))
 
 (defun insert-current-time ()
   "Insert current time."
-  (interactive "*")
+  (interactive)
   (insert (format-time-string current-time-format (current-time))))
 
 (defun insert-centered-title ()
@@ -101,10 +123,13 @@ If the user enters 'Chapter 1', the following text will be inserted:
                               ===Chapter 1===
 "
   (interactive)
-  (let* ((name (format "===%s===" (read-from-minibuffer "Enter your title:")))
-         (len (/ (- 72 (length name)) 2))
-         (blank (make-string len ?\s)))
-    (insert (concat blank name blank))))
+  (let* ((title (read-from-minibuffer "Enter your title:"))
+         (formatted-title (format "===%s===" title))
+         (padding-length (/ (- 72 (length formatted-title)) 2))
+         (padding (make-string padding-length ?\s)))
+    (insert (concat padding formatted-title padding))))
+
+;;; File and Directory Operations
 
 (defun my-dired-create-file (file)
   "Create a file called FILE in the current Dired directory.
@@ -442,9 +467,11 @@ downcased, no preceding underscore.
   (interactive)
   (save-excursion
     (let ((bounds (bounds-of-thing-at-point 'word)))
-      (replace-regexp "\\([A-Z]\\)" "_\\1" nil
-                      (1+ (car bounds)) (cdr bounds))
-      (downcase-region (car bounds) (cdr bounds)))))
+      (when bounds
+        (goto-char (1+ (car bounds)))  ; Skip first character
+        (let ((case-fold-search nil))
+          (while (re-search-forward "[A-Z]" (cdr bounds) t)
+            (replace-match (concat "_" (downcase (match-string 0))) t t)))))))
 
 (defun to-snake-case (start end)
   "Change selected text to snake case format.
@@ -498,6 +525,18 @@ If the next line is joined to the current line, kill the extra indent whitespace
           (end (progn (skip-syntax-forward "^ " (line-end-position))
                       (point))))
       (copy-region-as-kill beg end))))
+
+(defun my-open-jira-ticket-at-point ()
+  "Open the Jira ticket at point in your default web browser.
+Looks for a ticket code like 'XXX-123'."
+  (interactive)
+  (let* ((ticket-code (thing-at-point 'symbol t)))
+    (if (and ticket-code
+             (string-match "^[A-Z]+-[0-9]+$" (upcase ticket-code)))
+        (let ((jira-url (format "%s/browse/%s" my-jira-instance-url (upcase ticket-code))))
+          (browse-url jira-url)
+          (message "Opening Jira ticket: %s" jira-url))
+      (message "No valid Jira ticket code at point."))))
 
 (provide 'functions)
 ;;; functions.el ends here
