@@ -8,6 +8,12 @@
   :init
   (move-text-default-bindings))
 
+(use-package reformatter
+  :config
+  (reformatter-define xml-format
+    :program "xmllint"
+    :args '("--format" "-")))
+
 ;; (require 'midnight)
 (require 'whitespace)
 (require 'recentf)
