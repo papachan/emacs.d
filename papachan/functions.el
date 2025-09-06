@@ -29,27 +29,27 @@
 
 ;;; General functions
 
-(defun change-legacy-deps-to-deps ($string &optional $from $to)
+(defun change-legacy-deps-to-deps (str &optional from to)
   "Convert legacy Clojure dependency format to new deps format."
   (interactive
    (if (use-region-p)
        (list nil (region-beginning) (region-end))
      (let ((bds (bounds-of-thing-at-point 'paragraph)))
        (list nil (car bds) (cdr bds)))))
-  (let (workOnStringP inputStr outputStr)
-    (setq workOnStringP (if $string t nil))
-    (setq inputStr (if workOnStringP $string (buffer-substring-no-properties $from $to)))
+  (let ((work-on-string-p (when str t))
+        (inputStr (if str
+                      str
+                      (buffer-substring-no-properties from to))))
     (setq outputStr
           (let ((case-fold-search t))
             (and (string-match "\\[\\(.*\\)\\\s\\(.*\\)\\]" inputStr)
                  (concat (match-string 1 inputStr) " {:mvn/version " (match-string 2 inputStr) "}"))))
-    (if workOnStringP
+    (if work-on-string-p
         outputStr
       (save-excursion
-        (delete-region $from $to)
-        (goto-char $from)
+        (delete-region from to)
+        (goto-char from)
         (insert outputStr)))))
-
 
 ;;; Buffer Operations
 
@@ -92,15 +92,6 @@
          (padding-length (/ (- 72 (length formatted-title)) 2))
          (padding (make-string padding-length ?\s)))
     (insert (concat padding formatted-title padding))))
-
-(defun notify-popup (title message)
-  "use terminal notify-send"
-  (interactive)
-  (let ((str-action (if (eq system-type 'darwin)
-                 (concat "terminal-notifier -title " title " -message " message)
-               (if (eq system-type 'gnu/linux)
-                   (concat "notify-send " title ":" message)))))
-    (shell-command str-action)))
 
 ;;; File and Directory Operations
 
@@ -438,13 +429,17 @@ If the next line is joined to the current line, kill the extra indent whitespace
                       (point))))
       (copy-region-as-kill beg end))))
 
-(defun my-open-jira-ticket (ticket-code)
-  "Open a Jira ticket in your default web browser.
-The TICKET-CODE should be in the format \"XXX-123\"."
-  (interactive "")
-  (let* ((jira-url (format "%s/browse/%s" my-jira-instance-url (upcase ticket-code))))
-    (browse-url jira-url)
-    (message "Opening Jira ticket: %s" jira-url)))
+(defun my-open-jira-ticket-at-point ()
+  "Open the Jira ticket at point in your default web browser.
+Looks for a ticket code like 'XXX-123'."
+  (interactive)
+  (let* ((ticket-code (thing-at-point 'symbol t)))
+    (if (and ticket-code
+             (string-match "^[A-Z]+-[0-9]+$" (upcase ticket-code)))
+        (let ((jira-url (format "%s/browse/%s" my-jira-instance-url (upcase ticket-code))))
+          (browse-url jira-url)
+          (message "Opening Jira ticket: %s" jira-url))
+      (message "No valid Jira ticket code at point."))))
 
 (provide 'functions)
 ;;; functions.el ends here
