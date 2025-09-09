@@ -59,6 +59,11 @@
   (with-current-buffer (current-buffer)
     (erase-buffer)))
 
+(defun put-the-date ()
+  "Insert time stamp as Mon Sep 8 14:25:29 -04 2025."
+  (interactive)
+  (insert (shell-command-to-string "date")))
+
 (defun insert-time ()
   "Insert time stamp as 08:59:39."
   (interactive "*")
@@ -135,10 +140,6 @@ If FILE already exists, signal an error."
   (interactive)
   (kill-emacs
    (if (featurep 'x) 0 1)))
-
-(defun put-the-date ()
-  (interactive)
-  (insert (shell-command-to-string "date")))
 
 ; confirmation before quiting emacs
 (defun quit-emacs ()
@@ -376,9 +377,11 @@ The first char, if capitalized (eg, PascalCase) is just downcased."
   (interactive)
   (save-excursion
     (let ((bounds (bounds-of-thing-at-point 'word)))
-      (replace-regexp "\\([A-Z]\\)" "_\\1" nil
-                      (1+ (car bounds)) (cdr bounds))
-      (downcase-region (car bounds) (cdr bounds)))))
+      (when bounds
+        (goto-char (1+ (car bounds)))  ; Skip first character
+        (let ((case-fold-search nil))
+          (while (re-search-forward "[A-Z]" (cdr bounds) t)
+            (replace-match (concat "_" (downcase (match-string 0))) t t)))))))
 
 (defun to-snake-case (start end)
   "Change selected text to snake case format (Arguments START END).
@@ -387,7 +390,7 @@ Snake case separates words with underscores and uses lowercase letters.
 
 Snake case is a naming convention where words are separated by
 underscores (_) and all letters are in lowercase.  For example,
-the string 'CamelCaseString' would be transformed to 'camel_case_string'.
+the string \"CamelCaseString\" would be transformed to \"camel_case_string\".
 
 Usage:
 - Select the region of text you want to transform.
@@ -396,8 +399,8 @@ Usage:
 The interactive argument \"r\" refers to the region's start and end points.
 
 Example:
-- If you select the text 'CamelCaseString' and call this function,
-  it will be transformed to 'camel_case_string'."
+- If you select the text \"CamelCaseString\" and call this function,
+  it will be transformed to \"camel_case_string\"."
   (interactive "r")
   (if (use-region-p)
       (let ((camel-case-str (buffer-substring start end)))
@@ -431,7 +434,7 @@ If the next line is joined to the current line, kill the extra indent whitespace
 
 (defun my-open-jira-ticket-at-point ()
   "Open the Jira ticket at point in your default web browser.
-Looks for a ticket code like 'XXX-123'."
+Looks for a ticket code like \"XXX-123\"."
   (interactive)
   (let* ((ticket-code (thing-at-point 'symbol t)))
     (if (and ticket-code
