@@ -351,18 +351,19 @@ If FILE already exists, signal an error."
   (dired "."))
 
 (defun un-camelcase-word-at-point ()
-  "un-camelcase the word at point, replacing uppercase chars with
-the lowercase version preceded by an underscore.
+  "Un-camelcase the word at point.
+Replacing uppercase chars with the lowercase version preceded by an underscore.
 
 The first char, if capitalized (eg, PascalCase) is just
-downcased, no preceding underscore.
-"
+downcased, no preceding underscore."
   (interactive)
   (save-excursion
     (let ((bounds (bounds-of-thing-at-point 'word)))
-      (replace-regexp "\\([A-Z]\\)" "_\\1" nil
-                      (1+ (car bounds)) (cdr bounds))
-      (downcase-region (car bounds) (cdr bounds)))))
+      (when bounds
+        (goto-char (1+ (car bounds)))  ; Skip first character
+        (let ((case-fold-search nil))
+          (while (re-search-forward "[A-Z]" (cdr bounds) t)
+            (replace-match (concat "_" (downcase (match-string 0))) t t)))))))
 
 (defun to-snake-case (start end)
 "Change selected text to snake case format.
@@ -419,13 +420,17 @@ If the next line is joined to the current line, kill the extra indent whitespace
 (defvar my-jira-instance-url "https://url.atlassian.net"
   "Your Jira instance base URL.")
 
-(defun my-open-jira-ticket (ticket-code)
-  "Open a Jira ticket in your default web browser.
-The TICKET-CODE should be in the format \"XXX-123\"."
-  (interactive "")
-  (let* ((jira-url (format "%s/browse/%s" my-jira-instance-url (upcase ticket-code))))
-    (browse-url jira-url)
-    (message "Opening Jira ticket: %s" jira-url)))
+(defun my/open-jira-ticket-at-point ()
+  "Open the Jira ticket at point in your default web browser.
+Looks for a ticket code like \"XXX-123\"."
+  (interactive)
+  (let* ((ticket-code (thing-at-point 'symbol t)))
+    (if (and ticket-code
+             (string-match "^[A-Z]+-[0-9]+$" (upcase ticket-code)))
+        (let ((jira-url (format "%s/browse/%s" my-jira-instance-url (upcase ticket-code))))
+          (browse-url jira-url)
+          (message "Opening Jira ticket: %s" jira-url))
+      (message "No valid Jira ticket code at point."))))
 
 (provide 'functions)
 ;;; functions.el ends here

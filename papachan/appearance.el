@@ -19,6 +19,7 @@
 
 (load-file (expand-file-name "themes/zerodark-theme/zerodark-theme.el" user-emacs-directory))
 (load-theme 'zerodark t)
+;; (zerodark-setup-modeline-format)
 
 ;; smart-mode-line
 ;; (setq sml/theme 'respectful)
