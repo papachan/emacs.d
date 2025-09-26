@@ -55,7 +55,6 @@
                                 setup-chatgpt
                                 init-flycheck
                                 setup-lisp
-                                setup-lsp-mode
                                 setup-magit
                                 setup-multiple-cursors
                                 setup-projectile
@@ -67,7 +66,8 @@
                                 shortcuts
                                 setup-eshell
                                 setup-eros
-                                setup-yasnippet)
+                                setup-yasnippet
+                                setup-lsp-mode)
   "List of configuration modules to load.")
 
 (dolist (module papachan/init-modules)

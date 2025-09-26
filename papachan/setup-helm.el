@@ -15,7 +15,8 @@
         helm-candidate-number-limit 100
         helm-display-buffer-reuse-frame t
         helm-display-buffer-width 80
-        helm-split-window-inside-p t)
+        helm-split-window-inside-p t
+        helm-display-line-numbers-mode nil)
   (helm-mode t))
 
 (use-package helm-ag
@@ -32,9 +33,17 @@
 (use-package swiper-helm
   :ensure t
   :bind
-  (("C-s" . swiper-helm)
-   ("C-r" . swiper-helm))
+  (("C-s" . my/swiper-search-without-line-numbers)
+   ("C-r" . my/swiper-search-without-line-numbers))
   :config
+  (defun my/swiper-search-without-line-numbers ()
+    (interactive)
+    (let ((old-display-line-numbers display-line-numbers))
+      (setq display-line-numbers nil)
+      (unwind-protect
+          (swiper)
+        (setq display-line-numbers old-display-line-numbers))))
+  (setq swiper-helm-display-function 'display-buffer)
   (require 'ivy))
 
 (use-package helm-cider

@@ -35,7 +35,7 @@
   ;; (setq whitespace-line-column 90)
   (setq whitespace-style '(face tabs empty trailing tab-mark))) ;; add lines-tail for max cols
 
- ;; to ensure files have no trailing whitespace
+;; to ensure files have no trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; local env
