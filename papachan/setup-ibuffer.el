@@ -5,10 +5,11 @@
 
 (setq ibuffer-saved-filter-groups
       '(("default"
-         ("Claude" (or (name . "\*claude llm \(.*\)")
-                       (name . "\*gemini llm \(.*\)")))
+         ("Claude" (name . "\*claude llm \(.*\)"))
+         ("Gemini" (name . "\*gemini llm \(.*\)"))
          ("Org" (or (mode . org-mode)
                     (filename . ".*\.txt$")))
+         ("csv" (filename . ".*\.csv$"))
          ("Magit" (or (mode . magit-mode)
                       (mode . magit-status-mode)
                       (mode . magit-log-mode)
