@@ -18,11 +18,13 @@
   (define-advice magit-push-current-to-upstream (:before (args) query-yes-or-no)
   "Prompt for confirmation before permitting a push to upstream."
   (when-let ((branch (magit-get-current-branch)))
-    (unless (yes-or-no-p (format "Push %s branch upstream to %s? "
-                                 branch
-                                 (or (magit-get-upstream-branch branch)
-                                     (magit-get "branch" branch "remote"))))
-      (user-error "Push to upstream aborted by user"))))
+    (let* ((upstream (or (magit-get-upstream-branch branch)
+                        (magit-get "branch" branch "remote")))
+           (prompt (if upstream
+                       (format "Push %s branch upstream to %s? " branch upstream)
+                     (format "Push %s branch to upstream? " branch))))
+      (unless (yes-or-no-p prompt)
+        (user-error "Push to upstream aborted by user")))))
 
   (setq magit-display-buffer-function
       (lambda (buffer)
