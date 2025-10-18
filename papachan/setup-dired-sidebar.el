@@ -17,5 +17,10 @@
                                        (tab-line-mode -1)))
   :commands (dired-sidebar-toggle-sidebar))
 
+(use-package dired-hide-dotfiles
+  :hook (dired-sidebar-mode . dired-hide-dotfiles-mode)
+  :bind (:map dired-sidebar-mode-map
+              ("H" . dired-hide-dotfiles-mode)))
+
 (provide 'setup-dired-sidebar)
 ;;; setup-dired-sidebar.el ends here
