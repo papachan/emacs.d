@@ -444,5 +444,16 @@ Looks for a ticket code like \"XXX-123\"."
           (message "Opening Jira ticket: %s" jira-url))
       (message "No valid Jira ticket code at point."))))
 
+(defun format-current-buffer-with-jet ()
+  "Format the current buffer's file using jet --pretty and replace buffer contents."
+  (interactive)
+  (if (not buffer-file-name)
+      (message "Buffer is not visiting a file")
+    (let* ((command (format "cat %s | jet --pretty" (shell-quote-argument buffer-file-name)))
+           (output (shell-command-to-string command)))
+      (erase-buffer)
+      (insert output)
+      (message "Buffer formatted with jet"))))
+
 (provide 'functions)
 ;;; functions.el ends here
