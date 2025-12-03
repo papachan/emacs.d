@@ -1,6 +1,15 @@
 ;;; setup-helm.el --- Summary
 ;;; Commentary:
+
 ;;; Code:
+
+(defun helm-grep-symbol-at-point-in-project ()
+  (interactive)
+  (let* ((symbol (thing-at-point 'symbol t)))
+    (if symbol
+        (helm-do-ag-project-root symbol)
+      (message "No symbol at point"))))
+
 (use-package helm
   :ensure t
   :bind (("M-x" . #'helm-M-x)
@@ -9,7 +18,7 @@
          ("C-x C-r" . #'helm-recentf))
   :config
   (setq helm-ff-skip-boring-files t
-        ;helm-ff-skip-git-ignored-files t
+        ;; helm-ff-skip-git-ignored-files t
         ;; helm-idle-delay 0.0
         ;; helm-mode-fuzzy-match t
         ;; helm-completion-in-region-fuzzy-match t
@@ -21,7 +30,7 @@
 
 (use-package helm-ag
   :ensure t
-  :bind ("C-x c M-g a" . #'helm-do-ag))
+  :bind ("C-x c M-g a" . #'helm-do-ag-project-root))
 
 (use-package swiper
   :ensure t)
