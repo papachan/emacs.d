@@ -33,6 +33,7 @@
 (global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
 (global-set-key (kbd "C-c f") 'reopen-last-closed-file)
 (global-set-key (kbd "C-'") 'toggle-quotes)
+(global-set-key (kbd "C-x g") 'simple-toggle-highlight-symbol-at-point)
 ;; (global-set-key (kbd "C-c C-b") 'dos2unix)
 ;; (global-set-key (kbd "") 'backward-copy-word)
 (provide 'shortcuts)

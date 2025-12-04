@@ -5,6 +5,7 @@
 ;;; Code:
 
 (require 's)
+(require 'hi-lock)
 
 (defvar current-date-format "%Y-%m-%d"
   "Format string for current date.")
@@ -537,6 +538,15 @@ Looks for a ticket code like 'XXX-123'."
           (browse-url jira-url)
           (message "Opening Jira ticket: %s" jira-url))
       (message "No valid Jira ticket code at point."))))
+
+(defun simple-toggle-highlight-symbol-at-point ()
+  "Toggle highlighting for the symbol at point."
+  (interactive)
+  (let* ((sym (thing-at-point 'symbol t))
+         (rexp (regexp-quote sym)))
+    (if hi-lock-interactive-patterns
+        (hi-lock-unface-buffer rexp)
+      (hi-lock-face-buffer rexp 'hi-salmon))))
 
 (provide 'functions)
 ;;; functions.el ends here
