@@ -6,6 +6,7 @@
 ;;; Code:
 
 (require 's)
+(require 'hi-lock)
 
 ;;; Variables
 
@@ -454,6 +455,16 @@ Looks for a ticket code like \"XXX-123\"."
       (erase-buffer)
       (insert output)
       (message "Buffer formatted with jet"))))
+
+(defun simple-toggle-highlight-symbol-at-point ()
+  "Toggle highlighting for the symbol at point."
+  (interactive)
+  (when-let* ((regexp (find-tag-default-as-symbol-regexp)))
+    (if (member regexp (hi-lock--regexps-at-point))
+        ;; Unhighlight symbol at point
+        (hi-lock-unface-buffer regexp)
+      ;; Highlight symbol at point
+      (hi-lock-face-symbol-at-point))))
 
 (provide 'functions)
 ;;; functions.el ends here
