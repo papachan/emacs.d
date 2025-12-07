@@ -459,12 +459,13 @@ Looks for a ticket code like \"XXX-123\"."
 (defun simple-toggle-highlight-symbol-at-point ()
   "Toggle highlighting for the symbol at point."
   (interactive)
-  (when-let* ((regexp (find-tag-default-as-symbol-regexp)))
-    (if (member regexp (hi-lock--regexps-at-point))
-        ;; Unhighlight symbol at point
-        (hi-lock-unface-buffer regexp)
-      ;; Highlight symbol at point
-      (hi-lock-face-symbol-at-point))))
+  (let* ((sym (thing-at-point 'symbol t))
+         (rexp (regexp-quote sym))
+         (faces '(hi-yellow hi-pink hi-green hi-blue hi-salmon hi-aquamarine))
+         (random-face (nth (random (length faces)) faces)))
+    (if hi-lock-interactive-patterns
+        (hi-lock-unface-buffer rexp)
+      (hi-lock-face-buffer rexp random-face))))
 
 (provide 'functions)
 ;;; functions.el ends here
