@@ -543,10 +543,12 @@ Looks for a ticket code like 'XXX-123'."
   "Toggle highlighting for the symbol at point."
   (interactive)
   (let* ((sym (thing-at-point 'symbol t))
-         (rexp (regexp-quote sym)))
+         (rexp (regexp-quote sym))
+         (faces '(hi-yellow hi-pink hi-green hi-blue hi-salmon hi-aquamarine))
+         (random-face (nth (random (length faces)) faces)))
     (if hi-lock-interactive-patterns
         (hi-lock-unface-buffer rexp)
-      (hi-lock-face-buffer rexp 'hi-salmon))))
+      (hi-lock-face-buffer rexp random-face))))
 
 (provide 'functions)
 ;;; functions.el ends here
