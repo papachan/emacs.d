@@ -467,5 +467,13 @@ Looks for a ticket code like \"XXX-123\"."
         (hi-lock-unface-buffer rexp)
       (hi-lock-face-buffer rexp random-face))))
 
+(defun open-project-deps-edn ()
+  "Find and open deps.edn from the current project root."
+  (interactive)
+  (let ((root (locate-dominating-file default-directory "deps.edn")))
+    (if root
+        (find-file (expand-file-name "deps.edn" root))
+      (message "No deps.edn found in project"))))
+
 (provide 'functions)
 ;;; functions.el ends here
