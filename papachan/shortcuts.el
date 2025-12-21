@@ -67,7 +67,7 @@
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 ;; (global-set-key (kbd "C-c %") 'query-replace-regexp)
 (global-set-key (kbd "C-c C-v") 'other-frame)
-(global-set-key (kbd "C-c i") 'copy-backward-word)
+(global-set-key (kbd "C-c i") 'copy-symbol-at-point)
 (global-set-key (kbd "C-c <left>") 'iflipb-next-buffer)
 (global-set-key (kbd "C-c <right>") 'iflipb-previous-buffer)
 (global-set-key (kbd "C-x g") 'simple-toggle-highlight-symbol-at-point)

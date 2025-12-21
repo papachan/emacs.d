@@ -493,5 +493,15 @@ https://gitlab.com/USERNAME/PROJECT-NAME/-/commit/HASH"
         (find-file (expand-file-name "deps.edn" root))
       (message "No deps.edn found in project"))))
 
+(defun copy-symbol-at-point ()
+  "Copy the symbol at point to the kill ring.
+Uses `thing-at-point' to get the symbol under the cursor and adds
+it to the kill ring, allowing it to be yanked elsewhere."
+  (interactive)
+  (let ((symbol (thing-at-point 'symbol t)))
+    (if symbol
+        (kill-new symbol)
+      (message "No symbol at point"))))
+
 (provide 'functions)
 ;;; functions.el ends here
