@@ -503,5 +503,18 @@ it to the kill ring, allowing it to be yanked elsewhere."
         (kill-new symbol)
       (message "No symbol at point"))))
 
+(defun find-file-at-point-with-path ()
+  "Open a file using the path at point as the initial input.
+If there's a filename or path at point, use it as the default.
+Otherwise, behave like regular `find-file'."
+  (interactive)
+  (let ((path-at-point (thing-at-point 'filename t)))
+    (if path-at-point
+        (find-file (read-file-name "Find file: "
+                                   (file-name-directory path-at-point)
+                                   nil nil
+                                   (file-name-nondirectory path-at-point)))
+      (call-interactively #'find-file))))
+
 (provide 'functions)
 ;;; functions.el ends here
