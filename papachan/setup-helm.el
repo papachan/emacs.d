@@ -5,6 +5,20 @@
 ;; unset list-directory
 (fmakunbound 'list-directory)
 
+(defun helm-grep-symbol-at-point-in-project ()
+  (interactive)
+  (let* ((symbol (thing-at-point 'symbol t))
+         (project-root (or (and (fboundp 'projectile-project-root)
+                                (projectile-project-root))
+                           (and (fboundp 'project-root)
+                                (project-current)
+                                (project-root (project-current)))
+                           default-directory)))
+    (if symbol
+        (let ((default-directory project-root))
+          (helm-do-grep-ag nil))
+      (message "No symbol at point"))))
+
 (use-package helm
   :ensure t
   :bind (("M-x" . #'helm-M-x)
