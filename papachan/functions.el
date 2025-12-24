@@ -1,7 +1,9 @@
 ;;; functions.el --- -*- lexical-binding: t; -*-
 ;;; Commentary:
+
 ;;; Code:
 (require 's)
+(require 'hi-lock)
 
 (defvar current-date-format "%Y-%m-%d")
 (defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y")
@@ -431,6 +433,77 @@ Looks for a ticket code like \"XXX-123\"."
           (browse-url jira-url)
           (message "Opening Jira ticket: %s" jira-url))
       (message "No valid Jira ticket code at point."))))
+
+(defun browse-gitlab-commit-at-point ()
+  "Open the GitLab commit page for the hash at point.
+Uses the current project directory name to construct a URL like:
+https://gitlab.com/USERNAME/PROJECT-NAME/-/commit/HASH"
+  (interactive)
+  (let* ((hash (or (thing-at-point 'word t)
+                   (read-string "Enter commit hash: ")))
+         (project-root (or (locate-dominating-file default-directory ".git")
+                           default-directory))
+         (project-name (file-name-nondirectory (directory-file-name project-root)))
+         (url (format "https://gitlab.com/USERNAME/%s/-/commit/%s"
+                      project-name hash)))
+    (if (and hash (not (string-empty-p hash)))
+        (progn
+          (browse-url url)
+          (message "Opening GitLab commit: %s" url))
+      (message "No commit hash provided."))))
+
+(defun format-current-buffer-with-jet ()
+  "Format the current buffer's file using jet --pretty and replace buffer contents."
+  (interactive)
+  (if (not buffer-file-name)
+      (message "Buffer is not visiting a file")
+    (let* ((command (format "cat %s | jet --pretty" (shell-quote-argument buffer-file-name)))
+           (output (shell-command-to-string command)))
+      (erase-buffer)
+      (insert output)
+      (message "Buffer formatted with jet"))))
+
+(defun simple-toggle-highlight-symbol-at-point ()
+  "Toggle highlighting for the symbol at point."
+  (interactive)
+  (let* ((sym (thing-at-point 'symbol t))
+         (rexp (regexp-quote sym))
+         (faces '(hi-yellow hi-pink hi-green hi-blue hi-salmon hi-aquamarine))
+         (random-face (nth (random (length faces)) faces)))
+    (if hi-lock-interactive-patterns
+        (hi-lock-unface-buffer rexp)
+      (hi-lock-face-buffer rexp random-face))))
+
+(defun open-project-deps-edn ()
+  "Find and open deps.edn from the current project root."
+  (interactive)
+  (let ((root (locate-dominating-file default-directory "deps.edn")))
+    (if root
+        (find-file (expand-file-name "deps.edn" root))
+      (message "No deps.edn found in project"))))
+
+(defun copy-symbol-at-point ()
+  "Copy the symbol at point to the kill ring.
+Uses `thing-at-point' to get the symbol under the cursor and adds
+it to the kill ring, allowing it to be yanked elsewhere."
+  (interactive)
+  (let ((symbol (thing-at-point 'symbol t)))
+    (if symbol
+        (kill-new symbol)
+      (message "No symbol at point"))))
+
+(defun find-file-at-point-with-path ()
+  "Open a file using the path at point as the initial input.
+If there's a filename or path at point, use it as the default.
+Otherwise, behave like regular `find-file'."
+  (interactive)
+  (let ((path-at-point (thing-at-point 'filename t)))
+    (if path-at-point
+        (find-file (read-file-name "Find file: "
+                                   (file-name-directory path-at-point)
+                                   nil nil
+                                   (file-name-nondirectory path-at-point)))
+      (call-interactively #'find-file))))
 
 (provide 'functions)
 ;;; functions.el ends here
