@@ -3,41 +3,53 @@
 ;;; Commentary:
 ;;
 ;;; Code:
-;; (require 'pinentry)
+
 (use-package git-timemachine :ensure t)
+
+(defun read-abs-fp (filepath)
+  (when (file-exists-p filepath)
+    (with-temp-buffer
+      (insert-file-contents filepath)
+      (buffer-string))))
+
+(defun browse-git-repo ()
+  (interactive)
+  (let* ((project-root-dir (vc-root-dir))
+         (project-git-cfg (read-abs-fp (file-name-concat (expand-file-name project-root-dir) ".git" "config"))))
+    (when (string-match "url = git@\\([^:]+\\):\\(.+\\)\\.git" project-git-cfg)
+      (let* ((hostname (match-string 1 project-git-cfg))
+             (repo-path (match-string 2 project-git-cfg)))
+        (browse-url (concat "https://" hostname "/" repo-path))))))
+
 (use-package magit
-  ;; :init
-  ;; (pinentry-start)
-
   :bind (("C-c m" . magit-status))
-
   :config
   (setq magit-save-repository-buffers nil) ; Disable Magit asking to save files
-  (setq magit-uniquify-buffer-names nil)   ; Make magit buffers be wrapped w/ *
+  (setq magit-uniquify-buffer-names nil) ; Make magit buffers be wrapped w/ *
 
   (define-advice magit-push-current-to-upstream (:before (args) query-yes-or-no)
-  "Prompt for confirmation before permitting a push to upstream."
-  (when-let ((branch (magit-get-current-branch)))
-    (let* ((upstream (or (magit-get-upstream-branch branch)
-                        (magit-get "branch" branch "remote")))
-           (prompt (if upstream
-                       (format "Push %s branch upstream to %s? " branch upstream)
-                     (format "Push %s branch to upstream? " branch))))
-      (unless (yes-or-no-p prompt)
-        (user-error "Push to upstream aborted by user")))))
+    "Prompt for confirmation before permitting a push to upstream."
+    (when-let ((branch (magit-get-current-branch)))
+      (let* ((upstream (or (magit-get-upstream-branch branch)
+                           (magit-get "branch" branch "remote")))
+             (prompt (if upstream
+                         (format "Push %s branch upstream to %s? " branch upstream)
+                       (format "Push %s branch to upstream? " branch))))
+        (unless (yes-or-no-p prompt)
+          (user-error "Push to upstream aborted by user")))))
 
   (setq magit-display-buffer-function
-      (lambda (buffer)
-        (display-buffer
-         buffer (if (and (derived-mode-p 'magit-mode)
-                         (memq (with-current-buffer buffer major-mode)
-                               '(magit-process-mode
-                                 magit-revision-mode
-                                 magit-diff-mode
-                                 magit-stash-mode
-                                 magit-status-mode)))
-                    nil
-                  '(display-buffer-same-window)))))
+        (lambda (buffer)
+          (display-buffer
+           buffer (if (and (derived-mode-p 'magit-mode)
+                           (memq (with-current-buffer buffer major-mode)
+                                 '(magit-process-mode
+                                   magit-revision-mode
+                                   magit-diff-mode
+                                   magit-stash-mode
+                                   magit-status-mode)))
+                      nil
+                    '(display-buffer-same-window)))))
 
   ;; Integrate with ssh-ident
   (add-to-list 'magit-process-password-prompt-regexps
