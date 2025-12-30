@@ -445,24 +445,6 @@ Looks for a ticket code like \"XXX-123\"."
           (message "Opening Jira ticket: %s" jira-url))
       (message "No valid Jira ticket code at point."))))
 
-(defun browse-gitlab-commit-at-point ()
-  "Open the GitLab commit page for the hash at point.
-Uses the current project directory name to construct a URL like:
-https://gitlab.com/USERNAME/PROJECT-NAME/-/commit/HASH"
-  (interactive)
-  (let* ((hash (or (thing-at-point 'word t)
-                   (read-string "Enter commit hash: ")))
-         (project-root (or (locate-dominating-file default-directory ".git")
-                           default-directory))
-         (project-name (file-name-nondirectory (directory-file-name project-root)))
-         (url (format "https://gitlab.com/USERNAME/%s/-/commit/%s"
-                      project-name hash)))
-    (if (and hash (not (string-empty-p hash)))
-        (progn
-          (browse-url url)
-          (message "Opening GitLab commit: %s" url))
-      (message "No commit hash provided."))))
-
 (defun format-current-buffer-with-jet ()
   "Format the current buffer's file using jet --pretty and replace buffer contents."
   (interactive)
