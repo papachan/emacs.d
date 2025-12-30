@@ -1,7 +1,24 @@
 ;;; setup-magit.el --- Summary
 ;;; Commentary:
+
 ;;; Code:
+
 (use-package git-timemachine)
+
+(defun read-abs-fp (filepath)
+  (when (file-exists-p filepath)
+    (with-temp-buffer
+      (insert-file-contents filepath)
+      (buffer-string))))
+
+(defun browse-git-repo ()
+  (let* ((project-root-dir (vc-root-dir))
+         (project-git-cfg (read-abs-fp (file-name-concat (expand-file-name project-root-dir) ".git" "config"))))
+    (when (string-match "url = git@\\([^:]+\\):\\(.+\\)\\.git" project-git-cfg)
+      (let* ((hostname (match-string 1 project-git-cfg))
+             (repo-path (match-string 2 project-git-cfg)))
+        (browse-url (concat "https://" hostname "/" repo-path))))))
+
 (use-package magit
   :ensure t
   :bind (("C-c m" . magit-status))
@@ -44,13 +61,13 @@
     (magit-mode-setup #'magit-staging-mode))
 
   (define-advice magit-push-current-to-upstream (:before (args) query-yes-or-no)
-  "Prompt for confirmation before permitting a push to upstream."
-  (when-let ((branch (magit-get-current-branch)))
-    (unless (yes-or-no-p (format "Push %s branch upstream to %s? "
-                                 branch
-                                 (or (magit-get-upstream-branch branch)
-                                     (magit-get "branch" branch "remote"))))
-      (user-error "Push to upstream aborted by user"))))
+    "Prompt for confirmation before permitting a push to upstream."
+    (when-let ((branch (magit-get-current-branch)))
+      (unless (yes-or-no-p (format "Push %s branch upstream to %s? "
+                                   branch
+                                   (or (magit-get-upstream-branch branch)
+                                       (magit-get "branch" branch "remote"))))
+        (user-error "Push to upstream aborted by user"))))
 
   (progn
     (magit-add-section-hook 'magit-status-sections-hook
