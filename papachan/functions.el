@@ -436,6 +436,19 @@ Inserts: #uuid \"33333333-3333-3333-3333-333333333333\"
                (make-string 4 n)
                (make-string 12 n))))))
 
+(defun copy-symbol-at-point ()
+  "Copy the symbol at point to the kill ring.
+Uses `thing-at-point' to get the symbol under the cursor and adds
+it to the kill ring, allowing it to be yanked elsewhere."
+  (interactive)
+  (let ((symbol (thing-at-point 'symbol t)))
+    (if symbol
+        (kill-new symbol)
+        ;; (progn
+        ;;   (kill-new symbol)
+        ;;   (message "Copied: %s" symbol))
+      (message "No symbol at point"))))
+
 (defun backward-copy-word ()
   "Copy the word before the cursor to the kill ring.
 This function copies the word located immediately before the

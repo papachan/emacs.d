@@ -12,12 +12,14 @@
       (buffer-string))))
 
 (defun browse-git-repo ()
-  (let* ((project-root-dir (vc-root-dir))
-         (project-git-cfg (read-abs-fp (file-name-concat (expand-file-name project-root-dir) ".git" "config"))))
-    (when (string-match "url = git@\\([^:]+\\):\\(.+\\)\\.git" project-git-cfg)
-      (let* ((hostname (match-string 1 project-git-cfg))
-             (repo-path (match-string 2 project-git-cfg)))
-        (browse-url (concat "https://" hostname "/" repo-path))))))
+  (interactive)
+  (let* ((project-root-dir (vc-root-dir)))
+    (when project-root-dir
+      (let* ((project-git-cfg (read-abs-fp (file-name-concat (expand-file-name project-root-dir) ".git" "config"))))
+        (when (string-match "url = git@\\([^:]+\\):\\(.+\\)\\.git" project-git-cfg)
+          (let* ((hostname (match-string 1 project-git-cfg))
+                 (repo-path (match-string 2 project-git-cfg)))
+            (browse-url (concat "https://" hostname "/" repo-path))))))))
 
 (use-package magit
   :ensure t

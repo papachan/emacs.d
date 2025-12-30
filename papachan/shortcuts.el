@@ -27,7 +27,7 @@
 (global-set-key (kbd "C-c -") 'buffer/clear)
 ;; Dired
 (global-set-key (kbd "C-x c d") 'current-directory)
-(global-set-key (kbd "C-c i") 'copy-backward-word)
+(global-set-key (kbd "C-c i") 'copy-symbol-at-point)
 (global-set-key (kbd "C-x j") 'json-pretty-print-buffer)
 (global-set-key (kbd "C-c a") 'increment-number-at-point)
 (global-set-key (kbd "C-c x") 'my-decrement-number-at-point)

@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (require 'company)
+(require 'cider-run)
 
 (defun clerk-show ()
   (interactive)
