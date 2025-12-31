@@ -21,6 +21,31 @@
                  (repo-path (match-string 2 project-git-cfg)))
             (browse-url (concat "https://" hostname "/" repo-path))))))))
 
+(defun browse-commit-at-point ()
+  "Open the GitLab commit page for the hash at point.
+Uses the current project directory name to construct a URL like:
+https://hostname/[git-repository-path]/-/commit/[commit-hash]"
+  (interactive)
+  (let* ((project-root (or (locate-dominating-file default-directory ".git")
+                           default-directory))
+         (project-git-cfg (read-abs-fp (file-name-concat (expand-file-name project-root) ".git" "config"))))
+    (when (string-match "url = git@\\([^:]+\\):\\(.+\\)\\.git" project-git-cfg)
+        (let* ((hostname (match-string 1 project-git-cfg))
+               (repo-path (match-string 2 project-git-cfg))
+               (commit-hash (or (thing-at-point 'word t)
+                                (read-string "Enter commit hash: "))))
+          (if (and commit-hash
+                   (not (string-empty-p commit-hash)))
+              (let* ((url (concat "https://" hostname "/" repo-path
+                                  (cond
+                                   ((string= hostname "github.com") "/commit/")
+                                   ((string= hostname "gitlab.com") "/-/commit/"))
+                                  commit-hash)))
+                (progn
+                  (browse-url url)
+                  (message "Opening commit web page: %s" url)))
+            (message "No commit hash provided."))))))
+
 (use-package magit
   :ensure t
   :bind (("C-c m" . magit-status))
