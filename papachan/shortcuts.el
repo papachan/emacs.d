@@ -68,6 +68,7 @@
 ;; (global-set-key (kbd "C-c %") 'query-replace-regexp)
 (global-set-key (kbd "C-c C-v") 'other-frame)
 (global-set-key (kbd "C-c i") 'copy-symbol-at-point)
+(global-set-key (kbd "C-c I") 'my-string-at-point)
 (global-set-key (kbd "C-c <left>") 'iflipb-next-buffer)
 (global-set-key (kbd "C-c <right>") 'iflipb-previous-buffer)
 (global-set-key (kbd "C-x g") 'simple-toggle-highlight-symbol-at-point)
@@ -77,5 +78,7 @@
 (global-set-key (kbd "M-g 1") (lambda () (interactive) (insert-into-buffer "~/Desktop/dir-locals.txt")))
 
 (global-set-key (kbd "C-c f") 'reopen-last-closed-file)
+(global-set-key (kbd "C-x C-f") 'find-file-at-point-with-path)
+
 (provide 'shortcuts)
 ;;; shortcuts.el ends here

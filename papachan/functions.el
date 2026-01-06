@@ -498,5 +498,21 @@ Otherwise, behave like regular `find-file'."
                                    (file-name-nondirectory path-at-point)))
       (call-interactively #'find-file))))
 
+(defun my-string-at-point ()
+  "Copy the content between double quotes at point to the kill ring."
+  (interactive)
+  (let ((ppss (syntax-ppss)))
+    (if (nth 3 ppss)
+        (let* ((string-start (nth 8 ppss))
+               (string-end (save-excursion
+                             (goto-char string-start)
+                             (forward-sexp)
+                             (point)))
+               (content (buffer-substring-no-properties
+                         (1+ string-start)
+                         (1- string-end))))
+          (kill-new content))
+      (message "Not inside a quoted string"))))
+
 (provide 'functions)
 ;;; functions.el ends here
