@@ -449,6 +449,22 @@ it to the kill ring, allowing it to be yanked elsewhere."
         ;;   (message "Copied: %s" symbol))
       (message "No symbol at point"))))
 
+(defun my-string-at-point ()
+  "Copy the content between double quotes at point to the kill ring."
+  (interactive)
+  (let ((ppss (syntax-ppss)))
+    (if (nth 3 ppss)
+        (let* ((string-start (nth 8 ppss))
+               (string-end (save-excursion
+                             (goto-char string-start)
+                             (forward-sexp)
+                             (point)))
+               (content (buffer-substring-no-properties
+                         (1+ string-start)
+                         (1- string-end))))
+          (kill-new content))
+      (message "Not inside a quoted string"))))
+
 (defun backward-copy-word ()
   "Copy the word before the cursor to the kill ring.
 This function copies the word located immediately before the
