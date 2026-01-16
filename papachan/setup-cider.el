@@ -22,6 +22,15 @@
        (def p (p/open))
        (add-tap #'p/submit))"))
 
+(defun my/kill-dead-repls ()
+  "Kill all dead REPL buffers."
+  (interactive)
+  (dolist (buffer (buffer-list))
+    (when (and (string-match "\\*cider-repl" (buffer-name buffer))
+               (with-current-buffer buffer
+                 (not (process-live-p (get-buffer-process buffer)))))
+      (kill-buffer buffer))))
+
 (use-package cider
   :ensure t
   :defer t
@@ -39,7 +48,8 @@
          (:map cider-repl-mode-map
                ("C-<return>" . cider-repl-return)))
   :config
-  (setq ;; result prefix for the REPL
+  (setq
+   ;; result prefix for the REPL
    cider-repl-result-prefix ";; => "
    ;; display cider repl in the current window
    cider-repl-display-in-current-window t
@@ -56,7 +66,12 @@
    ;; weird issues with highlighting code, highlight all branches of reader conditionals
    cider-font-lock-reader-conditionals nil
    ;; nrepl log messages
-   nrepl-log-messages t)
+   nrepl-log-messages t
+   ;; disable auto-complete
+   cider-completion-display-context nil
+   ;; disable popup asking to connect to a dead repl
+   cider-repl-auto-detect-type t
+   cider-auto-select-error-buffer nil)
 
   :hook
   (cider-mode . eldoc-mode)
@@ -67,7 +82,8 @@
   (cider-repl-mode . (lambda ()
                        (cider-repl-toggle-pretty-printing)
                        (tab-line-mode -1)
-                       (helm-cider-mode 1))))
+                       (helm-cider-mode 1)))
+  (cider-connected-hook . my/kill-dead-repls))
 
 (use-package kaocha-runner
   :after (cider-mode)
