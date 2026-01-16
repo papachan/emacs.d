@@ -22,6 +22,12 @@
        (def p (p/open))
        (add-tap #'p/submit))"))
 
+(defun enable-humane-test-output ()
+  (interactive)
+  (cider-interactive-eval
+   "(require '[pjstadig.humane-test-output])
+    (pjstadig.humane-test-output/activate!)"))
+
 (defun my/kill-dead-repls ()
   "Kill all dead REPL buffers."
   (interactive)
@@ -39,6 +45,7 @@
   :bind (("C-c M-j" . cider-jack-in)
          ("C-c C-a" . cider-eval-print-last-sexp)
          ("C-M-g"   . open-portal)
+         ("C-M-y"   . enable-humane-test-output)
          (:map cider-repl-mode-map
                ("C-X sc" . cider-repl-clear-buffer))
          (:map cider-repl-mode-map
