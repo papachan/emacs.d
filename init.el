@@ -63,11 +63,11 @@
                                 setup-python
                                 setup-idle-highlight
                                 init-undo-tree
-                                shortcuts
                                 setup-eshell
                                 setup-eros
                                 setup-yasnippet
-                                setup-lsp-mode)
+                                setup-lsp-mode
+                                shortcuts)
   "List of configuration modules to load.")
 
 (dolist (module papachan/init-modules)
