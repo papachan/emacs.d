@@ -22,6 +22,12 @@
        (def p (p/open))
        (add-tap #'p/submit))"))
 
+(defun clear-portal ()
+  (interactive)
+  (cider-interactive-eval
+   "(require '[portal.api :as p])
+    (p/clear)"))
+
 (defun enable-humane-test-output ()
   (interactive)
   (cider-interactive-eval
