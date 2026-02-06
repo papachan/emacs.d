@@ -17,8 +17,8 @@
   :init
   (require 'projectile))
 
-;; (use-package flycheck-clj-kondo
-;;   :ensure t)
+(use-package flycheck-clj-kondo
+  :ensure t)
 
 (use-package clj-refactor
   :ensure t
@@ -40,7 +40,10 @@
          (clojure-mode . eldoc-mode)
          (clojure-mode . flycheck-mode)
          (clojure-mode . rainbow-delimiters-mode)
-         (clojure-mode . display-line-numbers-mode))
+         (clojure-mode . display-line-numbers-mode)
+         ;; (clojure-mode . (lambda ()
+         ;;                   (company-mode -1)))
+         )
   :init
   (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
   (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))

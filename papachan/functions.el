@@ -197,6 +197,10 @@ If FILE already exists, signal an error."
       (insert "* First Headline\n")
       (org-mode))))
 
+(defun insert-org-mode-shebang ()
+  (interactive)
+  (insert "-*- mode: org -*-"))
+
 (defun insert-shebang-for-lisp ()
   "Insert into buffer a shebang for Lisp file."
   (interactive)

@@ -10,19 +10,19 @@
 
 (setq system-uses-terminfo nil)
 
-(use-package shell-pop
-  :ensure t
-  :bind (("C-c t" . shell-pop))
-  :config
-  (setq shell-pop-term-shell "/bin/zsh")
-  ;; need to do this manually or not picked up by `shell-pop'
-  (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type)
-  (setq shell-pop-window-size 34)
-  (setq shell-pop-full-span t)
-  (setq shell-pop-window-position "bottom")
-  (setq shell-pop-autocd-to-working-dir t)
-  (setq shell-pop-restore-window-configuration t)
-  (setq shell-pop-cleanup-buffer-at-process-exit nil))
+;; (use-package shell-pop
+;;   :ensure t
+;;   :bind (("C-c t" . shell-pop))
+;;   :config
+;;   (setq shell-pop-term-shell "/bin/zsh")
+;;   ;; need to do this manually or not picked up by `shell-pop'
+;;   (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type)
+;;   (setq shell-pop-window-size 34)
+;;   (setq shell-pop-full-span t)
+;;   (setq shell-pop-window-position "bottom")
+;;   (setq shell-pop-autocd-to-working-dir t)
+;;   (setq shell-pop-restore-window-configuration t)
+;;   (setq shell-pop-cleanup-buffer-at-process-exit nil))
 
 (provide 'setup-shell)
 ;;; setup-shell.el ends here
