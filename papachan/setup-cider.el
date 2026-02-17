@@ -49,9 +49,9 @@
   :after clojure-mode
   :commands (cider-mode cider-connect cider-jack-in)
   :bind (("C-c M-j" . cider-jack-in)
-         ("C-c C-a" . cider-eval-print-last-sexp)
+         ("C-c a"   . cider-eval-print-last-sexp)
          ("C-M-g"   . open-portal)
-         ("C-M-y"   . enable-humane-test-output)
+         ;; ("C-M-y"   . enable-humane-test-output)
          (:map cider-repl-mode-map
                ("C-X sc" . cider-repl-clear-buffer))
          (:map cider-repl-mode-map
