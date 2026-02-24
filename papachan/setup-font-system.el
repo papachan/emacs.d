@@ -6,10 +6,10 @@
      (set-frame-font font)
      (set-face-attribute 'default nil
                          :font font
-                         :height 130
+                         :height 120
                          :weight 'normal)
      (set-face-font 'default font))
-   "JetBrains Mono"))
+   "Fira Code"))
 
 (provide 'setup-font-system)
 ;;; setup-font-system.el ends here
