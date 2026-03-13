@@ -18,7 +18,7 @@
          (clojure-mode . flycheck-mode)
          (clojure-mode . rainbow-delimiters-mode)
          (clojure-mode . company-mode))
-  :mode (("\\.edn$" . clojure-mode)
+  :mode (("\\.edn$" . edn-mode)
          ("\\.cljs$" . clojurescript-mode)
          ("\\.cljx$" . clojurex-mode)
          ("\\.cljc$" . clojurec-mode))
