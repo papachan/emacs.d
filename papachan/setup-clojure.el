@@ -40,15 +40,12 @@
          (clojure-mode . eldoc-mode)
          (clojure-mode . flycheck-mode)
          (clojure-mode . rainbow-delimiters-mode)
-         (clojure-mode . display-line-numbers-mode)
-         ;; (clojure-mode . (lambda ()
-         ;;                   (company-mode -1)))
-         )
-  :init
-  (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
-  (add-to-list 'auto-mode-alist '("\\.clje\\'" . clojure-mode))
-  (add-to-list 'auto-mode-alist '("\\.cljc\\'" . clojurec-mode))
-  (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
+         (clojure-mode . display-line-numbers-mode))
+  :mode (("\\.edn$" . edn-mode)
+         ("\\.clje$" . clojurec-mode)
+         ("\\.cljs$" . clojurescript-mode)
+         ("\\.cljx$" . clojurex-mode)
+         ("\\.cljc$" . clojurec-mode))
   :config
   (setq clojure-indent-style 'align-arguments
         clojure-align-forms-automatically t))
