@@ -34,6 +34,12 @@
    "(require '[pjstadig.humane-test-output])
     (pjstadig.humane-test-output/activate!)"))
 
+(defun toggle-logging-off ()
+  (interactive)
+  (cider-interactive-eval
+   "(require '[logging.core])
+    (logging.core/init! {} {:min-level :error})"))
+
 (defun my/kill-dead-repls ()
   "Kill all dead REPL buffers."
   (interactive)

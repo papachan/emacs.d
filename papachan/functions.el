@@ -186,6 +186,14 @@ If FILE already exists, signal an error."
     (funcall (and initial-major-mode))
     (setq buffer-offer-save t)))
 
+(defun insert-org-mode-shebang ()
+  (interactive)
+  (insert "-*- mode: org -*-"))
+
+(defun insert-org-mode-showall ()
+  (interactive)
+  (insert "#+STARTUP: showall"))
+
 (defun new-org-mode-buffer ()
   "Create a new Org mode scratch buffer."
   (interactive)
@@ -193,13 +201,9 @@ If FILE already exists, signal an error."
     (pop-to-buffer buffer)
     (with-current-buffer buffer
       (funcall (and initial-major-mode))
-      (insert "-*- mode: org -*-\n\n")
-      (insert "* First Headline\n")
+      (insert-org-mode-shebang)
+      (insert "\n\n* First Headline\n")
       (org-mode))))
-
-(defun insert-org-mode-shebang ()
-  (interactive)
-  (insert "-*- mode: org -*-"))
 
 (defun insert-shebang-for-lisp ()
   "Insert into buffer a shebang for Lisp file."

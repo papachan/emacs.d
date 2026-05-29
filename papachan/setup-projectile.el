@@ -25,6 +25,8 @@
   (add-to-list 'projectile-globally-ignored-directories "js/compiled")
   (add-to-list 'projectile-globally-ignored-directories "resources/public/js")
   (add-to-list 'projectile-globally-ignored-directories "node[_-]modules")
+  (add-to-list 'projectile-globally-ignored-directories "build")
+  (add-to-list 'projectile-globally-ignored-directories "build-tools")
   (add-to-list 'projectile-globally-ignored-directories "target")
   (add-to-list 'projectile-globally-ignored-directories ".shadow-cljs")
   (add-to-list 'projectile-globally-ignored-directories ".lsp")

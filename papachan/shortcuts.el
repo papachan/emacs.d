@@ -77,7 +77,7 @@
 
 ;; (global-set-key (kbd "M-g 1") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig.txt")))
 ;; (global-set-key (kbd "M-g 2") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig-papachan.txt")))
-(global-set-key (kbd "M-g 1") (lambda () (interactive) (insert-into-buffer "~/Desktop/dir-locals.txt")))
+;; (global-set-key (kbd "M-g 1") (lambda () (interactive) (insert-into-buffer "~/Desktop/dir-locals.txt")))
 
 (global-set-key (kbd "C-c f") 'reopen-last-closed-file)
 (global-set-key (kbd "C-x C-f") 'find-file-at-point-with-path)
