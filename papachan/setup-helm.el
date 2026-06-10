@@ -34,7 +34,8 @@
   (helm-mode t))
 
 (use-package helm-ag
-  :ensure t
+  :vc (:url "https://github.com/emacsattic/helm-ag" :branch "master")
+  :after helm
   :custom
   (helm-ag-base-command
    "rg -S --no-heading --smart-case --color=never --line-number --max-columns 400")
