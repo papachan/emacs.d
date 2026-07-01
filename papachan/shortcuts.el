@@ -74,6 +74,7 @@
 (global-set-key (kbd "C-c <left>") 'iflipb-next-buffer)
 (global-set-key (kbd "C-c <right>") 'iflipb-previous-buffer)
 (global-set-key (kbd "C-x g") 'simple-toggle-highlight-symbol-at-point)
+(global-set-key (kbd "C-c t") 'toggle-boolean)
 
 ;; (global-set-key (kbd "M-g 1") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig.txt")))
 ;; (global-set-key (kbd "M-g 2") (lambda () (interactive) (insert-into-buffer "~/tmp/gitconfig-papachan.txt")))

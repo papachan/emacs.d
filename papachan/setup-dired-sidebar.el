@@ -7,7 +7,6 @@
 (require 'all-the-icons-dired)
 
 (use-package dired-sidebar
-  :ensure t
   :bind (("S-<f8>" . dired-sidebar-toggle-sidebar)) ;; fn Shift <f8> in mac
   :hook ((dired-mode . all-the-icons-dired-mode)
          (dired-sidebar-mode-hook . (lambda ()

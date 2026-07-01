@@ -49,6 +49,48 @@
                  (not (process-live-p (get-buffer-process buffer)))))
       (kill-buffer buffer))))
 
+(defun my/gitlab-project-root ()
+  "Find the root of the current project (looks for a `.git' directory)."
+  (or (locate-dominating-file default-directory ".git")
+      (error "Not inside a git project")))
+
+(defun my/gitlab-remote-path (root)
+  "Return \"namespace/project\" for the GitLab remote configured in ROOT."
+  (let* ((default-directory root)
+         (url (string-trim (shell-command-to-string "git remote get-url origin"))))
+    (cond
+     ((string-match "\\`git@[^:]+:\\(.*?\\)\\(\\.git\\)?\\'" url)
+      (match-string 1 url))
+     ((string-match "\\`https?://[^/]+/\\(.*?\\)\\(\\.git\\)?\\'" url)
+      (match-string 1 url))
+     (t (error "Could not parse GitLab remote URL: %s" url)))))
+
+(defun my/gitlab-current-branch (root)
+  "Return the current git branch name in ROOT, or \"main\" if detached/unknown."
+  (let* ((default-directory root)
+         (branch (string-trim (shell-command-to-string "git rev-parse --abbrev-ref HEAD"))))
+    (if (or (string-empty-p branch) (string= branch "HEAD"))
+        "main"
+      branch)))
+
+(defun open-file-on-gitlab (&optional use-main-branch)
+  "Open the current file on GitLab web at the same line as point.
+Works for files under either the src or test directory of the project.
+With prefix argument USE-MAIN-BRANCH, link against \"main\" instead of
+the current branch."
+  (interactive "")
+  (if (not buffer-file-name)
+      (message "Buffer is not visiting a file")
+    (let* ((root (my/gitlab-project-root))
+           (project-path (my/gitlab-remote-path root))
+           (branch (if use-main-branch "main" (my/gitlab-current-branch root)))
+           (relative-path (file-relative-name buffer-file-name root))
+           (line (line-number-at-pos))
+           (url (format "https://gitlab.com/%s/-/blob/%s/%s#L%d"
+                        project-path branch relative-path line)))
+      (browse-url url)
+      (message "Opening %s" url))))
+
 (use-package cider
   :ensure t
   :defer t

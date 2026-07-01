@@ -10,7 +10,7 @@
   (setq chatgpt-shell-google-key
         (string-trim (shell-command-to-string "op read \"op://Employee/Gemini API key/credential\"")))
   (setq chatgpt-shell-anthropic-key
-        (string-trim (shell-command-to-string "op read \"op://Employee/Anthropic API key/credential\"")))
+        (string-trim (shell-command-to-string "~/.claude/gateless_key.sh")))
   (setq shell-maker-prompt-before-killing-buffer nil)
   (setq chatgpt-shell-streaming t))
 

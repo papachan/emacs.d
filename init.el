@@ -47,7 +47,7 @@
                                 setup-clojure
                                 setup-company
                                 setup-dired
-                                setup-dired-sidebar
+                                ;; setup-dired-sidebar
                                 setup-font-system
                                 setup-helm
                                 setup-ibuffer
@@ -60,13 +60,13 @@
                                 setup-projectile
                                 setup-shell
                                 setup-web
-                                setup-python
+                                ;; setup-python
                                 setup-idle-highlight
                                 init-undo-tree
                                 setup-eshell
                                 setup-eros
                                 setup-yasnippet
-                                setup-lsp-mode
+                                ;; setup-lsp-mode
                                 shortcuts)
   "List of configuration modules to load.")
 

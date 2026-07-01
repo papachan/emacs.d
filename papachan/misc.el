@@ -15,6 +15,7 @@
     :args '("--format" "-")))
 
 ;; (require 'midnight)
+;; (require 'highlight)
 (require 'whitespace)
 (require 'recentf)
 

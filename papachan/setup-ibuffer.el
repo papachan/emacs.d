@@ -179,7 +179,7 @@
                        "*undo-tree Diff*"
                        "*Backtrace*"
                        "*grep*"
-                       "*projectile-file-errors*")))
+                       "*projectile-files-errors*")))
     (dolist (buff buffers-lst)
       (kill-matching-buffers-no-ask buff)))
   ;; refresh ibuffer
