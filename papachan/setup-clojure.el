@@ -23,12 +23,13 @@
          ("\\.cljx$" . clojurex-mode)
          ("\\.cljc$" . clojurec-mode))
   :config
+  (require 'flycheck-clj-kondo)
   (require 'clojure-mode-extra-font-locking)
   ;; indentation
   (setq clojure-indent-style 'align-arguments
         clojure-align-forms-automatically t))
 
-(use-package parseedn :ensure t)
+;; (use-package parseedn :ensure t)
 
 (use-package clojurescript-mode
   :hook ((clojurescript-mode . paredit-mode)

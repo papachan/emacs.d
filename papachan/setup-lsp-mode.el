@@ -9,6 +9,8 @@
   (setq lsp-keymap-prefix "C-c C-l")
   :hook ((clojure-mode . lsp)
          (clojurescript-mode . lsp))
+  :custom
+  (lsp-diagnostics-provider :flycheck)
   :config
   (setq lsp-headerline-breadcrumb-enable t
         lsp-lens-enable t
