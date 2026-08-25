@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (require 'rainbow-delimiters)
+
 (use-package html-to-hiccup
   :ensure t
   :bind (:map clojure-mode-map

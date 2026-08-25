@@ -505,5 +505,23 @@ Otherwise, behave like regular `find-file'."
                                    (file-name-nondirectory path-at-point)))
       (call-interactively #'find-file))))
 
+(defun toggle-boolean ()
+  "Toggle the boolean value (true/false) under the cursor."
+  (interactive)
+  (let* ((bounds (bounds-of-thing-at-point 'symbol))
+         (word (and bounds (buffer-substring-no-properties
+                            (car bounds) (cdr bounds)))))
+    (cond
+     ((null bounds)
+      (message "No symbol at point"))
+     ((string= word "true")
+      (delete-region (car bounds) (cdr bounds))
+      (insert "false"))
+     ((string= word "false")
+      (delete-region (car bounds) (cdr bounds))
+      (insert "true"))
+     (t
+      (message "Symbol at point is not a boolean: %s" word)))))
+
 (provide 'functions)
 ;;; functions.el ends here

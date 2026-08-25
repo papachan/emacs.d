@@ -23,7 +23,7 @@
   (dolist (hook '(prog-mode-hook text-mode-hook))
     (add-hook hook #'whitespace-mode))
   :config
-  (setq whitespace-line-column 90)
+  (setq whitespace-line-column 120)
   (setq whitespace-style '(face tabs empty trailing lines-tail tab-mark)))
 
  ;; to ensure files have no trailing whitespace
