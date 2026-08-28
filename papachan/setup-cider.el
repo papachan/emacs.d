@@ -8,7 +8,7 @@
 
 (defun clerk-show ()
   (interactive)
-  (when-let
+  (when-let*
       ((filename
         (buffer-file-name)))
     (save-buffer)

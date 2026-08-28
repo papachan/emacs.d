@@ -1,4 +1,4 @@
-;;; setup-projectile.el --- -*- lexical-binding: t -*-
+;;; setup-projectile.el --- -*- lexical-binding: nil; -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -18,7 +18,7 @@
   :bind (("C-c p p" . projectile-switch-project)
          ("C-c p f" . file-fuzzy-finder))
   :config
-  (projectile-global-mode 1)
+  (projectile-mode +1)
   (setq projectile-enable-caching nil
         projectile-track-known-projects-automatically nil)
   (add-to-list 'projectile-globally-ignored-files "*.min.js")
