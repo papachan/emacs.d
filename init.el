@@ -1,9 +1,22 @@
-;;; init.el --- Summary
+;;; init.el --- Summary. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (when (version< emacs-version "30")
   (error "This config requires at least GNU Emacs 30, but you're running %s" emacs-version))
+
+;;; Warning display -----------------------------------------------------
+;; `lexical-binding': Emacs warns about third-party packages that lack
+;; lexical-binding. Because end users cannot easily fix upstream source code,
+;; these warnings create noise without providing actionable value.
+;;
+;; `warning-minimum-level' raises the bar for *popping up* the *Warnings*
+;; buffer: anything below :error is still logged there, it just no longer
+;; steals focus.  `warning-suppress-types' goes further and stops the
+;; listed warning types from being displayed at all.
+(setq warning-minimum-level :error)
+(setq warning-suppress-types '((defvaralias) (lexical-binding)))
+(setq warning-inhibit-types '((files missing-lexbind-cookie)))
 
 ;; prefer newer non-byte compiled sources to older byte compiled ones
 (setq load-prefer-newer t)
