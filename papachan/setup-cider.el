@@ -1,4 +1,4 @@
-;;; setup-cider.el --- Summary
+;;; setup-cider.el --- Summary. -*- lexical-binding: nil; -*-
 ;;; Commentary:
 ;;; Code:
 (require 'company)
@@ -6,7 +6,7 @@
 
 (defun clerk-show ()
   (interactive)
-  (when-let
+  (when-let*
       ((filename
         (buffer-file-name)))
     (save-buffer)
@@ -20,6 +20,12 @@
      (do
        (def p (p/open))
        (add-tap #'p/submit))"))
+
+(defun clear-portal ()
+  (interactive)
+  (cider-interactive-eval
+   "(require '[portal.api :as p])
+    (p/clear)"))
 
 (use-package cider
   :ensure t

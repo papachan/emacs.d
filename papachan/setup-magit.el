@@ -1,4 +1,4 @@
-;;; setup-magit.el --- Summary
+;;; setup-magit.el --- Summary. -*- lexical-binding: nil; -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -89,7 +89,7 @@ https://hostname/[git-repository-path]/-/commit/[commit-hash]"
 
   (define-advice magit-push-current-to-upstream (:before (args) query-yes-or-no)
     "Prompt for confirmation before permitting a push to upstream."
-    (when-let ((branch (magit-get-current-branch)))
+    (when-let* ((branch (magit-get-current-branch)))
       (unless (yes-or-no-p (format "Push %s branch upstream to %s? "
                                    branch
                                    (or (magit-get-upstream-branch branch)
