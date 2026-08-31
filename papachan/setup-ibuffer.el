@@ -1,4 +1,4 @@
-;;; setup-ibuffer.el --- -*- lexical-binding: t -*-
+;;; setup-ibuffer.el --- -*- lexical-binding: nil; -*-
 ;;; Commentary:
 ;;; Code:
 (require 'ibuffer)
@@ -158,6 +158,8 @@
                        "*swiper*"
                        "*xref*"
                        "*helm-projectile*"
+                       "*helm-mode-magit-status*"
+                       "*helm-mode-switch-to-buffer*"
                        "*helm *"
                        "*magit-*"
                        "*lsp-log*"
@@ -165,7 +167,12 @@
                        "*Compile-Log*"
                        "*Warnings*"
                        "*Dired log*"
-                       "*Backtrace*")))
+                       "*undo-tree Diff*"
+                       "*Backtrace*"
+                       "*grep*"
+                       "*projectile-files-errors*"
+                       "*nrepl-messages*"
+                       "*cider-error*")))
     (dolist (buff buffers-lst)
       (kill-matching-buffers-no-ask buff)))
   ;; refresh ibuffer
