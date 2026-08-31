@@ -1,4 +1,4 @@
-;;; functions.el --- Personal utility functions -*- lexical-binding: t; -*-
+;;; functions.el --- Personal utility functions -*- lexical-binding: nil; -*-
 ;;; Commentary:
 ;; A collection of utility functions for daily Emacs usage.
 
@@ -16,8 +16,6 @@
 (defvar current-time-format "%a %H:%M:%S"
   "Format string for current time.")
 
-(defvar my-jira-instance-url "https://your-domain.atlassian.net"
-  "Your Jira instance base URL.")
 
 (defvar my-syntax-table
   (let ((table (make-syntax-table)))
@@ -142,22 +140,21 @@ Usage:
 - Enter the desired file name when prompted.
 
 Arguments:
-- FILE: The name of the file to create. The function ensures that the
-  full path is expanded and any necessary parent directories are created.
-"
+- FILE: The name of the file to create.  The function ensures that the
+  full path is expanded and any necessary parent directories are created."
   (interactive
    (list (read-file-name "Create file: " (dired-current-directory))))
   (let* ((expanded (expand-file-name file))
          (try expanded)
          (dir (directory-file-name (file-name-directory expanded)))
          new)
-    (if (file-exists-p expanded)
-        (error "Cannot create file %s: file exists" expanded))
+    (when (file-exists-p expanded)
+      (error "Cannot create file %s: file exists" expanded))
     ;; Find the topmost nonexistent parent dir (variable `new')
     (while (and try (not (file-exists-p try)) (not (equal new try)))
       (setq new try
             try (directory-file-name (file-name-directory try))))
-    (when (not (file-exists-p dir))
+    (unless (file-exists-p dir)
       (make-directory dir t))
     (write-region "" nil expanded t)
     (when new
@@ -171,7 +168,7 @@ Arguments:
   (set-mark (line-beginning-position)))
 
 (defun insert-a-blank-line ()
-  "insert a new line above the line containing the cursor."
+  "Insert a new line above the line containing the cursor."
   (interactive)
   (save-excursion
     (move-beginning-of-line 1)
@@ -181,16 +178,16 @@ Arguments:
   "Shutdown Emacs."
   (interactive)
   (kill-emacs
-   (if (featurep 'x) 0 1)))
+   (if (display-graphic-p) 0 1)))
 
 (defun quit-emacs ()
   "Confirmation before quiting Emacs."
   (interactive)
-  (if (y-or-n-p "Quit Emacs? ")
-      (save-buffers-kill-emacs)))
+  (when (y-or-n-p "Quit Emacs? ")
+    (save-buffers-kill-emacs)))
 
-(defun create-scratch-buffer nil
-  "create a new scratch buffer to work in. (could be *scratch* - *scratchX*)"
+(defun create-scratch-buffer ()
+  "Create a new scratch buffer to work in (*scratch*, *scratch1*, ...)."
   (interactive)
   (let ((n 0)
         bufname)
@@ -247,16 +244,8 @@ and immediately start working in the new window.
   "Create a new buffer in Org mode.
 
 This function creates a new buffer with a unique name, switches to it,
-and sets its major mode to Org mode. The buffer is initialized with a
-header line indicating Org mode and a first headline.
-
-Usage:
-- Call this function interactively (e.g., M-x new-org-mode-buffer).
-
-Example:
-- When you call this function, a new buffer named something like '*scratch-org*<number>'
-  will be created and switched to, containing the initial shebang for org-mode.
-"
+and sets its major mode to Org mode.  The buffer is initialized with a
+header line indicating Org mode and a first headline."
   (interactive)
   (let ((buffer (get-buffer-create (generate-new-buffer-name "*scratch-org*"))))
     (pop-to-buffer buffer)
@@ -301,7 +290,7 @@ Example:
 (defun reload-init-file ()
   "Reload init file."
   (interactive)
-  (load-file "~/.emacs.d/init.el"))
+  (load-file (expand-file-name "init.el" user-emacs-directory)))
 
 (defun open-scratch-buffer ()
   "Open a scratch buffer."
@@ -318,38 +307,37 @@ Example:
       (if buffer-file-name (message "%s" result)
         (message "Buffer %s not associated with a file; killed default-directory %s" (buffer-name) result)))))
 
-(defun revert-buffer-without-confirmation()
-  "revert buffer without asking for confirmation"
-  (interactive "")
+(defun revert-buffer-without-confirmation ()
+  "Revert buffer without asking for confirmation."
+  (interactive)
   (revert-buffer t t t))
 
 (defun my-change-number-at-point (change)
-  "CHANGE as an argument.  Private method for my-increment-number-at-point."
+  "CHANGE as an argument.  Private method for `my-increment-number-at-point'."
   (let ((number (number-at-point))
         (point (point)))
     (when number
-      (progn
-        (forward-word)
-        (search-backward (number-to-string number))
-        (replace-match (number-to-string (funcall change number)))
-        (goto-char point)))))
+      (forward-word)
+      (search-backward (number-to-string number))
+      (replace-match (number-to-string (funcall change number)))
+      (goto-char point))))
 
 (defun my-increment-number-at-point ()
-  "Increment number at point like vim's ‘C-a’."
+  "Increment number at point like vim's `C-a'."
   (interactive)
-  (my-change-number-at-point '1+))
+  (my-change-number-at-point #'1+))
 
 (defun my-decrement-number-at-point ()
-  "Decrement number at point like vim's ‘C-x‘."
+  "Decrement number at point like vim's `C-x'."
   (interactive)
-  (my-change-number-at-point '1-))
+  (my-change-number-at-point #'1-))
 
 (defun increment-number-at-point ()
   "Increment number at point."
   (interactive)
   (skip-chars-backward "0-9")
-  (or (looking-at "[0-9]+")
-      (error "No number at point"))
+  (unless (looking-at "[0-9]+")
+    (user-error "No number at point"))
   (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
 
 (defun file-path-on-clipboard ()
@@ -370,8 +358,6 @@ Example:
   (join-line t))
 
 (defun insert-file-into-buffer (filename)
-  "FILENAME path as an argument, insert file content into buffer."
-  (interactive)
   (let ((buf (current-buffer)))
     (with-current-buffer buf
       (erase-buffer))
@@ -381,12 +367,10 @@ Example:
         (goto-char 1)
         (append-to-buffer buf (point) (point-max))))))
 
-(defun download-url-file ()
-  "Method to download a file."
-  (interactive)
-  (lambda ())
-  (let ((url (read-from-minibuffer "Enter url:")))
-    (url-copy-file url (url-file-nondirectory url))))
+(defun download-url-file (url)
+  "Download URL into the current directory."
+  (interactive "sEnter url: ")
+  (url-copy-file url (url-file-nondirectory url)))
 
 (defun git-clone-repo ()
   "Method to clone a repo."
@@ -396,13 +380,14 @@ Example:
       (shell-command (concat "git clone " url))))
 
 (defun dos2unix()
+  "Replace the current buffer contents with the content of FILENAME."
+  (interactive "fInsert file: ")
   "Set dos buffer to unix buffer."
   (interactive)
   (set-buffer-file-coding-system 'utf-8-unix))
 
 (defun insert-clj-uuid (n)
-  "Insert a Clojure UUID tagged literal in the form of #uuid
- \"11111111-1111-1111-1111-111111111111\".
+  "Insert a Clojure UUID tagged literal built from the digit N.
 
 The prefix argument N specifies the padding used to generate the UUID.
 If N is not provided, it defaults to 1. Valid values for N are between 0 and 9, inclusive.
@@ -444,9 +429,6 @@ it to the kill ring, allowing it to be yanked elsewhere."
   (let ((symbol (thing-at-point 'symbol t)))
     (if symbol
         (kill-new symbol)
-        ;; (progn
-        ;;   (kill-new symbol)
-        ;;   (message "Copied: %s" symbol))
       (message "No symbol at point"))))
 
 (defun my-string-at-point ()
@@ -479,21 +461,20 @@ pasted (yanked) elsewhere using standard Emacs yank."
 (defun reopen-last-closed-file ()
   "Reopen the last file that was closed."
   (interactive)
-  (if recentf-list
+  (if (bound-and-true-p recentf-list)
       (find-file (car recentf-list))
     (message "No recently closed files")))
 
 (defun current-directory ()
+  "Open Dired on the current directory."
   (interactive)
   (dired "."))
 
 (defun un-camelcase-word-at-point ()
-  "un-camelcase the word at point, replacing uppercase chars with
-the lowercase version preceded by an underscore.
-
-The first char, if capitalized (eg, PascalCase) is just
-downcased, no preceding underscore.
-"
+  "Un-camelcase the word at point.
+Uppercase chars are replaced with the lowercase version preceded by
+an underscore.  The first char, if capitalized (eg, PascalCase) is
+just downcased, with no preceding underscore."
   (interactive)
   (save-excursion
     (let ((bounds (bounds-of-thing-at-point 'word)))
@@ -504,21 +485,16 @@ downcased, no preceding underscore.
             (replace-match (concat "_" (downcase (match-string 0))) t t)))))))
 
 (defun to-snake-case (start end)
-  "Change selected text to snake case format.
+  "Change the text between START and END to snake case format.
 
 Snake case is a naming convention where words are separated by
-underscores (_) and all letters are in lowercase. For example,
-the string 'CamelCaseString' would be transformed to 'camel_case_string'.
+underscores (_) and all letters are in lowercase.  For example,
+the string \\='CamelCaseString\\=' would be transformed to
+\\='camel_case_string\\='.
 
 Usage:
 - Select the region of text you want to transform.
-- Call this function interactively (e.g., M-x to-snake-case).
-
-The interactive argument \"r\" refers to the region's start and end points.
-
-Example:
-- If you select the text 'CamelCaseString' and call this function,
-  it will be transformed to 'camel_case_string'."
+- Call this function interactively (e.g., M-x to-snake-case)."
   (interactive "r")
   (if (use-region-p)
       (let ((camel-case-str (buffer-substring start end)))
@@ -530,7 +506,8 @@ Example:
 (defadvice kill-line (before kill-line-autoreindent activate)
   "Kill excess whitespace when joining lines.
 
-If the next line is joined to the current line, kill the extra indent whitespace in front of the next line."
+If the next line is joined to the current line, kill the extra indent
+whitespace in front of the next line."
   (when (and (eolp) (not (bolp)))
     (save-excursion
       (forward-char 1)
@@ -549,24 +526,12 @@ If the next line is joined to the current line, kill the extra indent whitespace
 
 (defun copy-backward-word ()
   "Copy word before point."
-  (interactive "")
+  (interactive)
   (save-excursion
-    (let ((beg (get-point 'backward-word 1))
+    (let ((beg (get-point #'backward-word 1))
           (end (progn (skip-syntax-forward "^ " (line-end-position))
                       (point))))
       (copy-region-as-kill beg end))))
-
-(defun my-open-jira-ticket-at-point ()
-  "Open the Jira ticket at point in your default web browser.
-Looks for a ticket code like 'XXX-123'."
-  (interactive)
-  (let* ((ticket-code (thing-at-point 'symbol t)))
-    (if (and ticket-code
-             (string-match "^[A-Z]+-[0-9]+$" (upcase ticket-code)))
-        (let ((jira-url (format "%s/browse/%s" my-jira-instance-url (upcase ticket-code))))
-          (browse-url jira-url)
-          (message "Opening Jira ticket: %s" jira-url))
-      (message "No valid Jira ticket code at point."))))
 
 (defun simple-toggle-highlight-symbol-at-point ()
   "Toggle highlighting for the symbol at point."
@@ -586,6 +551,21 @@ Looks for a ticket code like 'XXX-123'."
     (if root
         (find-file (expand-file-name "deps.edn" root))
       (message "No deps.edn found in project"))))
+
+(defun toggle-boolean ()
+  "Toggle the boolean value (true/false) under the cursor."
+  (interactive)
+  (let* ((bounds (bounds-of-thing-at-point 'symbol))
+         (word (and bounds (buffer-substring-no-properties
+                            (car bounds) (cdr bounds)))))
+    (cond
+     ((null bounds)
+      (message "No symbol at point"))
+     ((member word '("true" "false"))
+      (delete-region (car bounds) (cdr bounds))
+      (insert (if (string= word "true") "false" "true")))
+     (t
+      (message "Symbol at point is not a boolean: %s" word)))))
 
 (provide 'functions)
 ;;; functions.el ends here
