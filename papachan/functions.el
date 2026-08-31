@@ -106,26 +106,22 @@ Internally, the function uses `erase-buffer` to remove all text from the current
   "Insert a centered title into the current text buffer.
 
 This function prompts the user to enter a title, formats it with
-'===' at the beginning and end, and then inserts it centered within
+\\='===\\=' at the beginning and end, and then inserts it centered within
 a 72-character wide line in the current buffer.
 
-The title is centered by adding an appropriate number of spaces
-before and after the title.
-
 Usage:
-- Call this function interactively (e.g., \\M-\\x insert-centered-title)
+- Call this function interactively (e.g., M-x insert-centered-title)
 - Enter the desired title when prompted in the minibuffer.
 
 Example:
-If the user enters 'Chapter 1', the following text will be inserted:
+If the user enters \\='Chapter 1\\=', the following text will be inserted:
 
                               ===Chapter 1===
 "
   (interactive)
-  (let* ((title (read-from-minibuffer "Enter your title:"))
+  (let* ((title (read-from-minibuffer "Enter your title: "))
          (formatted-title (format "===%s===" title))
-         (padding-length (/ (- 72 (length formatted-title)) 2))
-         (padding (make-string padding-length ?\s)))
+         (padding (make-string (max 0 (/ (- 72 (length formatted-title)) 2)) ?\s)))
     (insert (concat padding formatted-title padding))))
 
 ;;; File and Directory Operations
