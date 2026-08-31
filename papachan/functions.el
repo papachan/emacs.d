@@ -359,16 +359,6 @@ header line indicating Org mode and a first headline."
   (erase-buffer)
   (insert-file-contents filename))
 
-;; (defun insert-file-into-buffer (filename)
-;;   (let ((buf (current-buffer)))
-;;     (with-current-buffer buf
-;;       (erase-buffer))
-;;     (save-excursion
-;;       (with-temp-buffer
-;;         (insert-file-contents filename)
-;;         (goto-char 1)
-;;         (append-to-buffer buf (point) (point-max))))))
-
 (defun download-url-file (url)
   "Download URL into the current directory."
   (interactive "sEnter url: ")
