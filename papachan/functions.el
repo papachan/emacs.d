@@ -1,7 +1,9 @@
-;;; functions.el --- -*- lexical-binding: t; -*-
+;;; functions.el --- Personal utility functions -*- lexical-binding: nil; -*-
 ;;; Commentary:
+;; A collection of utility functions for daily Emacs usage.
 
 ;;; Code:
+
 (require 's)
 (require 'hi-lock)
 
@@ -9,24 +11,32 @@
 (defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y")
 (defvar current-time-format "%a %H:%M:%S")
 
-(defun change-legacy-deps-to-deps ($string &optional $from $to)
+(defun change-legacy-deps-to-deps (str &optional from to)
+  "Transform legacy vector dependencies to the new map format.
+If called interactively and a region is selected, it transforms the content of
+the region.
+Otherwise, it operates on the paragraph at point.
+When called programmatically, STR is the input string to transform.
+
+FROM and TO specify the region boundaries for interactive use."
   (interactive
    (if (use-region-p)
        (list nil (region-beginning) (region-end))
      (let ((bds (bounds-of-thing-at-point 'paragraph)))
        (list nil (car bds) (cdr bds)))))
-  (let (workOnStringP inputStr outputStr)
-    (setq workOnStringP (if $string t nil))
-    (setq inputStr (if workOnStringP $string (buffer-substring-no-properties $from $to)))
+  (let ((work-on-string-p (when str t))
+        (inputStr (if str
+                      str
+                    (buffer-substring-no-properties from to))))
     (setq outputStr
           (let ((case-fold-search t))
             (and (string-match "\\[\\(.*\\)\\\s\\(.*\\)\\]" inputStr)
                  (concat (match-string 1 inputStr) " {:mvn/version " (match-string 2 inputStr) "}"))))
-    (if workOnStringP
+    (if work-on-string-p
         outputStr
       (save-excursion
-        (delete-region $from $to)
-        (goto-char $from)
+        (delete-region from to)
+        (goto-char from)
         (insert outputStr)))))
 
 (defun buffer/clear ()
@@ -62,15 +72,27 @@
   (interactive)
   (insert (format-time-string current-time-format (current-time))))
 
-(defun insert-title ()
+(defun insert-centered-title ()
+  "Insert a centered title into the current text buffer.
+
+This function prompts the user to enter a title, formats it with
+\\='===\\=' at the beginning and end, and then inserts it centered within
+a 72-character wide line in the current buffer.
+
+Usage:
+- Call this function interactively (e.g., \\M-\\x insert-centered-title)
+- Enter the desired title when prompted in the minibuffer.
+
+Example:
+If the user enters \\='Chapter 1\\=', the following text will be inserted:
+
+                              ===Chapter 1===
+"
   (interactive)
-  (lambda())
-  (let ((name
-         (format "===%s==="
-                 (read-from-minibuffer "Enter your title:"))))
-    (setq len  (/ (- 72 (length name)) 2)
-          blank (make-string len ?\s))
-    (insert (concat blank name blank))))
+  (let* ((title (read-from-minibuffer "Enter your title: "))
+         (formatted-title (format "===%s===" title))
+         (padding (make-string (max 0 (/ (- 72 (length formatted-title)) 2)) ?\s)))
+    (insert (concat padding formatted-title padding))))
 
 (defun notify-popup (title message)
   "use terminal notify-send"
@@ -82,8 +104,17 @@
     (shell-command str-action)))
 
 (defun my-dired-create-file (file)
-  "Create a file called FILE.
-If FILE already exists, signal an error."
+  "Create a file called FILE in the current Dired directory.
+
+If FILE already exists, signal an error.
+
+Usage:
+- Call this function interactively (e.g., M-x my-dired-create-file)
+- Enter the desired file name when prompted.
+
+Arguments:
+- FILE: The name of the file to create.  The function ensures that the
+  full path is expanded and any necessary parent directories are created."
   (interactive
    (list (read-file-name "Create file: " (dired-current-directory))))
   (let* ((expanded (expand-file-name file))
@@ -111,16 +142,17 @@ If FILE already exists, signal an error."
   (set-mark (line-beginning-position)))
 
 (defun insert-a-blank-line ()
-  "insert a new line above the line containing the cursor."
+  "Insert a new line above the line containing the cursor."
   (interactive)
   (save-excursion
     (move-beginning-of-line 1)
     (newline)))
 
 (defun shutdown-emacs ()
+  "Shutdown Emacs."
   (interactive)
   (kill-emacs
-   (if (featurep 'x) 0 1)))
+   (if (display-graphic-p) 0 1)))
 
 (defun put-the-date ()
   (interactive)
@@ -128,12 +160,13 @@ If FILE already exists, signal an error."
 
 ; confirmation before quiting emacs
 (defun quit-emacs ()
+  "Confirmation before quiting Emacs."
   (interactive)
-  (if (y-or-n-p "Quit Emacs? ")
-      (save-buffers-kill-emacs)))
+  (when (y-or-n-p "Quit Emacs? ")
+    (save-buffers-kill-emacs)))
 
-(defun create-scratch-buffer nil
-  "create a new scratch buffer to work in. (could be *scratch* - *scratchX*)"
+(defun create-scratch-buffer ()
+  "Create a new scratch buffer to work in (*scratch*, *scratch1*, ...)."
   (interactive)
   (let ((n 0)
         bufname)
@@ -168,6 +201,11 @@ If FILE already exists, signal an error."
     (setq buffer-offer-save t)))
 
 (defun new-org-mode-buffer ()
+  "Create a new buffer in Org mode.
+
+This function creates a new buffer with a unique name, switches to it,
+and sets its major mode to Org mode.  The buffer is initialized with a
+header line indicating Org mode and a first headline."
   (interactive)
   (let ((buffer (get-buffer-create (generate-new-buffer-name "*scratch-org*"))))
     (pop-to-buffer buffer)
@@ -207,8 +245,9 @@ If FILE already exists, signal an error."
     (self-insert-command N)))
 
 (defun reload-init-file ()
+  "Reload init file."
   (interactive)
-  (load-file "~/.emacs.d/init.el"))
+  (load-file (expand-file-name "init.el" user-emacs-directory)))
 
 (defun open-scratch-buffer ()
   (interactive)
@@ -224,30 +263,38 @@ If FILE already exists, signal an error."
       (if buffer-file-name (message "%s" result)
         (message "Buffer %s not associated with a file; killed default-directory %s" (buffer-name) result)))))
 
-(defun revert-buffer-without-confirmation()
-  "Revert buffer without asking for confirmation"
-  (interactive "")
+(defun revert-buffer-without-confirmation ()
+  "Revert buffer without asking for confirmation."
+  (interactive)
   (revert-buffer t t t))
 
 (defun my-change-number-at-point (change)
+  "CHANGE as an argument.  Private method for `my-increment-number-at-point'."
   (let ((number (number-at-point))
         (point (point)))
     (when number
-      (progn
-        (forward-word)
-        (search-backward (number-to-string number))
-        (replace-match (number-to-string (funcall change number)))
-        (goto-char point)))))
+      (forward-word)
+      (search-backward (number-to-string number))
+      (replace-match (number-to-string (funcall change number)))
+      (goto-char point))))
 
 (defun my-increment-number-at-point ()
   "Increment number at point like vim's C-a"
   (interactive)
-  (my-change-number-at-point '1+))
+  (my-change-number-at-point #'1+))
 
 (defun my-decrement-number-at-point ()
   "Decrement number at point like vim's C-x"
   (interactive)
-  (my-change-number-at-point '1-))
+  (my-change-number-at-point #'1-))
+
+(defun increment-number-at-point ()
+  "Increment number at point."
+  (interactive)
+  (skip-chars-backward "0-9")
+  (unless (looking-at "[0-9]+")
+    (user-error "No number at point"))
+  (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
 
 (defun file-path-on-clipboard ()
   "Put the current file name on the clipboard"
@@ -278,44 +325,57 @@ If FILE already exists, signal an error."
   (interactive)
   (join-line t))
 
-(defun insert-into-buffer (filename)
-  "Insert file content into buffer, useful when switching the content of a file"
-  (interactive)
-  (let ((buf (current-buffer)))
-    (with-current-buffer buf
-      (erase-buffer))
-    (save-excursion
-      (with-temp-buffer
-        (insert-file-contents filename)
-        (goto-char 1)
-        (append-to-buffer buf (point) (point-max))))))
+(defun insert-file-into-buffer (filename)
+  "Replace the current buffer contents with the content of FILENAME."
+  (interactive "fInsert file: ")
+  (erase-buffer)
+  (insert-file-contents filename))
 
-(defun download-url-file ()
+(defun download-url-file (url)
+  "Download URL into the current directory."
+  (interactive "sEnter url: ")
+  (url-copy-file url (url-file-nondirectory url)))
+
+(defun git-clone-repo (url)
+  "Clone the repository at URL into the current directory."
+  (interactive "sEnter url: ")
+  (shell-command (format "git clone %s" (shell-quote-argument url))))
+
+(defun dos2unix()
+  "Set dos buffer to unix buffer."
   (interactive)
-  (lambda ())
-  (let ((url (read-from-minibuffer "Enter url:")))
-    (url-copy-file url (url-file-nondirectory url))))
+  (set-buffer-file-coding-system 'utf-8-unix))
 
 (defun send-output-log ()
   "copy error output to sprunge"
   (interactive)
   (shell-command "cat ~/Desktop/output_error.log | curl -F 'sprunge=<-' http://sprunge.us"))
 
-(defun git-clone-repo ()
-  (interactive)
-  (lambda())
-    (let ((url (read-from-minibuffer "Enter url:")))
-      (shell-command (concat "git clone " url))))
-
 ;; new functions
 (defun insert-clj-uuid (n)
-  "Insert a Clojure UUID tagged literal in the form of #uuid
-  \"11111111-1111-1111-1111-111111111111\". The prefix argument N
-  specifies the padding used."
+  "Insert a Clojure UUID tagged literal built from the digit N.
+
+The prefix argument N specifies the padding used to generate the UUID.
+If N is not provided, it defaults to 1. Valid values for N are between 0 and 9, inclusive.
+
+This function inserts a UUID where each segment is composed of the digit N repeated.
+For example, if N is 5, the inserted UUID will be #uuid
+\"55555555-5555-5555-5555-555555555555\".
+
+Arguments:
+N -- The padding digit used to generate the UUID.  Must be between 0 and 9.
+
+Usage:
+- Call the function interactively with a prefix argument to specify N.
+- If called without a prefix argument, the function defaults to using 1 as the padding digit.
+
+Example:
+\\M-\\x insert-clj-uuid 3
+Inserts: #uuid \"33333333-3333-3333-3333-333333333333\""
   (interactive "P")
   (let ((n (or n 1)))
     (if (or (< n 0) (> n 9))
-        (error "Argument N must be between 0 and 9."))
+        (error "Argument N must be between 0 and 9"))
     (let ((n (string-to-char (number-to-string n))))
       (insert
        (format "#uuid \"%s-%s-%s-%s-%s\""
@@ -326,7 +386,12 @@ If FILE already exists, signal an error."
                (make-string 12 n))))))
 
 (defun backward-copy-word ()
-  "Something"
+  "Copy the word before the cursor to the kill ring.
+This function copies the word located immediately before the
+cursor's current position.  It uses `save-excursion` to ensure
+the cursor's position is not changed after the operation.  The
+copied word is added to the kill ring, which allows it to be
+pasted (yanked) elsewhere using standard Emacs yank."
   (interactive)
   (save-excursion
     (copy-region-as-kill (point) (progn (backward-word) (point)))))
@@ -334,7 +399,7 @@ If FILE already exists, signal an error."
 (defun reopen-last-closed-file ()
   "Reopen the last file that was closed."
   (interactive)
-  (if recentf-list
+  (if (bound-and-true-p recentf-list)
       (find-file (car recentf-list))
     (message "No recently closed files")))
 
@@ -349,15 +414,15 @@ If FILE already exists, signal an error."
   (delete-other-windows))
 
 (defun current-directory ()
+  "Open Dired on the current directory."
   (interactive)
   (dired "."))
 
 (defun un-camelcase-word-at-point ()
   "Un-camelcase the word at point.
-Replacing uppercase chars with the lowercase version preceded by an underscore.
-
-The first char, if capitalized (eg, PascalCase) is just
-downcased, no preceding underscore."
+Uppercase chars are replaced with the lowercase version preceded by
+an underscore.  The first char, if capitalized (eg, PascalCase) is
+just downcased, with no preceding underscore."
   (interactive)
   (save-excursion
     (let ((bounds (bounds-of-thing-at-point 'word)))
@@ -368,21 +433,16 @@ downcased, no preceding underscore."
             (replace-match (concat "_" (downcase (match-string 0))) t t)))))))
 
 (defun to-snake-case (start end)
-"Change selected text to snake case format.
+  "Change the text between START and END to snake case format.
 
 Snake case is a naming convention where words are separated by
-underscores (_) and all letters are in lowercase. For example,
-the string 'CamelCaseString' would be transformed to 'camel_case_string'.
+underscores (_) and all letters are in lowercase.  For example,
+the string \\='CamelCaseString\\=' would be transformed to
+\\='camel_case_string\\='.
 
 Usage:
 - Select the region of text you want to transform.
-- Call this function interactively (e.g., M-x to-snake-case).
-
-The interactive argument \"r\" refers to the region's start and end points.
-
-Example:
-- If you select the text 'CamelCaseString' and call this function,
-  it will be transformed to 'camel_case_string'."
+- Call this function interactively (e.g., \\M-\\x to-snake-case)."
   (interactive "r")
   (if (use-region-p)
       (let ((camel-case-str (buffer-substring start end)))
@@ -393,7 +453,9 @@ Example:
 ;; https://github.com/Fuco1/.emacs.d/blob/master/site-lisp/my-advices.el#L7
 (defadvice kill-line (before kill-line-autoreindent activate)
   "Kill excess whitespace when joining lines.
-If the next line is joined to the current line, kill the extra indent whitespace in front of the next line."
+
+If the next line is joined to the current line, kill the extra indent
+whitespace in front of the next line."
   (when (and (eolp) (not (bolp)))
     (save-excursion
       (forward-char 1)
@@ -412,27 +474,12 @@ If the next line is joined to the current line, kill the extra indent whitespace
 
 (defun copy-backward-word ()
   "Copy word before point."
-  (interactive "")
+  (interactive)
   (save-excursion
-    (let ((beg (get-point 'backward-word 1))
+    (let ((beg (get-point #'backward-word 1))
           (end (progn (skip-syntax-forward "^ " (line-end-position))
                       (point))))
       (copy-region-as-kill beg end))))
-
-(defvar my-jira-instance-url "https://url.atlassian.net"
-  "Your Jira instance base URL.")
-
-(defun my/open-jira-ticket-at-point ()
-  "Open the Jira ticket at point in your default web browser.
-Looks for a ticket code like \"XXX-123\"."
-  (interactive)
-  (let* ((ticket-code (thing-at-point 'symbol t)))
-    (if (and ticket-code
-             (string-match "^[A-Z]+-[0-9]+$" (upcase ticket-code)))
-        (let ((jira-url (format "%s/browse/%s" my-jira-instance-url (upcase ticket-code))))
-          (browse-url jira-url)
-          (message "Opening Jira ticket: %s" jira-url))
-      (message "No valid Jira ticket code at point."))))
 
 (defun browse-gitlab-commit-at-point ()
   "Open the GitLab commit page for the hash at point.
