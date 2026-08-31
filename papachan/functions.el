@@ -354,14 +354,20 @@ header line indicating Org mode and a first headline."
   (join-line t))
 
 (defun insert-file-into-buffer (filename)
-  (let ((buf (current-buffer)))
-    (with-current-buffer buf
-      (erase-buffer))
-    (save-excursion
-      (with-temp-buffer
-        (insert-file-contents filename)
-        (goto-char 1)
-        (append-to-buffer buf (point) (point-max))))))
+  "Replace the current buffer contents with the content of FILENAME."
+  (interactive "fInsert file: ")
+  (erase-buffer)
+  (insert-file-contents filename))
+
+;; (defun insert-file-into-buffer (filename)
+;;   (let ((buf (current-buffer)))
+;;     (with-current-buffer buf
+;;       (erase-buffer))
+;;     (save-excursion
+;;       (with-temp-buffer
+;;         (insert-file-contents filename)
+;;         (goto-char 1)
+;;         (append-to-buffer buf (point) (point-max))))))
 
 (defun download-url-file (url)
   "Download URL into the current directory."
@@ -376,8 +382,6 @@ header line indicating Org mode and a first headline."
       (shell-command (concat "git clone " url))))
 
 (defun dos2unix()
-  "Replace the current buffer contents with the content of FILENAME."
-  (interactive "fInsert file: ")
   "Set dos buffer to unix buffer."
   (interactive)
   (set-buffer-file-coding-system 'utf-8-unix))
