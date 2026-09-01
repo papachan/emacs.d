@@ -1,4 +1,4 @@
-;;; setup-ibuffer.el --- Summary
+;;; setup-ibuffer.el --- Summary. -*- lexical-binding: nil; -*-
 ;;; Commentary:
 ;;; Code:
 (require 'ibuffer)
@@ -158,13 +158,22 @@
                        "*swiper*"
                        "*xref*"
                        "*helm-projectile*"
+                       "*helm-mode-magit-status*"
+                       "*helm-mode-switch-to-buffer*"
                        "*helm *"
                        "*magit-*"
                        "*lsp-log*"
                        "*Async-native-compile-log*"
                        "*Compile-Log*"
                        "*Warnings*"
-                       "*Dired log*")))
+                       "*Dired log*"
+                       "*undo-tree Diff*"
+                       "*Backtrace*"
+                       "*grep*"
+                       "*projectile-files-errors*"
+                       "*nrepl-messages*"
+                       "*cider-error*"
+                       "*Flycheck error messages*")))
     (dolist (buff buffers-lst)
       (kill-matching-buffers-no-ask buff)))
   ;; refresh ibuffer
