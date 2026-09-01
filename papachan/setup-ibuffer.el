@@ -172,7 +172,8 @@
                        "*grep*"
                        "*projectile-files-errors*"
                        "*nrepl-messages*"
-                       "*cider-error*")))
+                       "*cider-error*"
+                       "*Flycheck error messages*")))
     (dolist (buff buffers-lst)
       (kill-matching-buffers-no-ask buff)))
   ;; refresh ibuffer
