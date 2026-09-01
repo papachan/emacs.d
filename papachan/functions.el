@@ -387,21 +387,20 @@ For example, if N is 5, the inserted UUID will be #uuid
 \"55555555-5555-5555-5555-555555555555\".
 
 Arguments:
-N -- The padding digit used to generate the UUID. Must be between 0 and 9.
+N -- The padding digit used to generate the UUID.  Must be between 0 and 9.
 
 Usage:
 - Call the function interactively with a prefix argument to specify N.
 - If called without a prefix argument, the function defaults to using 1 as the padding digit.
 
 Example:
-M-x insert-clj-uuid 3
-Inserts: #uuid \"33333333-3333-3333-3333-333333333333\"
-"
+\\M-\\x insert-clj-uuid 3
+Inserts: #uuid \"33333333-3333-3333-3333-333333333333\""
   (interactive "p") ;; This allows the function to accept a numeric prefix argument.
                     ;; If no prefix is provided, n will default to 1.
   (let ((n (or n 1)))
     (if (or (< n 0) (> n 9))
-        (error "Argument N must be between 0 and 9."))
+        (error "Argument N must be between 0 and 9"))
     (let ((n (string-to-char (number-to-string n))))
       (insert
        (format "#uuid \"%s-%s-%s-%s-%s\""
