@@ -364,12 +364,10 @@ header line indicating Org mode and a first headline."
   (interactive "sEnter url: ")
   (url-copy-file url (url-file-nondirectory url)))
 
-(defun git-clone-repo ()
-  "Method to clone a repo."
-  (interactive)
-  (lambda())
-    (let ((url (read-from-minibuffer "Enter url:")))
-      (shell-command (concat "git clone " url))))
+(defun git-clone-repo (url)
+  "Clone the repository at URL into the current directory."
+  (interactive "sEnter url: ")
+  (shell-command (format "git clone %s" (shell-quote-argument url))))
 
 (defun dos2unix()
   "Set dos buffer to unix buffer."
