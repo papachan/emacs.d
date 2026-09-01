@@ -439,8 +439,8 @@ it to the kill ring, allowing it to be yanked elsewhere."
 (defun backward-copy-word ()
   "Copy the word before the cursor to the kill ring.
 This function copies the word located immediately before the
-cursor's current position. It uses `save-excursion` to ensure
-the cursor's position is not changed after the operation. The
+cursor's current position.  It uses `save-excursion` to ensure
+the cursor's position is not changed after the operation.  The
 copied word is added to the kill ring, which allows it to be
 pasted (yanked) elsewhere using standard Emacs yank."
   (interactive)
