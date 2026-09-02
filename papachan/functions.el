@@ -11,6 +11,11 @@
 (defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y")
 (defvar current-time-format "%a %H:%M:%S")
 
+(defvar change-legacy-deps-regexp
+  "\\[\\(.*?\\)[[:space:]]+\\(.*?\\)[[:space:]]*\\]"
+  "Regexp matching a legacy Leiningen dependency vector.
+Group 1 is the artifact coordinate, group 2 the version.")
+
 (defun change-legacy-deps-to-deps (str &optional from to)
   "Transform legacy vector dependencies to the new map format.
 If called interactively and a region is selected, it transforms the content of
@@ -18,26 +23,29 @@ the region.
 Otherwise, it operates on the paragraph at point.
 When called programmatically, STR is the input string to transform.
 
+Every dependency vector found is rewritten in place; the surrounding text
+\\(indentation, leading and trailing newlines, comments) is preserved.
+
 FROM and TO specify the region boundaries for interactive use."
   (interactive
    (if (use-region-p)
        (list nil (region-beginning) (region-end))
-     (let ((bds (bounds-of-thing-at-point 'paragraph)))
+     (let ((bds (or (bounds-of-thing-at-point 'paragraph)
+                    (user-error "No paragraph at point"))))
        (list nil (car bds) (cdr bds)))))
-  (let ((work-on-string-p (when str t))
-        (inputStr (if str
-                      str
-                    (buffer-substring-no-properties from to))))
-    (setq outputStr
-          (let ((case-fold-search t))
-            (and (string-match "\\[\\(.*\\)\\\s\\(.*\\)\\]" inputStr)
-                 (concat (match-string 1 inputStr) " {:mvn/version " (match-string 2 inputStr) "}"))))
-    (if work-on-string-p
-        outputStr
+  (let* ((input-str (or str (buffer-substring-no-properties from to)))
+         (output-str (replace-regexp-in-string change-legacy-deps-regexp
+                                               "\\1 {:mvn/version \\2}"
+                                               input-str t)))
+    (cond
+     (str output-str)
+     ((string= output-str input-str)
+      (message "No legacy dependency vector found"))
+     (t
       (save-excursion
         (delete-region from to)
         (goto-char from)
-        (insert outputStr)))))
+        (insert output-str))))))
 
 (defun buffer/clear ()
   (interactive)
@@ -102,37 +110,6 @@ If the user enters \\='Chapter 1\\=', the following text will be inserted:
                (if (eq system-type 'gnu/linux)
                    (concat "notify-send " title ":" message)))))
     (shell-command str-action)))
-
-(defun my-dired-create-file (file)
-  "Create a file called FILE in the current Dired directory.
-
-If FILE already exists, signal an error.
-
-Usage:
-- Call this function interactively (e.g., M-x my-dired-create-file)
-- Enter the desired file name when prompted.
-
-Arguments:
-- FILE: The name of the file to create.  The function ensures that the
-  full path is expanded and any necessary parent directories are created."
-  (interactive
-   (list (read-file-name "Create file: " (dired-current-directory))))
-  (let* ((expanded (expand-file-name file))
-         (try expanded)
-         (dir (directory-file-name (file-name-directory expanded)))
-         new)
-    (if (file-exists-p expanded)
-        (error "Cannot create file %s: file exists" expanded))
-    ;; Find the topmost nonexistent parent dir (variable `new')
-    (while (and try (not (file-exists-p try)) (not (equal new try)))
-      (setq new try
-            try (directory-file-name (file-name-directory try))))
-    (when (not (file-exists-p dir))
-      (make-directory dir t))
-    (write-region "" nil expanded t)
-    (when new
-      (dired-add-file new)
-      (dired-move-to-filename))))
 
 ;; select whole line
 (defun select-whole-line ()
@@ -347,7 +324,7 @@ header line indicating Org mode and a first headline."
   (set-buffer-file-coding-system 'utf-8-unix))
 
 (defun send-output-log ()
-  "copy error output to sprunge"
+  "Copy error output to sprunge."
   (interactive)
   (shell-command "cat ~/Desktop/output_error.log | curl -F 'sprunge=<-' http://sprunge.us"))
 
