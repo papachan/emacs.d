@@ -1,4 +1,4 @@
-;;; functions.el --- Personal utility functions -*- lexical-binding: nil; -*-
+;;; functions.el --- Personal utility functions -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;; A collection of utility functions for daily Emacs usage.
 
@@ -16,12 +16,16 @@
 (defvar current-time-format "%a %H:%M:%S"
   "Format string for current time.")
 
-
 (defvar my-syntax-table
   (let ((table (make-syntax-table)))
     (modify-syntax-entry ?- "w" table)
     table)
   "Syntax table that treats hyphens as word characters.")
+
+(defvar change-legacy-deps-regexp
+  "\\[\\(.*?\\)[[:space:]]+\\(.*?\\)[[:space:]]*\\]"
+  "Regexp matching a legacy Leiningen dependency vector.
+Group 1 is the artifact coordinate, group 2 the version.")
 
 (defun change-legacy-deps-to-deps (str &optional from to)
   "Transform legacy vector dependencies to the new map format.
@@ -30,27 +34,30 @@ the region.
 Otherwise, it operates on the paragraph at point.
 When called programmatically, STR is the input string to transform.
 
+Every dependency vector found is rewritten in place; the surrounding text
+\\(indentation, leading and trailing newlines, comments) is preserved.
+
 FROM and TO specify the region boundaries for interactive use."
   (interactive
    (if (use-region-p)
        (list nil (region-beginning) (region-end))
-     (let ((bds (bounds-of-thing-at-point 'paragraph)))
+     (let ((bds (or (bounds-of-thing-at-point 'paragraph)
+                    (user-error "No paragraph at point"))))
        (list nil (car bds) (cdr bds)))))
-  (let ((work-on-string-p (when str t))
-        (input-str (if str
-                       str
-                     (buffer-substring-no-properties from to))))
-    (setq output-str
-          (let ((case-fold-search t))
-            (if (string-match "\\[\\(.*?\\)\\s-+\\(.*?\\)]" input-str)
-                (concat (match-string 1 input-str) " {:mvn/version " (match-string 2 input-str) "}")
-              input-str)))  ; Return input-str unchanged if no match is found
-    (if work-on-string-p
-        output-str
+  (let* ((input-str (or str (buffer-substring-no-properties from to)))
+         ;; FIXEDCASE is t so the replacement is inserted verbatim.
+         (output-str (replace-regexp-in-string change-legacy-deps-regexp
+                                               "\\1 {:mvn/version \\2}"
+                                               input-str t)))
+    (cond
+     (str output-str)
+     ((string= output-str input-str)
+      (message "No legacy dependency vector found"))
+     (t
       (save-excursion
         (delete-region from to)
         (goto-char from)
-        (insert output-str)))))
+        (insert output-str))))))
 
 (defun buffer/clear ()
   "Clear the contents of the current buffer.
