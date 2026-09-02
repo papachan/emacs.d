@@ -124,39 +124,6 @@ If the user enters \\='Chapter 1\\=', the following text will be inserted:
          (padding (make-string (max 0 (/ (- 72 (length formatted-title)) 2)) ?\s)))
     (insert (concat padding formatted-title padding))))
 
-;;; File and Directory Operations
-
-(defun my-dired-create-file (file)
-  "Create a file called FILE in the current Dired directory.
-
-If FILE already exists, signal an error.
-
-Usage:
-- Call this function interactively (e.g., M-x my-dired-create-file)
-- Enter the desired file name when prompted.
-
-Arguments:
-- FILE: The name of the file to create.  The function ensures that the
-  full path is expanded and any necessary parent directories are created."
-  (interactive
-   (list (read-file-name "Create file: " (dired-current-directory))))
-  (let* ((expanded (expand-file-name file))
-         (try expanded)
-         (dir (directory-file-name (file-name-directory expanded)))
-         new)
-    (when (file-exists-p expanded)
-      (error "Cannot create file %s: file exists" expanded))
-    ;; Find the topmost nonexistent parent dir (variable `new')
-    (while (and try (not (file-exists-p try)) (not (equal new try)))
-      (setq new try
-            try (directory-file-name (file-name-directory try))))
-    (unless (file-exists-p dir)
-      (make-directory dir t))
-    (write-region "" nil expanded t)
-    (when new
-      (dired-add-file new)
-      (dired-move-to-filename))))
-
 (defun select-whole-line ()
   "Select whole line which has the cursor."
   (interactive)
