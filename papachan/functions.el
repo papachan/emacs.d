@@ -63,16 +63,11 @@ FROM and TO specify the region boundaries for interactive use."
   "Clear the contents of the current buffer.
 
 This function erases all text in the current buffer, making it empty.
-It is an interactive command, meaning it can be called directly by the user,
-for example, by using `M-x buffer/clear`.
 
 Usage:
-  M-x buffer/clear
-
-Internally, the function uses `erase-buffer` to remove all text from the current buffer."
+  M-x buffer/clear"
   (interactive)
-  (with-current-buffer (current-buffer)
-    (erase-buffer)))
+  (erase-buffer))
 
 (defun insert-latin-unicode ()
   "Insert ISO latin unicode encoding."
