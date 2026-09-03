@@ -10,11 +10,21 @@
 (defvar current-date-format "%Y-%m-%d"
   "Format string for current date.")
 
-(defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y"
+;; %z (numeric offset) rather than %Z: on Windows %Z expands to the verbose
+;; OS zone name ("Hora est. Pacifico, Sudamerica") and ignores the locale.
+(defvar current-date-time-format "%a %b %d %H:%M:%S %z %Y"
   "Format string for current date and time.")
 
 (defvar current-time-format "%a %H:%M:%S"
   "Format string for current time.")
+
+(defmacro with-c-time-locale (&rest body)
+  "Evaluate BODY with `system-time-locale' bound to the C locale.
+Without this, %a and %b in `format-time-string' expand using the system
+locale, which yields e.g. \"mie\" and \"sept.\" instead of \"Wed\" and \"Sep\"."
+  (declare (indent 0) (debug t))
+  `(let ((system-time-locale "C"))
+     ,@body))
 
 (defvar my-syntax-table
   (let ((table (make-syntax-table)))
@@ -45,7 +55,6 @@ FROM and TO specify the region boundaries for interactive use."
                     (user-error "No paragraph at point"))))
        (list nil (car bds) (cdr bds)))))
   (let* ((input-str (or str (buffer-substring-no-properties from to)))
-         ;; FIXEDCASE is t so the replacement is inserted verbatim.
          (output-str (replace-regexp-in-string change-legacy-deps-regexp
                                                "\\1 {:mvn/version \\2}"
                                                input-str t)))
@@ -77,17 +86,12 @@ Usage:
 (defun insert-time ()
   "Insert time stamp as 08:59:39."
   (interactive "*")
-  (insert (format-time-string "%X")))
-
-(defun insert-current-date ()
-  "Insert current date.  (dd DD MMM aaa HH:mm:ss zzz)."
-  (interactive)
-  (insert (shell-command-to-string "date")))
+  (insert (format-time-string "%T")))
 
 (defun insert-current-iso-date ()
   "Insert current date with YYYY-MM-DD format."
   (interactive)
-  (insert (format-time-string current-date-format (current-time))))
+  (insert (format-time-string current-date-format)))
 
 (defun insert-time-stamp-short ()
   "Insert short date/time stamp as 2024-11-29 10:41."
@@ -95,14 +99,20 @@ Usage:
   (insert (format-time-string "%Y-%m-%d %R")))
 
 (defun insert-current-date-time ()
-  "Insert current date.  (dd DD MMM aaa HH:mm:ss zzz)."
+  "Insert current date and time as `Wed Sep 02 17:10:34 -0500 2026'.
+The day and month names are always English, independent of the system
+locale; see `with-c-time-locale'."
   (interactive)
-  (insert (format-time-string current-date-time-format (current-time))))
+  (insert (with-c-time-locale
+            (format-time-string current-date-time-format))))
+
+(defalias 'insert-current-date #'insert-current-date-time)
 
 (defun insert-current-time ()
-  "Insert current time."
+  "Insert current time as `Wed 17:10:34'."
   (interactive)
-  (insert (format-time-string current-time-format (current-time))))
+  (insert (with-c-time-locale
+            (format-time-string current-time-format))))
 
 (defun insert-centered-title ()
   "Insert a centered title into the current text buffer.
@@ -157,9 +167,7 @@ If the user enters \\='Chapter 1\\=', the following text will be inserted:
   (let ((n 0)
         bufname)
     (while (progn
-             (setq bufname (concat "*scratch"
-                                   (if (= n 0) "" (int-to-string n))
-                                   "*"))
+             (setq bufname (format "*scratch%s*" (if (= n 0) "" n)))
              (setq n (1+ n))
              (get-buffer bufname)))
     (switch-to-buffer (get-buffer-create bufname))
