@@ -8,7 +8,8 @@
 (require 'hi-lock)
 
 (defvar current-date-format "%Y-%m-%d")
-(defvar current-date-time-format "%a %b %d %H:%M:%S %Z %Y")
+(defvar current-date-time-format "%a %b %d %H:%M:%S %z %Y"
+  "Format string for current date and time.")
 (defvar current-time-format "%a %H:%M:%S")
 
 (defvar change-legacy-deps-regexp
@@ -48,9 +49,10 @@ FROM and TO specify the region boundaries for interactive use."
         (insert output-str))))))
 
 (defun buffer/clear ()
+  "Clear the contents of the current buffer.
+This function erases all text in the current buffer, making it empty."
   (interactive)
-  (with-current-buffer (current-buffer)
-    (erase-buffer)))
+  (erase-buffer))
 
 (defun insert-latin-unicode ()
   (interactive)
@@ -60,12 +62,12 @@ FROM and TO specify the region boundaries for interactive use."
 (defun insert-time ()
   "Insert time stamp as 08:59:39."
   (interactive "*")
-  (insert (format-time-string "%X")))
+  (insert (format-time-string "%T")))
 
 (defun insert-current-iso-date ()
   "Insert current date with YYYY-MM-DD format."
   (interactive)
-  (insert (format-time-string current-date-format (current-time))))
+  (insert (format-time-string current-date-format)))
 
 (defun insert-time-stamp-short ()
   "Insert short date/time stamp as 2024-11-29 10:41."
@@ -74,11 +76,15 @@ FROM and TO specify the region boundaries for interactive use."
 
 (defun insert-current-date-time ()
   (interactive)
-  (insert (format-time-string current-date-time-format (current-time))))
+  (insert (format-time-string current-date-time-format)))
 
 (defun insert-current-time ()
   (interactive)
-  (insert (format-time-string current-time-format (current-time))))
+  (insert (format-time-string current-time-format)))
+
+(defun insert-current-date ()
+  (interactive)
+  (insert (shell-command-to-string "date")))
 
 (defun insert-centered-title ()
   "Insert a centered title into the current text buffer.
@@ -131,11 +137,6 @@ If the user enters \\='Chapter 1\\=', the following text will be inserted:
   (kill-emacs
    (if (display-graphic-p) 0 1)))
 
-(defun put-the-date ()
-  (interactive)
-  (insert (shell-command-to-string "date")))
-
-; confirmation before quiting emacs
 (defun quit-emacs ()
   "Confirmation before quiting Emacs."
   (interactive)
@@ -148,9 +149,7 @@ If the user enters \\='Chapter 1\\=', the following text will be inserted:
   (let ((n 0)
         bufname)
     (while (progn
-             (setq bufname (concat "*scratch"
-                                   (if (= n 0) "" (int-to-string n))
-                                   "*"))
+             (setq bufname (format "*scratch%s*" (if (= n 0) "" n)))
              (setq n (1+ n))
              (get-buffer bufname)))
     (switch-to-buffer (get-buffer-create bufname))
@@ -174,7 +173,7 @@ If the user enters \\='Chapter 1\\=', the following text will be inserted:
   (interactive)
   (let ((buf (generate-new-buffer "untitled")))
     (switch-to-buffer buf)
-    (funcall (and initial-major-mode))
+    (funcall initial-major-mode)
     (setq buffer-offer-save t)))
 
 (defun new-org-mode-buffer ()
@@ -322,11 +321,6 @@ header line indicating Org mode and a first headline."
   "Set dos buffer to unix buffer."
   (interactive)
   (set-buffer-file-coding-system 'utf-8-unix))
-
-(defun send-output-log ()
-  "Copy error output to sprunge."
-  (interactive)
-  (shell-command "cat ~/Desktop/output_error.log | curl -F 'sprunge=<-' http://sprunge.us"))
 
 ;; new functions
 (defun insert-clj-uuid (n)
