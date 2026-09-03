@@ -1,15 +1,20 @@
-;;; shortcuts.el --- Summary
+;;; shortcuts.el --- Shortcuts.  -*- lexical-binding: nil; -*-
 ;;; Commentary:
 
 ;;; Code:
 (require 'toggle-quotes)
 (require 'iflipb)
 
-(use-package expand-region :ensure t)
+(use-package expand-region
+  :ensure t
+  ;; only er/expand-region and er/contract-region are autoloaded; er/mark-word
+  ;; lives in er-basic-expansions and needs an explicit autoload.
+  :commands (er/expand-region er/mark-word))
+
 (use-package change-inner :ensure t)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-c =") 'er/expand-region) ;; windows issue with C-=
+(global-set-key (kbd "C-c =") 'er/expand-region)
 (global-set-key (kbd "M-n") 'er/mark-word)
 (global-set-key (kbd "M-i") 'change-inner)
 (global-set-key (kbd "M-o") 'change-outer)
@@ -19,11 +24,12 @@
 (global-set-key (kbd "C-c C-o") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-c o") 'insert-a-blank-line)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
+(global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
 ;; new *scratch* buffer keybing conflict with org-mode
 (global-set-key (kbd "C-x 4 n") 'create-scratch-buffer)
 (global-set-key (kbd "C-x 5 n") 'make-frame-command)
-(global-set-key (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "C-x w") 'toggle-truncate-line)
+;; this alias is redundant since Emacs 24.4 electric-indent-mode is on by default and already does this.
+;; (global-set-key (kbd "RET") 'newline-and-indent)
 ;; new line alias
 (global-set-key (kbd "C-c y") "\C-a\C- \C-n\M-w\C-y")
 (global-set-key (kbd "C-c -") 'buffer/clear)
@@ -38,7 +44,6 @@
 (global-set-key (kbd "C-x g") 'simple-toggle-highlight-symbol-at-point)
 (global-set-key (kbd "<C-tab>") 'iflipb-next-buffer)
 (global-set-key (kbd "C-c <tab>") 'iflipb-previous-buffer)
-;; (global-set-key (kbd "C-c C-b") 'dos2unix)
-;; (global-set-key (kbd "") 'backward-copy-word)
+
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
