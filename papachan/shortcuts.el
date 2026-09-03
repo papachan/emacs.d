@@ -1,13 +1,21 @@
-;;; shortcuts.el --- -*- lexical-binding: t -*-
+;;; shortcuts.el --- -*- lexical-binding: nil; -*-
 ;;; Commentary:
 
 ;;; Code:
 (require 'visual-regexp)
 (require 'toggle-quotes)
-(use-package expand-region :ensure t)
+
+(use-package expand-region
+  :ensure t
+  ;; only er/expand-region and er/contract-region are autoloaded; er/mark-word
+  ;; lives in er-basic-expansions and needs an explicit autoload.
+  :commands (er/expand-region er/mark-word))
+
 (use-package change-inner :ensure t)
 
 (global-set-key (kbd "C-x C-;") 'comment-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "M-n") 'er/mark-word)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 (global-set-key (kbd "C-<next>") 'next-buffer)
 (global-set-key (kbd "C-<prior>") 'previous-buffer)
@@ -21,7 +29,6 @@
 (global-set-key (kbd "C-c <") 'my-unindent-region)
 (global-set-key [pause] 'toggle-current-window-dedication)
 (global-set-key (kbd "C-c C-j") 'replace-string)
-(global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "M-i") 'change-inner)
 (global-set-key (kbd "M-o") 'change-outer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -38,18 +45,13 @@
 (global-set-key (kbd "C-x 4 n") 'create-scratch-buffer)
 (global-set-key (kbd "C-x 4 ,") 'new-org-mode-buffer)
 (global-set-key (kbd "C-c C-n") 'new-empty-buffer)
-(global-set-key (kbd "RET") 'newline-and-indent)
-;; (global-set-key (kbd "S-<f1>") (lambda () (interactive) (dired "~/")))
-;; (global-set-key (kbd "S-<f2>") (lambda () (interactive) (dired "~/.emacs.d"))) ;; replace auto-scrolling shortcut
-;; (global-set-key (kbd "S-<f3>") (lambda () (interactive) (dired "~/Dropbox/documents/")))
-;; (global-set-key (kbd "S-<f4>") (lambda () (interactive) (dired "~/Dropbox")))
-;; (global-set-key (kbd "S-<f5>") (lambda () (interactive) (dired "~/Downloads")))
+;; this alias is redundant since Emacs 24.4 electric-indent-mode is on by default and already does this.
+;; (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "<f8>") 'repeat-complex-command)
 (global-set-key (kbd "C-c v") 'revert-buffer-without-confirmation)
 (global-set-key (kbd "C-c a") 'my-increment-number-at-point)
 (global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
 (global-set-key (kbd "C-c h") 'file-path-on-clipboard)
-(global-set-key (kbd "C-c C-l") 'toggle-truncate-lines)
 (global-set-key (kbd "C-'") 'toggle-quotes)
 (global-set-key (kbd "C-c <backspace>") 'join-line*)
 (global-set-key (kbd "C-c <deletechar>") 'fixup-whitespace)
