@@ -15,6 +15,7 @@
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-c =") 'er/expand-region)
+(global-set-key (kbd "C-c h") 'kill-buffer-file-name-or-default-directory)
 (global-set-key (kbd "M-n") 'er/mark-word)
 (global-set-key (kbd "M-i") 'change-inner)
 (global-set-key (kbd "M-o") 'change-outer)

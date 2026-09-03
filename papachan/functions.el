@@ -192,20 +192,8 @@ If the user enters \\='Chapter 1\\=', the following text will be inserted:
   "Split the current window vertically and move to the newly created window.
 
 This function splits the current window into two side-by-side windows
-by creating a new window to the right of the current one. After splitting,
-the focus is moved to the newly created right window.
-
-Usage:
-- Call this function interactively (e.g., M-x split-window-right-and-move-there-dammit).
-
-Example:
-- If you have a single window open and you call this function, the window
-  will be split into two, with the new window on the right and the focus
-  automatically moved to it.
-
-This function is useful for users who frequently need to split their window
-and immediately start working in the new window.
-"
+by creating a new window to the right of the current one.  After splitting,
+the focus is moved to the newly created right window."
   (interactive)
   (split-window-right)
   (windmove-right))
@@ -225,12 +213,12 @@ This function creates a new buffer with a unique name, switches to it,
 and sets its major mode to Org mode.  The buffer is initialized with a
 header line indicating Org mode and a first headline."
   (interactive)
-  (let ((buffer (get-buffer-create (generate-new-buffer-name "*scratch-org*"))))
+  (let ((buffer (generate-new-buffer "*scratch-org*")))
     (pop-to-buffer buffer)
     (with-current-buffer buffer
-      (funcall (and initial-major-mode))
       (insert "-*- mode: org -*-\n\n")
       (insert "* First Headline\n")
+      (insert "** TODO #1 task to be done")
       (org-mode))))
 
 (defun insert-common-lisp-shebang ()
@@ -278,12 +266,14 @@ header line indicating Org mode and a first headline."
 (defun kill-buffer-file-name-or-default-directory ()
   "Display and add to the kill ring the current buffer's filename or directory."
   (interactive)
-  (let ((buffer-file-name (buffer-file-name))
-        (result (or buffer-file-name default-directory)))
+  (let* ((file (buffer-file-name))
+         (result (or file default-directory)))
     (kill-new result)
     (prog1 result
-      (if buffer-file-name (message "%s" result)
-        (message "Buffer %s not associated with a file; killed default-directory %s" (buffer-name) result)))))
+      (if file
+          (message "%s" result)
+        (message "Buffer %s not associated with a file; killed default-directory %s"
+                 (buffer-name) result)))))
 
 (defun revert-buffer-without-confirmation ()
   "Revert buffer without asking for confirmation."
@@ -378,17 +368,43 @@ Example:
 Inserts: #uuid \"33333333-3333-3333-3333-333333333333\""
   (interactive "p") ;; This allows the function to accept a numeric prefix argument.
                     ;; If no prefix is provided, n will default to 1.
-  (let ((n (or n 1)))
-    (if (or (< n 0) (> n 9))
-        (error "Argument N must be between 0 and 9"))
-    (let ((n (string-to-char (number-to-string n))))
-      (insert
-       (format "#uuid \"%s-%s-%s-%s-%s\""
-               (make-string 8 n)
-               (make-string 4 n)
-               (make-string 4 n)
-               (make-string 4 n)
-               (make-string 12 n))))))
+  (unless (and (>= n 0) (<= n 9))
+    (user-error "Argument N must be between 0 and 9"))
+  (let ((c (string-to-char (number-to-string n))))
+    (insert
+     (format "#uuid \"%s-%s-%s-%s-%s\""
+             (make-string 8 c)
+             (make-string 4 c)
+             (make-string 4 c)
+             (make-string 4 c)
+             (make-string 12 c)))))
+
+(defun random-uuid ()
+  "Return a random RFC 4122 version 4 UUID as a string.
+
+The 13th hex digit is always 4 (the version) and the 17th is one of
+8, 9, a or b (the variant), which is what makes the result a valid v4
+UUID rather than 32 arbitrary hex digits.
+
+Emacs seeds its generator per session, so no explicit `(random t)' is
+needed.  This is not a cryptographically secure source of randomness."
+  (format "%04x%04x-%04x-4%03x-%x%03x-%04x%04x%04x"
+          (random 65536) (random 65536)   ; time-low
+          (random 65536)                  ; time-mid
+          (random 4096)                   ; time-high, prefixed with version 4
+          (logior 8 (random 4))           ; variant: 8, 9, a or b
+          (random 4096)                   ; clock-seq
+          (random 65536) (random 65536) (random 65536)))  ; node
+
+(defun insert-random-uuid ()
+  "Insert a random Clojure UUID tagged literal at point.
+
+Unlike `insert-clj-uuid', which repeats a single digit to build an
+easily recognisable placeholder, this inserts a genuine random v4 UUID:
+
+  #uuid \"f47ac10b-58cc-4372-a567-0e02b2c3d479\""
+  (interactive "*")
+  (insert (format "#uuid \"%s\"" (random-uuid))))
 
 (defun copy-symbol-at-point ()
   "Copy the symbol at point to the kill ring.
@@ -419,10 +435,8 @@ it to the kill ring, allowing it to be yanked elsewhere."
 (defun backward-copy-word ()
   "Copy the word before the cursor to the kill ring.
 This function copies the word located immediately before the
-cursor's current position.  It uses `save-excursion` to ensure
-the cursor's position is not changed after the operation.  The
-copied word is added to the kill ring, which allows it to be
-pasted (yanked) elsewhere using standard Emacs yank."
+cursor's current position.  It uses `save-excursion' to ensure
+the cursor's position is not changed after the operation."
   (interactive)
   (save-excursion
     (copy-region-as-kill (point) (progn (backward-word) (point)))))
@@ -448,12 +462,15 @@ just downcased, with no preceding underscore."
   (save-excursion
     (let ((bounds (bounds-of-thing-at-point 'word)))
       (when bounds
-        (goto-char (1+ (car bounds)))  ; Skip first character
-        (let ((case-fold-search nil))
-          (while (re-search-forward "[A-Z]" (cdr bounds) t)
-            (replace-match (concat "_" (downcase (match-string 0))) t t)))))))
+        (let ((end (copy-marker (cdr bounds)))
+              (case-fold-search nil))
+          (downcase-region (car bounds) (1+ (car bounds)))
+          (goto-char (1+ (car bounds)))
+          (while (re-search-forward "[A-Z]" end t)
+            (replace-match (concat "_" (downcase (match-string 0))) t t))
+          (set-marker end nil))))))
 
-(defun to-snake-case (start end)
+(defun region-to-snake-case (start end)
   "Change the text between START and END to snake case format.
 
 Snake case is a naming convention where words are separated by
@@ -461,18 +478,29 @@ underscores (_) and all letters are in lowercase.  For example,
 the string \\='CamelCaseString\\=' would be transformed to
 \\='camel_case_string\\='.
 
+Each whitespace-delimited word is converted on its own, so the spaces,
+tabs and newlines between them are preserved:
+\\='CamelCaseString AnotherWord\\=' becomes
+\\='camel_case_string another_word\\='.
+
 Usage:
 - Select the region of text you want to transform.
-- Call this function interactively (e.g., M-x to-snake-case)."
+- Call this function interactively (e.g., M-x region-to-snake-case)."
   (interactive "r")
   (if (use-region-p)
-      (let ((camel-case-str (buffer-substring start end)))
+      (let* ((camel-case-str (buffer-substring-no-properties start end))
+             ;; An explicit set rather than [^[:space:]], which follows the
+             ;; buffer's syntax table and so fails to treat newlines as
+             ;; whitespace in most programming modes.
+             (snake-str (replace-regexp-in-string "[^ \t\n\r\f]+"
+                                                  #'s-snake-case
+                                                  camel-case-str t t)))
         (delete-region start end)
-        (insert (s-snake-case camel-case-str)))
+        (insert snake-str))
     (message "No region selected")))
 
 ;; https://github.com/Fuco1/.emacs.d/blob/master/site-lisp/my-advices.el#L7
-(defadvice kill-line (before kill-line-autoreindent activate)
+(defun my-kill-line-autoreindent (&rest _)
   "Kill excess whitespace when joining lines.
 
 If the next line is joined to the current line, kill the extra indent
@@ -481,6 +509,8 @@ whitespace in front of the next line."
     (save-excursion
       (forward-char 1)
       (just-one-space 1))))
+
+(advice-add 'kill-line :before #'my-kill-line-autoreindent)
 
 (defvar my-syntax-table
   (let ((table (make-syntax-table)))
@@ -503,15 +533,24 @@ whitespace in front of the next line."
       (copy-region-as-kill beg end))))
 
 (defun simple-toggle-highlight-symbol-at-point ()
-  "Toggle highlighting for the symbol at point."
+  "Toggle highlighting for the symbol at point.
+
+One symbol is highlighted at a time.  While a highlight is active this
+command removes it wherever point happens to be, so there is no need to
+navigate back to the symbol that was highlighted."
   (interactive)
-  (let* ((sym (thing-at-point 'symbol t))
-         (rexp (regexp-quote sym))
-         (faces '(hi-yellow hi-pink hi-green hi-blue hi-salmon hi-aquamarine))
-         (random-face (nth (random (length faces)) faces)))
-    (if hi-lock-interactive-patterns
-        (hi-lock-unface-buffer rexp)
-      (hi-lock-face-buffer rexp random-face))))
+  (let ((sym (thing-at-point 'symbol t))
+        (faces '(hi-yellow hi-pink hi-green hi-blue hi-salmon hi-aquamarine)))
+    (cond
+     ;; Checked first, and without consulting SYM, so that the highlight can
+     ;; be cleared from anywhere -- including from a spot with no symbol.
+     (hi-lock-interactive-patterns
+      (hi-lock-unface-buffer t)
+      (message "Highlight cleared"))
+     ((null sym)
+      (message "No symbol at point"))
+     (t
+      (hi-lock-face-buffer (regexp-quote sym) (seq-random-elt faces))))))
 
 (defun open-project-deps-edn ()
   "Find and open deps.edn from the current project root."

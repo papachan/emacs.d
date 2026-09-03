@@ -2,6 +2,9 @@
 ;;; Commentary:
 
 ;;; Code:
+(declare-function dired-current-directory "dired" (&optional localp))
+(declare-function dired-add-file "dired-aux" (filename &optional marker-char))
+(declare-function dired-move-to-filename "dired" (&optional raise-error eol))
 
 (defun dired-rename-space-to-underscore ()
   "In Dired, rename current or marked files, replacing spaces with underscores.
