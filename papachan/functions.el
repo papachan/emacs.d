@@ -462,12 +462,15 @@ just downcased, with no preceding underscore."
   (save-excursion
     (let ((bounds (bounds-of-thing-at-point 'word)))
       (when bounds
-        (goto-char (1+ (car bounds)))  ; Skip first character
-        (let ((case-fold-search nil))
-          (while (re-search-forward "[A-Z]" (cdr bounds) t)
-            (replace-match (concat "_" (downcase (match-string 0))) t t)))))))
+        (let ((end (copy-marker (cdr bounds)))
+              (case-fold-search nil))
+          (downcase-region (car bounds) (1+ (car bounds)))
+          (goto-char (1+ (car bounds)))
+          (while (re-search-forward "[A-Z]" end t)
+            (replace-match (concat "_" (downcase (match-string 0))) t t))
+          (set-marker end nil))))))
 
-(defun to-snake-case (start end)
+(defun region-to-snake-case (start end)
   "Change the text between START and END to snake case format.
 
 Snake case is a naming convention where words are separated by
@@ -475,18 +478,30 @@ underscores (_) and all letters are in lowercase.  For example,
 the string \\='CamelCaseString\\=' would be transformed to
 \\='camel_case_string\\='.
 
+Each whitespace-delimited word is converted on its own, so the spaces,
+tabs and newlines between them are preserved:
+\\='CamelCaseString AnotherWord\\=' becomes
+\\='camel_case_string another_word\\='.
+
 Usage:
 - Select the region of text you want to transform.
-- Call this function interactively (e.g., \\M-\\x to-snake-case)."
+- Call this function interactively (e.g., \\M-\\x region-to-snake-case)."
   (interactive "r")
   (if (use-region-p)
-      (let ((camel-case-str (buffer-substring start end)))
+      (let* ((camel-case-str (buffer-substring-no-properties start end))
+             ;; An explicit set rather than [^[:space:]], which follows the
+             ;; buffer's syntax table and so fails to treat newlines as
+             ;; whitespace in most programming modes.
+             (snake-str (replace-regexp-in-string "[^ \t\n\r\f]+"
+                                                  #'s-snake-case
+                                                  camel-case-str t t)))
         (delete-region start end)
-        (insert (s-snake-case camel-case-str)))
+        (insert snake-str))
     (message "No region selected")))
 
 ;; https://github.com/Fuco1/.emacs.d/blob/master/site-lisp/my-advices.el#L7
-(defadvice kill-line (before kill-line-autoreindent activate)
+;; https://github.com/Fuco1/.emacs.d/blob/master/site-lisp/my-advices.el#L7
+(defun my-kill-line-autoreindent (&rest _)
   "Kill excess whitespace when joining lines.
 
 If the next line is joined to the current line, kill the extra indent
@@ -495,6 +510,8 @@ whitespace in front of the next line."
     (save-excursion
       (forward-char 1)
       (just-one-space 1))))
+
+(advice-add 'kill-line :before #'my-kill-line-autoreindent)
 
 (defvar my-syntax-table
   (let ((table (make-syntax-table)))
@@ -515,6 +532,26 @@ whitespace in front of the next line."
           (end (progn (skip-syntax-forward "^ " (line-end-position))
                       (point))))
       (copy-region-as-kill beg end))))
+
+(defun simple-toggle-highlight-symbol-at-point ()
+  "Toggle highlighting for the symbol at point.
+
+One symbol is highlighted at a time.  While a highlight is active this
+command removes it wherever point happens to be, so there is no need to
+navigate back to the symbol that was highlighted."
+  (interactive)
+  (let ((sym (thing-at-point 'symbol t))
+        (faces '(hi-yellow hi-pink hi-green hi-blue hi-salmon hi-aquamarine)))
+    (cond
+     ;; Checked first, and without consulting SYM, so that the highlight can
+     ;; be cleared from anywhere -- including from a spot with no symbol.
+     (hi-lock-interactive-patterns
+      (hi-lock-unface-buffer t)
+      (message "Highlight cleared"))
+     ((null sym)
+      (message "No symbol at point"))
+     (t
+      (hi-lock-face-buffer (regexp-quote sym) (seq-random-elt faces))))))
 
 (defun browse-gitlab-commit-at-point ()
   "Open the GitLab commit page for the hash at point.
@@ -544,17 +581,6 @@ https://gitlab.com/USERNAME/PROJECT-NAME/-/commit/HASH"
       (erase-buffer)
       (insert output)
       (message "Buffer formatted with jet"))))
-
-(defun simple-toggle-highlight-symbol-at-point ()
-  "Toggle highlighting for the symbol at point."
-  (interactive)
-  (let* ((sym (thing-at-point 'symbol t))
-         (rexp (regexp-quote sym))
-         (faces '(hi-yellow hi-pink hi-green hi-blue hi-salmon hi-aquamarine))
-         (random-face (nth (random (length faces)) faces)))
-    (if hi-lock-interactive-patterns
-        (hi-lock-unface-buffer rexp)
-      (hi-lock-face-buffer rexp random-face))))
 
 (defun open-project-deps-edn ()
   "Find and open deps.edn from the current project root."
@@ -586,12 +612,9 @@ Otherwise, behave like regular `find-file'."
     (cond
      ((null bounds)
       (message "No symbol at point"))
-     ((string= word "true")
+     ((member word '("true" "false"))
       (delete-region (car bounds) (cdr bounds))
-      (insert "false"))
-     ((string= word "false")
-      (delete-region (car bounds) (cdr bounds))
-      (insert "true"))
+      (insert (if (string= word "true") "false" "true")))
      (t
       (message "Symbol at point is not a boolean: %s" word)))))
 
