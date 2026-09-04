@@ -165,6 +165,11 @@ If the user enters \\='Chapter 1\\=', the following text will be inserted:
   (set-window-buffer (second (window-list)) buffer2))
 
 (defun split-window-right-and-move-there-dammit ()
+  "Split the current window vertically and move to the newly created window.
+
+This function splits the current window into two side-by-side windows
+by creating a new window to the right of the current one.  After splitting,
+the focus is moved to the newly created right window."
   (interactive)
   (split-window-right)
   (windmove-right))
@@ -183,12 +188,12 @@ This function creates a new buffer with a unique name, switches to it,
 and sets its major mode to Org mode.  The buffer is initialized with a
 header line indicating Org mode and a first headline."
   (interactive)
-  (let ((buffer (get-buffer-create (generate-new-buffer-name "*scratch-org*"))))
+  (let ((buffer (generate-new-buffer-name "*scratch-org*")))
     (pop-to-buffer buffer)
     (with-current-buffer buffer
-      (funcall (and initial-major-mode))
       (insert "-*- mode: org -*-\n\n")
       (insert "* First Headline\n")
+      (insert "** TODO #1 task to be done")
       (org-mode))))
 
 (defun insert-shebang-for-lisp ()
@@ -197,6 +202,7 @@ header line indicating Org mode and a first headline."
   (insert ";;; -*- Mode: Lisp; Syntax: Common-Lisp -*-"))
 
 (defun toggle-current-window-dedication ()
+  "Toggle current window."
   (interactive)
   (let* ((window    (selected-window))
          (dedicated (window-dedicated-p window)))
@@ -232,12 +238,14 @@ header line indicating Org mode and a first headline."
 (defun kill-buffer-file-name-or-default-directory ()
   "Display and add to the kill ring the current buffer's filename or directory."
   (interactive)
-  (let ((buffer-file-name (buffer-file-name))
-        (result (or buffer-file-name default-directory)))
+  (let* ((file (buffer-file-name))
+         (result (or file default-directory)))
     (kill-new result)
     (prog1 result
-      (if buffer-file-name (message "%s" result)
-        (message "Buffer %s not associated with a file; killed default-directory %s" (buffer-name) result)))))
+      (if file
+          (message "%s" result)
+        (message "Buffer %s not associated with a file; killed default-directory %s"
+                 (buffer-name) result)))))
 
 (defun revert-buffer-without-confirmation ()
   "Revert buffer without asking for confirmation."
@@ -284,17 +292,22 @@ header line indicating Org mode and a first headline."
         (clipboard-kill-region (point-min) (point-max)))
       (message filename))))
 
-(defun random-11-letter-string ()
-  (interactive)
-  (progn
-    (dotimes (_ 11)
-      (insert
-       (upcase
-        (let ((x (random 36)))
-          (if (< x 10)
-              (+ x ?0)
-            (+ x (- ?a 10)))))))
-    (newline)))
+(defconst random-alphanumeric-chars "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+  "Alphabet used by `random-alphanumeric-string': base-36, uppercase.")
+
+(defun random-alphanumeric-string (n)
+  "Return a random string of N characters drawn uniformly from [0-9A-Za-z]."
+  (let ((s (make-string n ?0))
+        (len (length random-alphanumeric-chars)))
+    (dotimes (i n)
+      (aset s i (aref random-alphanumeric-chars (random len))))
+    s))
+
+(defun insert-random-alphanumeric-string (&optional n)
+  "Insert a random string of N characters from [0-9A-Za-z], then a newline.
+N defaults to 12; a numeric prefix argument sets it."
+  (interactive "*P")
+  (insert (random-alphanumeric-string (if n (prefix-numeric-value n) 12))))
 
 (defun join-line* ()
   "Join this line with the next line deleting extra white space."
@@ -343,26 +356,77 @@ Usage:
 Example:
 \\M-\\x insert-clj-uuid 3
 Inserts: #uuid \"33333333-3333-3333-3333-333333333333\""
-  (interactive "P")
-  (let ((n (or n 1)))
-    (if (or (< n 0) (> n 9))
-        (error "Argument N must be between 0 and 9"))
-    (let ((n (string-to-char (number-to-string n))))
-      (insert
-       (format "#uuid \"%s-%s-%s-%s-%s\""
-               (make-string 8 n)
-               (make-string 4 n)
-               (make-string 4 n)
-               (make-string 4 n)
-               (make-string 12 n))))))
+  (interactive "p") ;; This allows the function to accept a numeric prefix argument.
+                    ;; If no prefix is provided, n will default to 1.
+  (unless (and (>= n 0) (<= n 9))
+    (user-error "Argument N must be between 0 and 9"))
+  (let ((c (string-to-char (number-to-string n))))
+    (insert
+     (format "#uuid \"%s-%s-%s-%s-%s\""
+             (make-string 8 c)
+             (make-string 4 c)
+             (make-string 4 c)
+             (make-string 4 c)
+             (make-string 12 c)))))
+
+(defun random-uuid ()
+  "Return a random RFC 4122 version 4 UUID as a string.
+
+The 13th hex digit is always 4 (the version) and the 17th is one of
+8, 9, a or b (the variant), which is what makes the result a valid v4
+UUID rather than 32 arbitrary hex digits.
+
+Emacs seeds its generator per session, so no explicit `(random t)' is
+needed.  This is not a cryptographically secure source of randomness."
+  (format "%04x%04x-%04x-4%03x-%x%03x-%04x%04x%04x"
+          (random 65536) (random 65536)   ; time-low
+          (random 65536)                  ; time-mid
+          (random 4096)                   ; time-high, prefixed with version 4
+          (logior 8 (random 4))           ; variant: 8, 9, a or b
+          (random 4096)                   ; clock-seq
+          (random 65536) (random 65536) (random 65536)))  ; node
+
+(defun insert-random-uuid ()
+  "Insert a random Clojure UUID tagged literal at point.
+
+Unlike `insert-clj-uuid', which repeats a single digit to build an
+easily recognisable placeholder, this inserts a genuine random v4 UUID:
+
+  #uuid \"f47ac10b-58cc-4372-a567-0e02b2c3d479\""
+  (interactive "*")
+  (insert (format "#uuid \"%s\"" (random-uuid))))
+
+(defun copy-symbol-at-point ()
+  "Copy the symbol at point to the kill ring.
+Uses `thing-at-point' to get the symbol under the cursor and adds
+it to the kill ring, allowing it to be yanked elsewhere."
+  (interactive)
+  (let ((symbol (thing-at-point 'symbol t)))
+    (if symbol
+        (kill-new symbol)
+      (message "No symbol at point"))))
+
+(defun my-string-at-point ()
+  "Copy the content between double quotes at point to the kill ring."
+  (interactive)
+  (let ((ppss (syntax-ppss)))
+    (if (nth 3 ppss)
+        (let* ((string-start (nth 8 ppss))
+               (string-end (save-excursion
+                             (goto-char string-start)
+                             (forward-sexp)
+                             (point)))
+               (content (buffer-substring-no-properties
+                         (1+ string-start)
+                         (1- string-end))))
+          (kill-new content))
+      (message "Not inside a quoted string"))))
 
 (defun backward-copy-word ()
   "Copy the word before the cursor to the kill ring.
 This function copies the word located immediately before the
-cursor's current position.  It uses `save-excursion` to ensure
-the cursor's position is not changed after the operation.  The
-copied word is added to the kill ring, which allows it to be
-pasted (yanked) elsewhere using standard Emacs yank."
+cursor's current position.  It uses `save-excursion' to ensure
+the cursor's position is not changed after the operation."
   (interactive)
   (save-excursion
     (copy-region-as-kill (point) (progn (backward-word) (point)))))
@@ -374,6 +438,11 @@ pasted (yanked) elsewhere using standard Emacs yank."
       (find-file (car recentf-list))
     (message "No recently closed files")))
 
+(defun current-directory ()
+  "Open Dired on the current directory."
+  (interactive)
+  (dired "."))
+
 ;; https://olddeuteronomy.github.io/post/some-excerpts-from-config-2-functions/
 (defun nuke-all-buffers ()
   "Kill all buffers, leaving *scratch* only."
@@ -383,11 +452,6 @@ pasted (yanked) elsewhere using standard Emacs yank."
      (kill-buffer buffer))
    (buffer-list))
   (delete-other-windows))
-
-(defun current-directory ()
-  "Open Dired on the current directory."
-  (interactive)
-  (dired "."))
 
 (defun un-camelcase-word-at-point ()
   "Un-camelcase the word at point.
@@ -499,16 +563,6 @@ https://gitlab.com/USERNAME/PROJECT-NAME/-/commit/HASH"
     (if root
         (find-file (expand-file-name "deps.edn" root))
       (message "No deps.edn found in project"))))
-
-(defun copy-symbol-at-point ()
-  "Copy the symbol at point to the kill ring.
-Uses `thing-at-point' to get the symbol under the cursor and adds
-it to the kill ring, allowing it to be yanked elsewhere."
-  (interactive)
-  (let ((symbol (thing-at-point 'symbol t)))
-    (if symbol
-        (kill-new symbol)
-      (message "No symbol at point"))))
 
 (defun find-file-at-point-with-path ()
   "Open a file using the path at point as the initial input.
