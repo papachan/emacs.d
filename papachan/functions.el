@@ -320,6 +320,23 @@ header line indicating Org mode and a first headline."
         (clipboard-kill-region (point-min) (point-max)))
       (message filename))))
 
+(defconst random-alphanumeric-chars "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+  "Alphabet used by `random-alphanumeric-string': base-36, uppercase.")
+
+(defun random-alphanumeric-string (n)
+  "Return a random string of N characters drawn uniformly from [0-9A-Za-z]."
+  (let ((s (make-string n ?0))
+        (len (length random-alphanumeric-chars)))
+    (dotimes (i n)
+      (aset s i (aref random-alphanumeric-chars (random len))))
+    s))
+
+(defun insert-random-alphanumeric-string (&optional n)
+  "Insert a random string of N characters from [0-9A-Za-z], then a newline.
+N defaults to 12; a numeric prefix argument sets it."
+  (interactive "*P")
+  (insert (random-alphanumeric-string (if n (prefix-numeric-value n) 12))))
+
 (defun join-line* ()
   "Join this line with the next line deleting extra white space."
   (interactive)
