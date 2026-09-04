@@ -157,12 +157,18 @@ If the user enters \\='Chapter 1\\=', the following text will be inserted:
     ))
 
 (defun twist-split ()
+  "Twist split buffer: flip a two-window split between vertical and horizontal."
   (interactive)
-  (setq buffer2 (window-buffer (second (window-list))))
-  (if (window-top-child (frame-root-window))
-      (progn (delete-other-windows) (split-window-horizontally))
-    (progn (delete-other-windows) (split-window-vertically)))
-  (set-window-buffer (second (window-list)) buffer2))
+  (let ((windows (window-list)))
+    (unless (= (length windows) 2)
+      (user-error "Twisting a split requires exactly two windows"))
+    (let ((buffer2 (window-buffer (cadr windows)))
+          (top-child (window-top-child (frame-root-window))))
+      (delete-other-windows)
+      (if top-child
+          (split-window-horizontally)
+        (split-window-vertically))
+      (set-window-buffer (cadr (window-list)) buffer2))))
 
 (defun split-window-right-and-move-there-dammit ()
   "Split the current window vertically and move to the newly created window.

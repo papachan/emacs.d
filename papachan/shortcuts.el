@@ -37,10 +37,11 @@
 (global-set-key (kbd "C-c o") 'insert-a-blank-line)
 (global-set-key (kbd "C-x c d") 'current-directory)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
-(global-set-key (kbd "C-c f") 'follow-mode)
+(global-set-key (kbd "C-c f") 'reopen-last-closed-file)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
 (global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
-(global-set-key (kbd "C-x 6") 'twist-split)
+(global-set-key (kbd "C-x 6") 'window-swap-states)
+(global-set-key (kbd "C-x g") 'simple-toggle-highlight-symbol-at-point)
 ;; new *scratch* buffer keybing conflict with org-mode
 (global-set-key (kbd "C-x 4 n") 'create-scratch-buffer)
 (global-set-key (kbd "C-x 4 ,") 'new-org-mode-buffer)
@@ -61,7 +62,6 @@
 (global-set-key (kbd "C-c %") 'query-replace-regexp)
 (global-set-key (kbd "C-c C-v") 'other-frame)
 (global-set-key (kbd "C-c i") 'copy-backward-word)
-(global-set-key (kbd "C-c f") 'reopen-last-closed-file)
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
