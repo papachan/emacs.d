@@ -569,6 +569,17 @@ navigate back to the symbol that was highlighted."
      (t
       (hi-lock-face-buffer (regexp-quote sym) (seq-random-elt faces))))))
 
+(defun format-current-buffer-with-jet ()
+  "Format the current buffer's file using jet --pretty and replace buffer contents."
+  (interactive)
+  (if (not buffer-file-name)
+      (message "Buffer is not visiting a file")
+    (let* ((command (format "type %s | jet --pretty" (shell-quote-argument buffer-file-name)))
+           (output (shell-command-to-string command)))
+      (erase-buffer)
+      (insert output)
+      (message "Buffer formatted with jet"))))
+
 (defun open-project-deps-edn ()
   "Find and open deps.edn from the current project root."
   (interactive)
