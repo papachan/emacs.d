@@ -487,6 +487,17 @@ just downcased, with no preceding underscore."
             (replace-match (concat "_" (downcase (match-string 0))) t t))
           (set-marker end nil))))))
 
+(defun snake-case-keep-extension (word)
+  "Return WORD in snake case, leaving its file extension untouched.
+A leading dot, as in dotfiles, is kept too:
+\\='MyReport.doc\\=' becomes \\='my_report.doc\\=' and
+\\='.DirLocals.el\\=' becomes \\='.dir_locals.el\\='."
+  (let* ((dot (if (string-prefix-p "." word) "." ""))
+         (name (substring word (length dot))))
+    (concat dot
+            (s-snake-case (file-name-sans-extension name))
+            (file-name-extension name t))))
+
 (defun region-to-snake-case (start end)
   "Change the text between START and END to snake case format.
 
@@ -500,6 +511,9 @@ tabs and newlines between them are preserved:
 \\='CamelCaseString AnotherWord\\=' becomes
 \\='camel_case_string another_word\\='.
 
+File extensions are left alone, so \\='MyReport.doc\\=' becomes
+\\='my_report.doc\\='; see `snake-case-keep-extension'.
+
 Usage:
 - Select the region of text you want to transform.
 - Call this function interactively (e.g., M-x region-to-snake-case)."
@@ -510,7 +524,7 @@ Usage:
              ;; buffer's syntax table and so fails to treat newlines as
              ;; whitespace in most programming modes.
              (snake-str (replace-regexp-in-string "[^ \t\n\r\f]+"
-                                                  #'s-snake-case
+                                                  #'snake-case-keep-extension
                                                   camel-case-str t t)))
         (delete-region start end)
         (insert snake-str))
