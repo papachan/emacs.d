@@ -40,7 +40,7 @@
 (global-set-key (kbd "C-c f") 'reopen-last-closed-file)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
 (global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
-(global-set-key (kbd "C-x 6") 'window-swap-states)
+;; (global-set-key (kbd "C-x 6") 'window-swap-states)
 (global-set-key (kbd "C-x g") 'simple-toggle-highlight-symbol-at-point)
 ;; new *scratch* buffer keybing conflict with org-mode
 (global-set-key (kbd "C-x 4 n") 'create-scratch-buffer)
@@ -62,6 +62,9 @@
 (global-set-key (kbd "C-c %") 'query-replace-regexp)
 (global-set-key (kbd "C-c C-v") 'other-frame)
 (global-set-key (kbd "C-c i") 'copy-backward-word)
+;; delete N chars forward, prompting for N when no prefix arg is given;
+;; You can add N as a prefix as this: c-u 8 C-c z
+(global-set-key (kbd "C-c z") 'delete-chars-forward)
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here

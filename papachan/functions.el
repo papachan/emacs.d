@@ -315,6 +315,19 @@ N defaults to 12; a numeric prefix argument sets it."
   (interactive "*P")
   (insert (random-alphanumeric-string (if n (prefix-numeric-value n) 12))))
 
+(defun delete-chars-forward (n)
+  "Delete N characters forward from point (left to right).
+
+Interactively, with no prefix argument, prompts in the minibuffer for
+N (default 1).  With a numeric prefix argument, deletes that many
+characters immediately without prompting.
+A negative N deletes backward instead, matching `delete-char'."
+  (interactive
+   (list (if current-prefix-arg
+             (prefix-numeric-value current-prefix-arg)
+           (read-number "Delete how many chars: " 1))))
+  (delete-char n))
+
 (defun join-line* ()
   "Join this line with the next line deleting extra white space."
   (interactive)
