@@ -41,6 +41,9 @@
 (global-set-key (kbd "C-c a") 'increment-number-at-point)
 (global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
 (global-set-key (kbd "C-c f") 'reopen-last-closed-file)
+;; delete N chars forward, prompting for N when no prefix arg is given;
+;; You can add N as a prefix as this: c-u 8 C-c z
+(global-set-key (kbd "C-c z") 'delete-chars-forward)
 (global-set-key (kbd "C-'") 'toggle-quotes)
 (global-set-key (kbd "C-x g") 'simple-toggle-highlight-symbol-at-point)
 (global-set-key (kbd "<C-tab>") 'iflipb-next-buffer)
