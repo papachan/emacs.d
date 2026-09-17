@@ -37,7 +37,7 @@
                                 init-org
                                 setup-cider
                                 setup-clojure
-                                setup-chatgpt
+                                ;; setup-chatgpt
                                 setup-dired
                                 setup-dired-sidebar
                                 setup-dotnet
@@ -56,7 +56,8 @@
                                 setup-idle-highlight
                                 setup-eros
                                 setup-python
-                                setup-yasnippet
+                                ;; setup-yasnippet
+                                setup-powershell
                                 shortcuts))
 (dolist (module papachan/init-modules)
   (condition-case err
