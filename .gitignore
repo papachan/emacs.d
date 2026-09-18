@@ -36,6 +36,16 @@ elpa
 transient
 .org-id-locations
 .lsp-session-v1
+image-dired
+workspace
+transient
+fonts
 projects
 eln-cache
+snippets/**/
+snippets/*.docx
+org-persist
+projectile-frecency.eld
+chatgpt
+claude-code-context.json
 .*.el
