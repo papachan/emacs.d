@@ -556,6 +556,22 @@ whitespace in front of the next line."
 
 (advice-add 'kill-line :before #'my-kill-line-autoreindent)
 
+(defun kill-without-kill-ring (orig-fn &rest args)
+  "Call ORIG-FN with ARGS without adding anything to the kill ring.
+Intended for `kill-line' (C-k) and `kill-whole-line'
+(C-S-<backspace>), which are advised with this below,
+so that clearing a line does not clutter the kill ring."
+  (let (kill-ring kill-ring-yank-pointer)
+    (apply orig-fn args)))
+
+(advice-add 'kill-line :around #'kill-without-kill-ring)
+(advice-add 'kill-whole-line :around #'kill-without-kill-ring)
+
+;; `paredit-mode' rebinds C-k to `paredit-kill', which does not call
+;; `with-eval-after-load' rather than a direct `advice-add' at load time.
+(with-eval-after-load 'paredit
+  (advice-add 'paredit-kill :around #'kill-without-kill-ring))
+
 (defvar my-syntax-table
   (let ((table (make-syntax-table)))
     (modify-syntax-entry ?- "w")
