@@ -19,10 +19,11 @@
 (global-set-key (kbd "M-n") 'er/mark-word)
 (global-set-key (kbd "M-i") 'change-inner)
 (global-set-key (kbd "M-o") 'change-outer)
+;; trim all blank space left between two sexp or two words
 (global-set-key (kbd "C-c <deletechar>") 'fixup-whitespace)
 (global-set-key (kbd "C-c w") 'select-whole-line)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
-(global-set-key (kbd "C-c C-o") 'delete-trailing-whitespace)
+;; (global-set-key (kbd "C-c C-o") 'delete-trailing-whitespace)
 (global-set-key (kbd "C-c o") 'insert-a-blank-line)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
 (global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
@@ -37,6 +38,7 @@
 ;; Dired
 (global-set-key (kbd "C-x c d") 'current-directory)
 (global-set-key (kbd "C-c i") 'copy-symbol-at-point)
+(global-set-key (kbd "C-c I") 'my-string-at-point)
 (global-set-key (kbd "C-x j") 'json-pretty-print-buffer)
 (global-set-key (kbd "C-c a") 'increment-number-at-point)
 (global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
@@ -46,8 +48,8 @@
 (global-set-key (kbd "C-c z") 'delete-chars-forward)
 (global-set-key (kbd "C-'") 'toggle-quotes)
 (global-set-key (kbd "C-x g") 'simple-toggle-highlight-symbol-at-point)
-(global-set-key (kbd "<C-tab>") 'iflipb-next-buffer)
-(global-set-key (kbd "C-c <tab>") 'iflipb-previous-buffer)
+(global-set-key (kbd "C-c <left>") 'iflipb-next-buffer)
+(global-set-key (kbd "C-c <right>") 'iflipb-previous-buffer)
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here

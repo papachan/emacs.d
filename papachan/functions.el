@@ -564,13 +564,7 @@ so that clearing a line does not clutter the kill ring."
   (let (kill-ring kill-ring-yank-pointer)
     (apply orig-fn args)))
 
-(advice-add 'kill-line :around #'kill-without-kill-ring)
 (advice-add 'kill-whole-line :around #'kill-without-kill-ring)
-
-;; `paredit-mode' rebinds C-k to `paredit-kill', which does not call
-;; `with-eval-after-load' rather than a direct `advice-add' at load time.
-(with-eval-after-load 'paredit
-  (advice-add 'paredit-kill :around #'kill-without-kill-ring))
 
 (defvar my-syntax-table
   (let ((table (make-syntax-table)))
