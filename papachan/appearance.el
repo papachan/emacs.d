@@ -1,6 +1,11 @@
-;;; Appearance --- load emacs theme here.  -*- lexical-binding: t; -*-
+;;; Appearance --- load emacs theme here.  -*- lexical-binding: nil; -*-
 ;;; Commentary:
 ;;; Code:
+
+(use-package zerodark
+  :vc (:url "https://github.com/NicolasPetton/zerodark-theme" :rev :newest)
+  :init
+  (load-theme 'zerodark t))
 
 (use-package all-the-icons
   :if (display-graphic-p))
@@ -16,10 +21,6 @@
   (dired-rainbow-define media "#e70bb8" ("jpg" "jpeg" "png" "gif"))
   (dired-rainbow-define csv "#76d46c" ("csv" "xlsx" "xls"))
   (dired-rainbow-define-chmod executable-unix "#bf616a" "-.*x.*"))
-
-(load-file (expand-file-name "themes/zerodark-theme/zerodark-theme.el" user-emacs-directory))
-(load-theme 'zerodark t)
-;; (zerodark-setup-modeline-format)
 
 ;; smart-mode-line
 ;; (setq sml/theme 'respectful)
