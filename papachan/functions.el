@@ -533,7 +533,6 @@ Usage:
     (message "No region selected")))
 
 ;; https://github.com/Fuco1/.emacs.d/blob/master/site-lisp/my-advices.el#L7
-;; https://github.com/Fuco1/.emacs.d/blob/master/site-lisp/my-advices.el#L7
 (defun my-kill-line-autoreindent (&rest _)
   "Kill excess whitespace when joining lines.
 
@@ -545,6 +544,17 @@ whitespace in front of the next line."
       (just-one-space 1))))
 
 (advice-add 'kill-line :before #'my-kill-line-autoreindent)
+
+(defun kill-without-kill-ring (orig-fn &rest args)
+  "Call ORIG-FN with ARGS without adding anything to the kill ring.
+Intended for the command `kill-line' \\(\\C-\\k\\) and the
+command `kill-whole-line' \\(\\C-\\S-\\<backspace>\\),
+which are advised with this below, so that clearing a line
+does not clutter the kill ring."
+  (let (kill-ring kill-ring-yank-pointer)
+    (apply orig-fn args)))
+
+(advice-add 'kill-whole-line :around #'kill-without-kill-ring)
 
 (defvar my-syntax-table
   (let ((table (make-syntax-table)))

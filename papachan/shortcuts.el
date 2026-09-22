@@ -5,6 +5,9 @@
 (require 'visual-regexp)
 (require 'toggle-quotes)
 
+(use-package iflipb
+  :vc (:url "https://github.com/jrosdahl/iflipb" :rev :newest))
+
 (use-package expand-region
   :ensure t
   ;; only er/expand-region and er/contract-region are autoloaded; er/mark-word
@@ -38,6 +41,7 @@
 (global-set-key (kbd "C-x c d") 'current-directory)
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
 (global-set-key (kbd "C-c f") 'reopen-last-closed-file)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
 (global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
 ;; (global-set-key (kbd "C-x 6") 'window-swap-states)
@@ -65,6 +69,8 @@
 ;; delete N chars forward, prompting for N when no prefix arg is given;
 ;; You can add N as a prefix as this: c-u 8 C-c z
 (global-set-key (kbd "C-c z") 'delete-chars-forward)
+(global-set-key (kbd "C-c <left>") 'iflipb-next-buffer)
+(global-set-key (kbd "C-c <right>") 'iflipb-previous-buffer)
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here

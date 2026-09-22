@@ -52,6 +52,7 @@
                                 functions
                                 ido-snippet
                                 setup-cider
+                                ;; setup-chatgpt
                                 setup-clojure
                                 setup-company
                                 setup-dired
@@ -60,7 +61,6 @@
                                 setup-helm
                                 setup-ibuffer
                                 setup-iflipb
-                                setup-chatgpt
                                 init-flycheck
                                 setup-lisp
                                 setup-lsp-mode
