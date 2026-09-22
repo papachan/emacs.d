@@ -1,12 +1,12 @@
-;;; setup-iflipb.el --- Summary
+;;; setup-iflipb.el --- Summary. -*- lexical-binding: nil; -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package iflipb
-  :ensure t
+  :vc (:url "https://github.com/jrosdahl/iflipb" :rev :newest)
   :bind
-  ("C-," . iflipb-next-buffer)
-  ("C-." . iflipb-previous-buffer))
+  ("C-c <left>" . iflipb-next-buffer)
+  ("C-c <right>" . iflipb-previous-buffer))
 
 (provide 'setup-iflipb)
 ;;; setup-iflipb.el ends here

@@ -3,7 +3,6 @@
 
 ;;; Code:
 (require 'toggle-quotes)
-(require 'iflipb)
 
 (use-package expand-region
   :ensure t
@@ -48,8 +47,6 @@
 (global-set-key (kbd "C-c z") 'delete-chars-forward)
 (global-set-key (kbd "C-'") 'toggle-quotes)
 (global-set-key (kbd "C-x g") 'simple-toggle-highlight-symbol-at-point)
-(global-set-key (kbd "C-c <left>") 'iflipb-next-buffer)
-(global-set-key (kbd "C-c <right>") 'iflipb-previous-buffer)
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
