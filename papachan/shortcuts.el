@@ -52,7 +52,6 @@
 (global-set-key (kbd "C-c C-n") 'new-empty-buffer)
 ;; this alias is redundant since Emacs 24.4 electric-indent-mode is on by default and already does this.
 ;; (global-set-key (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "<f8>") 'repeat-complex-command)
 (global-set-key (kbd "C-c v") 'revert-buffer-without-confirmation)
 (global-set-key (kbd "C-c a") 'my-increment-number-at-point)
 (global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
