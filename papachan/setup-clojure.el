@@ -1,4 +1,4 @@
-;;; setup-clojure.el --- -*- lexical-binding: t -*-
+;;; setup-clojure.el --- -*- lexical-binding: nil; -*-
 ;;; Commentary:
 ;;; Code:
 (require 'rainbow-delimiters)
@@ -36,6 +36,17 @@
 (use-package clojurescript-mode
   :hook ((clojurescript-mode . paredit-mode)))
 
+(defun clojure-grep-app-search-symbol-at-point ()
+  "Search grep.app for the Clojure symbol at point in a browser.
+Results are restricted to Clojure via `f.lang=Clojure&f.lang.pattern=clojure'."
+  (interactive)
+  (let ((symbol (thing-at-point 'symbol t)))
+    (unless symbol
+      (user-error "No symbol at point"))
+    (browse-url
+     (concat "https://grep.app/search?f.lang=Clojure&f.lang.pattern=clojure&q="
+             (url-hexify-string symbol)))))
+
 (use-package clojure-mode
   :ensure t
   :hook ((clojure-mode . paredit-mode)
@@ -49,7 +60,8 @@
   (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojurescript-mode))
   :config
   (require 'flycheck-clj-kondo)
-  (add-hook 'clojure-mode-hook (lambda () (paredit-mode nil))))
+  (add-hook 'clojure-mode-hook (lambda () (paredit-mode nil)))
+  (define-key clojure-mode-map (kbd "C-c g") 'clojure-grep-app-search-symbol-at-point))
 
 ;; (use-package clojure-ts-mode
 ;;   :ensure t)
