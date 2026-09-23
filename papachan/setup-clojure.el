@@ -1,4 +1,4 @@
-;;; setup-clojure.el --- Summary
+;;; setup-clojure.el --- Summary. -*- lexical-binding: nil; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -6,10 +6,16 @@
 
 (use-package flycheck-clj-kondo :ensure t)
 
-(use-package html-to-hiccup
-  :ensure t
-  :config
-  (setq html-to-hiccup-use-shorthand-p t))
+(defun clojure-grep-app-search-symbol-at-point ()
+  "Search grep.app for the Clojure symbol at point in a browser.
+Results are restricted to Clojure via `f.lang=Clojure&f.lang.pattern=clojure'."
+  (interactive)
+  (let ((symbol (thing-at-point 'symbol t)))
+    (unless symbol
+      (user-error "No symbol at point"))
+    (browse-url
+     (concat "https://grep.app/search?f.lang=Clojure&f.lang.pattern=clojure&q="
+             (url-hexify-string symbol)))))
 
 (use-package clojure-mode
   :ensure t
@@ -27,7 +33,8 @@
   (require 'clojure-mode-extra-font-locking)
   ;; indentation
   (setq clojure-indent-style 'align-arguments
-        clojure-align-forms-automatically t))
+        clojure-align-forms-automatically t)
+  (define-key clojure-mode-map (kbd "C-c g") 'clojure-grep-app-search-symbol-at-point))
 
 ;; (use-package parseedn :ensure t)
 
