@@ -1,6 +1,10 @@
-;;; setup-lsp-mode.el --- -*- lexical-binding: t -*-
+;;; setup-lsp-mode.el --- -*- lexical-binding: nil; -*-
 ;;; Commentary:
+
 ;;; Code:
+(require 'clj-refactor)
+(require 'sesman)
+
 (use-package lsp-mode
   :ensure t
   :init
@@ -12,6 +16,7 @@
 
   :config
   (setq lsp-headerline-breadcrumb-enable t
+        lsp-enable-snippet nil
         lsp-inhibit-message t
         lsp-ui-sideline-enable nil
         lsp-ui-doc-enable nil
