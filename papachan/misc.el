@@ -1,12 +1,15 @@
-;;; misc.el file --- -*- lexical-binding: t -*-
+;;; package --- misc.el file --- -*- lexical-binding: nil; -*-
+;;; Commentary:
+;;; Code:
 (use-package expand-region :ensure t)
-(use-package window-numbering :ensure t) ;; Kill buffers which haven't been modified in a while
+
+(use-package window-numbering :ensure t)
+
 (use-package move-text
   :ensure t
   :init
   (move-text-default-bindings))
 
-(require 'whitespace)
 (require 'recentf)
 
 (defalias 'yes-or-no-p 'y-or-n-p)

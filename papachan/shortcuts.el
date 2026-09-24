@@ -42,7 +42,6 @@
 (global-set-key (kbd "C-x C-c") 'quit-emacs)
 (global-set-key (kbd "C-c f") 'reopen-last-closed-file)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x p") 'previous-multiframe-window)
 (global-set-key (kbd "C-x 3") 'split-window-right-and-move-there-dammit)
 ;; (global-set-key (kbd "C-x 6") 'window-swap-states)
 (global-set-key (kbd "C-x g") 'simple-toggle-highlight-symbol-at-point)
