@@ -344,6 +344,36 @@ A negative N deletes backward instead, matching `delete-char'."
   (interactive "sEnter url: ")
   (url-copy-file url (url-file-nondirectory url)))
 
+(defun download-url-into-new-buffer (url)
+  "Fetch URL and insert its contents into a new buffer.
+
+Interactively, prompts for URL, pre-filled with the URL at point if
+there is one.  The new buffer is named after the last path segment of
+URL (falling back to \"*url*\" when that would be empty), gets a
+major mode guessed the same way `find-file' would from the URL's
+extension, and is left unassociated with any file, use `write-file'
+to save it.
+
+Unlike `download-url-file', nothing is written to disk."
+  (interactive
+   (list (read-string "URL: " (thing-at-point 'url t))))
+  (require 'url-handlers)
+  (let* ((path (url-filename (url-generic-parse-url url)))
+         (name (file-name-nondirectory (directory-file-name path)))
+         (buffer (generate-new-buffer (if (string-empty-p name) "*url*" name))))
+    (condition-case err
+        (with-current-buffer buffer
+          (url-insert-file-contents url)
+          (goto-char (point-min))
+          ;; Guess a major mode from the URL's extension, the same way
+          ;; `find-file' would from a real file name.
+          (let ((buffer-file-name url))
+            (set-auto-mode)))
+      (error
+       (kill-buffer buffer)
+       (user-error "Failed to fetch %s: %s" url (error-message-string err))))
+    (switch-to-buffer buffer)))
+
 (defun git-clone-repo (url)
   "Clone the repository at URL into the current directory."
   (interactive "sEnter url: ")
@@ -660,6 +690,24 @@ Otherwise, behave like regular `find-file'."
       (insert (if (string= word "true") "false" "true")))
      (t
       (message "Symbol at point is not a boolean: %s" word)))))
+
+(defun replace-em-dashes (beg end)
+  "Replace every em dash with a hyphen in the region, or the whole buffer.
+BEG as a starting point
+END as an ending point"
+  (interactive
+   (if (use-region-p)
+       (list (region-beginning) (region-end))
+     (list (point-min) (point-max))))
+  (let ((count 0)
+        (end (copy-marker end)))
+    (save-excursion
+      (goto-char beg)
+      (while (re-search-forward "[—–]" end t)
+        (replace-match "-" t t)
+        (setq count (1+ count))))
+    (set-marker end nil)
+    (message "Replaced %d em dash%s" count (if (= count 1) "" "es"))))
 
 (provide 'functions)
 ;;; functions.el ends here
