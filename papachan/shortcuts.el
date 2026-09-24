@@ -29,6 +29,8 @@
 ;; new *scratch* buffer keybing conflict with org-mode
 (global-set-key (kbd "C-x 4 n") 'create-scratch-buffer)
 (global-set-key (kbd "C-x 5 n") 'make-frame-command)
+;; select the previous window across all frames
+(global-set-key (kbd "C-x 5 O") 'previous-multiframe-window)
 ;; this alias is redundant since Emacs 24.4 electric-indent-mode is on by default and already does this.
 ;; (global-set-key (kbd "RET") 'newline-and-indent)
 ;; new line alias

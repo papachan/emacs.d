@@ -1,4 +1,5 @@
-;;; misc.el --- Summary
+;;; misc.el --- Summary. -*- lexical-binding: nil; -*-
+
 ;;; Commentary:
 ;;; Code:
 
