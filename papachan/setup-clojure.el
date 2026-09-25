@@ -17,6 +17,21 @@ Results are restricted to Clojure via `f.lang=Clojure&f.lang.pattern=clojure'."
      (concat "https://grep.app/search?f.lang=Clojure&f.lang.pattern=clojure&q="
              (url-hexify-string symbol)))))
 
+(defun clojure-delete-backward-inner ()
+  "Delete from point back to the start of the enclosing form's content.
+Works like `change-inner' but only backward: everything between the
+opening delimiter of the innermost enclosing list, vector, map, set or
+string and point is deleted, leaving the delimiter itself.
+Nothing is added to the kill ring."
+  (interactive "*")
+  (let* ((ppss (syntax-ppss))
+         (start (cond ((nth 3 ppss) (1+ (nth 8 ppss))) ; inside a string
+                      ((nth 4 ppss) nil)               ; inside a comment
+                      ((nth 1 ppss) (1+ (nth 1 ppss)))))) ; innermost open paren
+    (cond ((null start) (call-interactively #'backward-kill-word))
+          ((< start (point)) (delete-region start (point)))
+          (t (message "Nothing to delete before point in this form")))))
+
 (use-package clojure-mode
   :ensure t
   :hook ((clojure-mode . paredit-mode)
@@ -34,7 +49,9 @@ Results are restricted to Clojure via `f.lang=Clojure&f.lang.pattern=clojure'."
   ;; indentation
   (setq clojure-indent-style 'align-arguments
         clojure-align-forms-automatically t)
-  (define-key clojure-mode-map (kbd "C-c g") 'clojure-grep-app-search-symbol-at-point))
+  (define-key clojure-mode-map (kbd "C-c g") 'clojure-grep-app-search-symbol-at-point)
+  ;; replaces the default C-<backspace> (backward-kill-word) in Clojure mode.
+  (define-key clojure-mode-map (kbd "C-<backspace>") 'clojure-delete-backward-inner))
 
 ;; (use-package parseedn :ensure t)
 
