@@ -50,10 +50,9 @@ Nothing is added to the kill ring."
   (setq clojure-indent-style 'align-arguments
         clojure-align-forms-automatically t)
   (define-key clojure-mode-map (kbd "C-c g") 'clojure-grep-app-search-symbol-at-point)
+  (define-key clojure-mode-map (kbd "C-x p E") 'open-project-deps-edn)
   ;; replaces the default C-<backspace> (backward-kill-word) in Clojure mode.
   (define-key clojure-mode-map (kbd "C-<backspace>") 'clojure-delete-backward-inner))
-
-;; (use-package parseedn :ensure t)
 
 (use-package clojurescript-mode
   :hook ((clojurescript-mode . paredit-mode)
