@@ -161,7 +161,7 @@
                        "*helm-mode-magit-status*"
                        "*helm-mode-switch-to-buffer*"
                        "*helm *"
-                       "*magit-*"
+                       "magit*"
                        "*lsp-log*"
                        "*Async-native-compile-log*"
                        "*Compile-Log*"
