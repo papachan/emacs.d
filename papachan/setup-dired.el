@@ -63,6 +63,14 @@ Arguments:
       (dired-add-file new)
       (dired-move-to-filename))))
 
+(defun dired-find-file-literally ()
+  "Visit the file at point in Dired with `find-file-literally'.
+Unlike plain `find-file-literally', which always prompts for a file
+name (its own interactive spec is \"FFind file literally: \"), this
+uses the file at point directly, the way `dired-find-file' does."
+  (interactive)
+  (find-file-literally (dired-get-file-for-visit)))
+
 (use-package dired
   :ensure nil
   ;; --group-directories-first needs GNU ls; on Windows dired falls back to
@@ -77,7 +85,8 @@ Arguments:
               (lambda ()
                 "Move to the parent directory."
                 (interactive)
-                (find-alternate-file ".."))))
+                (find-alternate-file "..")))
+  (define-key dired-mode-map (kbd "C-c l") 'dired-find-file-literally))
 
 (provide 'setup-dired)
 ;;; setup-dired.el ends here

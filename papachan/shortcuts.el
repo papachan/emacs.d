@@ -44,6 +44,7 @@
 (global-set-key (kbd "C-c a") 'increment-number-at-point)
 (global-set-key (kbd "C-c x") 'my-decrement-number-at-point)
 (global-set-key (kbd "C-c f") 'reopen-last-closed-file)
+(global-set-key (kbd "C-x p E") 'open-project-deps-edn)
 ;; delete N chars forward, prompting for N when no prefix arg is given;
 ;; You can add N as a prefix as this: c-u 8 C-c z
 (global-set-key (kbd "C-c z") 'delete-chars-forward)
