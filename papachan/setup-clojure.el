@@ -6,6 +6,19 @@
 
 (use-package flycheck-clj-kondo :ensure t)
 
+(defun clojure-remove-blank-lines-in-form ()
+  "Remove blank lines inside the top-level form at point.
+Blank lines inside string literals are left alone."
+  (interactive)
+  (save-excursion
+    (let* ((beg (progn (beginning-of-defun) (point)))
+           (end (copy-marker (progn (forward-sexp) (point)))))
+      (goto-char beg)
+      (while (re-search-forward "^[[:space:]]*\n" end t)
+        (unless (nth 3 (syntax-ppss (match-beginning 0))) ; skip inside strings
+          (replace-match "")))
+      (indent-region beg end))))
+
 (defun clojure-grep-app-search-symbol-at-point ()
   "Search grep.app for the Clojure symbol at point in a browser.
 Results are restricted to Clojure via `f.lang=Clojure&f.lang.pattern=clojure'."
@@ -52,7 +65,8 @@ Nothing is added to the kill ring."
   (define-key clojure-mode-map (kbd "C-c g") 'clojure-grep-app-search-symbol-at-point)
   (define-key clojure-mode-map (kbd "C-x p E") 'open-project-deps-edn)
   ;; replaces the default C-<backspace> (backward-kill-word) in Clojure mode.
-  (define-key clojure-mode-map (kbd "C-<backspace>") 'clojure-delete-backward-inner))
+  (define-key clojure-mode-map (kbd "C-<backspace>") 'clojure-delete-backward-inner)
+  (define-key clojure-mode-map (kbd "C-c C-d o") #'clojure-remove-blank-lines-in-form))
 
 (use-package clojurescript-mode
   :hook ((clojurescript-mode . paredit-mode)
