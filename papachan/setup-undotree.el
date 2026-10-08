@@ -6,8 +6,9 @@
   :commands global-undo-tree-mode
   :diminish undo-tree-mode
   :bind ("C-z" . undo-tree-visualize)
+  :custom
+  (undo-tree-auto-save-history nil)
   :config
-  (setq undo-tree-auto-save-history nil)
   (add-to-list 'display-buffer-alist
                (list (rx bos " *undo-tree*" eos)
                      '(display-buffer-reuse-window display-buffer-pop-up-frame)
