@@ -71,7 +71,7 @@
                                 setup-web
                                 setup-python
                                 setup-idle-highlight
-                                init-undo-tree
+                                setup-undo-tree
                                 shortcuts
                                 setup-eshell
                                 setup-eros
