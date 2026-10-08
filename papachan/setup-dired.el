@@ -72,6 +72,16 @@ uses the file at point directly, the way `dired-find-file' does."
   (interactive)
   (find-file-literally (dired-get-file-for-visit)))
 
+(defun dired-compile-if-makefile ()
+  "Run `compile' in the current Dired directory only if a Makefile exists."
+  (interactive)
+  (let ((dir (dired-current-directory)))
+    (if (seq-some (lambda (name) (file-exists-p (expand-file-name name dir)))
+                  '("Makefile" "makefile" "GNUmakefile"))
+        (let ((default-directory dir))
+          (call-interactively #'compile))
+      (message "No Makefile in %s" dir))))
+
 (use-package dired
   ;; :custom
   ;; (dired-listing-switches "-alFh --group-directories-first")
@@ -81,7 +91,7 @@ uses the file at point directly, the way `dired-find-file' does."
   (define-key dired-mode-map (kbd "M-s") 'rg)
   (define-key dired-mode-map "z" #'dired-get-size)
   (define-key dired-mode-map "_" #'xah-dired-rename-space-to-underscore)
-  ;; (define-key dired-mode-map (kbd "C-X C-m") 'compile) ;; call Makefile
+  (define-key dired-mode-map (kbd "C-c c") #'dired-compile-if-makefile)
   (define-key dired-mode-map "q"
               (lambda ()
                 "move to the parent directory"
