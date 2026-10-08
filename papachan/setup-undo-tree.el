@@ -23,4 +23,4 @@
   (global-undo-tree-mode))
 
 (provide 'setup-undo-tree)
-;;; init-undo-tree.el ends here
+;;; setup-undo-tree.el ends here

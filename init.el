@@ -61,7 +61,7 @@
                                 setup-helm
                                 setup-ibuffer
                                 setup-iflipb
-                                init-flycheck
+                                setup-flycheck
                                 setup-lisp
                                 setup-lsp-mode
                                 setup-magit
