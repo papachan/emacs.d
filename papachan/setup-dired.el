@@ -64,6 +64,14 @@ Arguments:
       (dired-add-file new)
       (dired-move-to-filename))))
 
+(defun dired-find-file-literally ()
+  "Visit the file at point in Dired with `find-file-literally'.
+Unlike plain `find-file-literally', which always prompts for a file
+name (its own interactive spec is \"FFind file literally: \"), this
+uses the file at point directly, the way `dired-find-file' does."
+  (interactive)
+  (find-file-literally (dired-get-file-for-visit)))
+
 (use-package dired
   ;; :custom
   ;; (dired-listing-switches "-alFh --group-directories-first")
