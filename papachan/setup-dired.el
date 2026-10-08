@@ -68,18 +68,18 @@ Arguments:
   ;; :custom
   ;; (dired-listing-switches "-alFh --group-directories-first")
   :config
-  (progn
-    (setq dired-dwim-target t)
-    (define-key dired-mode-map (kbd "M-c") 'copy-file)
-    (define-key dired-mode-map (kbd "M-s") 'rg)
-    (define-key dired-mode-map "z" #'dired-get-size)
-    (define-key dired-mode-map "_" #'xah-dired-rename-space-to-underscore)
-    (define-key dired-mode-map (kbd "C-X C-m") 'compile) ;; call Makefile
-    (define-key dired-mode-map "q"
-                (lambda ()
-                  "move to the parent directory"
-                  (interactive)
-                  (find-alternate-file "..")))))
+  (setq dired-dwim-target t)
+  (define-key dired-mode-map (kbd "M-c") 'copy-file)
+  (define-key dired-mode-map (kbd "M-s") 'rg)
+  (define-key dired-mode-map "z" #'dired-get-size)
+  (define-key dired-mode-map "_" #'xah-dired-rename-space-to-underscore)
+  ;; (define-key dired-mode-map (kbd "C-X C-m") 'compile) ;; call Makefile
+  (define-key dired-mode-map "q"
+              (lambda ()
+                "move to the parent directory"
+                (interactive)
+                (find-alternate-file "..")))
+  (define-key dired-mode-map (kbd "C-c l") 'dired-find-file-literally))
 
 (provide 'setup-dired)
 ;;; setup-dired.el ends here
