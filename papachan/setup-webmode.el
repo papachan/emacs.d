@@ -1,4 +1,4 @@
-;;; setup-webmode.el --- Summary
+;;; setup-webmode.el --- Summary. -*- lexical-binding: nil; -*-
 ;;; Commentary:
 ;;; Code:
 (use-package css-mode
@@ -33,11 +33,13 @@
   :defer t
   :commands javascript-mode
   :mode (("\\.jsx\\'" . javascript-mode)
-         ("\\.mjs\\'" . javascript-mode))
+         ("\\.mjs\\'" . javascript-mode)
+         ("\\.json\\'" . javascript-mode))
   :init
   :config
-  (custom-set-variables
-   '(js-indent-level 2)))
+  (setq js-indent-level 2
+        typescript-ts-mode-indent-offset 2
+        json-ts-mode-indent-offset 2))
 
 (use-package typescript-mode
   :mode (("\\.ts\\'" . typescript-mode)
