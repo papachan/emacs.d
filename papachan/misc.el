@@ -52,7 +52,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
-(defalias 'yes-or-no-p 'y-or-n-p)
+(setq use-short-answers t)
 
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis)
