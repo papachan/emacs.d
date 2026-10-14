@@ -33,8 +33,8 @@
   :after clojure-mode
   :commands (cider-mode cider-connect cider-jack-in)
   :bind (("C-c M-j" . cider-jack-in)
-         (:map cider-repl-mode-map
-               ("C-M g" . open-portal))
+         ;; (:map cider-repl-mode-map
+         ;;       ("C-X g" . open-portal)) ;; FIXME: ERROR KEY BINDING
          (:map cider-repl-mode-map
                ("C-X sc" . cider-repl-clear-buffer))
          (:map cider-repl-mode-map
