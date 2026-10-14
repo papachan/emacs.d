@@ -12,7 +12,7 @@
 
 (require 'recentf)
 
-(defalias 'yes-or-no-p 'y-or-n-p)
+(setq use-short-answers t)
 
 (use-package emacs
   :custom
