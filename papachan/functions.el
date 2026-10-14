@@ -686,5 +686,29 @@ END as an ending point"
     (set-marker end nil)
     (message "Replaced %d em dash%s" count (if (= count 1) "" "es"))))
 
+(defun copy-region-from-left-window-to-point ()
+  "Copy the region between point and mark in the window to the left,
+and insert it at point here.
+Meant for a two-pane layout: select text in the left buffer, move
+point to where it should land in the right buffer, then run this from
+the right window.  Switching windows deactivates the *visual*
+selection (a Shift-selected region is dropped by Emacs the moment any
+other command runs, including moving focus to another window), but
+it does not move the mark or point, so this reads the region straight
+off them instead of requiring `use-region-p'.  Uses
+`buffer-substring-no-properties' rather than `kill-region', so the
+kill ring is not involved."
+  (interactive)
+  (let* ((source-window (or (window-in-direction 'left) (next-window)))
+         (source-buffer (window-buffer source-window))
+         text)
+    (when (eq source-window (selected-window))
+      (user-error "No other window to copy from"))
+    (with-current-buffer source-buffer
+      (unless (mark t)
+        (user-error "No mark set in %s" (buffer-name source-buffer)))
+      (setq text (buffer-substring-no-properties (region-beginning) (region-end))))
+    (insert text)))
+
 (provide 'functions)
 ;;; functions.el ends here

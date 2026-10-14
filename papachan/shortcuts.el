@@ -50,6 +50,7 @@
 (global-set-key (kbd "C-c z") 'delete-chars-forward)
 (global-set-key (kbd "C-'") 'toggle-quotes)
 (global-set-key (kbd "C-x g") 'simple-toggle-highlight-symbol-at-point)
+(global-set-key (kbd "C-c C-y") 'copy-region-from-left-window-to-point)
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
