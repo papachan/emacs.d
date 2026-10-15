@@ -69,6 +69,8 @@
 (global-set-key (kbd "C-c z") 'delete-chars-forward)
 (global-set-key (kbd "C-c <left>") 'iflipb-next-buffer)
 (global-set-key (kbd "C-c <right>") 'iflipb-previous-buffer)
+(global-set-key (kbd "M-g 1") (lambda () (interactive) (buffer/clear) (insert-file-contents "~/tmp/gitconfig-papachan.txt")))
+(global-set-key (kbd "M-g 2") (lambda () (interactive) (buffer/clear) (insert-file-contents "~/tmp/gitconfig-github.txt")))
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
