@@ -52,21 +52,25 @@ Nothing is added to the kill ring."
          (clojure-mode . flycheck-mode)
          (clojure-mode . rainbow-delimiters-mode)
          (clojure-mode . company-mode))
+  :bind ((:map clojure-mode-map
+               ("C-c g" . clojure-grep-app-search-symbol-at-point))
+         (:map clojure-mode-map
+               ("C-x p E" . open-project-deps-edn))
+         ;; replaces the default C-<backspace> (backward-kill-word) in Clojure mode.
+         (:map clojure-mode-map
+               ("C-<backspace>" . clojure-delete-backward-inner))
+         (:map clojure-mode-map
+               ("C-c C-d o" . clojure-remove-blank-lines-in-form)))
   :mode (("\\.edn$" . edn-mode)
          ("\\.cljs$" . clojurescript-mode)
          ("\\.cljx$" . clojurex-mode)
          ("\\.cljc$" . clojurec-mode))
+  :custom
+  (clojure-indent-style 'align-arguments)
+  (clojure-align-forms-automatically t)
   :config
   (require 'flycheck-clj-kondo)
-  (require 'clojure-mode-extra-font-locking)
-  ;; indentation
-  (setq clojure-indent-style 'align-arguments
-        clojure-align-forms-automatically t)
-  (define-key clojure-mode-map (kbd "C-c g") 'clojure-grep-app-search-symbol-at-point)
-  (define-key clojure-mode-map (kbd "C-x p E") 'open-project-deps-edn)
-  ;; replaces the default C-<backspace> (backward-kill-word) in Clojure mode.
-  (define-key clojure-mode-map (kbd "C-<backspace>") 'clojure-delete-backward-inner)
-  (define-key clojure-mode-map (kbd "C-c C-d o") #'clojure-remove-blank-lines-in-form))
+  (require 'clojure-mode-extra-font-locking))
 
 (use-package clojurescript-mode
   :hook ((clojurescript-mode . paredit-mode)
