@@ -1,6 +1,7 @@
-;;; setup-font-system.el --- -*- lexical-binding: t -*-
+;;; setup-font-system.el --- -*- lexical-binding: nil; -*-
 ;;; Commentary:
 ;;; Code:
+
 (progn
   ((lambda (font)
      (set-frame-font font)
@@ -9,7 +10,7 @@
                          :height 110
                          :weight 'normal)
      (set-face-font 'default font))
-   "JetBrains Mono"))
+   "FiraMonoNerdFont"))
 
 (provide 'setup-font-system)
 ;;; setup-font-system.el ends here

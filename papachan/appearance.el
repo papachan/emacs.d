@@ -5,7 +5,8 @@
 (use-package zerodark
   :vc (:url "https://github.com/NicolasPetton/zerodark-theme" :rev :newest)
   :init
-  (load-theme 'zerodark t))
+  (load-theme 'zerodark t)
+  (zerodark-setup-modeline-format))
 
 (use-package all-the-icons
   :if (display-graphic-p))

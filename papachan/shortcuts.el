@@ -5,9 +5,6 @@
 (require 'visual-regexp)
 (require 'toggle-quotes)
 
-(use-package iflipb
-  :vc (:url "https://github.com/jrosdahl/iflipb" :rev :newest))
-
 (use-package expand-region
   :ensure t
   ;; only er/expand-region and er/contract-region are autoloaded; er/mark-word
@@ -67,8 +64,6 @@
 ;; delete N chars forward, prompting for N when no prefix arg is given;
 ;; You can add N as a prefix as this: c-u 8 C-c z
 (global-set-key (kbd "C-c z") 'delete-chars-forward)
-(global-set-key (kbd "C-c <left>") 'iflipb-next-buffer)
-(global-set-key (kbd "C-c <right>") 'iflipb-previous-buffer)
 (global-set-key (kbd "C-c C-y") 'copy-region-from-left-window-to-point)
 (global-set-key (kbd "M-g 1") (lambda () (interactive) (buffer/clear) (insert-file-contents "~/tmp/gitconfig-papachan.txt")))
 (global-set-key (kbd "M-g 2") (lambda () (interactive) (buffer/clear) (insert-file-contents "~/tmp/gitconfig-github.txt")))

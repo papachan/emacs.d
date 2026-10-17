@@ -1,6 +1,6 @@
 ### My emacs config
 
-this emacs settings is fully compatible with Linux and Mac Os. Run on emacs27 branch.
+this emacs settings is fully compatible with Linux and for Mac Os (emacs_30_1_mac branch).
 
 
 ### Enabling Ripgrep
