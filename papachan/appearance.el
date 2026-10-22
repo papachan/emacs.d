@@ -1,7 +1,10 @@
-;;; Appearance --- load emacs theme here
+;;; Appearance --- load emacs theme here. -*- lexical-binding: nil; -*-
 ;;; Commentary:
 ;;; Code:
-(require 'zerodark-theme)
+(use-package zerodark-theme
+  :config
+  (load-theme 'zerodark t)
+  (zerodark-setup-modeline-format))
 
 (use-package all-the-icons
   :if (display-graphic-p))
@@ -15,9 +18,6 @@
                          :weight 'normal)
      (set-face-font 'default font))
    "JetBrains Mono"))
-
-(load-theme 'zerodark t)
-(zerodark-setup-modeline-format)
 
 ;; (setq sml/theme 'respectful)
 ;; (sml/setup)
