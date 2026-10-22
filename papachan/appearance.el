@@ -2,8 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package zerodark
-  :vc (:url "https://github.com/NicolasPetton/zerodark-theme" :rev :newest)
+(use-package zerodark-theme
+  :ensure t
   :init
   (load-theme 'zerodark t)
   (zerodark-setup-modeline-format))
