@@ -71,12 +71,28 @@ uses the file at point directly, the way `dired-find-file' does."
   (interactive)
   (find-file-literally (dired-get-file-for-visit)))
 
+(defun dired-open-directory-in-explorer ()
+  "Open the current Dired directory in Windows Explorer.
+Equivalent to running \"explorer.exe .\" from this directory.
+`dired-current-directory' returns a forward-slash path with a
+trailing slash (e.g. \"c:/foo/bar/\"); explorer.exe can't parse that
+and silently falls back to opening Documents, so the trailing slash
+is dropped and the slashes are converted to backslashes first."
+  (interactive)
+  (unless (derived-mode-p 'dired-mode)
+    (user-error "Not in Dired"))
+  (let ((dir (directory-file-name (expand-file-name (dired-current-directory)))))
+    (start-process "explorer" nil "explorer.exe" (string-replace "/" "\\" dir))))
+
 (use-package dired
   :ensure nil
   ;; --group-directories-first needs GNU ls; on Windows dired falls back to
   ;; ls-lisp, where (setq ls-lisp-dirs-first t) is the equivalent.
   :config
   (setq dired-dwim-target t)
+  ;; `a' (dired-find-alternate-file) is disabled by default -- it's easy to
+  ;; hit by accident and replaces the current Dired buffer with the file.
+  (put 'dired-find-alternate-file 'disabled nil)
   (when (fboundp 'rg)
     (define-key dired-mode-map (kbd "C-c s") 'rg))
   ;; NOTE: this shadows q = quit-window. `^' already goes up, and Emacs 28+
@@ -86,7 +102,8 @@ uses the file at point directly, the way `dired-find-file' does."
                 "Move to the parent directory."
                 (interactive)
                 (find-alternate-file "..")))
-  (define-key dired-mode-map (kbd "C-c l") 'dired-find-file-literally))
+  (define-key dired-mode-map (kbd "C-c l") 'dired-find-file-literally)
+  (define-key dired-mode-map (kbd "C-c e") 'dired-open-directory-in-explorer))
 
 (provide 'setup-dired)
 ;;; setup-dired.el ends here
