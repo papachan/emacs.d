@@ -84,6 +84,34 @@ is dropped and the slashes are converted to backslashes first."
   (let ((dir (directory-file-name (expand-file-name (dired-current-directory)))))
     (start-process "explorer" nil "explorer.exe" (string-replace "/" "\\" dir))))
 
+(defun dired-listing-only-filenames (beg end)
+  "Strip `ls -l' columns, leaving only filenames.
+Works on the region if active, otherwise the whole buffer.
+BEG as a starting point
+END as an ending point."
+  (interactive
+   (if (use-region-p)
+       (list (region-beginning) (region-end))
+     (list (point-min) (point-max))))
+  (save-excursion
+    (save-restriction
+      (narrow-to-region beg end)
+      (goto-char (point-min))
+      (while (re-search-forward
+              (concat "^.*? "
+                      "\\(?:"
+                      ;; ISO style: 2026-10-22 16:00
+                      "[0-9]\\{4\\}-[0-9][0-9]-[0-9][0-9]\\(?: +[0-9][0-9]:[0-9][0-9]\\)?"
+                      "\\|"
+                      ;; ls-lisp (Windows) numeric style: 05-08 20:49
+                      "[0-9][0-9]-[0-9][0-9] +[0-9][0-9]:[0-9][0-9]"
+                      "\\|"
+                      ;; Default ls style: Oct 22 16:00 or Oct 22  2025
+                      "[^ 0-9]+\\.? +[0-9]\\{1,2\\} +\\(?:[0-9][0-9]:[0-9][0-9]\\|[0-9]\\{4\\}\\)"
+                      "\\) +")
+              nil t)
+        (replace-match "")))))
+
 (use-package dired
   :ensure nil
   ;; --group-directories-first needs GNU ls; on Windows dired falls back to
