@@ -1,4 +1,4 @@
-;;; setup-helm.el --- -*- lexical-binding: t -*-
+;;; setup-helm.el --- -*- lexical-binding: nil; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -38,6 +38,9 @@
   :commands (helm-ag))
 
 (use-package swiper
+  :ensure t)
+
+(use-package ivy
   :ensure t)
 
 ;; swiper-helm have conflict with dired-sidebar
