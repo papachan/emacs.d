@@ -41,7 +41,11 @@
   :ensure t)
 
 (use-package ivy
-  :ensure t)
+  :ensure t
+  :custom
+  (enable-recursive-minibuffers t)
+  :config
+  (ivy-mode 1))
 
 ;; swiper-helm have conflict with dired-sidebar
 (use-package swiper-helm
