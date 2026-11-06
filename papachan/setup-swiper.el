@@ -1,16 +1,12 @@
-;;; setup-swiper.el --- Summary
+;;; setup-swiper.el --- Summary. -*- lexical-binding: nil; -*-
 ;;; Commentary:
 
 ;;; Code:
 ;; ivy-mode
 (use-package ivy
   :ensure t
-  :bind (("C-c C-r" . ivy-resume)
-         ("<f6>" . ivy-resume))
-  :init (setq ivy-use-virtual-buffers t
-              enable-recursive-minibuffers t)
-        ;; enable this if you want `swiper' to use it
-        ;; (setq search-default-mode #'char-fold-to-regexp)
+  :custom
+  (enable-recursive-minibuffers t)
   :config
   (ivy-mode 1))
 
