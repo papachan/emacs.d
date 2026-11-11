@@ -361,6 +361,18 @@ A negative N deletes backward instead, matching `delete-char'."
   (erase-buffer)
   (insert-file-contents filename))
 
+(defun insert-gitconfig-template ()
+  "Prompt for one of the saved gitconfig templates and insert it.
+Templates live as files in `gitconfigs' at the root of
+`user-emacs-directory'; clears the current buffer first, then
+inserts the chosen file's contents."
+  (interactive)
+  (let* ((dir (expand-file-name "gitconfigs" user-emacs-directory))
+         (files (directory-files dir nil "\\.gitconfig\\'"))
+         (choice (completing-read "gitconfig template: " files nil t)))
+    (buffer/clear)
+    (insert-file-contents (expand-file-name choice dir))))
+
 (defun download-url-file (url)
   "Download URL into the current directory."
   (interactive "sEnter url: ")

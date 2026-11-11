@@ -51,6 +51,7 @@
 (global-set-key (kbd "C-'") 'toggle-quotes)
 (global-set-key (kbd "C-x g") 'simple-toggle-highlight-symbol-at-point)
 (global-set-key (kbd "C-c C-y") 'copy-region-from-left-window-to-point)
+(global-set-key (kbd "M-g g") 'insert-gitconfig-template)
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
