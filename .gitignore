@@ -50,3 +50,4 @@ chatgpt
 claude-code-context.json
 .chatgpt-shell.el
 gitconfigs
+tramp

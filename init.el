@@ -18,6 +18,8 @@
 (setq warning-suppress-types '((defvaralias) (lexical-binding)))
 (setq warning-inhibit-types '((files missing-lexbind-cookie)))
 
+(setq package-install-upgrade-built-in t)
+
 ;; prefer newer non-byte compiled sources to older byte compiled ones
 (setq load-prefer-newer t)
 
