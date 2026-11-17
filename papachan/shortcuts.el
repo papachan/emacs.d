@@ -65,8 +65,7 @@
 ;; You can add N as a prefix as this: c-u 8 C-c z
 (global-set-key (kbd "C-c z") 'delete-chars-forward)
 (global-set-key (kbd "C-c C-y") 'copy-region-from-left-window-to-point)
-(global-set-key (kbd "M-g 1") (lambda () (interactive) (buffer/clear) (insert-file-contents "~/tmp/gitconfig-papachan.txt")))
-(global-set-key (kbd "M-g 2") (lambda () (interactive) (buffer/clear) (insert-file-contents "~/tmp/gitconfig-github.txt")))
+(global-set-key (kbd "M-g h") 'insert-gitconfig-template)
 
 (provide 'shortcuts)
 ;;; shortcuts.el ends here
