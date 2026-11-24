@@ -1,7 +1,6 @@
-;;; setup-magit.el --- Magit for life! -*- lexical-binding: t -*-
-;;
+;;; setup-magit.el --- Magit for life! -*- lexical-binding: nil; -*-
 ;;; Commentary:
-;;
+
 ;;; Code:
 (require 'pinentry)
 (use-package git-timemachine :ensure t)
@@ -14,6 +13,8 @@
   :config
   (setq magit-save-repository-buffers nil) ; Disable Magit asking to save files
   (setq magit-uniquify-buffer-names nil)   ; Make magit buffers be wrapped w/ *
+  (setq vc-handled-backends '(Git))        ; don't probe for SVN, Hg, etc.
+  (setq magit-refresh-status-buffer nil)
 
   (define-advice magit-push-current-to-upstream (:before (args) query-yes-or-no)
   "Prompt for confirmation before permitting a push to upstream."
