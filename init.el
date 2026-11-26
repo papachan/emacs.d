@@ -12,6 +12,8 @@
 
 (setq package-vc-register-as-project nil)
 
+(setq package-native-compile t)
+
 (require 'package)
 (dolist (source ' (("gnu" . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/gnu/")
                    ("melpa" . "https://melpa.org/packages/")
