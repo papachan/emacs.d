@@ -102,6 +102,8 @@ https://hostname/[git-repository-path]/-/commit/[commit-hash]"
                             'magit-insert-unpushed-to-upstream-or-recent
                             'magit-insert-unpulled-from-upstream
                             'replace)
+    (setq vc-handled-backends '(Git))
+    (setq magit-refresh-status-buffer nil)
     (setq magit-diff-highlight-indentation '(("" . tabs)))
     ;; (setq magit-repository-directories
     ;;       '( "~/git" ))

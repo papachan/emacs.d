@@ -4,13 +4,13 @@
 ;;; Code:
 (setq inhibit-compacting-font-caches t)
 
+(use-package all-the-icons
+  :if (display-graphic-p))
+
 (use-package zerodark-theme
   :config
   (load-theme 'zerodark t)
   (zerodark-setup-modeline-format))
-
-(use-package all-the-icons
-  :if (display-graphic-p))
 
 (progn
   ((lambda (font)

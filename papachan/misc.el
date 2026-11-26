@@ -14,7 +14,19 @@
 ;; to ensure files have no trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+
 (setq ring-bell-function 'ignore)
+
+;; Faster process I/O (LSP, grep, git...)
+;; (setq w32-pipe-read-delay 0)
+(setq w32-pipe-buffer-size (* 64 1024))
+(setq read-process-output-max (* 1024 1024))
+
+;; (setq w32-lwindow-modifier 'super)
+(setq w32-pass-lwindow-to-system nil)
+(setq-default bidi-paragraph-direction 'left-to-right)
+;; faster display of long lines
+(setq bidi-inhibit-bpa t)
 
 (if (fboundp 'desktop-save-mode)
     (desktop-save-mode 1))

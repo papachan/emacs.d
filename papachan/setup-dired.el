@@ -7,6 +7,10 @@
 (declare-function dired-add-file "dired-aux" (filename &optional marker-char))
 (declare-function dired-move-to-filename "dired" (&optional raise-error eol))
 
+;; Faster `file-attributes' on Windows (global, but Dired/ls-lisp is the main
+;; caller); owner/group columns in listings become approximate.
+(setq w32-get-true-file-attributes nil)
+
 (defun dired-rename-space-to-underscore ()
   "In Dired, rename current or marked files, replacing spaces with underscores.
 Only the file name is rewritten, never the parent directories.
