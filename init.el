@@ -55,8 +55,8 @@
                                 ;; setup-chatgpt
                                 setup-clojure
                                 setup-company
-                                setup-dired
                                 setup-dired-sidebar
+                                setup-dired
                                 setup-font-system
                                 setup-helm
                                 setup-ibuffer

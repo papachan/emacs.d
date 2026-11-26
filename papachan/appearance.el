@@ -2,14 +2,14 @@
 ;;; Commentary:
 ;;; Code:
 
+(use-package all-the-icons
+  :if (display-graphic-p))
+
 (use-package zerodark-theme
   :ensure t
   :init
   (load-theme 'zerodark t)
   (zerodark-setup-modeline-format))
-
-(use-package all-the-icons
-  :if (display-graphic-p))
 
 (use-package dired-rainbow
   :after dired
