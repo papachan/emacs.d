@@ -1,13 +1,19 @@
 ;;; setup-dired-sidebar.el --- Summary. -*- lexical-binding: nil; -*-
 ;;; Commentary:
+
 ;;; Code:
 
-(require 'all-the-icons-dired)
+(use-package expui-icons
+  :vc (:url "https://github.com/papachan/expui-icons.git"
+       :rev "0f824e18bb023193d2ee8d0579b55f99117c266d"))
 
 (use-package dired-sidebar
   :ensure t
   :bind (("S-<f8>" . dired-sidebar-toggle-sidebar))
+  :hook ((dired-sidebar-mode . expui-icons-dired-mode))
   :init
+  ;; 'none so dired-sidebar doesn't also turn on all-the-icons-dired
+  (setq dired-sidebar-theme 'none)
   (add-hook 'dired-sidebar-mode-hook
             (lambda ()
               (unless (file-remote-p default-directory)

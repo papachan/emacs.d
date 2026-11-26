@@ -40,8 +40,8 @@
                                 setup-cider
                                 setup-clojure
                                 ;; setup-chatgpt
-                                setup-dired
                                 setup-dired-sidebar
+                                setup-dired
                                 setup-dotnet
                                 setup-helm
                                 setup-ibuffer

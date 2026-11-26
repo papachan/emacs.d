@@ -2,6 +2,7 @@
 ;;; Commentary:
 
 ;;; Code:
+(require 'expui-icons-dired)
 (declare-function dired-current-directory "dired" (&optional localp))
 (declare-function dired-add-file "dired-aux" (filename &optional marker-char))
 (declare-function dired-move-to-filename "dired" (&optional raise-error eol))
@@ -117,6 +118,7 @@ END as an ending point."
   ;; --group-directories-first needs GNU ls; on Windows dired falls back to
   ;; ls-lisp, where (setq ls-lisp-dirs-first t) is the equivalent.
   :config
+  (add-hook 'dired-mode-hook #'expui-icons-dired-mode)
   (setq dired-dwim-target t)
   ;; `a' (dired-find-alternate-file) is disabled by default -- it's easy to
   ;; hit by accident and replaces the current Dired buffer with the file.
