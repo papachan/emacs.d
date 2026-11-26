@@ -5,6 +5,8 @@
 (when (version< emacs-version "30")
   (error "This config requires at least GNU Emacs 30, but you're running %s" emacs-version))
 
+;; Smart App Control blocks unsigned .eln dlls
+(setq native-comp-eln-load-path (butlast native-comp-eln-load-path))
 ;;; Warning display -----------------------------------------------------
 ;; `lexical-binding': Emacs warns about third-party packages that lack
 ;; lexical-binding. Because end users cannot easily fix upstream source code,
@@ -17,7 +19,8 @@
 (setq warning-minimum-level :error)
 (setq warning-suppress-types '((defvaralias) (lexical-binding)))
 (setq warning-inhibit-types '((files missing-lexbind-cookie)))
-
+(setq package-native-compile t)
+(setq native-comp-jit-compilation nil) ;; disable jit compilation
 (setq package-install-upgrade-built-in t)
 
 ;; prefer newer non-byte compiled sources to older byte compiled ones
