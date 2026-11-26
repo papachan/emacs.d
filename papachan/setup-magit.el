@@ -11,10 +11,10 @@
   :bind (("C-c m" . magit-status))
 
   :config
-  (setq magit-save-repository-buffers nil) ; Disable Magit asking to save files
-  (setq magit-uniquify-buffer-names nil)   ; Make magit buffers be wrapped w/ *
-  (setq vc-handled-backends '(Git))        ; don't probe for SVN, Hg, etc.
-  (setq magit-refresh-status-buffer nil)
+  (setq magit-save-repository-buffers nil ; Disable Magit asking to save files
+        magit-uniquify-buffer-names nil   ; Make magit buffers be wrapped w/ *
+        vc-handled-backends '(Git)        ; don't probe for SVN, Hg, etc.
+        magit-refresh-status-buffer nil)
 
   (define-advice magit-push-current-to-upstream (:before (args) query-yes-or-no)
   "Prompt for confirmation before permitting a push to upstream."
